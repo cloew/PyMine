@@ -21,7 +21,7 @@ class PyMine:
                 self.field[i].append(NumberSquare(j))
                 
         self.cursor = Cursor(self.SIZE)
-        self.screen = Screen(self.field)
+        self.screen = Screen(self.field, self.cursor)
         self.inputProcessor = InputProcessor(self, False)
         self.running = True
         

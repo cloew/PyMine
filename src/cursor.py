@@ -16,9 +16,9 @@ class Cursor:
             
         self.normalizeCol()
             
-    def down(self, max):
+    def down(self):
         """ Move the cursor down a row """
-        if self.row < self.fieldSize:
+        if self.row < self.fieldSize-1:
             self.row += 1
             
         self.normalizeCol()
@@ -28,9 +28,9 @@ class Cursor:
         if self.col > 0:
             self.col -= 1
     
-    def right(self, max):
+    def right(self):
         """ Moves the cursor right one column """
-        if self.col < self.fieldSize:
+        if self.col < self.fieldSize-1:
             self.col += 1
     
     def normalizeCol(self):
