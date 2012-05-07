@@ -17,5 +17,5 @@ class Square:
         if self.cleared:
             return self.CLEARED_CHAR
         else:
-            return self.UNC:EARED_CHAR
+            return self.UNCLEARED_CHAR
     

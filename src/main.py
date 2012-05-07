@@ -1,4 +1,4 @@
-#from nytowl import NytOwlTextEditor
+from pymine import PyMine
 
 import sys
 
@@ -21,7 +21,8 @@ def processArgs(args):
 def main(args):
     """   """
     processArgs(args)
-    n.run()
+    game = PyMine()
+    game.run()
     
     
 if __name__ == "__main__":
