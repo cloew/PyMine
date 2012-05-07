@@ -17,14 +17,14 @@ class Screen:
     def printColumnHeaders(self):
         """ Prints the column headers """ 
         print "  ",
-        for i in range(len(self.field)):
+        for i in range(len(self.field.field)):
             print " %d" % i,
         print "\r"
         
     def printField(self):
         """ Prints the mine field """
-        for row in self.field:
-            rowIndex = self.field.index(row)
+        for row in self.field.field:
+            rowIndex = self.field.field.index(row)
             print "%s:" % rowIndex,
             s = ""
             for square in row:

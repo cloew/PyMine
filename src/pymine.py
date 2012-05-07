@@ -3,6 +3,7 @@ from cursor import Cursor
 from input_processor import InputProcessor
 from screen import Screen
 
+from field import Field
 from square import Square
 from mine_square import MineSquare
 from num_square import NumberSquare
@@ -13,12 +14,7 @@ class PyMine:
     
     def __init__(self):
         """  """
-        self.field = []
-        
-        for i in range(self.SIZE):
-            self.field.append([])
-            for j in range(self.SIZE):
-                self.field[i].append(Square())
+        self.field = Field(self.SIZE)
                 
         self.cursor = Cursor(self.SIZE)
         self.screen = Screen(self.field, self.cursor)
@@ -59,5 +55,5 @@ class PyMine:
         
     def getCurrentSquare(self):
         """ Returns the current sqaure """
-        return self.field[self.cursor.row][self.cursor.col]
+        return self.field.squareAt(self.cursor.row, self.cursor.col)
     
