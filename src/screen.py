@@ -10,7 +10,7 @@ class Screen:
     
     def printScreen(self):
         """ Prints the game fiedl to the screen """
-        cls()
+        #cls()
         self.printColumnHeaders()
         self.printField()
             
