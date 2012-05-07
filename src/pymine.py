@@ -18,7 +18,7 @@ class PyMine:
         for i in range(self.SIZE):
             self.field.append([])
             for j in range(self.SIZE):
-                self.field[i].append(NumberSquare(j))
+                self.field[i].append(Square())
                 
         self.cursor = Cursor(self.SIZE)
         self.screen = Screen(self.field, self.cursor)
@@ -34,6 +34,8 @@ class PyMine:
         
     def clear(self):
         """ Clear the selected square """
+        square = self.getCurrentSquare()
+        square.clear()
         
     def cursorUp(self):
         """ Move the cursor up one row """
@@ -54,4 +56,8 @@ class PyMine:
     def exit(self):
         """ Exits the game """
         self.running = False
+        
+    def getCurrentSquare(self):
+        """ Returns the current sqaure """
+        return self.field[self.cursor.row][self.cursor.col]
     
