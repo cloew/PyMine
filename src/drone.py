@@ -6,15 +6,19 @@ class Drone:
         """ Intialize the Player's Drone """
         self.row = 0
         self.column = 0
+        self.power = 50
+        
         self.minefield = minefield
         self.destroyed = False
         
     def scan(self):
         """ Scan the current cell """
+        self.power -= 2
         self.minefield.scan(self.row, self.column, self)
         
     def defuse(self):
         """ Defuse the current cell """
+        self.power -= 5
         self.minefield.defuse(self.row, self.column, self)
         
     def destroy(self):
