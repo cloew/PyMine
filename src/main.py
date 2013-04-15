@@ -1,17 +1,11 @@
-from drone import Drone
-from minefield import Minefield
-
-from View.Console.minefield_view import MinefieldView
+from View.Console.level_controller import LevelController
 
 import sys
 
 def main(args):
     """ Run the main file """
-    field = Minefield()
-    drone = Drone()
-    
-    field_view = MinefieldView(field, drone)
-    print field_view
+    levelController = LevelController()
+    levelController.run()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
