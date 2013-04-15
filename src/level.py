@@ -5,13 +5,15 @@ from minefield import Minefield
 class Level:
     """ Represents a Level """
     
-    def __init__(self):
+    def __init__(self, numMines):
         """ Initialize the Level """
         self.minefield = Minefield()
         self.drone = Drone(self.minefield)
         
-        self.mines = [Mine()]
-        for mine in self.mines:
+        self.mines = []
+        for i in range(numMines):
+            mine = Mine()
+            self.mines.append(mine)
             self.minefield.addMine(mine)
         
     def lost(self):

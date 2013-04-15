@@ -10,7 +10,7 @@ class LevelController:
     
     def __init__(self):
         """ Initialize the Level Controller """
-        self.level = Level()
+        self.level = Level(4)
         self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
         
         self.actions = {KAO_UP:self.level.drone.up,
