@@ -1,5 +1,4 @@
-from drone import Drone
-from minefield import Minefield
+from level import Level
 
 from View.Console.minefield_view import MinefieldView
 
@@ -11,16 +10,15 @@ class LevelController:
     
     def __init__(self):
         """ Initialize the Level Controller """
-        self.minefield = Minefield()
-        self.drone = Drone(self.minefield)
-        self.minefield_view = MinefieldView(self.minefield, self.drone)
+        self.level = Level()
+        self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
         
-        self.actions = {KAO_UP:self.drone.up,
-                        KAO_DOWN:self.drone.down,
-                        KAO_LEFT:self.drone.left,
-                        KAO_RIGHT:self.drone.right,
-                        ord('s'):self.drone.scan,
-                        ord('d'):self.drone.defuse,
+        self.actions = {KAO_UP:self.level.drone.up,
+                        KAO_DOWN:self.level.drone.down,
+                        KAO_LEFT:self.level.drone.left,
+                        KAO_RIGHT:self.level.drone.right,
+                        ord('s'):self.level.drone.scan,
+                        ord('d'):self.level.drone.defuse,
                         ESCAPE:self.stopRunning}
         
     def run(self):
@@ -47,6 +45,6 @@ class LevelController:
             
     def checkGameOver(self):
         """ Check if the Game is Over """
-        if self.drone.destroyed:
+        if self.level.lost():
             self.stopRunning()
             print "Game Over\r"
