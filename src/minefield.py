@@ -13,7 +13,7 @@ class Minefield:
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
                 
-        self.squares[row][column].addContent(Mine())
+        self.squares[1][2].addContent(Mine())
                 
     def scan(self, row, column):
         """ Scan the given Grid Square """

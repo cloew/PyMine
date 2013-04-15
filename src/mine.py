@@ -8,6 +8,7 @@ class Mine:
         
     def scan(self):
         """ Scan the mine and destroy the drone """
+        print "Scanned a Mine"
         
     def defuse(self):
         """ Defuse the Mine """
