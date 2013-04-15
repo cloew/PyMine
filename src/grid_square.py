@@ -21,6 +21,7 @@ class GridSquare:
         self.scanned = True
         for contentObject in self.contents:
             contentObject.scan(drone)
+        self.clue.findAdjacentMines(drone.minefield, self.row, self.column)
         
     def __repr__(self):
         """ Print the square as a string """

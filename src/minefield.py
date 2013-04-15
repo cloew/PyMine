@@ -13,11 +13,18 @@ class Minefield:
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
                 
-        self.squares[1][2].addContent(Mine())
+        self.getSquare(1, 2).addContent(Mine())
                 
     def scan(self, row, column, drone):
         """ Scan the given Grid Square """
-        self.squares[row][column].scan(drone)
+        self.getSquare(row, column).scan(drone)
+        
+    def getSquare(self, row, column):
+        """ Return the square at the location """
+        if row < 0 or column < 0 or row >= self.rowCount() or column >= self.columnCount():
+            return None
+        else:
+            return self.squares[row][column]
     
     def rowCount(self):
         """ Return the Row Count """
