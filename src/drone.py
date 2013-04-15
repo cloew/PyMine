@@ -15,7 +15,7 @@ class Drone:
         
     def down(self):
         """ """
-        if self.row < len(self.minefield.squares):
+        if self.row < self.minefield.rowCount()-1:
             self.row += 1
     
     def left(self):
@@ -25,5 +25,5 @@ class Drone:
     
     def right(self):
         """ """
-        if self.column < len(self.minefield.squares[0]):
+        if self.column < self.minefield.columnCount()-1:
             self.column += 1

@@ -11,6 +11,14 @@ class Minefield:
             self.squares.append([])
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
+    
+    def rowCount(self):
+        """ Return the Row Count """
+        return len(self.squares)
+    
+    def columnCount(self):
+        """ Return the Column Count """
+        return len(self.squares[0])
         
     def __repr__(self):
         """ Print the String representation of the Minefield """
