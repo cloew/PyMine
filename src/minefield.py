@@ -15,9 +15,9 @@ class Minefield:
                 
         self.squares[1][2].addContent(Mine())
                 
-    def scan(self, row, column):
+    def scan(self, row, column, drone):
         """ Scan the given Grid Square """
-        self.squares[row][column].scan()
+        self.squares[row][column].scan(drone)
     
     def rowCount(self):
         """ Return the Row Count """

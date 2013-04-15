@@ -16,11 +16,11 @@ class GridSquare:
         """ Add the content object to the squares contents """
         self.contents.append(contentObject)
         
-    def scan(self):
+    def scan(self, drone):
         """ Scan the Grid Square """
         self.scanned = True
         for contentObject in self.contents:
-            contentObject.scan()
+            contentObject.scan(drone)
         
     def __repr__(self):
         """ Print the square as a string """

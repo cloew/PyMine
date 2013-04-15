@@ -32,6 +32,7 @@ class LevelController:
         while self.running:
             print self.minefield_view
             self.processInput()
+            self.checkGameOver()
             
     def processInput(self):
         """ Process the input """
@@ -43,3 +44,8 @@ class LevelController:
         """ Stop the Controller from running """
         self.running = False
             
+    def checkGameOver(self):
+        """ Check if the Game is Over """
+        if self.drone.destroyed:
+            self.stopRunning()
+            print "Game Over\r"

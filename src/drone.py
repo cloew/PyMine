@@ -7,10 +7,15 @@ class Drone:
         self.row = 0
         self.column = 0
         self.minefield = minefield
+        self.destroyed = False
         
     def scan(self):
         """ Scan the current cell """
-        self.minefield.scan(self.row, self.column)
+        self.minefield.scan(self.row, self.column, self)
+        
+    def destroy(self):
+        """ Destroy the drone """
+        self.destroyed = True
         
     def up(self):
         """  """

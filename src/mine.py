@@ -6,9 +6,9 @@ class Mine:
         """ Initialize the Mine """
         self.defused = False
         
-    def scan(self):
+    def scan(self, drone):
         """ Scan the mine and destroy the drone """
-        print "Scanned a Mine"
+        drone.destroy()
         
     def defuse(self):
         """ Defuse the Mine """
