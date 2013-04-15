@@ -19,7 +19,8 @@ class LevelController:
                         KAO_DOWN:self.drone.down,
                         KAO_LEFT:self.drone.left,
                         KAO_RIGHT:self.drone.right,
-                        ord(' '):self.drone.scan,
+                        ord('s'):self.drone.scan,
+                        ord('d'):self.drone.defuse,
                         ESCAPE:self.stopRunning}
         
     def run(self):

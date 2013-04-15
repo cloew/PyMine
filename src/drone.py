@@ -15,7 +15,7 @@ class Drone:
         
     def defuse(self):
         """ Defuse the current cell """
-        self.minefield.scan(self.row, self.column, self)
+        self.minefield.defuse(self.row, self.column, self)
         
     def destroy(self):
         """ Destroy the drone """

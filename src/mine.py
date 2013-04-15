@@ -8,8 +8,9 @@ class Mine:
         
     def scan(self, drone):
         """ Scan the mine and destroy the drone """
-        drone.destroy()
+        if not self.defused:
+            drone.destroy()
         
-    def defuse(self):
+    def defuse(self, drone):
         """ Defuse the Mine """
         self.defused = True
