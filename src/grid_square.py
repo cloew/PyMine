@@ -1,3 +1,4 @@
+from clue import Clue
 
 class GridSquare:
     """ Represents a square in the Minefield Grid """
@@ -7,6 +8,7 @@ class GridSquare:
         self.row = row
         self.column = column
         self.scanned = False
+        self.clue = Clue()
         
     def scan(self):
         """ Scan the Grid Square """
@@ -15,6 +17,6 @@ class GridSquare:
     def __repr__(self):
         """ Print the square as a string """
         if self.scanned:
-            return " "
+            return str(self.clue)
         else:
             return "#"
