@@ -27,6 +27,13 @@ class GridSquare:
         """ Defuse the Grid Square """
         for contentObject in self.contents:
             contentObject.defuse(drone)
+            
+    def mined(self):
+        """ Return if the Square has an ative Mine """
+        for contentObject in self.contents:
+            if not contentObject.defused:
+                return True
+        return False
         
     def __repr__(self):
         """ Print the square as a string """

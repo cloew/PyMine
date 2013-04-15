@@ -18,7 +18,13 @@ class Level:
         
     def lost(self):
         """ Return if the player has lost the level """
-        return self.drone.destroyed or self.drone.power <= 0
+        if self.drone.destroyed:
+            print "Destroyed"
+            return True
+        elif self.drone.power <= 0:
+            print "No Power"
+            return True
+        return False
         
     def won(self):
         """ Return if the player has won the level """
