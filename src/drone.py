@@ -8,6 +8,10 @@ class Drone:
         self.column = 0
         self.minefield = minefield
         
+    def scan(self):
+        """ Scan the current cell """
+        self.minefield.scan(self.row, self.column)
+        
     def up(self):
         """  """
         if self.row > 0:

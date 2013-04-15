@@ -11,6 +11,10 @@ class Minefield:
             self.squares.append([])
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
+                
+    def scan(self, row, column):
+        """ Scan the given Grid Square """
+        self.squares[row][column].scan()
     
     def rowCount(self):
         """ Return the Row Count """
