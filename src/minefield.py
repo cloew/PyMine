@@ -1,4 +1,5 @@
 from grid_square import GridSquare
+from mine import Mine
 
 class Minefield:
     """ Represents the Minefield for the current level """
@@ -11,6 +12,8 @@ class Minefield:
             self.squares.append([])
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
+                
+        self.squares[row][column].addContent(Mine())
                 
     def scan(self, row, column):
         """ Scan the given Grid Square """
