@@ -23,6 +23,11 @@ class GridSquare:
             contentObject.scan(drone)
         self.clue.findAdjacentMines(drone.minefield, self.row, self.column)
         
+    def defuse(self, drone):
+        """ Defuse the Grid Square """
+        for contentObject in self.contents:
+            contentObject.defuse(drone)
+        
     def __repr__(self):
         """ Print the square as a string """
         if self.scanned:

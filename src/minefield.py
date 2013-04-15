@@ -19,6 +19,10 @@ class Minefield:
         """ Scan the given Grid Square """
         self.getSquare(row, column).scan(drone)
         
+    def defuse(self, row, column, drone):
+        """ Defuse the given Grid Square """
+        self.getSquare(row, column).defuse(drone)
+        
     def getSquare(self, row, column):
         """ Return the square at the location """
         if row < 0 or column < 0 or row >= self.rowCount() or column >= self.columnCount():

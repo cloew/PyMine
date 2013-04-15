@@ -12,3 +12,4 @@ class Mine:
         
     def defuse(self):
         """ Defuse the Mine """
+        self.defused = True
