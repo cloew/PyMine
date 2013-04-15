@@ -1,5 +1,6 @@
 from grid_square import GridSquare
-from mine import Mine
+
+from random import randint
 
 class Minefield:
     """ Represents the Minefield for the current level """
@@ -13,7 +14,7 @@ class Minefield:
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
                 
-        self.getSquare(1, 2).addContent(Mine())
+        #self.getSquare(1, 2).addContent(Mine())
                 
     def scan(self, row, column, drone):
         """ Scan the given Grid Square """
@@ -22,6 +23,12 @@ class Minefield:
     def defuse(self, row, column, drone):
         """ Defuse the given Grid Square """
         self.getSquare(row, column).defuse(drone)
+        
+    def addMine(self, mine):
+        """ Adds a Mine to the Minefield """
+        row = randint(0, self.rowCount()-1)
+        column = randint(1, self.columnCount()-1)
+        self.getSquare(row, column).addContent(mine)
         
     def getSquare(self, row, column):
         """ Return the square at the location """
