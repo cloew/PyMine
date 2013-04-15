@@ -3,6 +3,9 @@ from minefield import Minefield
 
 from View.Console.minefield_view import MinefieldView
 
+from kao_console import getch
+from kao_console.ascii import ESCAPE, KAO_UP, KAO_DOWN
+
 class LevelController:
     """ Controller class for the level """
     
@@ -21,5 +24,13 @@ class LevelController:
         """ Run the controller main loop """
         while self.running:
             print self.minefield_view
+            self.processInput()
+            
+    def processInput(self):
+        """ Process the input """
+        kao_char = getch()
+        if kao_char == KAO_DOWN:
+            self.drone.down(self.minefield)
+        elif kao_char == ESCAPE:
             self.running = False
             
