@@ -48,3 +48,6 @@ class LevelController:
         if self.level.lost():
             self.stopRunning()
             print "Game Over\r"
+        elif self.level.won():
+            self.stopRunning()
+            print "Congratulations! You won!"

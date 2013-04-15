@@ -17,3 +17,11 @@ class Level:
     def lost(self):
         """ Return if the player has lost the level """
         return self.drone.destroyed
+        
+    def won(self):
+        """ Return if the player has won the level """
+        won = True
+        for mine in self.mines:
+            if not mine.defused:
+                return False
+        return won
