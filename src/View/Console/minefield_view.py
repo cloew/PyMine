@@ -13,7 +13,7 @@ class MinefieldView:
         for row in self.field.squares:
             for square in row:
                 fieldString += self.getSquareString(square)
-            fieldString += "\n"
+            fieldString += "\r\n"
         return fieldString
                 
     def getSquareString(self, square):
