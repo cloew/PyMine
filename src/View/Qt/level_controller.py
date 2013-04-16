@@ -1,3 +1,4 @@
+from nytram.core.game_engine import TheGameEngine
 from PySide.QtCore import QCoreApplication, Qt
 
 from level import Level

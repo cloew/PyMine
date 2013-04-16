@@ -16,6 +16,9 @@ class Level:
             self.mines.append(mine)
             self.minefield.addMine(mine)
         
+    def performGameCycle(self):
+        """ Perform a single Game Cycle """
+        
     def lost(self):
         """ Return if the player has lost the level """
         return self.destroyed() or self.noPower()
