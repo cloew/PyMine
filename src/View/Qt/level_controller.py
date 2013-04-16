@@ -32,13 +32,8 @@ class LevelController:
             self.level.drone.down()
         elif key == Qt.Key_Up:
             self.level.drone.up()
-        elif key == Qt.Key_Space:
-            if len(self.level.lasers) < LevelController.MAX_LASERS and not self.level.over and not self.level.paused:
-                self.level.addLaser()
-                self.window.addLaser()
-        elif key == Qt.Key_Return or key == Qt.Key_Enter:
-            if self.level.over:
-                QCoreApplication.instance().quit()
+        elif key == Qt.Key_S:
+            self.level.drone.scan()
 
     def keyReleased(self, key):
         """ Called when the Game Engine gets a keyReleased event """
