@@ -9,7 +9,7 @@ class LevelController:
     def __init__(self, application):
         """ Initialize the Level Controller """
         self.application = application
-        self.level = Level()
+        self.level = Level(4)
         self.window = LevelView(application, self.level)
 
     def run(self):
@@ -38,15 +38,6 @@ class LevelController:
         elif key == Qt.Key_Return or key == Qt.Key_Enter:
             if self.level.over:
                 QCoreApplication.instance().quit()
-            else:
-                self.performPauseAction()
-                    
-    def performPauseAction(self):
-        """ Perform a Pause Action """
-        if self.level.paused:
-            self.level.unpause()
-        else:
-            self.level.pause()
 
     def keyReleased(self, key):
         """ Called when the Game Engine gets a keyReleased event """
