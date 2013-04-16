@@ -13,4 +13,4 @@ class ClueView:
         font = QFont()
         font.setPointSize(54)
         painter.setFont(font)
-        painter.drawText((gridSquare.column)*64, (gridSquare.row+1)*64, str(self.clue))
+        painter.drawText(gridSquare.column*64+10, (gridSquare.row+1)*64-10, str(self.clue))
