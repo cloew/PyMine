@@ -19,14 +19,3 @@ class LevelView(QFrame):
         """ Paint the ship """
         painter = QPainter(self)
         self.minefield_view.draw(painter, self)
-        
-        # self.background.draw(painter, self)
-        # self.drawLasers(painter)
-        # self.ship_view.draw(painter, self)
-        # self.enemy_view.draw(painter, self)
-        # if not self.level.over:
-            # self.drawScore(painter)
-            # if self.level.paused:
-                # self.drawPaused(painter)
-        # else:
-            # self.drawGameOver(painter)

@@ -1,3 +1,4 @@
+from nytram.core.game_engine import TheGameEngine
 
 class Drone:
     """ Represents the Player's Drone """
@@ -29,18 +30,22 @@ class Drone:
         """  """
         if self.row > 0:
             self.row -= 1
+            TheGameEngine.updateUI()
         
     def down(self):
         """ """
         if self.row < self.minefield.rowCount()-1:
             self.row += 1
+            TheGameEngine.updateUI()
     
     def left(self):
         """ """
         if self.column > 0:
             self.column -= 1
+            TheGameEngine.updateUI()
     
     def right(self):
         """ """
         if self.column < self.minefield.columnCount()-1:
             self.column += 1
+            TheGameEngine.updateUI()
