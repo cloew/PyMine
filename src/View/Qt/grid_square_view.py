@@ -3,6 +3,7 @@ from PySide.QtGui import QImage, QMatrix
 
 class GridSquareView:
     """ Represents the Graphical view of the Grid Square """
+    GRID_SQUARE_SIZE = 64
 
     def __init__(self, gridSquare):
         """ Initialize the grid square view """
@@ -12,10 +13,9 @@ class GridSquareView:
 
     def loadGridSquareImage(self):
         """ Load the grid square image """
-        self.unscaled_grid_square = QImage("grid_square.png")
-        self.scaled_grid_square = self.unscaled_grid_square.scaled(32, 32)
+        self.unscaled_grid_square = QImage("GridSquare.png")
+        self.scaled_grid_square = self.unscaled_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
 
     def draw(self, painter, window):
         """ Draw the image """
-        # Draw the image in the current grid cell
-        #painter.drawImage(self.drone.rectangle.x*window.contentsRect().width()/100, self.ship_model.rectangle.y*window.contentsRect().height()/100, self.scaled_ship)
+        painter.drawImage(self.gridSquare.column*self.GRID_SQUARE_SIZE, self.gridSquare.row*self.GRID_SQUARE_SIZE, self.scaled_grid_square)

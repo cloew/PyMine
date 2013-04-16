@@ -13,8 +13,9 @@ class MinefieldView:
         self.drone = drone
         
         self.gridSquareViews = []
-        for square in self.minefield.squares:
-            self.gridSquareViews.append(GridSquareView(square))
+        for row in self.minefield.squares:
+            for square in row:
+                self.gridSquareViews.append(GridSquareView(square))
         self.droneView = DroneView(drone)
 
     def draw(self, painter, window):
