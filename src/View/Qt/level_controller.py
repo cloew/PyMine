@@ -1,6 +1,7 @@
 from PySide.QtCore import QCoreApplication, Qt
 
 from level import Level
+from level_view import LevelView
 
 class LevelController:
     """ Controller for a Level """
