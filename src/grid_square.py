@@ -30,6 +30,7 @@ class GridSquare:
             
     def mined(self):
         """ Return if the Square has an ative Mine """
+        return self.contents != []
         for contentObject in self.contents:
             if not contentObject.defused:
                 return True

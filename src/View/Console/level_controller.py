@@ -47,6 +47,10 @@ class LevelController:
         """ Check if the Game is Over """
         if self.level.lost():
             self.stopRunning()
+            if self.level.destroyed():
+                print "Destroyed!"
+            elif self.level.noPower():
+                print "No Power!"
             print "Game Over\r"
         elif self.level.won():
             self.stopRunning()
