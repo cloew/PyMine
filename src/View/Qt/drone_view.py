@@ -4,16 +4,16 @@ from PySide.QtGui import QImage, QMatrix
 class DroneView:
     """ Represents the Graphical view of the Drone """
 
-    def __init__(self, ship_model):
-        """ Initialize the ship view """
-        self.ship_model = ship_model
-        self.scaled_ship = None
-        self.loadShipImage()
+    def __init__(self, drone_model):
+        """ Initialize the drone view """
+        self.drone_model = drone_model
+        self.scaled_drone = None
+        self.loadDroneImage()
 
-    def loadShipImage(self):
-        """ Load the ship image """
-        self.unscaled_ship = QImage("drone2.png")
-        self.scaled_ship = self.unscaled_ship.scaled(32, 32)
+    def loadDroneImage(self):
+        """ Load the drone image """
+        self.unscaled_drone = QImage("drone2.png")
+        self.scaled_drone = self.unscaled_drone.scaled(32, 32)
 
     def draw(self, painter, window):
         """ Draw the image """
