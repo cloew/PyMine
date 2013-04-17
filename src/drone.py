@@ -16,11 +16,13 @@ class Drone:
         """ Scan the current cell """
         self.power -= 2
         self.minefield.scan(self.row, self.column, self)
+        TheGameEngine.updateUI()
         
     def defuse(self):
         """ Defuse the current cell """
         self.power -= 5
         self.minefield.defuse(self.row, self.column, self)
+        TheGameEngine.updateUI()
         
     def destroy(self):
         """ Destroy the drone """

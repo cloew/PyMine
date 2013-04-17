@@ -20,4 +20,4 @@ class LevelView(QFrame):
         painter = QPainter(self)
         self.minefield_view.draw(painter, self)
         if self.level.lost():
-            painter.drawText(self.level.minefield.columnCount()*64/2, (self.level.minefield.rowCount()+1)*64, "Game Over!")
+            painter.drawText(0, (self.level.minefield.rowCount()+1)*64, "Game Over!")
