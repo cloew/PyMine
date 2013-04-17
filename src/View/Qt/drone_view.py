@@ -15,7 +15,7 @@ class DroneView:
 
     def loadDroneImage(self):
         """ Load the drone image """
-        self.unscaled_drone = QImage("Drone2.png")
+        self.unscaled_drone = QImage("Drone2Clear.png")
         self.scaled_drone = self.unscaled_drone.scaled(GridSquareView.GRID_SQUARE_SIZE, GridSquareView.GRID_SQUARE_SIZE)
 
     def draw(self, painter, minefieldView):
