@@ -1,6 +1,8 @@
 from drone_view import DroneView
 from grid_square_view import GridSquareView
 
+from PySide.QtGui import QColor
+
 class MinefieldView:
     """ Represents the Graphical view of the Minefield """
 
@@ -22,6 +24,8 @@ class MinefieldView:
         
         self.x = 32 #window.contentsRect().width()/2 - width/2
         self.y = 32 #window.contentsRect().height()/2 - height/2
+        
+        painter.fillRect(0, 0, GridSquareView.GRID_SQUARE_SIZE*6, GridSquareView.GRID_SQUARE_SIZE*5, QColor(0, 0, 0))
         
         for square in self.gridSquareViews:
             square.draw(painter, self)

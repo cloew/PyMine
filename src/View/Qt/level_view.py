@@ -1,7 +1,8 @@
+from grid_square_view import GridSquareView
 from minefield_view import MinefieldView
 
-from PySide.QtCore import QBasicTimer, QRect, Qt
-from PySide.QtGui import QApplication, QColor, QFont, QFrame, QImage, QLabel, QPainter, QPushButton, QStyle, QStyleOptionButton, QWidget
+from PySide.QtCore import Qt
+from PySide.QtGui import QFrame, QPainter
 
 class LevelView(QFrame):
     """ Represents the View of the Level """
@@ -19,6 +20,7 @@ class LevelView(QFrame):
     def paintEvent(self, event):
         """ Paint the ship """
         painter = QPainter(self)
+        
         self.minefield_view.draw(painter, self)
         
         if self.level.lost():
