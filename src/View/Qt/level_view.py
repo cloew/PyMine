@@ -19,5 +19,9 @@ class LevelView(QFrame):
         """ Paint the ship """
         painter = QPainter(self)
         self.minefield_view.draw(painter, self)
+        
         if self.level.lost():
             painter.drawText(0, (self.level.minefield.rowCount()+1)*64, "Game Over!")
+            
+        if self.level.won():
+            painter.drawText(0, (self.level.minefield.rowCount()+1)*64, "You Won!")
