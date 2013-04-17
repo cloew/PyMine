@@ -29,12 +29,23 @@ class GridSquareView:
 
     def draw(self, painter, window):
         """ Draw the image """
+        self.drawGridSquareBackground(painter)
+        self.drawMine(painter)
+        self.drawClue(painter)
+            
+    def drawGridSquareBackground(self, painter):
+        """ Draw the Grid Square Background """
         if self.gridSquare.scanned:
             painter.drawImage(self.gridSquare.column*self.GRID_SQUARE_SIZE, self.gridSquare.row*self.GRID_SQUARE_SIZE, self.scaled_scanned_grid_square)
         else:
             painter.drawImage(self.gridSquare.column*self.GRID_SQUARE_SIZE, self.gridSquare.row*self.GRID_SQUARE_SIZE, self.scaled_grid_square)
-        
-        if self.gridSquare.mined():# and self.gridSquare.contents[0].defused:
+            
+    def drawMine(self, painter):
+        """ Draw a Mine """
+        if self.gridSquare.mined() and (self.gridSquare.scanned or self.gridSquare.contents[0].defused):
             self.mineView.draw(painter, self.gridSquare)
+            
+    def drawClue(self, painter):
+        """ Draw the Clue """
         if self.gridSquare.scanned:
             self.clueView.draw(painter, self.gridSquare) 
