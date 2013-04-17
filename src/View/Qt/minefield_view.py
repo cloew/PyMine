@@ -19,11 +19,8 @@ class MinefieldView:
 
     def draw(self, painter, window):
         """ Draw the image """
-        width = GridSquareView.GRID_SQUARE_SIZE*self.minefield.columnCount()
-        height = GridSquareView.GRID_SQUARE_SIZE*self.minefield.rowCount()
-        
-        self.x = 32 #window.contentsRect().width()/2 - width/2
-        self.y = 32 #window.contentsRect().height()/2 - height/2
+        self.x = 32
+        self.y = 32
         
         painter.fillRect(0, 0, GridSquareView.GRID_SQUARE_SIZE*6, GridSquareView.GRID_SQUARE_SIZE*5, QColor(0, 0, 0))
         
