@@ -10,4 +10,5 @@ class PyMine(QMainWindow):
         self.level_controller = LevelController(self)
         self.level_controller.run()
             
-        self.showFullScreen()
+        self.show()
+        self.resize(640, 480)

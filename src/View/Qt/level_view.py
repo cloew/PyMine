@@ -10,6 +10,7 @@ class LevelView(QFrame):
         """ Initialize the Level View """
         QFrame.__init__(self, parent)
 
+        self.resize(640, 480)
         self.level = level
         self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
 
