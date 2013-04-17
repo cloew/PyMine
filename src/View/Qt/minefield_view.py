@@ -20,8 +20,8 @@ class MinefieldView:
         width = GridSquareView.GRID_SQUARE_SIZE*self.minefield.columnCount()
         height = GridSquareView.GRID_SQUARE_SIZE*self.minefield.rowCount()
         
-        self.x = window.contentsRect().width()/2 - width/2
-        self.y = window.contentsRect().height()/2 - height/2
+        self.x = 32 #window.contentsRect().width()/2 - width/2
+        self.y = 32 #window.contentsRect().height()/2 - height/2
         
         for square in self.gridSquareViews:
             square.draw(painter, self)
