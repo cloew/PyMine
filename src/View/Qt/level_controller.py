@@ -34,6 +34,8 @@ class LevelController:
             self.level.drone.up()
         elif key == Qt.Key_S:
             self.level.drone.scan()
+        elif key == Qt.Key_D:
+            self.level.drone.defuse()
 
     def keyReleased(self, key):
         """ Called when the Game Engine gets a keyReleased event """

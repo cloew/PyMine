@@ -8,13 +8,20 @@ class MineView:
         """ Initialize the drone view """
         self.mine = mine
         self.scaled_mine = None
+        self.scaled_defused_mine = None
         self.loadMineImage()
 
     def loadMineImage(self):
         """ Load the drone image """
         self.unscaled_mine = QImage("Mine1.png")
         self.scaled_mine = self.unscaled_mine.scaled(64, 64)
+        
+        self.unscaled_defused_mine = QImage("DefusedMine1.png")
+        self.scaled_defused_mine = self.unscaled_defused_mine.scaled(64, 64)
 
     def draw(self, painter, gridSquare):
         """ Draw the image """
-        painter.drawImage(gridSquare.column*64, gridSquare.row*64, self.scaled_mine)
+        if self.mine.defused:
+            painter.drawImage(gridSquare.column*64, gridSquare.row*64, self.scaled_defused_mine)
+        else:
+            painter.drawImage(gridSquare.column*64, gridSquare.row*64, self.scaled_mine)
