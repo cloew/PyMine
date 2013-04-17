@@ -1,3 +1,4 @@
+from game_status_view import GameStatusView
 from grid_square_view import GridSquareView
 from minefield_view import MinefieldView
 
@@ -14,6 +15,7 @@ class LevelView(QFrame):
         self.resize(640, 480)
         self.level = level
         self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
+        self.gameStatusBar = GameStatusView(self.minefield_view.getWidth(), 0, 640-self.minefield_view.getWidth(), 480)
 
         self.setFocusPolicy(Qt.StrongFocus)
 
@@ -22,6 +24,7 @@ class LevelView(QFrame):
         painter = QPainter(self)
         
         self.minefield_view.draw(painter, self)
+        self.gameStatusBar.draw(painter)
         
         if self.level.lost():
             painter.drawText(0, (self.level.minefield.rowCount()+1)*64, "Game Over!")
