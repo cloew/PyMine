@@ -8,9 +8,9 @@ class ClueView:
         """ Initialize the drone view """
         self.clue = clue
 
-    def draw(self, painter, gridSquare):
+    def draw(self, painter, gridSquareView):
         """ Draw the image """
         font = QFont()
         font.setPointSize(54)
         painter.setFont(font)
-        painter.drawText(gridSquare.column*64+10, (gridSquare.row+1)*64-10, str(self.clue))
+        painter.drawText(gridSquareView.getXCoordinate()+10, gridSquareView.getYCoordinate()+54, str(self.clue))

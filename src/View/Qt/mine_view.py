@@ -19,9 +19,9 @@ class MineView:
         self.unscaled_defused_mine = QImage("DefusedMine1.png")
         self.scaled_defused_mine = self.unscaled_defused_mine.scaled(64, 64)
 
-    def draw(self, painter, gridSquare):
+    def draw(self, painter, gridSquareView):
         """ Draw the image """
         if self.mine.defused:
-            painter.drawImage(gridSquare.column*64, gridSquare.row*64, self.scaled_defused_mine)
+            painter.drawImage(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate(), self.scaled_defused_mine)
         else:
-            painter.drawImage(gridSquare.column*64, gridSquare.row*64, self.scaled_mine)
+            painter.drawImage(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate(), self.scaled_mine)

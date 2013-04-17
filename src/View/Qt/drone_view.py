@@ -9,6 +9,7 @@ class DroneView:
     def __init__(self, drone_model):
         """ Initialize the drone view """
         self.drone_model = drone_model
+        
         self.scaled_drone = None
         self.loadDroneImage()
 
@@ -17,6 +18,6 @@ class DroneView:
         self.unscaled_drone = QImage("Drone2.png")
         self.scaled_drone = self.unscaled_drone.scaled(GridSquareView.GRID_SQUARE_SIZE, GridSquareView.GRID_SQUARE_SIZE)
 
-    def draw(self, painter, window):
+    def draw(self, painter, minefieldView):
         """ Draw the image """
-        painter.drawImage(self.drone_model.column*GridSquareView.GRID_SQUARE_SIZE, self.drone_model.row*GridSquareView.GRID_SQUARE_SIZE, self.scaled_drone)
+        painter.drawImage(minefieldView.x+self.drone_model.column*GridSquareView.GRID_SQUARE_SIZE, minefieldView.y+self.drone_model.row*GridSquareView.GRID_SQUARE_SIZE, self.scaled_drone)
