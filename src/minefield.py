@@ -14,8 +14,6 @@ class Minefield:
             for column in range(5):
                 self.squares[row].append(GridSquare(row, column))
                 
-        #self.getSquare(1, 2).addContent(Mine())
-                
     def scan(self, row, column, drone):
         """ Scan the given Grid Square """
         self.getSquare(row, column).scan(drone)
@@ -26,9 +24,15 @@ class Minefield:
         
     def addMine(self, mine):
         """ Adds a Mine to the Minefield """
-        row = randint(0, self.rowCount()-1)
-        column = randint(1, self.columnCount()-1)
-        self.getSquare(row, column).addContent(mine)
+        while True:
+            row = randint(0, self.rowCount()-1)
+            column = randint(1, self.columnCount()-1)
+            square = self.getSquare(row, column)
+            if square.mined():
+                continue
+            else:
+                square.addContent(mine)
+                break
         
     def getSquare(self, row, column):
         """ Return the square at the location """
