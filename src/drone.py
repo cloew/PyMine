@@ -7,7 +7,7 @@ class Drone:
         """ Intialize the Player's Drone """
         self.row = 0
         self.column = 0
-        self.power = 100
+        self.power = 60
         
         self.minefield = minefield
         self.destroyed = False

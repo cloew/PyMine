@@ -15,7 +15,7 @@ class LevelView(QFrame):
         self.resize(640, 480)
         self.level = level
         self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
-        self.gameStatusBar = GameStatusView(self.minefield_view.getWidth(), 0, 640-self.minefield_view.getWidth(), 480)
+        self.gameStatusBar = GameStatusView(self.minefield_view.getWidth(), 0, 640-self.minefield_view.getWidth(), 480, self.level)
 
         self.setFocusPolicy(Qt.StrongFocus)
 
