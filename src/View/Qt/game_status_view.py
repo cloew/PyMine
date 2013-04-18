@@ -1,5 +1,5 @@
 
-from PySide.QtGui import QColor
+from PySide.QtGui import QColor, QFont
 
 class GameStatusView:
     """ It's the game status view """
@@ -17,4 +17,7 @@ class GameStatusView:
         """ Draw the Game Status Panel """
         painter.fillRect(self.x, self.y, self.width, self.height, QColor(200, 200, 200))
         
-        painter.drawText(self.x+32, self.y+32+64, str(self.level.drone.power))
+        font = QFont()
+        font.setPointSize(32)
+        painter.setFont(font)
+        painter.drawText(self.x+32, self.y+32+64, "Power: {0}".format(self.level.drone.power))
