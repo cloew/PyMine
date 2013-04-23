@@ -16,16 +16,28 @@ class MinefieldView(QFrame):
         self.x = 32
         self.y = 32
         
-        self.gridSquareViews = []
-        for row in self.minefield.squares:
-            for square in row:
-                self.gridSquareViews.append(GridSquareView(square, self))
-        self.droneView = DroneView(drone)
+        self.setup()
         
         self.color = QColor(0, 0, 0)
         #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
         self.resize(self.getWidth(), self.getHeight())
+        
+    def setup(self):
+        """ Setup the View """
+        self.setupMineFieldSquares()
+        self.setupDrone()
+        
+    def setupMineFieldSquares(self):
+        """ Setup the Mine Field Squares """
+        self.gridSquareViews = []
+        for row in self.minefield.squares:
+            for square in row:
+                self.gridSquareViews.append(GridSquareView(square, self))
 
+    def setupDrone(self):
+        """ Setup the DroneView """
+        self.droneView = DroneView(self.drone)
+        
     def draw(self, painter, window):
         """ Draw the image """
         painter.fillRect(0, 0, self.getWidth(), self.getHeight(), QColor(0, 0, 0))
