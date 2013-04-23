@@ -16,7 +16,7 @@ class LevelView(QFrame):
         self.level = level
         self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
         self.levelCompletionView = LevelCompletionView(self.level, self.minefield_view.getHeight())
-        self.gameStatusBar = GameStatusView(level, parent=self)
+        self.gameStatusBar = GameStatusView(level, 640-self.minefield_view.getWidth(), 480, parent=self)
         self.gameStatusBar.move(self.minefield_view.getWidth(), 0)
         #self.minefield_view.getWidth(), 0, 640-self.minefield_view.getWidth(), 480, self.level)
 
