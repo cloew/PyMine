@@ -1,4 +1,3 @@
-from PySide.QtCore import QRect
 from PySide.QtGui import QColor, QFont, QFrame, QLabel, QPalette
 
 class GameStatusView(QFrame):
@@ -14,7 +13,6 @@ class GameStatusView(QFrame):
         self.updateView()
         self.color = QColor(200, 200, 200)
         self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
-        self.setFrameRect(QRect(0, 0, width, height))
         self.resize(width, height)
         
     def setup(self):
@@ -52,14 +50,3 @@ class GameStatusView(QFrame):
     def updateRemainingMinesLabel(self):
         """ Update the Remaining Mines Label """
         self.remainingMinesLabel.setText("Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))
-        
-    def draw(self, painter):
-        """ Draw the Game Status Panel """
-        painter.fillRect(self.x, self.y, self.width, self.height, QColor(200, 200, 200))
-        
-        font = QFont()
-        font.setPointSize(24)
-        painter.setFont(font)
-        painter.drawText(self.x+32, self.y+32+64, "Power: {0}".format(self.level.drone.power))
-        
-        painter.drawText(self.x+32, self.y+32+64+64, "Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))
