@@ -28,6 +28,9 @@ class LevelCompletionView(QFrame):
         
     def setupLevelCompletionLabel(self):
         """ Setup the Power Label """
+        self.font = QFont()
+        self.font.setPointSize(32)
+        
         self.levelCompletionLabel = QLabel("You Won!", self)
         self.levelCompletionLabel.move(32, 16)
         self.levelCompletionLabel.setFont(self.font)
@@ -35,6 +38,9 @@ class LevelCompletionView(QFrame):
         
     def setupCompletionDetailsLabel(self):
         """ Setup the Remaining Mines Label """
+        self.font = QFont()
+        self.font.setPointSize(24)
+        
         self.completionDetailsLabel = QLabel("Destroyed!", self)
         self.completionDetailsLabel.move(32, 64)
         self.completionDetailsLabel.setFont(self.font)
