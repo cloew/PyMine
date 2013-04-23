@@ -1,13 +1,15 @@
 from drone_view import DroneView
 from grid_square_view import GridSquareView
 
-from PySide.QtGui import QColor
+from PySide.QtGui import QColor, QFrame
 
-class MinefieldView:
+class MinefieldView(QFrame):
     """ Represents the Graphical view of the Minefield """
 
-    def __init__(self, minefield, drone):
+    def __init__(self, minefield, drone, parent=None):
         """ Initialize the grid square view """
+        QFrame.__init__(self, parent)
+        
         self.minefield = minefield
         self.drone = drone
         
@@ -19,6 +21,10 @@ class MinefieldView:
             for square in row:
                 self.gridSquareViews.append(GridSquareView(square, self))
         self.droneView = DroneView(drone)
+        
+        self.color = QColor(0, 0, 0)
+        #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
+        self.resize(self.getWidth(), self.getHeight())
 
     def draw(self, painter, window):
         """ Draw the image """

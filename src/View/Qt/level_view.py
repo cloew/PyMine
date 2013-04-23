@@ -14,7 +14,7 @@ class LevelView(QFrame):
 
         self.resize(640, 480)
         self.level = level
-        self.minefield_view = MinefieldView(self.level.minefield, self.level.drone)
+        self.minefield_view = MinefieldView(self.level.minefield, self.level.drone, self)
         
         self.levelCompletionView = LevelCompletionView(self.level, self.minefield_view.getWidth(), 480-self.minefield_view.getHeight(), self)
         self.levelCompletionView.move(0, self.minefield_view.getHeight())
