@@ -13,6 +13,5 @@ class LevelCompletionView:
         
         if self.level.lost():
             painter.drawText(64, y, "Game Over!")
-            
-        if self.level.won():
+        elif self.level.won():
             painter.drawText(64, y, "You Won!")

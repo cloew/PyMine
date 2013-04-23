@@ -18,6 +18,8 @@ class GameStatusView:
         painter.fillRect(self.x, self.y, self.width, self.height, QColor(200, 200, 200))
         
         font = QFont()
-        font.setPointSize(32)
+        font.setPointSize(24)
         painter.setFont(font)
         painter.drawText(self.x+32, self.y+32+64, "Power: {0}".format(self.level.drone.power))
+        
+        painter.drawText(self.x+32, self.y+32+64+64, "Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))

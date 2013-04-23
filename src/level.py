@@ -38,3 +38,11 @@ class Level:
             if not mine.defused:
                 return False
         return won
+        
+    def getNumberOfMinesRemaining(self):
+        """ Returns the number of mines remaining to be defused """
+        minesRemaining = 0
+        for mine in self.mines:
+            if not mine.defused:
+                minesRemaining += 1
+        return minesRemaining
