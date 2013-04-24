@@ -57,4 +57,3 @@ class Minefield:
                 fieldString += "|{0}".format(column)
             fieldString += "|\n"
         return fieldString
-            

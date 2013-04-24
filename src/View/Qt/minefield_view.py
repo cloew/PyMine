@@ -36,12 +36,15 @@ class MinefieldView(QFrame):
 
     def setupDrone(self):
         """ Setup the DroneView """
-        self.droneView = DroneView(self.drone)
+        self.droneView = DroneView(self.drone, self)
         
     def updateView(self):
         """ Update the View """
         for square in self.gridSquareViews:
             square.updateView()
+            
+        gridSquareView = self.getGridSquareView(self.drone.row, self.drone.column)
+        self.droneView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
         
     def draw(self, painter, window):
         """ Draw the image """
@@ -50,6 +53,11 @@ class MinefieldView(QFrame):
         for square in self.gridSquareViews:
             square.draw(painter)
         self.droneView.draw(painter, self)
+        
+    def getGridSquareView(self, row, column):
+        """ Return the Grid Square View at the given row/column """
+        index = self.minefield.columnCount()*row+column
+        return self.gridSquareViews[index]
         
     def getWidth(self):
         """ Return the width """
