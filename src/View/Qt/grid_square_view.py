@@ -21,7 +21,7 @@ class GridSquareView(QFrame):
         self.loadGridSquareImage()
         
         if self.gridSquare.mined():
-            self.mineView = MineView(self.gridSquare.contents[0])
+            self.mineView = MineView(self.gridSquare.contents[0], self)
             
         self.resize(64, 64)
         #self.move()
@@ -55,6 +55,12 @@ class GridSquareView(QFrame):
             self.grid_square_label.setVisible(False)
             self.scanned_grid_square_label.setVisible(True)
             self.clueView.updateView()
+            
+            if self.gridSquare.mined():
+                self.mineView.setVisible(True)
+                
+        if self.gridSquare.mined():
+            self.mineView.updateView()
 
     def draw(self, painter):
         """ Draw the image """
