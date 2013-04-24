@@ -18,7 +18,7 @@ class MinefieldView(QFrame):
         
         self.setup()
         
-        self.color = QColor(0, 0, 0)
+        self.color = QColor(200, 200, 200)
         #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
         self.resize(self.getWidth(), self.getHeight())
         
@@ -32,7 +32,9 @@ class MinefieldView(QFrame):
         self.gridSquareViews = []
         for row in self.minefield.squares:
             for square in row:
-                self.gridSquareViews.append(GridSquareView(square, self))
+                gridSquareView = GridSquareView(square, self)
+                self.gridSquareViews.append(gridSquareView)
+                gridSquareView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
 
     def setupDrone(self):
         """ Setup the DroneView """

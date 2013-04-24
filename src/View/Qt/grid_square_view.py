@@ -24,7 +24,7 @@ class GridSquareView(QFrame):
             self.mineView = MineView(self.gridSquare.contents[0])
             
         self.resize(64, 64)
-        self.move(self.getXCoordinate(), self.getYCoordinate())
+        #self.move()
         self.clueView.raise_()
 
     def loadGridSquareImage(self):
@@ -58,7 +58,7 @@ class GridSquareView(QFrame):
 
     def draw(self, painter):
         """ Draw the image """
-        self.drawGridSquareBackground(painter)
+        #self.drawGridSquareBackground(painter)
         #self.drawMine(painter)
         #self.drawClue(painter)
             
