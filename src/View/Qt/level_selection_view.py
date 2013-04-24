@@ -20,9 +20,17 @@ class LevelSelectionView(QFrame):
         
         self.levelOverviews = []
         for level in level_selection.levels:
-            overview = LevelOverviewView(self, level)
+            overview = LevelOverviewView(self, level, level_selection)
             self.levelOverviews.append(overview)
             
         for i in range(len(self.levelOverviews)):
             overview = self.levelOverviews[i]
             overview.move(32+i*160, 32)
+            
+    def paintEvent(self, event):
+        """  """
+        for overview in self.levelOverviews:
+            overview.updateView()
+            
+    def updateView(self):
+        """ Update the View """
