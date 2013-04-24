@@ -5,7 +5,7 @@ class LevelSelection:
     
     def __init__(self):
         """ Initialize the Level Selection """
-        self.levels = [Level(4), Level(5)]
+        self.levels = [Level("Level 1", 4), Level("Level 2", 5)]
         self.selectedIndex = 0
         
     def performGameCycle(self):

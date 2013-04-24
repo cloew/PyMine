@@ -5,8 +5,9 @@ from minefield import Minefield
 class Level:
     """ Represents a Level """
     
-    def __init__(self, numMines):
+    def __init__(self, name, numMines):
         """ Initialize the Level """
+        self.name = name
         self.minefield = Minefield()
         self.drone = Drone(self.minefield)
         

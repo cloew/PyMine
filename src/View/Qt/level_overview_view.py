@@ -13,6 +13,6 @@ class LevelOverviewView(QFrame):
         
         font = QFont()
         font.setPointSize(32)
-        self.label = QLabel("Level 1", self)
+        self.label = QLabel(self.level.name, self)
         self.label.setFont(font)
         
