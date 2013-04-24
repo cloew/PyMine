@@ -22,4 +22,7 @@ class LevelSelectionView(QFrame):
         for level in level_selection.levels:
             overview = LevelOverviewView(self, level)
             self.levelOverviews.append(overview)
-            overview.move(32, 32)
+            
+        for i in range(len(self.levelOverviews)):
+            overview = self.levelOverviews[i]
+            overview.move(32+i*160, 32)
