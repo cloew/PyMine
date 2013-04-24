@@ -8,7 +8,7 @@ class LevelSelectionView(QFrame):
 
     def __init__(self, parent, level_selection):
         """ Initialize the Level Selection View """
-        QFrame.__init__(self, parent)
+        QFrame.__init__(self)#, parent)
 
         self.resize(640, 480)
         self.level_selection = level_selection

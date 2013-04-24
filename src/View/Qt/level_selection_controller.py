@@ -16,7 +16,8 @@ class LevelSelectionController:
 
     def run(self):
         """ Run the controller """
-        self.application.setCentralWidget(self.window)
+        self.application.addWidget(self.window)
+        self.application.setCurrentWidget(self.window)
         TheGameEngine.start(self.window, self)
 
     def performGameCycle(self):

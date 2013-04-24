@@ -15,7 +15,9 @@ class LevelController:
 
     def run(self):
         """ Run the controller """
-        self.application.setCentralWidget(self.window)
+        self.previousController = TheGameEngine.controller
+        self.application.addWidget(self.window)
+        self.application.setCurrentWidget(self.window)
         TheGameEngine.start(self.window, self)
         self.window.grabKeyboard()
 
@@ -38,6 +40,9 @@ class LevelController:
                 self.level.drone.scan()
             elif key == Qt.Key_D:
                 self.level.drone.defuse()
+        else:
+            if key == Qt.Key_S:
+                self.previousController.run()
 
     def keyReleased(self, key):
         """ Called when the Game Engine gets a keyReleased event """
