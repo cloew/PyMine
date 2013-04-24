@@ -28,10 +28,3 @@ class ClueView(QFrame):
         """ Update the View """
         self.clueLabel.setText(str(self.clue))
         self.clueLabel.resize(34, self.clueLabel.contentsRect().height())
-        #self.clueLabel.resize(100, 30)
-        #self.clueLabel.move(20, 0)
-
-    def draw(self, painter, gridSquareView):
-        """ Draw the image """
-        #painter.setFont(font)
-        painter.drawText(gridSquareView.getXCoordinate()+10, gridSquareView.getYCoordinate()+54, str(self.clue))
