@@ -46,14 +46,6 @@ class MinefieldView(QFrame):
         gridSquareView = self.getGridSquareView(self.drone.row, self.drone.column)
         self.droneView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
         
-    def draw(self, painter, window):
-        """ Draw the image """
-        painter.fillRect(0, 0, self.getWidth(), self.getHeight(), QColor(0, 0, 0))
-        
-        for square in self.gridSquareViews:
-            square.draw(painter)
-        self.droneView.draw(painter, self)
-        
     def getGridSquareView(self, row, column):
         """ Return the Grid Square View at the given row/column """
         index = self.minefield.columnCount()*row+column

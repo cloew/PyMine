@@ -26,9 +26,6 @@ class LevelView(QFrame):
 
     def paintEvent(self, event):
         """ Paint the ship """
-        painter = QPainter(self)
-        
-        self.minefield_view.draw(painter, self)
         self.minefield_view.updateView()
         self.gameStatusBar.updateView()
         self.levelCompletionView.updateView()
