@@ -38,10 +38,3 @@ class MineView(QFrame):
         if self.mine.defused:
             self.setVisible(True)
             self.defused_mine_label.setVisible(True)
-        
-    def draw(self, painter, gridSquareView):
-        """ Draw the image """
-        if self.mine.defused:
-            painter.drawImage(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate(), self.scaled_defused_mine)
-        else:
-            painter.drawImage(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate(), self.scaled_mine)

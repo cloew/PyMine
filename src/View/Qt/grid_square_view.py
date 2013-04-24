@@ -61,29 +61,6 @@ class GridSquareView(QFrame):
                 
         if self.gridSquare.mined():
             self.mineView.updateView()
-
-    def draw(self, painter):
-        """ Draw the image """
-        #self.drawGridSquareBackground(painter)
-        #self.drawMine(painter)
-        #self.drawClue(painter)
-            
-    def drawGridSquareBackground(self, painter):
-        """ Draw the Grid Square Background """
-        if self.gridSquare.scanned:
-            painter.drawImage(self.getXCoordinate(), self.getYCoordinate(), self.scaled_scanned_grid_square)
-        else:
-            painter.drawImage(self.getXCoordinate(), self.getYCoordinate(), self.scaled_grid_square)
-            
-    def drawMine(self, painter):
-        """ Draw a Mine """
-        if self.gridSquare.mined() and (self.gridSquare.scanned or self.gridSquare.contents[0].defused):
-            self.mineView.draw(painter, self)
-            
-    def drawClue(self, painter):
-        """ Draw the Clue """
-        if self.gridSquare.scanned:
-            self.clueView.draw(painter, self) 
             
     def getXCoordinate(self):
         """ Return the X Coordinate of the Grid Square """
@@ -92,4 +69,3 @@ class GridSquareView(QFrame):
     def getYCoordinate(self):
         """ Return the Y Coordinate of the Grid Square """
         return self.minefieldView.y + self.gridSquare.row*self.GRID_SQUARE_SIZE
-        return self.minefieldView.y + self.gridSquare.column*self.GRID_SQUARE_SIZE
