@@ -25,7 +25,7 @@ class LevelView(QFrame):
         self.setFocusPolicy(Qt.StrongFocus)
 
     def paintEvent(self, event):
-        """ Paint the ship """
+        """ Paint the Level """
         self.minefield_view.updateView()
         self.gameStatusBar.updateView()
         self.levelCompletionView.updateView()

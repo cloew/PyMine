@@ -8,7 +8,7 @@ import sys
 def main(args):
     """ Run the main file """
     app = QApplication(sys.argv)
-    galaga = PyMine()
+    pymine = PyMine()
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
