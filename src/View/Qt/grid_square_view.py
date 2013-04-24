@@ -17,14 +17,15 @@ class GridSquareView(QFrame):
         
         self.scaled_grid_square = None
         self.scaled_scanned_grid_square = None
+        self.clueView = ClueView(self.gridSquare.clue, self)
         self.loadGridSquareImage()
         
-        self.clueView = ClueView(self.gridSquare.clue)
         if self.gridSquare.mined():
             self.mineView = MineView(self.gridSquare.contents[0])
             
         self.resize(64, 64)
         self.move(self.getXCoordinate(), self.getYCoordinate())
+        self.clueView.raise_()
 
     def loadGridSquareImage(self):
         """ Load the grid square image """
@@ -36,6 +37,7 @@ class GridSquareView(QFrame):
         self.grid_square_label.setPixmap(self.grid_square_pixmap)
         self.grid_square_label.move(0, 0)
         self.grid_square_label.setVisible(True)
+        self.grid_square_label.stackUnder(self.clueView)
         
         self.unscaled_scanned_grid_square = QImage("ScannedGridSquare.png")
         self.scaled_scanned_grid_square = self.unscaled_scanned_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
@@ -45,18 +47,20 @@ class GridSquareView(QFrame):
         self.scanned_grid_square_label.setPixmap(self.scanned_grid_square_pixmap)
         self.scanned_grid_square_label.move(0, 0)
         self.scanned_grid_square_label.setVisible(False)
+        self.scanned_grid_square_label.stackUnder(self.clueView)
         
     def updateView(self):
         """ Update the Grid Square View """
         if self.gridSquare.scanned:
             self.grid_square_label.setVisible(False)
             self.scanned_grid_square_label.setVisible(True)
+            self.clueView.updateView()
 
     def draw(self, painter):
         """ Draw the image """
         self.drawGridSquareBackground(painter)
-        self.drawMine(painter)
-        self.drawClue(painter)
+        #self.drawMine(painter)
+        #self.drawClue(painter)
             
     def drawGridSquareBackground(self, painter):
         """ Draw the Grid Square Background """
