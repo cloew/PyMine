@@ -1,5 +1,5 @@
 from PySide.QtCore import Qt
-from PySide.QtGui import QFrame, QPainter
+from PySide.QtGui import QColor, QFrame, QPainter
 
 class LevelSelectionView(QFrame):
     """ Represents the View of the Level Selection """
@@ -13,3 +13,5 @@ class LevelSelectionView(QFrame):
 
         self.setFocusPolicy(Qt.StrongFocus)
         
+        self.color = QColor(200, 200, 200)
+        self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
