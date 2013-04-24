@@ -2,14 +2,16 @@ from clue_view import ClueView
 from mine_view import MineView
 
 from PySide.QtCore import Qt
-from PySide.QtGui import QImage, QMatrix
+from PySide.QtGui import QFrame, QImage, QLabel, QMatrix, QPixmap
 
-class GridSquareView:
+class GridSquareView(QFrame):
     """ Represents the Graphical view of the Grid Square """
     GRID_SQUARE_SIZE = 64
 
     def __init__(self, gridSquare, minefieldView):
         """ Initialize the grid square view """
+        QFrame.__init__(self, minefieldView)
+        
         self.gridSquare = gridSquare
         self.minefieldView = minefieldView
         
@@ -20,16 +22,37 @@ class GridSquareView:
         self.clueView = ClueView(self.gridSquare.clue)
         if self.gridSquare.mined():
             self.mineView = MineView(self.gridSquare.contents[0])
+            
+        self.resize(64, 64)
+        self.move(self.getXCoordinate(), self.getYCoordinate())
 
     def loadGridSquareImage(self):
         """ Load the grid square image """
         self.unscaled_grid_square = QImage("GridSquare.png")
         self.scaled_grid_square = self.unscaled_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
+        self.grid_square_pixmap = QPixmap()
+        self.grid_square_pixmap.convertFromImage(self.scaled_grid_square)
+        self.grid_square_label = QLabel(self)
+        self.grid_square_label.setPixmap(self.grid_square_pixmap)
+        self.grid_square_label.move(0, 0)
+        self.grid_square_label.setVisible(True)
         
         self.unscaled_scanned_grid_square = QImage("ScannedGridSquare.png")
         self.scaled_scanned_grid_square = self.unscaled_scanned_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
+        self.scanned_grid_square_pixmap = QPixmap()
+        self.scanned_grid_square_pixmap.convertFromImage(self.scaled_scanned_grid_square)
+        self.scanned_grid_square_label = QLabel(self)
+        self.scanned_grid_square_label.setPixmap(self.scanned_grid_square_pixmap)
+        self.scanned_grid_square_label.move(0, 0)
+        self.scanned_grid_square_label.setVisible(False)
+        
+    def updateView(self):
+        """ Update the Grid Square View """
+        if self.gridSquare.scanned:
+            self.grid_square_label.setVisible(False)
+            self.scanned_grid_square_label.setVisible(True)
 
-    def draw(self, painter, minefieldView):
+    def draw(self, painter):
         """ Draw the image """
         self.drawGridSquareBackground(painter)
         self.drawMine(painter)

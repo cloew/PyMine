@@ -38,12 +38,17 @@ class MinefieldView(QFrame):
         """ Setup the DroneView """
         self.droneView = DroneView(self.drone)
         
+    def updateView(self):
+        """ Update the View """
+        for square in self.gridSquareViews:
+            square.updateView()
+        
     def draw(self, painter, window):
         """ Draw the image """
         painter.fillRect(0, 0, self.getWidth(), self.getHeight(), QColor(0, 0, 0))
         
         for square in self.gridSquareViews:
-            square.draw(painter, self)
+            square.draw(painter)
         self.droneView.draw(painter, self)
         
     def getWidth(self):

@@ -29,5 +29,6 @@ class LevelView(QFrame):
         painter = QPainter(self)
         
         self.minefield_view.draw(painter, self)
+        self.minefield_view.updateView()
         self.gameStatusBar.updateView()
         self.levelCompletionView.updateView()
