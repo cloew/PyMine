@@ -30,7 +30,7 @@ class LevelSelectionController:
         elif key == Qt.Key_Right:
             self.level_selection.nextLevel()
         elif key == Qt.Key_S:
-            level_controller = LevelController(self.application)
+            level_controller = LevelController(self.application, self.level_selection.getLevel())
             level_controller.run()
 
     def keyReleased(self, key):

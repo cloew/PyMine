@@ -11,6 +11,10 @@ class LevelSelection:
     def performGameCycle(self):
         """ Perform a Game Cycle """
         
+    def getLevel(self):
+        """ Return the selected Level """
+        return self.levels[self.selectedIndex]
+        
     def nextLevel(self):
         """ Select the next level """
         if self.selectedIndex < len(self.levels)-1:

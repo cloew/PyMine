@@ -7,10 +7,10 @@ from level_view import LevelView
 class LevelController:
     """ Controller for a Level """
     
-    def __init__(self, application):
+    def __init__(self, application, level):
         """ Initialize the Level Controller """
         self.application = application
-        self.level = Level(4)
+        self.level = level
         self.window = LevelView(application, self.level)
 
     def run(self):
