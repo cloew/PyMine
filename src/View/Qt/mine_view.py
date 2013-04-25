@@ -38,3 +38,4 @@ class MineView(QFrame):
         if self.mine.defused:
             self.setVisible(True)
             self.defused_mine_label.setVisible(True)
+            self.mine_label.setVisible(False)
