@@ -6,16 +6,18 @@ from Mine.reverse_mine import ReverseMine
 class Level:
     """ Represents a Level """
     
-    def __init__(self, name, numMines, numReverseMines):
+    def __init__(self, name, rows, columns, numMines, numReverseMines):
         """ Initialize the Level """
         self.name = name
+        self.rows = rows
+        self.columns = columns
         self.numMines = numMines
         self.numReverseMines = numReverseMines
         self.reset()
         
     def reset(self):
         """ Reset the Level """
-        self.minefield = Minefield()
+        self.minefield = Minefield(self.rows, self.columns)
         self.drone = Drone(self.getPowerRating(), self.minefield)
         
         self.mines = []

@@ -5,13 +5,13 @@ from random import randint
 class Minefield:
     """ Represents the Minefield for the current level """
     
-    def __init__(self):
+    def __init__(self, rows, columns):
         """ Initialize the mine field """
         self.squares = []
         
-        for row in range(4):
+        for row in range(rows):
             self.squares.append([])
-            for column in range(5):
+            for column in range(columns):
                 self.squares[row].append(GridSquare(row, column))
                 
     def scan(self, row, column, drone):
