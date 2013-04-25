@@ -36,6 +36,12 @@ class GridSquare:
                 return True
         return False
         
+    def reversed(self):
+        """ Return if the Grid Square causes readings to be reversed """
+        if self.mined():
+            return self.contents[0].reverseReadings
+        return False
+        
     def __repr__(self):
         """ Print the square as a string """
         if self.scanned:
