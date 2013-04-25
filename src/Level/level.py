@@ -1,7 +1,7 @@
 from drone import Drone
-from mine import Mine
 from minefield import Minefield
-from reverse_mine import ReverseMine
+from Mine.mine import Mine
+from Mine.reverse_mine import ReverseMine
 
 class Level:
     """ Represents a Level """

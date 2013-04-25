@@ -1,7 +1,6 @@
 from nytram.core.game_engine import TheGameEngine
 from PySide.QtCore import QCoreApplication, QTimer, Qt
 
-from level import Level
 from level_view import LevelView
 
 class LevelController:

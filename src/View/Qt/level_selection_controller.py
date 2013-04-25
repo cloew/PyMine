@@ -2,7 +2,7 @@ from nytram.core.game_engine import TheGameEngine
 from PySide.QtCore import QCoreApplication, Qt
 
 from level_controller import LevelController
-from level_selection import LevelSelection
+from Level.level_selection import LevelSelection
 from level_selection_view import LevelSelectionView
 
 class LevelSelectionController:
