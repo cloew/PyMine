@@ -8,11 +8,16 @@ class Level:
     def __init__(self, name, numMines):
         """ Initialize the Level """
         self.name = name
+        self.numMines = numMines
+        self.reset()
+        
+    def reset(self):
+        """ Reset the Level """
         self.minefield = Minefield()
         self.drone = Drone(self.minefield)
         
         self.mines = []
-        for i in range(numMines):
+        for i in range(self.numMines):
             mine = Mine()
             self.mines.append(mine)
             self.minefield.addMine(mine)

@@ -11,6 +11,7 @@ class LevelController:
         """ Initialize the Level Controller """
         self.application = application
         self.level = level
+        self.level.reset()
         self.window = LevelView(application, self.level)
 
     def run(self):
