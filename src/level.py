@@ -16,7 +16,7 @@ class Level:
     def reset(self):
         """ Reset the Level """
         self.minefield = Minefield()
-        self.drone = Drone(self.minefield)
+        self.drone = Drone(self.getPowerRating(), self.minefield)
         
         self.mines = []
         for i in range(self.numMines):
@@ -28,6 +28,13 @@ class Level:
             mine = ReverseMine()
             self.mines.append(mine)
             self.minefield.addMine(mine)
+            
+    def getPowerRating(self):
+        """ Returns the amount of power the drone should have on the level """
+        powerRating = self.minefield.rowCount()*self.minefield.columnCount()*2
+        powerRating += self.numMines*5
+        powerRating += self.numReverseMines*5
+        return powerRating
         
     def performGameCycle(self):
         """ Perform a single Game Cycle """

@@ -3,11 +3,11 @@ from nytram.core.game_engine import TheGameEngine
 class Drone:
     """ Represents the Player's Drone """
     
-    def __init__(self, minefield):
+    def __init__(self, power, minefield):
         """ Intialize the Player's Drone """
         self.row = 0
         self.column = 0
-        self.power = 60
+        self.power = power
         
         self.minefield = minefield
         self.destroyed = False
