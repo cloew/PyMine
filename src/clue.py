@@ -13,13 +13,15 @@ class Clue:
         self.reverse = False
         for row in (gridRow-1, gridRow, gridRow+1):
             for column in (gridColumn-1, gridColumn, gridColumn+1):
+                square = minefield.getSquare(row, column)
+                if square is None:
+                    continue # If there is no square at this location, skip to the next one
+                if square.reversed():
+                        self.reverse = True
                 if row == gridRow and column == gridColumn:
                     continue # Ignore the current grid Location, because we only want to examine adjacent cells
-                square = minefield.getSquare(row, column)
-                if square is not None and square.mined():
+                if square.mined():
                     self.numberOfAdjacentMines += 1
-                    if square.reversed():
-                        self.reverse = True
                         
     def getAdjacentMinesClue(self):
         """ Returns the Adjacent Mines Clue """
