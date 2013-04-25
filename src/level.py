@@ -1,14 +1,16 @@
 from drone import Drone
 from mine import Mine
 from minefield import Minefield
+from reverse_mine import ReverseMine
 
 class Level:
     """ Represents a Level """
     
-    def __init__(self, name, numMines):
+    def __init__(self, name, numMines, numReverseMines):
         """ Initialize the Level """
         self.name = name
         self.numMines = numMines
+        self.numReverseMines = numReverseMines
         self.reset()
         
     def reset(self):
@@ -19,6 +21,11 @@ class Level:
         self.mines = []
         for i in range(self.numMines):
             mine = Mine()
+            self.mines.append(mine)
+            self.minefield.addMine(mine)
+            
+        for i in range(self.numReverseMines):
+            mine = ReverseMine()
             self.mines.append(mine)
             self.minefield.addMine(mine)
         
