@@ -15,3 +15,7 @@ class Mine:
     def defuse(self, drone):
         """ Defuse the Mine """
         self.defused = True
+
+    def fragileDefuse(self, drone):
+        """ Defuse a Fragile Mine """
+        self.defuse(drone)
