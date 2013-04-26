@@ -21,7 +21,7 @@ class GridSquare:
         self.scanned = True
         for contentObject in self.contents:
             contentObject.scan(drone)
-        self.clue.findAdjacentMines(drone.minefield, self.row, self.column)
+        self.clue.populate(drone.minefield, self.row, self.column)
         
     def defuse(self, drone):
         """ Defuse the Grid Square """
@@ -40,6 +40,12 @@ class GridSquare:
         """ Return if the Grid Square causes readings to be reversed """
         if self.mined():
             return self.contents[0].reverseReadings
+        return False
+        
+    def fragile(self):
+        """ Returns if the square's contents are fragile """
+        if self.mined():
+            return self.contents[0].fragile
         return False
         
     def __repr__(self):

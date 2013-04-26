@@ -2,6 +2,7 @@ from mine import Mine
 
 class FragileMine(Mine):
     """ Represents a Fragile Mine """
+    fragile = True
     
     def defuse(self, drone):
         """ Defuse the Mine """

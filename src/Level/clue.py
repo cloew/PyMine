@@ -8,6 +8,11 @@ class Clue:
         self.reverse = False
         self.distance = None
         
+    def populate(self, minefield, gridRow, gridColumn):
+        """ Populate the Clue """
+        self.findAdjacentMines(minefield, gridRow, gridColumn)
+        self.findFragileMines(minefield, gridRow, gridColumn)
+        
     def findAdjacentMines(self, minefield, gridRow, gridColumn):
         """ Find an Adjacent Mine """
         self.numberOfAdjacentMines = 0
@@ -23,12 +28,10 @@ class Clue:
                     continue # Ignore the current grid Location, because we only want to examine adjacent cells
                 if square.mined():
                     self.numberOfAdjacentMines += 1
-        
-        self.findFragileMines(minefield, gridRow, gridColumn)
                     
     def findFragileMines(self, minefield, gridRow, gridColumn):
         """ Get the Fragile mine adjacency rating """
-        for row in minefield:
+        for row in minefield.squares:
             for square in row:
                 if square.fragile():
                     rowDistance = abs(square.row-gridRow)

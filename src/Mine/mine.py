@@ -1,6 +1,7 @@
 
 class Mine:
     """ Represents a Mine in the Game """
+    fragile = None
     reverseReadings = False
     
     def __init__(self):

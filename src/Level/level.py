@@ -1,6 +1,7 @@
 from drone import Drone
 from minefield import Minefield
 from Mine.mine import Mine
+from Mine.fragile_mine import FragileMine
 from Mine.reverse_mine import ReverseMine
 
 class Level:
