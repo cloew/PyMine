@@ -53,11 +53,11 @@ class LevelCompletionView(QFrame):
         
     def updateLevelCompletionLabel(self):
         """ Update the Power Label """
-        if self.level.lost():
-            self.levelCompletionLabel.setText("Game Over!")
-            self.levelCompletionLabel.setVisible(True)
-        elif self.level.won():
+        if self.level.won():
             self.levelCompletionLabel.setText("You Won!")
+            self.levelCompletionLabel.setVisible(True)
+        elif self.level.lost():
+            self.levelCompletionLabel.setText("Game Over!")
             self.levelCompletionLabel.setVisible(True)
         
     def updateCompletionDetailsLabel(self):
@@ -65,6 +65,6 @@ class LevelCompletionView(QFrame):
         if self.level.destroyed():
             self.completionDetailsLabel.setText("Destroyed")
             self.completionDetailsLabel.setVisible(True)
-        elif self.level.noPower():
+        elif self.level.noPower() and not self.level.won():
             self.completionDetailsLabel.setText("Insufficient Power")
             self.completionDetailsLabel.setVisible(True)

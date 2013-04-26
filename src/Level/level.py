@@ -55,6 +55,8 @@ class Level:
         for mine in self.mines:
             if not mine.defused:
                 return False
+        else:
+            return self.drone.power >= 0
         return won
         
     def getNumberOfMinesRemaining(self):
