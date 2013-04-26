@@ -24,6 +24,12 @@ class Drone:
         self.minefield.defuse(self.row, self.column, self)
         TheGameEngine.updateUI()
         
+    def fragileDefuse(self):
+        """ Carfeully defuse a Fragile mine """
+        self.power -= 25
+        self.minefield.defuse(self.row, self.column, self)
+        TheGameEngine.updateUI()
+        
     def destroy(self):
         """ Destroy the drone """
         self.destroyed = True
