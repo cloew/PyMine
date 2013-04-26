@@ -1,5 +1,5 @@
 from PySide.QtCore import Qt
-from PySide.QtGui import QFont, QFrame, QLabel
+from PySide.QtGui import QColor, QFont, QFrame, QLabel
 
 class ClueView(QFrame):
     """ Represents the Graphical view of the Drone """
@@ -27,4 +27,18 @@ class ClueView(QFrame):
     def updateView(self):
         """ Update the View """
         self.clueLabel.setText(str(self.clue))
+        self.setColorBasedOnFragility()
         self.clueLabel.resize(34, self.clueLabel.contentsRect().height())
+        
+    def setColorBasedOnFragility(self):
+        """ Set color of the clue based on adjacency to Fragile Mines """
+        if self.clue.distance is None:
+            color = QColor(0, 0, 0)
+        elif self.clue.distance <= 1:
+            color = QColor(255, 0, 0)
+        elif self.clue.distance > 1 and self.clue.distance < 4:
+            color = QColor(255, 255, 0)
+        elif self.clue.distance >= 4:
+            color = QColor(0, 255, 0)
+        self.clueLabel.setStyleSheet("QLabel { color : %s }" % color.name())
+        
