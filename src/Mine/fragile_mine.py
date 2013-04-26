@@ -9,6 +9,6 @@ class FragileMine(Mine):
         """ Defuse the Mine """
         Mine.scan(self, drone)
 
-    def fragileDefuse(self, drone):
-        """ Defuse a Fragile Mine """
+    def defuseCarefully(self, drone):
+        """ Defuse the Mine carefully """
         Mine.defuse(self, drone)

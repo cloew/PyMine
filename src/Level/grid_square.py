@@ -28,6 +28,11 @@ class GridSquare:
         for contentObject in self.contents:
             contentObject.defuse(drone)
             
+    def defuseCarefully(self, drone):
+        """ Defuse the Grid Square """
+        for contentObject in self.contents:
+            contentObject.defuseCarefully(drone)
+            
     def mined(self):
         """ Return if the Square has an ative Mine """
         return self.contents != []

@@ -22,6 +22,10 @@ class Minefield:
         """ Defuse the given Grid Square """
         self.getSquare(row, column).defuse(drone)
         
+    def defuseCarefully(self, row, column, drone):
+        """ Defuse the given Grid Square """
+        self.getSquare(row, column).defuseCarefully(drone)
+    
     def addMine(self, mine):
         """ Adds a Mine to the Minefield """
         while True:

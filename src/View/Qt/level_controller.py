@@ -40,6 +40,8 @@ class LevelController:
                 self.level.drone.scan()
             elif key == Qt.Key_D:
                 self.level.drone.defuse()
+            elif key == Qt.Key_F:
+                self.level.drone.defuseCarefully()
         else:
             if key == Qt.Key_S:
                 self.previousController.run()
