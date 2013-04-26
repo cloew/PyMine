@@ -33,12 +33,12 @@ class ClueView(QFrame):
     def setColorBasedOnFragility(self):
         """ Set color of the clue based on adjacency to Fragile Mines """
         if self.clue.distance is None:
-            color = QColor(0, 0, 0)
+            color = "rgba(0, 0, 0, 75%)"
         elif self.clue.distance <= 1:
-            color = QColor(255, 0, 0)
+            color = "rgba(255, 0, 0, 75%)"
         elif self.clue.distance > 1 and self.clue.distance < 4:
-            color = QColor(255, 255, 0)
+            color = "rgba(255, 255, 0, 75%)"
         elif self.clue.distance >= 4:
-            color = QColor(0, 255, 0)
-        self.clueLabel.setStyleSheet("QLabel { color : %s }" % color.name())
+            color = "rgba(0, 255, 0, 75%)"
+        self.clueLabel.setStyleSheet("QLabel { color : %s }" % color)
         
