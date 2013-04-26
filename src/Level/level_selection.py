@@ -1,11 +1,15 @@
 from level import Level
 
+from Mine.mine import Mine
+from Mine.fragile_mine import FragileMine
+from Mine.reverse_mine import ReverseMine
+
 class LevelSelection:
     """ Model for selecting a Level """
     
     def __init__(self):
         """ Initialize the Level Selection """
-        self.levels = [Level("Level 1", 4, 5, 4, 0), Level("Level 2", 4, 5, 4, 1), Level("Level 3", 4, 5, 10, 2)]
+        self.levels = [Level("Level 1", 4, 5, {Mine:4}), Level("Level 2", 4, 5, {Mine:4, ReverseMine:1}), Level("Level 3", 4, 5, {Mine:10, ReverseMine:2})]
         self.selectedIndex = 0
         
     def performGameCycle(self):

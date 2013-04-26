@@ -7,13 +7,12 @@ from Mine.reverse_mine import ReverseMine
 class Level:
     """ Represents a Level """
     
-    def __init__(self, name, rows, columns, numMines, numReverseMines):
+    def __init__(self, name, rows, columns, contents):
         """ Initialize the Level """
         self.name = name
         self.rows = rows
         self.columns = columns
-        self.numMines = numMines
-        self.numReverseMines = numReverseMines
+        self.contents = contents
         self.reset()
         
     def reset(self):
@@ -22,21 +21,17 @@ class Level:
         self.drone = Drone(self.getPowerRating(), self.minefield)
         
         self.mines = []
-        for i in range(self.numMines):
-            mine = Mine()
-            self.mines.append(mine)
-            self.minefield.addMine(mine)
-            
-        for i in range(self.numReverseMines):
-            mine = ReverseMine()
-            self.mines.append(mine)
-            self.minefield.addMine(mine)
+        for mineClass in self.contents:
+            for i in range(self.contents[mineClass]):
+                mine = mineClass()
+                self.mines.append(mine)
+                self.minefield.addMine(mine)
             
     def getPowerRating(self):
         """ Returns the amount of power the drone should have on the level """
         powerRating = self.minefield.rowCount()*self.minefield.columnCount()*2
-        powerRating += self.numMines*5
-        powerRating += self.numReverseMines*5
+        for mineClass in self.contents:
+            powerRating += self.contents[mineClass]*mineClass.powerRating
         return powerRating
         
     def performGameCycle(self):

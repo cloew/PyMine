@@ -2,6 +2,7 @@
 class Mine:
     """ Represents a Mine in the Game """
     fragile = None
+    powerRating = 5
     reverseReadings = False
     
     def __init__(self):
