@@ -9,18 +9,21 @@ class MineView(QFrame):
         """ Initialize the drone view """
         QFrame.__init__(self, parent)
         self.mine = mine
-        self.loadMineImage()
+        self.loadMineImages()
         self.setVisible(False)
         self.resize(64, 64)
 
-    def loadMineImage(self):
+    def loadMineImages(self):
         """ Load the drone image """
-        self.mine_label = LoadImageLabel("Mine1.png", scaledXSize=64, scaledYSize=64, parent=self)
-        self.mine_label.move(0, 0)
+        self.mine_label = self.loadMineImage("Mine1.png")
+        self.defused_mine_label = self.loadMineImage("DefusedMine1.png", visible=False)
         
-        self.defused_mine_label = LoadImageLabel("DefusedMine1.png", scaledXSize=64, scaledYSize=64, parent=self)
-        self.defused_mine_label.move(0, 0)
-        self.defused_mine_label.setVisible(False)
+    def loadMineImage(self, filename, visible=True):
+        """ Load a Mine Image from the given filename """
+        mineImage = LoadImageLabel(filename, scaledXSize=64, scaledYSize=64, parent=self)
+        mineImage.move(0, 0)
+        mineImage.setVisible(visible)
+        return mineImage
 
     def updateView(self):
         """  """
