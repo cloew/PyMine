@@ -6,6 +6,8 @@ from PySide.QtGui import QColor, QFrame
 
 class MinefieldView(QFrame):
     """ Represents the Graphical view of the Minefield """
+    ROWS_DISPLAYED = 4
+    COLUMNS_DISPLAYED = 5
 
     def __init__(self, minefield, drone, parent=None):
         """ Initialize the grid square view """
@@ -23,6 +25,9 @@ class MinefieldView(QFrame):
         #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
         self.resize(self.getWidth(), self.getHeight())
         
+        self.row = 0
+        self.column = 0
+        
     def setup(self):
         """ Setup the View """
         self.setupMineFieldSquares()
@@ -31,11 +36,19 @@ class MinefieldView(QFrame):
     def setupMineFieldSquares(self):
         """ Setup the Mine Field Squares """
         self.gridSquareViews = []
-        for row in self.minefield.squares:
-            for square in row:
+        columnCount = 0
+        rowCount = 0
+        
+        for rowIndex in range(self.ROWS_DISPLAYED):
+            if rowIndex >= self.minefield.rowCount():
+                break
+            for columnIndex in range(self.COLUMNS_DISPLAYED):
+                if columnIndex >= self.minefield.columnCount():
+                    break
+                square = self.minefield.getSquare(rowIndex, columnIndex)
                 gridSquareView = GridSquareView(square, self)
                 self.gridSquareViews.append(gridSquareView)
-                gridSquareView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
+                gridSquareView.move(self.x+GridSquareFrame.GRID_SQUARE_SIZE*columnIndex, self.y+GridSquareFrame.GRID_SQUARE_SIZE*rowIndex)
 
     def setupDrone(self):
         """ Setup the DroneView """
@@ -46,8 +59,26 @@ class MinefieldView(QFrame):
         for square in self.gridSquareViews:
             square.updateView()
             
-        gridSquareView = self.getGridSquareView(self.drone.row, self.drone.column)
-        self.droneView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
+        if self.droneOnScreen():
+            self.droneView.setVisible(True)
+            gridSquareView = self.getGridSquareView(self.drone.row, self.drone.column)
+            self.droneView.move(gridSquareView.x(), gridSquareView.y())
+        else:
+            self.droneView.setVisible(False)
+        
+    def updateMineFieldGridSquares(self):
+        """ Update the Minefield to ensure the proper Grid Squares are shown """
+        if not self.droneOnScreen():
+            """ """
+        
+    def droneOnScreen(self):
+        """ Returns if the Drone is in the section of the Minefield shown """
+        if self.drone.row < self.row or self.drone.row >= self.row + self.ROWS_DISPLAYED:
+            return False
+        elif self.drone.column < self.column or self.drone.column >= self.column + self.COLUMNS_DISPLAYED:
+            return False
+        return True
+        
         
     def revealAllMines(self):
         """ Reveal all Mines on the bored """
@@ -56,8 +87,11 @@ class MinefieldView(QFrame):
         
     def getGridSquareView(self, row, column):
         """ Return the Grid Square View at the given row/column """
-        index = self.minefield.columnCount()*row+column
-        return self.gridSquareViews[index]
+        for gridSquareView in self.gridSquareViews:
+            if gridSquareView.gridSquare.row == row and gridSquareView.gridSquare.column == column:
+                return gridSquareView
+        else:
+            return None
         
     def getWidth(self):
         """ Return the width """
