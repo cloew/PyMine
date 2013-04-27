@@ -1,10 +1,19 @@
 from clue_view import ClueView
+
+from Mine.mine import Mine
+from Mine.fragile_mine import FragileMine
+from Mine.reverse_mine import ReverseMine
+
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 from View.Qt.Mine.mine_view import MineView
+from View.Qt.Mine.fragile_mine_view import FragileMineView
 from View.Qt.Mine.reverse_mine_view import ReverseMineView
 
 class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
+    MineToViewDictionary = {Mine:MineView,
+                            FragileMine:FragileMineView,
+                            ReverseMine:ReverseMineView}
 
     def __init__(self, gridSquare, minefieldView):
         """ Initialize the grid square view """
@@ -16,10 +25,11 @@ class GridSquareView(GridSquareFrame):
         self.loadGridSquareImages()
         
         if self.gridSquare.mined():
-            if self.gridSquare.reversed():
-                self.mineView = ReverseMineView(self.gridSquare.contents[0], self)
+            content = self.gridSquare.getContent()
+            if content.__class__ in self.MineToViewDictionary:
+                self.mineView = self.MineToViewDictionary[content.__class__](content, self)
             else:
-                self.mineView = MineView(self.gridSquare.contents[0], self)
+                self.mineView = MineView(content, self)
             
         self.clueView.raise_()
 
