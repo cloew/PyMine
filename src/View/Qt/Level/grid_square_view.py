@@ -1,6 +1,7 @@
 from clue_view import ClueView
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 from View.Qt.Mine.mine_view import MineView
+from View.Qt.Mine.reverse_mine_view import ReverseMineView
 
 class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
@@ -15,7 +16,10 @@ class GridSquareView(GridSquareFrame):
         self.loadGridSquareImages()
         
         if self.gridSquare.mined():
-            self.mineView = MineView(self.gridSquare.contents[0], self)
+            if self.gridSquare.reversed():
+                self.mineView = ReverseMineView(self.gridSquare.contents[0], self)
+            else:
+                self.mineView = MineView(self.gridSquare.contents[0], self)
             
         self.clueView.raise_()
 
