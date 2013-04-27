@@ -1,16 +1,15 @@
 from clue_view import ClueView
 from View.Qt.image_loader import LoadImageLabel
+from View.Qt.Level.grid_square_frame import GridSquareFrame
 from View.Qt.Mine.mine_view import MineView
 
-from PySide.QtGui import QFrame
-
-class GridSquareView(QFrame):
+class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
     GRID_SQUARE_SIZE = 64
 
     def __init__(self, gridSquare, minefieldView):
         """ Initialize the grid square view """
-        QFrame.__init__(self, minefieldView)
+        GridSquareFrame.__init__(self, minefieldView)
         
         self.gridSquare = gridSquare
         self.minefieldView = minefieldView
@@ -20,21 +19,12 @@ class GridSquareView(QFrame):
         if self.gridSquare.mined():
             self.mineView = MineView(self.gridSquare.contents[0], self)
             
-        self.resize(64, 64)
         self.clueView.raise_()
 
     def loadGridSquareImages(self):
         """ Load the grid square image """
-        self.grid_square_label = self.loadGridSquareImage("GridSquare.png", True)
-        self.scanned_grid_square_label = self.loadGridSquareImage("ScannedGridSquare.png", False)
-        
-    def loadGridSquareImage(self, filename, visible):
-        """ Loads a Grid Square Image """
-        gridSquareImage = LoadImageLabel(filename, scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
-        gridSquareImage.move(0, 0)
-        gridSquareImage.setVisible(visible)
-        gridSquareImage.stackUnder(self.clueView)
-        return gridSquareImage
+        self.grid_square_label = self.loadGridSquareSizedImage("GridSquare.png")
+        self.scanned_grid_square_label = self.loadGridSquareSizedImage("ScannedGridSquare.png", visible=False)
         
     def updateView(self):
         """ Update the Grid Square View """
