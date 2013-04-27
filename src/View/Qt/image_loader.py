@@ -14,3 +14,19 @@ def GetPixelMapFromImage(image):
     image_pixmap = QPixmap()
     image_pixmap.convertFromImage(image)
     return image_pixmap
+    
+def GetImageLabelFromPixelMap(pixmap, parent=None):
+    """ Return a QLabel made to display the given Pixel Map """
+    image_label = QLabel(parent)
+    image_label.setPixmap(pixmap)
+    return image_label
+    
+def GetImageLabelFromImage(image, parent=None):
+    """ Return a QLabel made to display the given Image """
+    pixmap = GetPixelMapFromImage(image)
+    return GetImageLabelFromPixelMap(pixmap, parent=parent)
+    
+def LoadImageLabel(filename, scaledXSize=None, scaledYSize=None, parent=None):
+    """ Create an Image Label from an Image file at the filename given """
+    image = LoadImage(filename, scaledXSize=scaledXSize, scaledYSize=scaledYSize)
+    return GetImageLabelFromImage(image, parent=parent)
