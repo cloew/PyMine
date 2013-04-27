@@ -1,5 +1,5 @@
 from clue_view import ClueView
-from mine_view import MineView
+from View.Qt.Mine.mine_view import MineView
 
 from PySide.QtCore import Qt
 from PySide.QtGui import QFrame, QImage, QLabel, QMatrix, QPixmap

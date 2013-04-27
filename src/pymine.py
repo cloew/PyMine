@@ -1,4 +1,4 @@
-from View.Qt.level_selection_controller import LevelSelectionController
+from View.Qt.Level.level_selection_controller import LevelSelectionController
 from PySide.QtGui import QDesktopWidget, QMainWindow, QStackedWidget
 
 class PyMine(QStackedWidget):

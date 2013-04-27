@@ -41,4 +41,3 @@ class ClueView(QFrame):
         elif self.clue.distance >= 4:
             color = "rgba(0, 154, 0, 75%)"
         self.clueLabel.setStyleSheet("QLabel { color : %s }" % color)
-        
