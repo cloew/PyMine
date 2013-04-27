@@ -30,6 +30,8 @@ class GridSquareView(GridSquareFrame):
                 self.mineView = self.MineToViewDictionary[content.__class__](content, self)
             else:
                 self.mineView = MineView(content, self)
+        else:
+            self.mineView = None
             
         self.clueView.raise_()
 
@@ -45,9 +47,33 @@ class GridSquareView(GridSquareFrame):
             self.scanned_grid_square_label.setVisible(True)
             self.clueView.updateView()
             self.revealMine()
+        else:
+            self.grid_square_label.setVisible(True)
+            self.scanned_grid_square_label.setVisible(False)
                 
         if self.gridSquare.mined():
             self.mineView.updateView()
+            
+    def representNewGridSquare(self, gridSquare):
+        """ Tells the Grid Square View to represent a new Grid Square """
+        self.gridSquare = gridSquare
+        self.clueView.clue = gridSquare.clue
+        
+        if self.mineView is not None:
+            self.mineView.setParent(None)
+            self.mineView = None
+        
+        if self.gridSquare.mined():
+            content = self.gridSquare.getContent()
+            if content.__class__ in self.MineToViewDictionary:
+                self.mineView = self.MineToViewDictionary[content.__class__](content, self)
+            else:
+                self.mineView = MineView(content, self)
+            
+            
+        self.updateView()
+        self.clueView.updateView()
+        self.clueView.raise_()
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
