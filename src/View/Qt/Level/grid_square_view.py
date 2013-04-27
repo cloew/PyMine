@@ -1,11 +1,9 @@
 from clue_view import ClueView
-from View.Qt.image_loader import LoadImageLabel
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 from View.Qt.Mine.mine_view import MineView
 
 class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
-    GRID_SQUARE_SIZE = 64
 
     def __init__(self, gridSquare, minefieldView):
         """ Initialize the grid square view """

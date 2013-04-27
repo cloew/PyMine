@@ -1,5 +1,6 @@
 from drone_view import DroneView
 from grid_square_view import GridSquareView
+from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 from PySide.QtGui import QColor, QFrame
 
@@ -13,8 +14,8 @@ class MinefieldView(QFrame):
         self.minefield = minefield
         self.drone = drone
         
-        self.x = 32
-        self.y = 32
+        self.x = GridSquareFrame.GRID_SQUARE_SIZE/2
+        self.y = GridSquareFrame.GRID_SQUARE_SIZE/2
         
         self.setup()
         
@@ -55,8 +56,8 @@ class MinefieldView(QFrame):
         
     def getWidth(self):
         """ Return the width """
-        return GridSquareView.GRID_SQUARE_SIZE*6
+        return GridSquareFrame.GRID_SQUARE_SIZE*6
         
     def getHeight(self):
         """ Return the height """
-        return GridSquareView.GRID_SQUARE_SIZE*5
+        return GridSquareFrame.GRID_SQUARE_SIZE*5

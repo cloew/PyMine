@@ -1,4 +1,3 @@
-from View.Qt.image_loader import LoadImageLabel
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 class MineView(GridSquareFrame):
