@@ -2,8 +2,7 @@ from clue_view import ClueView
 from View.Qt.image_loader import LoadImageLabel
 from View.Qt.Mine.mine_view import MineView
 
-from PySide.QtCore import Qt
-from PySide.QtGui import QFrame, QImage, QLabel, QMatrix, QPixmap
+from PySide.QtGui import QFrame
 
 class GridSquareView(QFrame):
     """ Represents the Graphical view of the Grid Square """
@@ -15,9 +14,6 @@ class GridSquareView(QFrame):
         
         self.gridSquare = gridSquare
         self.minefieldView = minefieldView
-        
-        self.scaled_grid_square = None
-        self.scaled_scanned_grid_square = None
         self.clueView = ClueView(self.gridSquare.clue, self)
         self.loadGridSquareImage()
         
@@ -25,7 +21,6 @@ class GridSquareView(QFrame):
             self.mineView = MineView(self.gridSquare.contents[0], self)
             
         self.resize(64, 64)
-        #self.move()
         self.clueView.raise_()
 
     def loadGridSquareImage(self):
