@@ -8,3 +8,9 @@ def LoadImage(imageFilename, scaledXSize=None, scaledYSize=None):
         return unscaled_image.scaled(scaledXSize, scaledYSize)
     else:
         return unscaled_image
+        
+def GetPixelMapFromImage(image):
+    """ Returns a QpixelMap of the QImage given """
+    image_pixmap = QPixmap()
+    image_pixmap.convertFromImage(image)
+    return image_pixmap

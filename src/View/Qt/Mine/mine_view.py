@@ -1,4 +1,4 @@
-from View.Qt.image_loader import LoadImage
+from View.Qt.image_loader import LoadImage, GetPixelMapFromImage
 
 from PySide.QtCore import Qt
 from PySide.QtGui import QFrame, QImage, QLabel, QMatrix, QPixmap
@@ -18,11 +18,8 @@ class MineView(QFrame):
 
     def loadMineImage(self):
         """ Load the drone image """
-        self.unscaled_mine = QImage("Mine1.png")
-        self.scaled_mine = self.unscaled_mine.scaled(64, 64)
         self.scaled_mine = LoadImage("Mine1.png", scaledXSize=64, scaledYSize=64)
-        self.mine_pixmap = QPixmap()
-        self.mine_pixmap.convertFromImage(self.scaled_mine)
+        self.mine_pixmap = GetPixelMapFromImage(self.scaled_mine)
         self.mine_label = QLabel(self)
         self.mine_label.setPixmap(self.mine_pixmap)
         self.mine_label.move(0, 0)
