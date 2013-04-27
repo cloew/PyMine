@@ -15,7 +15,7 @@ class GridSquareView(QFrame):
         self.gridSquare = gridSquare
         self.minefieldView = minefieldView
         self.clueView = ClueView(self.gridSquare.clue, self)
-        self.loadGridSquareImage()
+        self.loadGridSquareImages()
         
         if self.gridSquare.mined():
             self.mineView = MineView(self.gridSquare.contents[0], self)
@@ -23,17 +23,18 @@ class GridSquareView(QFrame):
         self.resize(64, 64)
         self.clueView.raise_()
 
-    def loadGridSquareImage(self):
+    def loadGridSquareImages(self):
         """ Load the grid square image """
-        self.grid_square_label = LoadImageLabel("GridSquare.png", scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
-        self.grid_square_label.move(0, 0)
-        self.grid_square_label.setVisible(True)
-        self.grid_square_label.stackUnder(self.clueView)
+        self.grid_square_label = self.loadGridSquareImage("GridSquare.png", True)
+        self.scanned_grid_square_label = self.loadGridSquareImage("ScannedGridSquare.png", False)
         
-        self.scanned_grid_square_label = LoadImageLabel("ScannedGridSquare.png", scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
-        self.scanned_grid_square_label.move(0, 0)
-        self.scanned_grid_square_label.setVisible(False)
-        self.scanned_grid_square_label.stackUnder(self.clueView)
+    def loadGridSquareImage(self, filename, visible):
+        """ Loads a Grid Square Image """
+        gridSquareImage = LoadImageLabel(filename, scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
+        gridSquareImage.move(0, 0)
+        gridSquareImage.setVisible(visible)
+        gridSquareImage.stackUnder(self.clueView)
+        return gridSquareImage
         
     def updateView(self):
         """ Update the Grid Square View """
