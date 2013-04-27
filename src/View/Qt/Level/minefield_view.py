@@ -49,6 +49,11 @@ class MinefieldView(QFrame):
         gridSquareView = self.getGridSquareView(self.drone.row, self.drone.column)
         self.droneView.move(gridSquareView.getXCoordinate(), gridSquareView.getYCoordinate())
         
+    def revealAllMines(self):
+        """ Reveal all Mines on the bored """
+        for gridSquareView in self.gridSquareViews:
+            gridSquareView.revealMine()
+        
     def getGridSquareView(self, row, column):
         """ Return the Grid Square View at the given row/column """
         index = self.minefield.columnCount()*row+column

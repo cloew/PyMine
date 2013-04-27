@@ -44,12 +44,15 @@ class GridSquareView(GridSquareFrame):
             self.grid_square_label.setVisible(False)
             self.scanned_grid_square_label.setVisible(True)
             self.clueView.updateView()
-            
-            if self.gridSquare.mined():
-                self.mineView.setVisible(True)
+            self.revealMine()
                 
         if self.gridSquare.mined():
             self.mineView.updateView()
+            
+    def revealMine(self):
+        """ Reveal the Mine (if any) in this Grid Square """
+        if self.gridSquare.mined():
+                self.mineView.setVisible(True)
             
     def getXCoordinate(self):
         """ Return the X Coordinate of the Grid Square """

@@ -23,9 +23,13 @@ class LevelView(QFrame):
         self.gameStatusBar.move(self.minefield_view.getWidth(), 0)
 
         self.setFocusPolicy(Qt.StrongFocus)
+        
 
     def paintEvent(self, event):
         """ Paint the Level """
         self.minefield_view.updateView()
         self.gameStatusBar.updateView()
         self.levelCompletionView.updateView()
+        
+        if self.level.lost():
+            self.minefield_view.revealAllMines()
