@@ -1,16 +1,16 @@
-from PySide.QtCore import Qt
-from PySide.QtGui import QColor, QFont, QFrame, QLabel
+from View.Qt.Level.grid_square_frame import GridSquareFrame
 
-class ClueView(QFrame):
+from PySide.QtGui import QFont, QLabel
+
+class ClueView(GridSquareFrame):
     """ Represents the Graphical view of the Drone """
 
     def __init__(self, clue, parent=None):
         """ Initialize the drone view """
-        QFrame.__init__(self, parent)
+        GridSquareFrame.__init__(self, parent)
         self.clue = clue
         
         self.setupClueLabel()
-        self.resize(64, 64)
         
     def setupFont(self):
         """ Setup the Font """
