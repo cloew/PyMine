@@ -1,29 +1,20 @@
 from View.Qt.image_loader import LoadImageLabel
+from View.Qt.Level.grid_square_frame import GridSquareFrame
 
-from PySide.QtGui import QFrame
-
-class MineView(QFrame):
-    """ Represents the Graphical view of the Drone """
+class MineView(GridSquareFrame):
+    """ Represents the Graphical view of a Mine """
 
     def __init__(self, mine, parent=None):
-        """ Initialize the drone view """
-        QFrame.__init__(self, parent)
+        """ Initialize the mine view """
+        GridSquareFrame.__init__(self, parent)
         self.mine = mine
         self.loadMineImages()
         self.setVisible(False)
-        self.resize(64, 64)
 
     def loadMineImages(self):
-        """ Load the drone image """
-        self.mine_label = self.loadMineImage("Mine1.png")
-        self.defused_mine_label = self.loadMineImage("DefusedMine1.png", visible=False)
-        
-    def loadMineImage(self, filename, visible=True):
-        """ Load a Mine Image from the given filename """
-        mineImage = LoadImageLabel(filename, scaledXSize=64, scaledYSize=64, parent=self)
-        mineImage.move(0, 0)
-        mineImage.setVisible(visible)
-        return mineImage
+        """ Load the Mine images """
+        self.mine_label = self.loadGridSquareSizedImage("Mine1.png")
+        self.defused_mine_label = self.loadGridSquareSizedImage("DefusedMine1.png", visible=False)
 
     def updateView(self):
         """  """
