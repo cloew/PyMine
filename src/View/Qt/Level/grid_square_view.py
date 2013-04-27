@@ -1,4 +1,5 @@
 from clue_view import ClueView
+from View.Qt.image_loader import LoadImageLabel
 from View.Qt.Mine.mine_view import MineView
 
 from PySide.QtCore import Qt
@@ -29,22 +30,12 @@ class GridSquareView(QFrame):
 
     def loadGridSquareImage(self):
         """ Load the grid square image """
-        self.unscaled_grid_square = QImage("GridSquare.png")
-        self.scaled_grid_square = self.unscaled_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
-        self.grid_square_pixmap = QPixmap()
-        self.grid_square_pixmap.convertFromImage(self.scaled_grid_square)
-        self.grid_square_label = QLabel(self)
-        self.grid_square_label.setPixmap(self.grid_square_pixmap)
+        self.grid_square_label = LoadImageLabel("GridSquare.png", scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
         self.grid_square_label.move(0, 0)
         self.grid_square_label.setVisible(True)
         self.grid_square_label.stackUnder(self.clueView)
         
-        self.unscaled_scanned_grid_square = QImage("ScannedGridSquare.png")
-        self.scaled_scanned_grid_square = self.unscaled_scanned_grid_square.scaled(self.GRID_SQUARE_SIZE, self.GRID_SQUARE_SIZE)
-        self.scanned_grid_square_pixmap = QPixmap()
-        self.scanned_grid_square_pixmap.convertFromImage(self.scaled_scanned_grid_square)
-        self.scanned_grid_square_label = QLabel(self)
-        self.scanned_grid_square_label.setPixmap(self.scanned_grid_square_pixmap)
+        self.scanned_grid_square_label = LoadImageLabel("ScannedGridSquare.png", scaledXSize=self.GRID_SQUARE_SIZE, scaledYSize=self.GRID_SQUARE_SIZE, parent=self)
         self.scanned_grid_square_label.move(0, 0)
         self.scanned_grid_square_label.setVisible(False)
         self.scanned_grid_square_label.stackUnder(self.clueView)
