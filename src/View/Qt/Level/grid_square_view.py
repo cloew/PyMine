@@ -63,14 +63,18 @@ class GridSquareView(GridSquareFrame):
         self.gridSquare = gridSquare
         self.clueView.clue = gridSquare.clue
         
-        if self.mineView is not None:
-            self.mineView.setParent(None)
-            self.mineView = None
+        self.removeOldMineView()
             
         self.setupMine()
         self.updateView()
         self.clueView.updateView()
         self.clueView.raise_()
+        
+    def removeOldMineView(self):
+        """ Remove the old Mine View, if any """
+        if self.mineView is not None:
+            self.mineView.setParent(None)
+            self.mineView = None
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
