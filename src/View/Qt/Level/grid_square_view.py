@@ -21,15 +21,14 @@ class GridSquareView(GridSquareFrame):
         
         self.gridSquare = gridSquare
         self.minefieldView = minefieldView
-        self.clueView = ClueView(self.gridSquare.clue, self)
+        self.clueView = None
         self.loadGridSquareImages()
         
-        self.setupMine()
-            
-        self.clueView.raise_()
+        self.setupMineView()
+        self.setupClueView(self.gridSquare.clue)
         
-    def setupMine(self):
-        """  """
+    def setupMineView(self):
+        """ Setup Mine View """
         if self.gridSquare.mined():
             content = self.gridSquare.getContent()
             if content.__class__ in self.MineToViewDictionary:
@@ -38,6 +37,14 @@ class GridSquareView(GridSquareFrame):
                 self.mineView = MineView(content, self)
         else:
             self.mineView = None
+            
+    def setupClueView(self, clue):
+        """ Setup the Clue View """
+        if self.clueView is None:
+            self.clueView = ClueView(self.gridSquare.clue, self)
+        else:
+            self.clueView.clue = clue
+        self.clueView.raise_()
 
     def loadGridSquareImages(self):
         """ Load the grid square image """
@@ -61,14 +68,11 @@ class GridSquareView(GridSquareFrame):
     def representNewGridSquare(self, gridSquare):
         """ Tells the Grid Square View to represent a new Grid Square """
         self.gridSquare = gridSquare
-        self.clueView.clue = gridSquare.clue
-        
         self.removeOldMineView()
-            
-        self.setupMine()
+        self.setupMineView()
+        self.setupClueView(gridSquare.clue)
         self.updateView()
         self.clueView.updateView()
-        self.clueView.raise_()
         
     def removeOldMineView(self):
         """ Remove the old Mine View, if any """
