@@ -26,7 +26,13 @@ class LevelSelectionController:
 
     def keyPressed(self, key):
         """ Called when the Game Engine gets a keyPressed event """
-        if key == Qt.Key_Left:
+        if key == Qt.Key_Up:
+            for i in range(LevelSelectionView.ENTRIES_PER_ROW):
+                self.level_selection.previousLevel()
+        elif key == Qt.Key_Down:
+            for i in range(LevelSelectionView.ENTRIES_PER_ROW):
+                self.level_selection.nextLevel()
+        elif key == Qt.Key_Left:
             self.level_selection.previousLevel()
         elif key == Qt.Key_Right:
             self.level_selection.nextLevel()
