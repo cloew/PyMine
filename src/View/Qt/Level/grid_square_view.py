@@ -24,6 +24,12 @@ class GridSquareView(GridSquareFrame):
         self.clueView = ClueView(self.gridSquare.clue, self)
         self.loadGridSquareImages()
         
+        self.setupMine()
+            
+        self.clueView.raise_()
+        
+    def setupMine(self):
+        """  """
         if self.gridSquare.mined():
             content = self.gridSquare.getContent()
             if content.__class__ in self.MineToViewDictionary:
@@ -32,8 +38,6 @@ class GridSquareView(GridSquareFrame):
                 self.mineView = MineView(content, self)
         else:
             self.mineView = None
-            
-        self.clueView.raise_()
 
     def loadGridSquareImages(self):
         """ Load the grid square image """
@@ -62,15 +66,8 @@ class GridSquareView(GridSquareFrame):
         if self.mineView is not None:
             self.mineView.setParent(None)
             self.mineView = None
-        
-        if self.gridSquare.mined():
-            content = self.gridSquare.getContent()
-            if content.__class__ in self.MineToViewDictionary:
-                self.mineView = self.MineToViewDictionary[content.__class__](content, self)
-            else:
-                self.mineView = MineView(content, self)
             
-            
+        self.setupMine()
         self.updateView()
         self.clueView.updateView()
         self.clueView.raise_()
