@@ -99,7 +99,7 @@ class MinefieldGridView(QFrame):
         return True        
         
     def revealAllMines(self):
-        """ Reveal all Mines on the bored """
+        """ Reveal all Mines on the board """
         for gridSquareView in self.gridSquareViews:
             gridSquareView.revealMine()
         

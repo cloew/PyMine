@@ -26,7 +26,7 @@ class MinefieldView(QFrame):
         #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
         self.resize(self.getWidth(), self.getHeight())
         self.minefield_grid.move(self.x, self.y)
-        self.minefield_grid.raise_()
+        #self.minefield_grid.raise_()
         
     def setup(self):
         """ Setup the View """
@@ -62,6 +62,11 @@ class MinefieldView(QFrame):
         self.downArrowLabel.setVisible(self.minefield_grid.row+MinefieldGridView.ROWS_DISPLAYED < self.minefield.rowCount())
         self.leftArrowLabel.setVisible(self.minefield_grid.column > 0)
         self.rightArrowLabel.setVisible(self.minefield_grid.column+MinefieldGridView.COLUMNS_DISPLAYED < self.minefield.columnCount())
+        
+    def revealAllMines(self):
+        """ Reveal all Mines on the board """
+        for gridSquareView in self.gridSquareViews:
+            gridSquareView.revealMine()
         
     def getWidth(self):
         """ Return the width """
