@@ -27,16 +27,16 @@ class LevelController:
 
     def keyPressed(self, key):
         """ Called when the Game Engine gets a keyPressed event """
-        if not (self.level.lost() or self.level.won()):
-            if key == Qt.Key_Left:
-                self.level.drone.left()
-            elif key == Qt.Key_Right:
-                self.level.drone.right()
-            elif key == Qt.Key_Down:
-                self.level.drone.down()
-            elif key == Qt.Key_Up:
-                self.level.drone.up()
-            elif key == Qt.Key_S:
+        if key == Qt.Key_Left:
+            self.level.drone.left()
+        elif key == Qt.Key_Right:
+            self.level.drone.right()
+        elif key == Qt.Key_Down:
+            self.level.drone.down()
+        elif key == Qt.Key_Up:
+            self.level.drone.up()
+        elif not (self.level.lost() or self.level.won()):
+            if key == Qt.Key_S:
                 self.level.drone.scan()
             elif key == Qt.Key_D:
                 self.level.drone.defuse()
