@@ -1,5 +1,6 @@
-from drone_view import DroneView
-from grid_square_view import GridSquareView
+from View.Qt.image_loader import LoadImageLabel
+from View.Qt.Level.drone_view import DroneView
+from View.Qt.Level.grid_square_view import GridSquareView
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 from PySide.QtGui import QColor, QFrame
@@ -32,6 +33,7 @@ class MinefieldView(QFrame):
         """ Setup the View """
         self.setupMineFieldSquares()
         self.setupDrone()
+        self.setupArrows()
         
     def setupMineFieldSquares(self):
         """ Setup the Mine Field Squares """
@@ -52,6 +54,25 @@ class MinefieldView(QFrame):
         """ Setup the DroneView """
         self.droneView = DroneView(self.drone, self)
         
+    def setupArrows(self):
+        """ Setup Arrow Images """
+        if self.needToDisplayArrows():
+            self.upArrowLabel = self.loadArrow("UpArrow.png", self.getWidth()/2-8, 12)
+            self.downArrowLabel = self.loadArrow("DownArrow.png", self.getWidth()/2-8, self.getHeight()-20)
+            self.leftArrowLabel = self.loadArrow("LeftArrow.png", 12, self.getHeight()/2-8)
+            self.rightArrowLabel = self.loadArrow("RightArrow.png", self.getWidth()-20, self.getHeight()/2-8)
+            
+    def loadArrow(self, filename, xPosition, yPosition):
+        """ Load Arrow Image """
+        arrowLabel = LoadImageLabel(filename, parent=self)
+        arrowLabel.setVisible(False)
+        arrowLabel.move(xPosition, yPosition)
+        return arrowLabel
+        
+    def needToDisplayArrows(self):
+        """ Need to Display Arrows """
+        return self.minefield.rowCount() >= self.ROWS_DISPLAYED or self.minefield.columnCount() >= self.COLUMNS_DISPLAYED
+        
     def updateView(self):
         """ Update the View """
         self.updateMineFieldGridSquares()
@@ -65,6 +86,8 @@ class MinefieldView(QFrame):
             self.droneView.move(gridSquareView.x(), gridSquareView.y())
         else:
             self.droneView.setVisible(False)
+            
+        self.updateArrows()
         
     def updateMineFieldGridSquares(self):
         """ Update the Minefield to ensure the proper Grid Squares are shown """
@@ -93,6 +116,14 @@ class MinefieldView(QFrame):
                 square = squares[i]
                 gridSquareView.representNewGridSquare(square)
             self.update()
+            
+    def updateArrows(self):
+        """ Update Arrows """
+        self.upArrowLabel.setVisible(self.row > 0)
+        self.downArrowLabel.setVisible(self.row+self.ROWS_DISPLAYED < self.minefield.rowCount())
+        self.leftArrowLabel.setVisible(self.column > 0)
+        self.rightArrowLabel.setVisible(self.column+self.COLUMNS_DISPLAYED < self.minefield.columnCount())    
+            
         
     def droneOnScreen(self):
         """ Returns if the Drone is in the section of the Minefield shown """
