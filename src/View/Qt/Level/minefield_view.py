@@ -65,8 +65,7 @@ class MinefieldView(QFrame):
         
     def revealAllMines(self):
         """ Reveal all Mines on the board """
-        for gridSquareView in self.gridSquareViews:
-            gridSquareView.revealMine()
+        self.minefield_grid.revealAllMines()
         
     def getWidth(self):
         """ Return the width """
