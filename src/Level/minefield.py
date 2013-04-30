@@ -36,6 +36,7 @@ class Minefield:
                 continue
             else:
                 square.setGroundContent(mine)
+                mine.gridSquare = square
                 break
         
     def getSquare(self, row, column):
@@ -44,6 +45,18 @@ class Minefield:
             return None
         else:
             return self.squares[row][column]
+            
+    def getAdjacentSquares(self, centerSquare, includeCenter=False):
+        """ Get Squares adjacent to the given square """
+        squares = []
+        for row in (centerSquare.row-1, centerSquare.row, centerSquare.row+1):
+            for column in (centerSquare.column-1, centerSquare.column, centerSquare.column+1):
+                square = self.getSquare(row, column)
+                if not includeCenter and square is centerSquare:
+                    continue
+                if square is not None:
+                    squares.append(square)
+        return squares
     
     def rowCount(self):
         """ Return the Row Count """
