@@ -4,6 +4,7 @@ from PySide.QtGui import QFont, QLabel
 
 class ClueView(GridSquareFrame):
     """ Represents the Graphical view of the Drone """
+    TRANSPARENCY = 50
 
     def __init__(self, clue, parent=None):
         """ Initialize the drone view """
@@ -32,12 +33,16 @@ class ClueView(GridSquareFrame):
         
     def setColorBasedOnFragility(self):
         """ Set color of the clue based on adjacency to Fragile Mines """
-        if self.clue.distance is None:
-            color = "rgba(0, 0, 0, 50%)"
-        elif self.clue.distance <= 1:
-            color = "rgba(244, 0, 0, 50%)"
-        elif self.clue.distance > 1 and self.clue.distance < 4:
-            color = "rgba(244, 244, 0, 50%)"
-        elif self.clue.distance >= 4:
-            color = "rgba(0, 154, 0, 50%)"
+        color = "rgba({0}, {1}%)".format(self.getColor(), self.TRANSPARENCY)
         self.clueLabel.setStyleSheet("QLabel { color : %s }" % color)
+        
+    def getColor(self):
+        """ Return color """
+        if self.clue.distance is None:
+            return "0, 0, 0"
+        elif self.clue.distance <= 1:
+            return "244, 0, 0"
+        elif self.clue.distance > 1 and self.clue.distance < 4:
+            return "244, 244, 0"
+        elif self.clue.distance >= 4:
+            return "0, 154, 0"
