@@ -19,41 +19,43 @@ class GridSquare:
     def scan(self, drone):
         """ Scan the Grid Square """
         self.scanned = True
-        if self.mined():
+        if self.hasGroundContent():
             self.groundContent.scan(drone)
         self.clue.populate(drone.minefield, self.row, self.column)
         
     def defuse(self, drone):
         """ Defuse the Grid Square """
-        if self.mined():
+        if self.hasGroundContent():
             self.groundContent.defuse(drone)
             
     def defuseCarefully(self, drone):
         """ Defuse the Grid Square """
-        if self.mined():
+        if self.hasGroundContent():
             self.groundContent.defuseCarefully(drone)
             
     def getGroundContent(self):
-        if self.mined():
+        if self.hasGroundContent():
             return self.groundContent
+            
+    def hasGroundContent(self):
+        """ Return if the Grid Square has Ground Content """
+        return self.groundContent is not None
             
     def mined(self):
         """ Return if the Square has an ative Mine """
-        return self.groundContent is not None
-        # for contentObject in self.contents:
-            # if not contentObject.defused:
-                # return True
-        # return False
+        if self.hasGroundContent():
+            return self.groundContent.isMine()
+        return False
         
     def reversed(self):
         """ Return if the Grid Square causes readings to be reversed """
-        if self.mined():
+        if self.hasGroundContent():
             return self.groundContent.reverseReadings
         return False
         
     def fragile(self):
         """ Returns if the square's contents are fragile """
-        if self.mined():
+        if self.hasGroundContent():
             return self.groundContent.fragile
         return False
         
