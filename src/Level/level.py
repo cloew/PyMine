@@ -52,7 +52,7 @@ class Level:
         """ Return if the player has won the level """
         won = True
         for content in self.contentItems:
-            if not content.deactivated():
+            if not content.isDeactivated():
                 return False
         else:
             return self.drone.power >= 0
@@ -62,6 +62,6 @@ class Level:
         """ Returns the number of mines remaining to be defused """
         minesRemaining = 0
         for content in self.contentItems:
-            if not content.deactivated():
+            if not content.isDeactivated():
                 minesRemaining += 1
         return minesRemaining

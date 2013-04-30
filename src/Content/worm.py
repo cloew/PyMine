@@ -10,6 +10,15 @@ class Worm(GridSquareContent):
     def __init__(self):
         """ Initialize the Worm """
         self.tick = 0
+        self.deactivated = False
+        
+    def isDeactivated(self):
+        """ Return if the content is deactivated """
+        return self.deactivated
+        
+    def hitByEMP(self, drone):
+        """ Deactivat the Worm """
+        self.deactivated = True
         
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """

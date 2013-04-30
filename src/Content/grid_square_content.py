@@ -5,7 +5,7 @@ class GridSquareContent:
     powerRating = 0
     reverseReadings = False
     
-    def deactivated(self):
+    def isDeactivated(self):
         """ Return if the content is deactivated """
         return True
     
