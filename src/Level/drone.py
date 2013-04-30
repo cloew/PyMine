@@ -30,6 +30,11 @@ class Drone:
         self.minefield.defuseCarefully(self.row, self.column, self)
         TheGameEngine.updateUI()
         
+    def performEMP(self):
+        """ Performan EMP Blast """
+        self.minefield.performEMP(self.row, self.column, self)
+        TheGameEngine.updateUI()
+        
     def destroy(self):
         """ Destroy the drone """
         self.destroyed = True

@@ -15,3 +15,16 @@ class GridSquareContent:
         
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
+        
+    # Drone Action Responses
+    def scan(self, drone):
+        """ Do nothing """
+        
+    def defuse(self, drone):
+        """ Do nothing """
+
+    def defuseCarefully(self, drone):
+        """ Do nothing """
+    
+    def hitByEMP(self, drone):
+        """ Do Nothing """

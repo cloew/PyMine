@@ -11,15 +11,6 @@ class Worm(GridSquareContent):
         """ Initialize the Worm """
         self.tick = 0
         
-    def scan(self, drone):
-        """ Do nothing """
-        
-    def defuse(self, drone):
-        """ Do nothing """
-
-    def defuseCarefully(self, drone):
-        """ Do nothing """
-        
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
         self.attack(minefield, drone)
@@ -47,7 +38,6 @@ class Worm(GridSquareContent):
                 square.setGroundContent(self)
                 self.gridSquare = square
                 break
-        #print "Worm in Grid Square:", self.gridSquare.row, self.gridSquare.column
         
     def attack(self, minefield, drone):
         """ Check if the worm should try to attack the drone """

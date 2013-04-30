@@ -25,6 +25,12 @@ class Minefield:
     def defuseCarefully(self, row, column, drone):
         """ Defuse the given Grid Square """
         self.getSquare(row, column).defuseCarefully(drone)
+        
+    def performEMP(self, row, column, drone):
+        """ Performan EMP Blast """
+        centerSquare = self.getSquare(row, column)
+        for square in self.getAdjacentSquares(centerSquare, includeCenter=True):
+            square.hitByEMP(drone)
     
     def addMine(self, mine):
         """ Adds a Mine to the Minefield """

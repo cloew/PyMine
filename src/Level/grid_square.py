@@ -33,6 +33,11 @@ class GridSquare:
         if self.hasGroundContent():
             self.groundContent.defuseCarefully(drone)
             
+    def hitByEMP(self, drone):
+        """ The Square is hit by an EMP """
+        if self.hasGroundContent():
+            self.groundContent.hitByEMP(drone)
+            
     def getGroundContent(self):
         if self.hasGroundContent():
             return self.groundContent
