@@ -52,7 +52,7 @@ class Level:
         """ Return if the player has won the level """
         won = True
         for content in self.contentItems:
-            if not content.defused:
+            if not content.deactivated():
                 return False
         else:
             return self.drone.power >= 0
