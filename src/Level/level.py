@@ -34,7 +34,7 @@ class Level:
     def performGameCycle(self):
         """ Perform a single Game Cycle """
         for content in self.contentItems:
-            content.performGameCycle(self.minefield)
+            content.performGameCycle(self.minefield, self.drone)
         
     def lost(self):
         """ Return if the player has lost the level """

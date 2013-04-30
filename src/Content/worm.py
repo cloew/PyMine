@@ -20,7 +20,7 @@ class Worm(GridSquareContent):
     def defuseCarefully(self, drone):
         """ Do nothing """
         
-    def performGameCycle(self, minefield):
+    def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
         if (self.tick % self.cyclesToMove) == 0:
             self.move(minefield)

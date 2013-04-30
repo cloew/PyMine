@@ -13,5 +13,5 @@ class GridSquareContent:
         """ Return if the Grid Square Content is a mine """
         return False
         
-    def performGameCycle(self, minefield):
+    def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
