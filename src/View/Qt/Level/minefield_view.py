@@ -17,15 +17,15 @@ class MinefieldView(QFrame):
         self.drone = drone
         self.minefield_grid = MinefieldGridView(minefield, drone, parent=self)
         
-        self.x = GridSquareFrame.GRID_SQUARE_SIZE/2
-        self.y = GridSquareFrame.GRID_SQUARE_SIZE/2
+        self.borderWidth = GridSquareFrame.GRID_SQUARE_SIZE/2
+        self.borderHeight = GridSquareFrame.GRID_SQUARE_SIZE/2
         
         self.setup()
         
         self.color = QColor(200, 200, 200)
-        #self.setStyleSheet("QFrame { background-color: %s }" % self.color.name()) 
+        #self.setStyleSheet("QFrame { background-color: rgba(200, 200, 200, 100%) }")
         self.resize(self.getWidth(), self.getHeight())
-        self.minefield_grid.move(self.x, self.y)
+        self.minefield_grid.move(self.borderWidth, self.borderHeight)
         #self.minefield_grid.raise_()
         
     def setup(self):
