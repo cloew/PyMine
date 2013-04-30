@@ -36,6 +36,8 @@ class Level:
         
     def performGameCycle(self):
         """ Perform a single Game Cycle """
+        for mine in self.mines:
+            mine.performGameCycle(self.minefield)
         
     def lost(self):
         """ Return if the player has lost the level """

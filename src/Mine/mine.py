@@ -21,3 +21,6 @@ class Mine:
     def defuseCarefully(self, drone):
         """ Defuse the Mine carefully """
         self.defuse(drone)
+        
+    def performGameCycle(self, minefield):
+        """ Perform the Game Cycle """
