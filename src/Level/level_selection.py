@@ -3,6 +3,7 @@ from level import Level
 from Mine.mine import Mine
 from Mine.fragile_mine import FragileMine
 from Mine.reverse_mine import ReverseMine
+from Mine.worm import Worm
 
 class LevelSelection:
     """ Model for selecting a Level """
@@ -13,7 +14,8 @@ class LevelSelection:
                        Level("Level 2", 4, 5, {Mine:4, ReverseMine:1}), 
                        Level("Level 3", 4, 5, {Mine:10, ReverseMine:2}),
                        Level("Level 4", 4, 5, {Mine:8, ReverseMine:2, FragileMine:1}),
-                       Level("Level 5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1})]
+                       Level("Level 5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1}),
+                       Level("Level 6", 5, 6, {Mine:8, ReverseMine:2, Worm:1})]
         self.selectedIndex = 0
         
     def performGameCycle(self):
