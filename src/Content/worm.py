@@ -9,7 +9,6 @@ class Worm(GridSquareContent):
     
     def __init__(self):
         """ Initialize the Worm """
-        self.defused = False
         self.tick = 0
         
     def scan(self, drone):
