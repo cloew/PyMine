@@ -1,9 +1,8 @@
+from grid_square_content import GridSquareContent
 
-class Mine:
+class Mine(GridSquareContent):
     """ Represents a Mine in the Game """
-    fragile = None
     powerRating = 5
-    reverseReadings = False
     
     def __init__(self):
         """ Initialize the Mine """
@@ -22,5 +21,6 @@ class Mine:
         """ Defuse the Mine carefully """
         self.defuse(drone)
         
-    def performGameCycle(self, minefield):
-        """ Perform the Game Cycle """
+    def isMine(self):
+        """ Return if the Grid Square Content is a mine """
+        return True 

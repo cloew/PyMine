@@ -1,12 +1,16 @@
+from grid_square_content import GridSquareContent
+
 from random import choice
 
-class Worm:
+class Worm(GridSquareContent):
     """ Represents the Worm Enemy """
     powerRating = 5
+    cyclesToMove = 5
     
     def __init__(self):
         """ Initialize the Worm """
         self.defused = False
+        self.tick = 0
         
     def scan(self, drone):
         """ Do nothing """
@@ -19,7 +23,10 @@ class Worm:
         
     def performGameCycle(self, minefield):
         """ Perform the Game Cycle """
-        self.move(minefield)
+        if (self.tick % self.cyclesToMove) == 0:
+            self.move(minefield)
+            self.tick %= self.cyclesToMove
+        self.tick += 1
         
     def move(self, minefield):
         """ Move the worm in the minefield """
@@ -36,4 +43,4 @@ class Worm:
                 square.setGroundContent(self)
                 self.gridSquare = square
                 break
-        print "Worm in Grid Square:", self.gridSquare.row, self.gridSquare.column
+        #print "Worm in Grid Square:", self.gridSquare.row, self.gridSquare.column

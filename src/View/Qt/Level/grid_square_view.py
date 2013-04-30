@@ -1,8 +1,8 @@
 from clue_view import ClueView
 
-from Mine.mine import Mine
-from Mine.fragile_mine import FragileMine
-from Mine.reverse_mine import ReverseMine
+from Content.mine import Mine
+from Content.fragile_mine import FragileMine
+from Content.reverse_mine import ReverseMine
 
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 from View.Qt.Mine.mine_view import MineView
