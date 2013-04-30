@@ -22,10 +22,15 @@ class Worm(GridSquareContent):
         
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
+        self.attack(minefield, drone)
+        self.tryToMove(minefield, drone)
+        self.tick %= self.cyclesToMove
+        self.tick += 1
+        
+    def tryToMove(self, minefield, drone):
+        """ Try to move the worm """
         if (self.tick % self.cyclesToMove) == 0:
             self.move(minefield)
-            self.tick %= self.cyclesToMove
-        self.tick += 1
         
     def move(self, minefield):
         """ Move the worm in the minefield """
@@ -43,3 +48,12 @@ class Worm(GridSquareContent):
                 self.gridSquare = square
                 break
         #print "Worm in Grid Square:", self.gridSquare.row, self.gridSquare.column
+        
+    def attack(self, minefield, drone):
+        """ Check if the worm should try to attack the drone """
+        #if self.droneInSquare(drone):
+            #drone.destroy()
+        
+    def droneInSquare(self, drone):
+        """ Returns if the drone and the worm share the same grid square """
+        return self.gridSquare.row == drone.row and self.gridSquare.column == drone.column
