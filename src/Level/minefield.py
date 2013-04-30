@@ -35,7 +35,7 @@ class Minefield:
             if square.mined():
                 continue
             else:
-                square.addContent(mine)
+                square.setGroundContent(mine)
                 break
         
     def getSquare(self, row, column):

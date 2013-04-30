@@ -12,8 +12,8 @@ class GridSquare:
         
         self.groundContent = None
         
-    def addContent(self, contentObject):
-        """ Add the content object to the squares contents """
+    def setGroundContent(self, contentObject):
+        """ Set the Ground Content """
         self.groundContent = contentObject
         
     def scan(self, drone):
