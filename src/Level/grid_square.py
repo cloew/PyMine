@@ -10,51 +10,51 @@ class GridSquare:
         self.scanned = False
         self.clue = Clue()
         
-        self.contents = []
+        self.groundContent = None
         
     def addContent(self, contentObject):
         """ Add the content object to the squares contents """
-        self.contents.append(contentObject)
+        self.groundContent = contentObject
         
     def scan(self, drone):
         """ Scan the Grid Square """
         self.scanned = True
-        for contentObject in self.contents:
-            contentObject.scan(drone)
+        if self.mined():
+            self.groundContent.scan(drone)
         self.clue.populate(drone.minefield, self.row, self.column)
         
     def defuse(self, drone):
         """ Defuse the Grid Square """
-        for contentObject in self.contents:
-            contentObject.defuse(drone)
+        if self.mined():
+            self.groundContent.defuse(drone)
             
     def defuseCarefully(self, drone):
         """ Defuse the Grid Square """
-        for contentObject in self.contents:
-            contentObject.defuseCarefully(drone)
-            
-    def getContent(self):
         if self.mined():
-            return self.contents[0]
+            self.groundContent.defuseCarefully(drone)
+            
+    def getGroundContent(self):
+        if self.mined():
+            return self.groundContent
             
     def mined(self):
         """ Return if the Square has an ative Mine """
-        return self.contents != []
-        for contentObject in self.contents:
-            if not contentObject.defused:
-                return True
-        return False
+        return self.groundContent is not None
+        # for contentObject in self.contents:
+            # if not contentObject.defused:
+                # return True
+        # return False
         
     def reversed(self):
         """ Return if the Grid Square causes readings to be reversed """
         if self.mined():
-            return self.contents[0].reverseReadings
+            return self.groundContent.reverseReadings
         return False
         
     def fragile(self):
         """ Returns if the square's contents are fragile """
         if self.mined():
-            return self.contents[0].fragile
+            return self.groundContent.fragile
         return False
         
     def __repr__(self):

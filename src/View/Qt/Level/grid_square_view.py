@@ -30,7 +30,7 @@ class GridSquareView(GridSquareFrame):
     def setupMineView(self):
         """ Setup Mine View """
         if self.gridSquare.mined():
-            content = self.gridSquare.getContent()
+            content = self.gridSquare.getGroundContent()
             if content.__class__ in self.MineToViewDictionary:
                 self.mineView = self.MineToViewDictionary[content.__class__](content, self)
             else:
