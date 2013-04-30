@@ -26,18 +26,6 @@ class Clue:
                 continue # Ignore the current grid Location, because we only want to examine adjacent cells
             if square.mined():
                 self.numberOfAdjacentMines += 1
-
-        # for row in (gridRow-1, gridRow, gridRow+1):
-            # for column in (gridColumn-1, gridColumn, gridColumn+1):
-                # square = minefield.getSquare(row, column)
-                # if square is None:
-                    # continue # If there is no square at this location, skip to the next one
-                # if square.reversed():
-                        # self.reverse = True
-                # if row == gridRow and column == gridColumn:
-                    # continue # Ignore the current grid Location, because we only want to examine adjacent cells
-                # if square.mined():
-                    # self.numberOfAdjacentMines += 1
                     
     def findFragileMines(self, minefield, gridRow, gridColumn):
         """ Get the Fragile mine adjacency rating """
