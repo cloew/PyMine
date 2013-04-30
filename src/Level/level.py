@@ -62,6 +62,6 @@ class Level:
         """ Returns the number of mines remaining to be defused """
         minesRemaining = 0
         for content in self.contentItems:
-            if not content.defused:
+            if not content.deactivated():
                 minesRemaining += 1
         return minesRemaining

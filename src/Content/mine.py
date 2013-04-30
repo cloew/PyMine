@@ -21,6 +21,10 @@ class Mine(GridSquareContent):
         """ Defuse the Mine carefully """
         self.defuse(drone)
         
+    def deactivated(self):
+        """ Return if the content is deactivated """
+        return self.defused
+        
     def isMine(self):
         """ Return if the Grid Square Content is a mine """
         return True 
