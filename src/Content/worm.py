@@ -36,7 +36,7 @@ class Worm(GridSquareContent):
             if len(adjacentSquares) == 0:
                 break
             square = choice(adjacentSquares)
-            if square.mined():
+            if square.hasGroundContent():
                 adjacentSquares.remove(square)
             else:
                 self.gridSquare.groundContent = None
