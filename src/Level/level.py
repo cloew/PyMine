@@ -17,24 +17,24 @@ class Level:
         self.minefield = Minefield(self.rows, self.columns)
         self.drone = Drone(self.getPowerRating(), self.minefield)
         
-        self.mines = []
-        for mineClass in self.contents:
-            for i in range(self.contents[mineClass]):
-                mine = mineClass()
-                self.mines.append(mine)
-                self.minefield.addMine(mine)
+        self.contentItems = []
+        for contentClass in self.contents:
+            for i in range(self.contents[contentClass]):
+                content = contentClass()
+                self.contentItems.append(content)
+                self.minefield.addMine(content)
             
     def getPowerRating(self):
         """ Returns the amount of power the drone should have on the level """
         powerRating = self.minefield.rowCount()*self.minefield.columnCount()*2
-        for mineClass in self.contents:
-            powerRating += self.contents[mineClass]*mineClass.powerRating
+        for contentClass in self.contents:
+            powerRating += self.contents[contentClass]*contentClass.powerRating
         return powerRating
         
     def performGameCycle(self):
         """ Perform a single Game Cycle """
-        for mine in self.mines:
-            mine.performGameCycle(self.minefield)
+        for content in self.contentItems:
+            content.performGameCycle(self.minefield)
         
     def lost(self):
         """ Return if the player has lost the level """
@@ -51,8 +51,8 @@ class Level:
     def won(self):
         """ Return if the player has won the level """
         won = True
-        for mine in self.mines:
-            if not mine.defused:
+        for content in self.contentItems:
+            if not content.defused:
                 return False
         else:
             return self.drone.power >= 0
@@ -61,7 +61,7 @@ class Level:
     def getNumberOfMinesRemaining(self):
         """ Returns the number of mines remaining to be defused """
         minesRemaining = 0
-        for mine in self.mines:
-            if not mine.defused:
+        for content in self.contentItems:
+            if not content.defused:
                 minesRemaining += 1
         return minesRemaining
