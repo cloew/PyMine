@@ -40,8 +40,8 @@ class Worm(GridSquareContent):
             if len(adjacentSquares) == 0:
                 break
             square = choice(adjacentSquares)
-            if square.hasGroundContent():
-                adjacentSquares.remove(square)
+            if square.hasGroundContent() or square.column == 0:
+                adjacentSquares.remove(square) # Can't move to a square that already has ground content or is in the safe zone
             else:
                 self.gridSquare.groundContent = None
                 square.setGroundContent(self)
@@ -52,6 +52,7 @@ class Worm(GridSquareContent):
     def attack(self, minefield, drone):
         """ Check if the worm should try to attack the drone """
         #if self.droneInSquare(drone):
+            #print "Worm In Square with Drone"
             #drone.destroy()
         
     def droneInSquare(self, drone):
