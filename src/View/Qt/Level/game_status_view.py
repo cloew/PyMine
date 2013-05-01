@@ -43,10 +43,6 @@ class GameStatusView(QFrame):
             label.setFont(self.font)
             self.remainingDefensesLabels[defenseClass] = label
             labelNumber += 1
-            
-        # self.remainingMinesLabel = QLabel("", self)
-        # self.remainingMinesLabel.move(32, 64)
-        # self.remainingMinesLabel.setFont(self.font)
         
     def updateView(self):
         """ Update the View """
@@ -64,5 +60,3 @@ class GameStatusView(QFrame):
         for defenseClass in remainingDefenses:
             label = self.remainingDefensesLabels[defenseClass]
             label.setText("{0} Left: {1}".format(defenseClass.__name__, remainingDefenses[defenseClass]))
-        
-        #self.remainingMinesLabel.setText("Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))

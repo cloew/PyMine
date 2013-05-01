@@ -29,7 +29,7 @@ class Worm(GridSquareContent):
         
     def tryToMove(self, minefield, drone):
         """ Try to move the worm """
-        if (self.tick % self.cyclesToMove) == 0:
+        if not self.deactivated and (self.tick % self.cyclesToMove) == 0:
             self.move(minefield)
         
     def move(self, minefield):
