@@ -41,7 +41,6 @@ class Minefield:
             if square.hasGroundContent():
                 continue
             else:
-                print mine.__class__, row, column
                 square.setGroundContent(mine)
                 mine.gridSquare = square
                 break
