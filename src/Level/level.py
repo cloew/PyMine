@@ -33,8 +33,9 @@ class Level:
         
     def performGameCycle(self):
         """ Perform a single Game Cycle """
-        for content in self.contentItems:
-            content.performGameCycle(self.minefield, self.drone)
+        if not self.finished():
+            for content in self.contentItems:
+                content.performGameCycle(self.minefield, self.drone)
         
     def lost(self):
         """ Return if the player has lost the level """
@@ -58,6 +59,10 @@ class Level:
             return self.drone.power >= 0
         return won
         
+    def finished(self):
+        """ Return if the level is finished """
+        return self.lost() or self.won()
+        
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """
         remainingDefenses = {}
@@ -69,11 +74,3 @@ class Level:
                 remainingDefenses[content.__class__] += 1
             
         return remainingDefenses
-        
-    def getNumberOfMinesRemaining(self):
-        """ Returns the number of mines remaining to be defused """
-        minesRemaining = 0
-        for content in self.contentItems:
-            if not content.isDeactivated():
-                minesRemaining += 1
-        return minesRemaining
