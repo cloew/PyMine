@@ -17,7 +17,7 @@ class WormView(GridSquareFrame):
     def loadMineImages(self):
         """ Load the Mine images """
         self.mine_image = LoadImage(self.REGULAR_IMAGE_FILENAME, scaledXSize=64, scaledYSize=64)
-        SetImageTransparency(self.mine_image, 127)
+        SetImageTransparency(self.mine_image, 90)
         self.mine_label = GetImageLabelFromImage(self.mine_image, parent=self)
         self.mine_label.move(0, 0)
         self.mine_label.resize(64, 64)

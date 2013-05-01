@@ -9,11 +9,12 @@ def LoadImage(imageFilename, scaledXSize=None, scaledYSize=None):
     else:
         return unscaled_image
         
-def SetImageTransparency(image, transparency):
+def SetImageTransparency(image, transparencyPercentage):
     """ Set the Image Transparency to the value provided """
     alpha = QImage(image)
     painter = QPainter(alpha)
-    painter.fillRect(alpha.rect(), QColor(transparency, transparency, transparency))
+    alphaValue = int(transparencyPercentage*255/100)
+    painter.fillRect(alpha.rect(), QColor(alphaValue, alphaValue, alphaValue))
     painter.end()
     image.setAlphaChannel(alpha)
         
