@@ -41,6 +41,9 @@ class GridSquareView(GridSquareFrame):
         
     def updateView(self):
         """ Update the Grid Square View """
+        self.removeOldContentView()
+        self.setupContentView()
+        
         if self.gridSquare.scanned:
             self.grid_square_label.setVisible(False)
             self.scanned_grid_square_label.setVisible(True)

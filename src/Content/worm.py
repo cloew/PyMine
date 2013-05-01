@@ -5,8 +5,8 @@ from random import choice
 class Worm(GridSquareContent):
     """ Represents the Worm Enemy """
     powerRating = 5
-    cyclesToMove = 5
-    cyclesToAttack = 10
+    cyclesToMove = 40
+    cyclesToAttack = 80
     
     def __init__(self):
         """ Initialize the Worm """
@@ -31,7 +31,7 @@ class Worm(GridSquareContent):
         
     def tryToMove(self, minefield, drone):
         """ Try to move the worm """
-        if (self.moveTick % self.cyclesToMove) == 0:
+        if not self.attacking and (self.moveTick % self.cyclesToMove) == 0:
             self.move(minefield)
         self.moveTick %= self.cyclesToMove
         self.moveTick += 1
@@ -60,6 +60,7 @@ class Worm(GridSquareContent):
         if self.attacking:
             if (self.attackTick % self.cyclesToAttack) == 0:
                 self.attack(minefield, drone)
+                self.attacking = False
             self.attackTick %= self.cyclesToAttack
             self.attackTick += 1
         
