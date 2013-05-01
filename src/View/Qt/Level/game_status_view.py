@@ -19,12 +19,12 @@ class GameStatusView(QFrame):
         """ Setup the View """
         self.setupFont()
         self.setupPowerLabel()
-        self.setupRemainingMinesLabel()
+        self.setupRemainingDefensesLabels()
         
     def setupFont(self):
         """ Setup the Font """
         self.font = QFont()
-        self.font.setPointSize(24)
+        self.font.setPointSize(18)
         
     def setupPowerLabel(self):
         """ Setup the Power Label """
@@ -32,21 +32,37 @@ class GameStatusView(QFrame):
         self.powerLabel.move(32, 16)
         self.powerLabel.setFont(self.font)
         
-    def setupRemainingMinesLabel(self):
-        """ Setup the Remaining Mines Label """
-        self.remainingMinesLabel = QLabel("", self)
-        self.remainingMinesLabel.move(32, 64)
-        self.remainingMinesLabel.setFont(self.font)
+    def setupRemainingDefensesLabels(self):
+        """ Setup the Remaining Defenses Labels """
+        self.remainingDefensesLabels = {}
+        labelNumber = 1
+        remainingDefenses = self.level.getRemainingDefenses()
+        for defenseClass in remainingDefenses:
+            label = QLabel("", self)
+            label.move(32, 16+48*labelNumber)
+            label.setFont(self.font)
+            self.remainingDefensesLabels[defenseClass] = label
+            labelNumber += 1
+            
+        # self.remainingMinesLabel = QLabel("", self)
+        # self.remainingMinesLabel.move(32, 64)
+        # self.remainingMinesLabel.setFont(self.font)
         
     def updateView(self):
         """ Update the View """
         self.updatePowerLabel()
-        self.updateRemainingMinesLabel()
+        self.updateRemainingDefensesLabels()
         
     def updatePowerLabel(self):
         """ Update the Power Label """
         self.powerLabel.setText("Power: {0}".format(self.level.drone.power))
         
-    def updateRemainingMinesLabel(self):
+    def updateRemainingDefensesLabels(self):
         """ Update the Remaining Mines Label """
-        self.remainingMinesLabel.setText("Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))
+        remainingDefenses = self.level.getRemainingDefenses()
+        
+        for defenseClass in remainingDefenses:
+            label = self.remainingDefensesLabels[defenseClass]
+            label.setText("{0} Left: {1}".format(defenseClass.__name__, remainingDefenses[defenseClass]))
+        
+        #self.remainingMinesLabel.setText("Mines Left: {0}".format(self.level.getNumberOfMinesRemaining()))
