@@ -2,7 +2,7 @@ from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 class WormView(GridSquareFrame):
     """ Represents the Worm """
-    REGULAR_IMAGE_FILENAME = "Mine1.png"
+    REGULAR_IMAGE_FILENAME = "Worm.png"
     
     def __init__(self, worm, parent=None):
         """ Initialize the worm view """
