@@ -1,4 +1,7 @@
+from View.Qt.image_loader import GetImageLabelFromImage, LoadImage, SetImageTransparency
 from View.Qt.Level.grid_square_frame import GridSquareFrame
+
+from PySide.QtGui import QColor, QImage, QPainter, QPixmap
 
 class WormView(GridSquareFrame):
     """ Represents the Worm """
@@ -13,7 +16,12 @@ class WormView(GridSquareFrame):
     
     def loadMineImages(self):
         """ Load the Mine images """
-        self.mine_label = self.loadGridSquareSizedImage(self.REGULAR_IMAGE_FILENAME)
+        self.mine_image = LoadImage(self.REGULAR_IMAGE_FILENAME, scaledXSize=64, scaledYSize=64)
+        SetImageTransparency(self.mine_image, 127)
+        self.mine_label = GetImageLabelFromImage(self.mine_image, parent=self)
+        self.mine_label.move(0, 0)
+        self.mine_label.resize(64, 64)
+        #self.mine_label = self.loadGridSquareSizedImage(self.REGULAR_IMAGE_FILENAME)
         
     def updateView(self):
         """ Update the View """

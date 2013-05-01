@@ -1,4 +1,4 @@
-from PySide.QtGui import QFrame, QImage, QLabel, QMatrix, QPixmap
+from PySide.QtGui import QColor, QFrame, QImage, QLabel, QMatrix, QPainter, QPixmap
 
 def LoadImage(imageFilename, scaledXSize=None, scaledYSize=None):
     """ Loads the Image and scales it if necessary """
@@ -8,6 +8,14 @@ def LoadImage(imageFilename, scaledXSize=None, scaledYSize=None):
         return unscaled_image.scaled(scaledXSize, scaledYSize)
     else:
         return unscaled_image
+        
+def SetImageTransparency(image, transparency):
+    """ Set the Image Transparency to the value provided """
+    alpha = QImage(image)
+    painter = QPainter(alpha)
+    painter.fillRect(alpha.rect(), QColor(transparency, transparency, transparency))
+    painter.end()
+    image.setAlphaChannel(alpha)
         
 def GetPixelMapFromImage(image):
     """ Returns a QpixelMap of the QImage given """
