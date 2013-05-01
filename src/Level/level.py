@@ -58,6 +58,18 @@ class Level:
             return self.drone.power >= 0
         return won
         
+    def getRemainingDefenses(self):
+        """ Return the number of Remaining defenses """
+        remainingDefenses = {}
+        for contentClass in self.contents:
+            remainingDefenses[contentClass] = 0
+        
+        for content in self.contentItems:
+            if not content.isDeactivated():
+                remainingDefenses[content.__class__] += 1
+            
+        return remainingDefenses
+        
     def getNumberOfMinesRemaining(self):
         """ Returns the number of mines remaining to be defused """
         minesRemaining = 0
