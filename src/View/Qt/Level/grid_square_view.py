@@ -70,7 +70,7 @@ class GridSquareView(GridSquareFrame):
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
-        if self.gridSquare.mined():
+        if self.gridSquare.hasGroundContent() and self.contentView is not None:
                 self.contentView.setVisible(True)
             
     def getXCoordinate(self):
