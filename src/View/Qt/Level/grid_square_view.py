@@ -43,6 +43,7 @@ class GridSquareView(GridSquareFrame):
         """ Update the Grid Square View """
         self.removeOldContentView()
         self.setupContentView()
+        self.clueView.raise_()
         
         if self.gridSquare.scanned:
             self.grid_square_label.setVisible(False)
