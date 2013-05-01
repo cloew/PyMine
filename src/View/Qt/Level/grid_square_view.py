@@ -15,16 +15,16 @@ class GridSquareView(GridSquareFrame):
         self.clueView = None
         self.loadGridSquareImages()
         
-        self.setupMineView()
+        self.setupContentView()
         self.setupClueView(self.gridSquare.clue)
         
-    def setupMineView(self):
+    def setupContentView(self):
         """ Setup Mine View """
-        if self.gridSquare.mined():
+        if self.gridSquare.hasGroundContent():
             content = self.gridSquare.getGroundContent()
-            self.mineView = GetViewForContent(content, self)
+            self.contentView = GetViewForContent(content, self)
         else:
-            self.mineView = None
+            self.contentView = None
             
     def setupClueView(self, clue):
         """ Setup the Clue View """
@@ -50,28 +50,28 @@ class GridSquareView(GridSquareFrame):
             self.grid_square_label.setVisible(True)
             self.scanned_grid_square_label.setVisible(False)
                 
-        if self.gridSquare.mined():
-            self.mineView.updateView()
+        if self.gridSquare.hasGroundContent() and self.contentView is not None:
+            self.contentView.updateView()
             
     def representNewGridSquare(self, gridSquare):
         """ Tells the Grid Square View to represent a new Grid Square """
         self.gridSquare = gridSquare
-        self.removeOldMineView()
-        self.setupMineView()
+        self.removeOldContentView()
+        self.setupContentView()
         self.setupClueView(gridSquare.clue)
         self.updateView()
         self.clueView.updateView()
         
-    def removeOldMineView(self):
+    def removeOldContentView(self):
         """ Remove the old Mine View, if any """
-        if self.mineView is not None:
-            self.mineView.setParent(None)
-            self.mineView = None
+        if self.contentView is not None:
+            self.contentView.setParent(None)
+            self.contentView = None
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
         if self.gridSquare.mined():
-                self.mineView.setVisible(True)
+                self.contentView.setVisible(True)
             
     def getXCoordinate(self):
         """ Return the X Coordinate of the Grid Square """

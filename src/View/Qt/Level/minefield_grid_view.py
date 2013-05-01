@@ -27,7 +27,6 @@ class MinefieldGridView(QFrame):
         """ Setup the View """
         self.setupMineFieldSquares()
         self.setupDrone()
-        #self.setupArrows()
         
     def setupMineFieldSquares(self):
         """ Setup the Mine Field Squares """
