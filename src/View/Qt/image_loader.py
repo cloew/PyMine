@@ -19,7 +19,7 @@ def SetImageTransparency(image, transparencyPercentage):
     image.setAlphaChannel(alpha)
         
 def GetPixelMapFromImage(image):
-    """ Returns a QpixelMap of the QImage given """
+    """ Returns a QPixMap of the QImage given """
     image_pixmap = QPixmap()
     image_pixmap.convertFromImage(image)
     return image_pixmap
