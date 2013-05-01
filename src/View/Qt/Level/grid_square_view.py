@@ -4,10 +4,12 @@ from Content.mine import Mine
 from Content.fragile_mine import FragileMine
 from Content.reverse_mine import ReverseMine
 
+from View.Qt.Content.content_view_factory import GetViewForContent
 from View.Qt.Level.grid_square_frame import GridSquareFrame
-from View.Qt.Mine.mine_view import MineView
-from View.Qt.Mine.fragile_mine_view import FragileMineView
-from View.Qt.Mine.reverse_mine_view import ReverseMineView
+
+from View.Qt.Content.mine_view import MineView
+from View.Qt.Content.fragile_mine_view import FragileMineView
+from View.Qt.Content.reverse_mine_view import ReverseMineView
 
 class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
@@ -31,10 +33,7 @@ class GridSquareView(GridSquareFrame):
         """ Setup Mine View """
         if self.gridSquare.mined():
             content = self.gridSquare.getGroundContent()
-            if content.__class__ in self.MineToViewDictionary:
-                self.mineView = self.MineToViewDictionary[content.__class__](content, self)
-            else:
-                self.mineView = MineView(content, self)
+            self.mineView = GetViewForContent(content, self)
         else:
             self.mineView = None
             
