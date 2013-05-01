@@ -6,10 +6,13 @@ class Worm(GridSquareContent):
     """ Represents the Worm Enemy """
     powerRating = 5
     cyclesToMove = 5
+    cyclesToAttack = 10
     
     def __init__(self):
         """ Initialize the Worm """
-        self.tick = 0
+        self.attackTick = 1
+        self.moveTick = 0
+        self.attacking = False
         self.deactivated = False
         
     def isDeactivated(self):
@@ -22,15 +25,16 @@ class Worm(GridSquareContent):
         
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
-        self.attack(minefield, drone)
-        self.tryToMove(minefield, drone)
-        self.tick %= self.cyclesToMove
-        self.tick += 1
+        if not self.deactivated:
+            self.tryToAttack(minefield, drone)
+            self.tryToMove(minefield, drone)
         
     def tryToMove(self, minefield, drone):
         """ Try to move the worm """
-        if not self.deactivated and (self.tick % self.cyclesToMove) == 0:
+        if (self.moveTick % self.cyclesToMove) == 0:
             self.move(minefield)
+        self.moveTick %= self.cyclesToMove
+        self.moveTick += 1
         
     def move(self, minefield):
         """ Move the worm in the minefield """
@@ -47,12 +51,22 @@ class Worm(GridSquareContent):
                 square.setGroundContent(self)
                 self.gridSquare = square
                 break
+                
+    def tryToAttack(self, minefield, drone):
+        """ Try to have the worm attack the drone """
+        if not self.attacking:
+            self.attacking = self.droneInSquare(drone)
+        
+        if self.attacking:
+            if (self.attackTick % self.cyclesToAttack) == 0:
+                self.attack(minefield, drone)
+            self.attackTick %= self.cyclesToAttack
+            self.attackTick += 1
         
     def attack(self, minefield, drone):
         """ Check if the worm should try to attack the drone """
-        #if self.droneInSquare(drone):
-            #print "Worm In Square with Drone"
-            #drone.destroy()
+        if self.droneInSquare(drone):
+            drone.destroy()
         
     def droneInSquare(self, drone):
         """ Returns if the drone and the worm share the same grid square """
