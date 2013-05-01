@@ -26,7 +26,7 @@ class WormView(GridSquareFrame):
             self.setLabelTransparency(100)
             self.setVisible(True)
         elif self.worm.attacking:
-            
+            self.setLabelTransparency(self.worm.attackTick*100/self.worm.cyclesToAttack)
             self.setVisible(True)
         else:
             self.setVisible(False)
