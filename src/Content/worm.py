@@ -20,7 +20,7 @@ class Worm(GridSquareContent):
         return self.deactivated
         
     def hitByEMP(self, drone):
-        """ Deactivat the Worm """
+        """ Deactivate the Worm """
         self.deactivated = True
         
     def performGameCycle(self, minefield, drone):

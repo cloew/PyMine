@@ -10,8 +10,7 @@ class Mine(GridSquareContent):
         
     def scan(self, drone):
         """ Scan the mine and destroy the drone """
-        if not self.defused:
-            drone.destroy()
+        self.tryToDetonate(drone)
         
     def defuse(self, drone):
         """ Defuse the Mine """
@@ -20,6 +19,15 @@ class Mine(GridSquareContent):
     def defuseCarefully(self, drone):
         """ Defuse the Mine carefully """
         self.defuse(drone)
+        
+    def hitByEMP(self, drone):
+        """ Deactivat the Worm """
+        self.tryToDetonate(drone)
+        
+    def tryToDetonate(self, drone):
+        """ Try to detonate the mine """
+        if not self.defused:
+            drone.destroy()
         
     def isDeactivated(self):
         """ Return if the content is deactivated """
