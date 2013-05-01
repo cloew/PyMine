@@ -38,9 +38,10 @@ class Minefield:
             row = randint(0, self.rowCount()-1)
             column = randint(1, self.columnCount()-1)
             square = self.getSquare(row, column)
-            if square.mined():
+            if square.hasGroundContent():
                 continue
             else:
+                print mine.__class__, row, column
                 square.setGroundContent(mine)
                 mine.gridSquare = square
                 break
