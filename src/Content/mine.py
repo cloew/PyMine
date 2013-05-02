@@ -22,7 +22,7 @@ class Mine(GridSquareContent):
         
     def hitByEMP(self, drone):
         """ Deactivat the Worm """
-        #self.tryToDetonate(drone)
+        self.tryToDetonate(drone)
         
     def tryToDetonate(self, drone):
         """ Try to detonate the mine """
