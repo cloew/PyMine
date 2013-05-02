@@ -1,5 +1,6 @@
 from grid_square_content import GridSquareContent
 
+from nytram.core.game_engine import TheGameEngine
 from random import choice
 
 class Worm(GridSquareContent):
@@ -50,6 +51,7 @@ class Worm(GridSquareContent):
                 self.gridSquare.groundContent = None
                 square.setGroundContent(self)
                 self.gridSquare = square
+                TheGameEngine.updateUI()
                 break
                 
     def tryToAttack(self, minefield, drone):
@@ -63,6 +65,7 @@ class Worm(GridSquareContent):
                 self.attacking = False
             self.attackTick %= self.cyclesToAttack
             self.attackTick += 1
+            TheGameEngine.updateUI()
         
     def attack(self, minefield, drone):
         """ Check if the worm should try to attack the drone """

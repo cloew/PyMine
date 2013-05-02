@@ -12,7 +12,7 @@ class WormView(GridSquareFrame):
         GridSquareFrame.__init__(self, parent)
         self.worm = worm
         self.loadMineImages()
-        self.setVisible(False)
+        self.hide()
     
     def loadMineImages(self):
         """ Load the Mine images """
@@ -23,13 +23,17 @@ class WormView(GridSquareFrame):
     def updateView(self):
         """ Update the View """
         if self.worm.deactivated:
+            #print "Worm is deactivated"
             self.setLabelTransparency(100)
-            self.setVisible(True)
+            #print "Revealing Deactivated Worm"
+            self.show()
         elif self.worm.attacking:
+            #print "Worm is attacking"
             self.setLabelTransparency(self.worm.attackTick*100/self.worm.cyclesToAttack)
-            self.setVisible(True)
+            self.show()
         else:
-            self.setVisible(False)
+            #print "Hiding Worm"
+            self.hide()
             
     def setLabelTransparency(self, transparencyPercentage):
         """ Set the Transparency of the label image """

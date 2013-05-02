@@ -23,6 +23,7 @@ class GridSquareView(GridSquareFrame):
         if self.gridSquare.hasGroundContent():
             content = self.gridSquare.getGroundContent()
             self.contentView = GetViewForContent(content, self)
+            self.contentView.raise_()
         else:
             self.contentView = None
             
@@ -46,13 +47,13 @@ class GridSquareView(GridSquareFrame):
         self.clueView.raise_()
         
         if self.gridSquare.scanned:
-            self.grid_square_label.setVisible(False)
-            self.scanned_grid_square_label.setVisible(True)
+            """ """
+            self.grid_square_label.hide()
+            self.scanned_grid_square_label.show()
             self.clueView.updateView()
-            self.revealMine()
         else:
-            self.grid_square_label.setVisible(True)
-            self.scanned_grid_square_label.setVisible(False)
+            self.grid_square_label.show()
+            self.scanned_grid_square_label.hide()
                 
         if self.gridSquare.hasGroundContent() and self.contentView is not None:
             self.contentView.updateView()
@@ -75,7 +76,7 @@ class GridSquareView(GridSquareFrame):
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
         if self.gridSquare.hasGroundContent() and self.contentView is not None:
-                self.contentView.setVisible(True)
+                self.contentView.show()
             
     def getXCoordinate(self):
         """ Return the X Coordinate of the Grid Square """
