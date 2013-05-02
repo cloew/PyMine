@@ -23,16 +23,12 @@ class WormView(GridSquareFrame):
     def updateView(self):
         """ Update the View """
         if self.worm.deactivated:
-            #print "Worm is deactivated"
             self.setLabelTransparency(100)
-            #print "Revealing Deactivated Worm"
             self.show()
         elif self.worm.attacking:
-            #print "Worm is attacking"
             self.setLabelTransparency(self.worm.attackTick*100/self.worm.cyclesToAttack)
             self.show()
         else:
-            #print "Hiding Worm"
             self.hide()
             
     def setLabelTransparency(self, transparencyPercentage):
