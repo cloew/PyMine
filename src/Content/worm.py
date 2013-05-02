@@ -1,11 +1,12 @@
 from grid_square_content import GridSquareContent
+from power_ratings import EMP_POWER
 
 from nytram.core.game_engine import TheGameEngine
 from random import choice
 
 class Worm(GridSquareContent):
     """ Represents the Worm Enemy """
-    powerRating = 5
+    powerRating = EMP_POWER
     cyclesToMove = 40
     cyclesToAttack = 80
     

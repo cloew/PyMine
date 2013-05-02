@@ -1,3 +1,5 @@
+from power_ratings import CAREFUL_DEFUSE_POWER, DEFUSE_POWER, EMP_POWER, SCAN_POWER
+
 from nytram.core.game_engine import TheGameEngine
 
 class Drone:
@@ -14,24 +16,25 @@ class Drone:
         
     def scan(self):
         """ Scan the current cell """
-        self.power -= 2
+        self.power -= SCAN_POWER
         self.minefield.scan(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def defuse(self):
         """ Defuse the current cell """
-        self.power -= 5
+        self.power -= DEFUSE_POWER
         self.minefield.defuse(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def defuseCarefully(self):
         """ Carfeully defuse a Fragile mine """
-        self.power -= 25
+        self.power -= CAREFUL_DEFUSE_POWER
         self.minefield.defuseCarefully(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def performEMP(self):
         """ Performan EMP Blast """
+        self.power -= EMP_POWER
         self.minefield.performEMP(self.row, self.column, self)
         TheGameEngine.updateUI()
         

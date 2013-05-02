@@ -1,8 +1,9 @@
 from grid_square_content import GridSquareContent
+from power_ratings import DEFUSE_POWER
 
 class Mine(GridSquareContent):
     """ Represents a Mine in the Game """
-    powerRating = 5
+    powerRating = DEFUSE_POWER
     
     def __init__(self):
         """ Initialize the Mine """
