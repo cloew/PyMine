@@ -4,12 +4,12 @@ from minefield import Minefield
 class Level:
     """ Represents a Level """
     
-    def __init__(self, name, rows, columns, contents):
+    def __init__(self, name, rows, columns, defenses):
         """ Initialize the Level """
         self.name = name
         self.rows = rows
         self.columns = columns
-        self.contents = contents
+        self.defenses = defenses
         self.reset()
         
     def reset(self):
@@ -17,31 +17,31 @@ class Level:
         self.minefield = Minefield(self.rows, self.columns)
         self.drone = Drone(self.getPowerRating(), self.minefield)
         
-        self.contentItems = []
-        for contentClass in self.contents:
-            for i in range(self.contents[contentClass]):
-                self.addDefense(contentClass)
+        self.defenseItems = []
+        for defenseClass in self.defenses:
+            for i in range(self.defenses[defenseClass]):
+                self.addDefense(defenseClass)
                 
-    def addDefense(self, contentClass):
+    def addDefense(self, defenseClass):
         """ Add a Defense to the minefield """
-        content = contentClass()
-        defenseAdder = contentClass.adderClass()
+        defense = defenseClass()
+        defenseAdder = defenseClass.adderClass()
         
-        self.contentItems.append(content)
-        defenseAdder.addDefense(content, self.minefield)
+        self.defenseItems.append(defense)
+        defenseAdder.addDefense(defense, self.minefield)
             
     def getPowerRating(self):
         """ Returns the amount of power the drone should have on the level """
         powerRating = self.minefield.rowCount()*self.minefield.columnCount()*2
-        for contentClass in self.contents:
-            powerRating += self.contents[contentClass]*contentClass.powerRating
+        for defenseClass in self.defenses:
+            powerRating += self.defenses[defenseClass]*defenseClass.powerRating
         return powerRating
         
     def performGameCycle(self):
         """ Perform a single Game Cycle """
         if not self.finished():
-            for content in self.contentItems:
-                content.performGameCycle(self.minefield, self.drone)
+            for defense in self.defenseItems:
+                defense.performGameCycle(self.minefield, self.drone)
         
     def lost(self):
         """ Return if the player has lost the level """
@@ -58,8 +58,8 @@ class Level:
     def won(self):
         """ Return if the player has won the level """
         won = True
-        for content in self.contentItems:
-            if not content.isDeactivated():
+        for defense in self.defenseItems:
+            if not defense.isDeactivated():
                 return False
         else:
             return self.drone.power >= 0
@@ -72,11 +72,11 @@ class Level:
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """
         remainingDefenses = {}
-        for contentClass in self.contents:
-            remainingDefenses[contentClass] = 0
+        for defenseClass in self.defenses:
+            remainingDefenses[defenseClass] = 0
         
-        for content in self.contentItems:
-            if not content.isDeactivated():
-                remainingDefenses[content.__class__] += 1
+        for defense in self.defenseItems:
+            if not defense.isDeactivated():
+                remainingDefenses[defense.__class__] += 1
             
         return remainingDefenses
