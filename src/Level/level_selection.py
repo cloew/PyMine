@@ -1,9 +1,9 @@
 from level import Level
 
-from Content.mine import Mine
-from Content.fragile_mine import FragileMine
-from Content.reverse_mine import ReverseMine
-from Content.worm import Worm
+from Defense.mine import Mine
+from Defense.fragile_mine import FragileMine
+from Defense.reverse_mine import ReverseMine
+from Defense.worm import Worm
 
 class LevelSelection:
     """ Model for selecting a Level """

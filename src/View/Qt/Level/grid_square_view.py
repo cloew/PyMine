@@ -1,6 +1,6 @@
 from clue_view import ClueView
 
-from View.Qt.Content.content_view_factory import GetViewForContent
+from View.Qt.Defense.content_view_factory import GetViewForDefense
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 class GridSquareView(GridSquareFrame):
@@ -22,7 +22,7 @@ class GridSquareView(GridSquareFrame):
         """ Setup Mine View """
         if self.gridSquare.hasGroundContent():
             content = self.gridSquare.getGroundContent()
-            self.contentView = GetViewForContent(content, self)
+            self.contentView = GetViewForDefense(content, self)
             self.contentView.raise_()
         else:
             self.contentView = None
