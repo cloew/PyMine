@@ -1,6 +1,6 @@
 from clue_view import ClueView
 
-from View.Qt.Defense.content_view_factory import GetViewForDefense
+from View.Qt.Defense.defense_view_factory import GetViewForDefense
 from View.Qt.Level.grid_square_frame import GridSquareFrame
 
 class GridSquareView(GridSquareFrame):
