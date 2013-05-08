@@ -10,10 +10,10 @@ class StandardDefenseAdder:
         """ Add Defense to the minefield """
         while True:
             square = self.getSquare(minefield)
-            if square.hasGroundContent():
+            if square.hasGroundDefense():
                 continue
             else:
-                square.setGroundContent(defense)
+                square.setGroundDefense(defense)
                 defense.gridSquare = square
                 break
             

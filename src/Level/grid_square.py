@@ -10,58 +10,58 @@ class GridSquare:
         self.scanned = False
         self.clue = Clue()
         
-        self.groundContent = None
+        self.groundDefense = None
         
-    def setGroundContent(self, contentObject):
-        """ Set the Ground Content """
-        self.groundContent = contentObject
+    def setGroundDefense(self, defenseObject):
+        """ Set the Ground Defense """
+        self.groundDefense = defenseObject
         
     def scan(self, drone):
         """ Scan the Grid Square """
         self.scanned = True
-        if self.hasGroundContent():
-            self.groundContent.scan(drone)
+        if self.hasGroundDefense():
+            self.groundDefense.scan(drone)
         self.clue.populate(drone.minefield, self.row, self.column)
         
     def defuse(self, drone):
         """ Defuse the Grid Square """
-        if self.hasGroundContent():
-            self.groundContent.defuse(drone)
+        if self.hasGroundDefense():
+            self.groundDefense.defuse(drone)
             
     def defuseCarefully(self, drone):
         """ Defuse the Grid Square """
-        if self.hasGroundContent():
-            self.groundContent.defuseCarefully(drone)
+        if self.hasGroundDefense():
+            self.groundDefense.defuseCarefully(drone)
             
     def hitByEMP(self, drone):
         """ The Square is hit by an EMP """
-        if self.hasGroundContent():
-            self.groundContent.hitByEMP(drone)
+        if self.hasGroundDefense():
+            self.groundDefense.hitByEMP(drone)
             
-    def getGroundContent(self):
-        if self.hasGroundContent():
-            return self.groundContent
+    def getGroundDefense(self):
+        if self.hasGroundDefense():
+            return self.groundDefense
             
-    def hasGroundContent(self):
-        """ Return if the Grid Square has Ground Content """
-        return self.groundContent is not None
+    def hasGroundDefense(self):
+        """ Return if the Grid Square has Ground Defense """
+        return self.groundDefense is not None
             
     def mined(self):
         """ Return if the Square has an ative Mine """
-        if self.hasGroundContent():
-            return self.groundContent.isMine()
+        if self.hasGroundDefense():
+            return self.groundDefense.isMine()
         return False
         
     def reversed(self):
         """ Return if the Grid Square causes readings to be reversed """
-        if self.hasGroundContent():
-            return self.groundContent.reverseReadings
+        if self.hasGroundDefense():
+            return self.groundDefense.reverseReadings
         return False
         
     def fragile(self):
-        """ Returns if the square's contents are fragile """
-        if self.hasGroundContent():
-            return self.groundContent.fragile
+        """ Returns if the square's defenses are fragile """
+        if self.hasGroundDefense():
+            return self.groundDefense.fragile
         return False
         
     def __repr__(self):

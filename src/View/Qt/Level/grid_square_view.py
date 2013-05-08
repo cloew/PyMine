@@ -20,8 +20,8 @@ class GridSquareView(GridSquareFrame):
         
     def setupDefenseView(self):
         """ Setup Defense View """
-        if self.gridSquare.getGroundContent():
-            defense = self.gridSquare.getGroundContent()
+        if self.gridSquare.getGroundDefense():
+            defense = self.gridSquare.getGroundDefense()
             self.defenseView = GetViewForDefense(defense, self)
             self.defenseView.raise_()
         else:
@@ -55,7 +55,7 @@ class GridSquareView(GridSquareFrame):
             self.grid_square_label.show()
             self.scanned_grid_square_label.hide()
                 
-        if self.gridSquare.getGroundContent() and self.defenseView is not None:
+        if self.gridSquare.getGroundDefense() and self.defenseView is not None:
             self.defenseView.updateView()
             
     def representNewGridSquare(self, gridSquare):
@@ -75,7 +75,7 @@ class GridSquareView(GridSquareFrame):
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
-        if self.gridSquare.getGroundContent() and self.defenseView is not None:
+        if self.gridSquare.getGroundDefense() and self.defenseView is not None:
                 self.defenseView.show()
             
     def getXCoordinate(self):
