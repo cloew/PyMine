@@ -1,7 +1,7 @@
 from random import randint
 
 class StandardDefenseAdder:
-    """ Adds a Defense to the Minefield by assigning it a grid square that has no contents """
+    """ Adds a Defense to the Minefield by assigning it a grid square that has no defenses """
   
     def __init__(self):
         """ Initialize the Standard Defense Adder """
