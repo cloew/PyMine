@@ -15,17 +15,17 @@ class GridSquareView(GridSquareFrame):
         self.clueView = None
         self.loadGridSquareImages()
         
-        self.setupContentView()
+        self.setupDefenseView()
         self.setupClueView(self.gridSquare.clue)
         
-    def setupContentView(self):
-        """ Setup Mine View """
-        if self.gridSquare.hasGroundContent():
-            content = self.gridSquare.getGroundContent()
-            self.contentView = GetViewForDefense(content, self)
-            self.contentView.raise_()
+    def setupDefenseView(self):
+        """ Setup Defense View """
+        if self.gridSquare.getGroundContent():
+            defense = self.gridSquare.getGroundContent()
+            self.defenseView = GetViewForDefense(defense, self)
+            self.defenseView.raise_()
         else:
-            self.contentView = None
+            self.defenseView = None
             
     def setupClueView(self, clue):
         """ Setup the Clue View """
@@ -42,8 +42,8 @@ class GridSquareView(GridSquareFrame):
         
     def updateView(self):
         """ Update the Grid Square View """
-        self.removeOldContentView()
-        self.setupContentView()
+        self.removeOldDefenseView()
+        self.setupDefenseView()
         self.clueView.raise_()
         
         if self.gridSquare.scanned:
@@ -55,28 +55,28 @@ class GridSquareView(GridSquareFrame):
             self.grid_square_label.show()
             self.scanned_grid_square_label.hide()
                 
-        if self.gridSquare.hasGroundContent() and self.contentView is not None:
-            self.contentView.updateView()
+        if self.gridSquare.getGroundContent() and self.defenseView is not None:
+            self.defenseView.updateView()
             
     def representNewGridSquare(self, gridSquare):
         """ Tells the Grid Square View to represent a new Grid Square """
         self.gridSquare = gridSquare
-        self.removeOldContentView()
-        self.setupContentView()
+        self.removeOldDefenseView()
+        self.setupDefenseView()
         self.setupClueView(gridSquare.clue)
         self.updateView()
         self.clueView.updateView()
         
-    def removeOldContentView(self):
+    def removeOldDefenseView(self):
         """ Remove the old Mine View, if any """
-        if self.contentView is not None:
-            self.contentView.setParent(None)
-            self.contentView = None
+        if self.defenseView is not None:
+            self.defenseView.setParent(None)
+            self.defenseView = None
             
     def revealMine(self):
         """ Reveal the Mine (if any) in this Grid Square """
-        if self.gridSquare.hasGroundContent() and self.contentView is not None:
-                self.contentView.show()
+        if self.gridSquare.getGroundContent() and self.defenseView is not None:
+                self.defenseView.show()
             
     def getXCoordinate(self):
         """ Return the X Coordinate of the Grid Square """
