@@ -1,7 +1,5 @@
 from grid_square import GridSquare
 
-from random import randint
-
 class Minefield:
     """ Represents the Minefield for the current level """
     
@@ -31,19 +29,6 @@ class Minefield:
         centerSquare = self.getSquare(row, column)
         for square in self.getAdjacentSquares(centerSquare, includeCenter=True):
             square.hitByEMP(drone)
-    
-    def addMine(self, mine):
-        """ Adds a Mine to the Minefield """
-        while True:
-            row = randint(0, self.rowCount()-1)
-            column = randint(1, self.columnCount()-1)
-            square = self.getSquare(row, column)
-            if square.hasGroundContent():
-                continue
-            else:
-                square.setGroundContent(mine)
-                mine.gridSquare = square
-                break
         
     def getSquare(self, row, column):
         """ Return the square at the location """
