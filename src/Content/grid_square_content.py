@@ -1,6 +1,8 @@
+from DefenseAdder.standard_adder import StandardDefenseAdder
 
 class GridSquareContent:
     """ Represents a Grid Square Content """
+    adderClass = StandardDefenseAdder
     fragile = False
     powerRating = 0
     reverseReadings = False

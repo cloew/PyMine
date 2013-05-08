@@ -1,5 +1,3 @@
-from DefenseAdder.standard_adder import StandardDefenseAdder
-
 from drone import Drone
 from minefield import Minefield
 
@@ -23,14 +21,11 @@ class Level:
         for contentClass in self.contents:
             for i in range(self.contents[contentClass]):
                 self.addDefense(contentClass)
-                # content = contentClass()
-                # self.contentItems.append(content)
-                # self.minefield.addMine(content)
                 
     def addDefense(self, contentClass):
         """ Add a Defense to the minefield """
         content = contentClass()
-        defenseAdder = StandardDefenseAdder()
+        defenseAdder = contentClass.adderClass()
         
         self.contentItems.append(content)
         defenseAdder.addDefense(content, self.minefield)
