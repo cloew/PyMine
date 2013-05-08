@@ -1,7 +1,7 @@
-from grid_square_content import GridSquareContent
+from defense import Defense
 from power_ratings import DEFUSE_POWER
 
-class Mine(GridSquareContent):
+class Mine(Defense):
     """ Represents a Mine in the Game """
     powerRating = DEFUSE_POWER
     

@@ -1,7 +1,7 @@
-from grid_square_content import GridSquareContent
+from defense import Defense
 from power_ratings import EMP_POWER
 
-class AntiDroneTurret(GridSquareContent):
+class AntiDroneTurret(Defense):
     """ Represents an Anti-Drone Turret in the Game """
     powerRating = EMP_POWER
     
