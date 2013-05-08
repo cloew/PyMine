@@ -1,5 +1,6 @@
 from level import Level
 
+from Defense.anti_drone_mine import AntiDroneMine
 from Defense.mine import Mine
 from Defense.fragile_mine import FragileMine
 from Defense.reverse_mine import ReverseMine
@@ -16,7 +17,8 @@ class LevelSelection:
                        Level("Level 4", 4, 5, {Mine:8, ReverseMine:2, FragileMine:1}),
                        Level("Level 5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1}),
                        Level("Level 6", 5, 6, {Mine:8, ReverseMine:2, Worm:1}),
-                       Level("Level 7", 5, 6, {Mine:4, ReverseMine:2, Worm:8})]
+                       Level("Level 7", 5, 6, {Mine:4, ReverseMine:2, Worm:8}),
+                       Level("Level 8", 4, 5, {AntiDroneMine:4})]
         self.selectedIndex = 0
         
     def performGameCycle(self):
