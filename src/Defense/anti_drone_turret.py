@@ -8,6 +8,7 @@ class AntiDroneTurret(Defense):
     def __init__(self):
         """ Initialize the Mine """
         self.deactivated = False
+        self.defused = True
         
     def scan(self, drone):
         """ Scan the mine and destroy the drone """
