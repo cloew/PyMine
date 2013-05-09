@@ -46,11 +46,11 @@ class Worm(Defense):
             if len(adjacentSquares) == 0:
                 break
             square = choice(adjacentSquares)
-            if square.hasGroundContent() or square.column == 0:
+            if square.hasGroundDefense() or square.column == 0:
                 adjacentSquares.remove(square) # Can't move to a square that already has ground content or is in the safe zone
             else:
-                self.gridSquare.groundContent = None
-                square.setGroundContent(self)
+                self.gridSquare.setGroundDefense(None)
+                square.setGroundDefense(self)
                 self.gridSquare = square
                 TheGameEngine.updateUI()
                 break
