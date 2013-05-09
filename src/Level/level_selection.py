@@ -18,7 +18,7 @@ class LevelSelection:
                        Level("Level 5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1}),
                        Level("Level 6", 5, 6, {Mine:8, ReverseMine:2, Worm:1}),
                        Level("Level 7", 5, 6, {Mine:4, ReverseMine:2, Worm:8}),
-                       Level("Level 8", 4, 5, {AntiDroneMine:4})]
+                       Level("Level 8", 4, 5, {AntiDroneMine:1})]
         self.selectedIndex = 0
         
     def performGameCycle(self):

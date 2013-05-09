@@ -19,12 +19,27 @@ class AntiDroneAdder(StandardDefenseAdder):
             else:
                 square.setGroundDefense(defense)
                 defense.gridSquare = square
-                self.addTurrets(defense, minefield, square)
+                self.addTurrets(defense)
                 break
                 
-    def addTurrets(self, defense, minefield, centerSquare):
+    def getSquare(self, minefield):
+        """ Return a Grid Square """
+        while True:
+            row = randint(0, minefield.rowCount()-1)
+            column = randint(2, minefield.columnCount()-1)
+            centerSquare = minefield.getSquare(row, column)
+            self.adjacentSquares = minefield.getAdjacentSquares(centerSquare)
+            
+            for square in self.adjacentSquares:
+                if square.hasGroundDefense():
+                    break
+            else:
+                break
+        return centerSquare
+                
+    def addTurrets(self, defense):
         """ Add Turrets to the Minefield """
-        for square in minefield.getAdjacentSquares(centerSquare):
+        for square in self.adjacentSquares:
             turret = AntiDroneTurret()
             square.setGroundDefense(turret)
             turret.gridSquare = square
