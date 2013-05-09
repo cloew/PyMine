@@ -10,16 +10,8 @@ class AntiDroneTurret(Defense):
         self.deactivated = False
         self.defused = True
         
-    def scan(self, drone):
-        """ Scan the mine and destroy the drone """
-        self.tryToDestroyDrone(drone)
-        
-    def defuse(self, drone):
-        """ Defuse the Mine """
-        self.tryToDestroyDrone(drone)
-
-    def defuseCarefully(self, drone):
-        """ Defuse the Mine carefully """
+    def onMove(self, drone):
+        """ Destroy the Drone if it moves above the turret """
         self.tryToDestroyDrone(drone)
         
     def hitByEMP(self, drone):
