@@ -24,6 +24,8 @@ class AntiDroneMine(Mine): # Not sure about the name, since it's kind of not a m
     def hitByEMP(self, drone):
         """ Deactivat the Worm """
         self.defused = True
+        for turret in self.turrets:
+            turret.deactivated = True
         
     def addTurret(self, turret):
         """ Add turret to the Anti Drone Mine """
