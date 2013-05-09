@@ -6,7 +6,7 @@ from DefenseAdder.anti_drone_adder import AntiDroneAdder
 class AntiDroneMine(Mine): # Not sure about the name, since it's kind of not a mine
     """ Represents the Anti-Drone Mine """
     adderClass = AntiDroneAdder
-    powerRating = EMP_POWER
+    powerRating = EMP_POWER*2
     
     def __init__(self):
         """ Initialize the Anti-Drone Mine """
