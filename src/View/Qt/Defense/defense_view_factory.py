@@ -1,14 +1,17 @@
+from Defense.anti_drone_turret import AntiDroneTurret
 from Defense.mine import Mine
 from Defense.fragile_mine import FragileMine
 from Defense.reverse_mine import ReverseMine
 from Defense.worm import Worm
 
+from View.Qt.Defense.anti_drone_turret_view import AntiDroneTurretView
 from View.Qt.Defense.mine_view import MineView
 from View.Qt.Defense.fragile_mine_view import FragileMineView
 from View.Qt.Defense.reverse_mine_view import ReverseMineView
 from View.Qt.Defense.worm_view import WormView
 
-DefenseToViewDictionary = {Mine:MineView,
+DefenseToViewDictionary = {AntiDroneTurret:AntiDroneTurretView,
+                           Mine:MineView,
                            FragileMine:FragileMineView,
                            ReverseMine:ReverseMineView,
                            Worm:WormView}
