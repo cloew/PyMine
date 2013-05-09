@@ -45,23 +45,28 @@ class Drone:
     def up(self):
         """  """
         if self.row > 0:
-            self.row -= 1
-            TheGameEngine.updateUI()
+            self.move(-1, 0)
         
     def down(self):
         """ """
         if self.row < self.minefield.rowCount()-1:
-            self.row += 1
-            TheGameEngine.updateUI()
+            self.move(1, 0)
     
     def left(self):
         """ """
         if self.column > 0:
-            self.column -= 1
-            TheGameEngine.updateUI()
+            self.move(0, -1)
     
     def right(self):
         """ """
         if self.column < self.minefield.columnCount()-1:
-            self.column += 1
-            TheGameEngine.updateUI()
+            self.move(0, 1)
+            
+    def move(self, rowMovement, columnMovement):
+        """ Move the drone """
+        self.row += rowMovement
+        self.column += columnMovement
+        
+        square = self.minefield.getSquare(self.row, self.column)
+        square.onMove(self)
+        TheGameEngine.updateUI()

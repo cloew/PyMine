@@ -19,6 +19,9 @@ class Defense:
         """ Perform the Game Cycle """
         
     # Drone Action Responses
+    def onMove(self, drone):
+        """ Do Nothing """
+    
     def scan(self, drone):
         """ Do nothing """
         

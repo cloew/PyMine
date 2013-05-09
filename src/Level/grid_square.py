@@ -16,6 +16,11 @@ class GridSquare:
         """ Set the Ground Defense """
         self.groundDefense = defenseObject
         
+    def onMove(self, drone):
+        """ Perform the On Move Event """
+        if self.hasGroundDefense():
+            self.groundDefense.onMove(drone)
+        
     def scan(self, drone):
         """ Scan the Grid Square """
         self.scanned = True
