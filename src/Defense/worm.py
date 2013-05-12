@@ -21,6 +21,10 @@ class Worm(Defense):
         """ Return if the content is deactivated """
         return self.deactivated
         
+    def onMove(self, drone):
+        """ Try to attack """
+        self.tryToAttack(drone)
+        
     def hitByEMP(self, drone):
         """ Deactivate the Worm """
         self.deactivated = True
@@ -28,7 +32,7 @@ class Worm(Defense):
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
         if not self.deactivated:
-            self.tryToAttack(minefield, drone)
+            self.tryToAttack(drone)
             self.tryToMove(minefield, drone)
         
     def tryToMove(self, minefield, drone):
@@ -55,20 +59,20 @@ class Worm(Defense):
                 TheGameEngine.updateUI()
                 break
                 
-    def tryToAttack(self, minefield, drone):
+    def tryToAttack(self, drone):
         """ Try to have the worm attack the drone """
         if not self.attacking:
             self.attacking = self.droneInSquare(drone)
         
         if self.attacking:
             if (self.attackTick % self.cyclesToAttack) == 0:
-                self.attack(minefield, drone)
+                self.attack(drone)
                 self.attacking = False
             self.attackTick %= self.cyclesToAttack
             self.attackTick += 1
             TheGameEngine.updateUI()
         
-    def attack(self, minefield, drone):
+    def attack(self, drone):
         """ Check if the worm should try to attack the drone """
         if self.droneInSquare(drone):
             drone.destroy()
