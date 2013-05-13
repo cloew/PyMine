@@ -16,14 +16,14 @@ class ClueView(GridSquareFrame):
     def setupFont(self):
         """ Setup the Font """
         self.font = QFont()
-        self.font.setPointSize(40)
+        self.font.setPointSize(16)
         
     def setupClueLabel(self):
         """ Setup the Clue Label """
         self.setupFont()
         self.clueLabel = QLabel(str(self.clue), self)
         self.clueLabel.setFont(self.font)
-        self.clueLabel.move(18, 0)
+        self.clueLabel.move(64-18, 5)
         
     def updateView(self):
         """ Update the View """
