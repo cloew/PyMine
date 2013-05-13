@@ -8,3 +8,6 @@ class SubClue:
     def updateFromAdjacentSquare(self, square):
         """ Update the SubClue from an adjacent square """
         
+    def reverse(self):
+        """ Reverse the clue """
+        self.reverse = True 

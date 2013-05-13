@@ -5,7 +5,6 @@ class Clue:
     
     def __init__(self):
         """ Initialize the Clue """
-        self.numberOfAdjacentMines = 0
         self.reverse = False
         self.distance = None
         self.nearWeapons = False
@@ -16,17 +15,16 @@ class Clue:
         self.adjacencyClue.update(minefield, gridRow, gridColumn)
         self.findAdjacentMines(minefield, gridRow, gridColumn)
         self.findFragileMines(minefield, gridRow, gridColumn)
-        self.adjacencyClue.reverse = self.reverse
         
     def findAdjacentMines(self, minefield, gridRow, gridColumn):
         """ Find an Adjacent Mine """
-        self.numberOfAdjacentMines = 0
         self.reverse = False
         currentSquare = minefield.getSquare(gridRow, gridColumn)
         
         for square in minefield.getAdjacentSquares(currentSquare, includeCenter=True):
             if square.reversed():
                     self.reverse = True
+                    self.adjacencyClue.reverse()
             if square.row == gridRow and square.column == gridColumn:
                 continue # Ignore the current grid Location, because we only want to examine adjacent cells
             self.adjacencyClue.updateFromAdjacentSquare(square)
