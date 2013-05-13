@@ -9,7 +9,6 @@ class AdjacencyClueView(QFrame): # Prolly could use a better name
     def __init__(self, adjacencyClue, fragilityClue, parent=None):
         """ Initialize the Adjacency Clue View """
         QFrame.__init__(self, parent)
-        #self.clue = clue
         self.adjacencyClue = adjacencyClue
         self.fragilityClue = fragilityClue
         self.resize(34, 32)

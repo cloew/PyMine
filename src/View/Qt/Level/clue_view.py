@@ -16,7 +16,7 @@ class ClueView(GridSquareFrame):
         self.adjacencyClue = AdjacencyClueView(clue.adjacencyClue, clue.fragilityClue, parent=self)
         self.adjacencyClue.move(45, 5)
         
-        self.warningClue = WarningClueView(clue, parent=self)
+        self.warningClue = WarningClueView(clue.weaponCautionClue, parent=self)
         self.warningClue.move(10, 10)
         
     def updateView(self):

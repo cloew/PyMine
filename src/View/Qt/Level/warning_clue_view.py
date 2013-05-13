@@ -5,10 +5,10 @@ from PySide.QtGui import QFrame
 class WarningClueView(QFrame): # Prolly could use a better name
     """ Represents a Warning Clue View """
     
-    def __init__(self, clue, parent=None):
+    def __init__(self, weaponCautionClue, parent=None):
         """ Initialize the Warning Clue View """
         QFrame.__init__(self, parent)
-        self.clue = clue
+        self.weaponCautionClue = weaponCautionClue
         self.resize(16, 15)
         self.loadImage()
         self.setVisible(False)
@@ -20,4 +20,4 @@ class WarningClueView(QFrame): # Prolly could use a better name
         
     def updateView(self):
         """ Update the View """
-        self.setVisible(self.clue.nearWeapons)
+        self.setVisible(self.weaponCautionClue.nearWeapons)
