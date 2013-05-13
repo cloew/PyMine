@@ -1,3 +1,4 @@
+from Level.Clue.adjacency_clue import AdjacencyClue
 
 class Clue:
     """ Represents a Clue for the Mine Game """
@@ -8,11 +9,14 @@ class Clue:
         self.reverse = False
         self.distance = None
         self.nearWeapons = False
+        self.adjacencyClue = AdjacencyClue()
         
     def populate(self, minefield, gridRow, gridColumn):
         """ Populate the Clue """
+        self.adjacencyClue.update(minefield, gridRow, gridColumn)
         self.findAdjacentMines(minefield, gridRow, gridColumn)
         self.findFragileMines(minefield, gridRow, gridColumn)
+        self.adjacencyClue.reverse = self.reverse
         
     def findAdjacentMines(self, minefield, gridRow, gridColumn):
         """ Find an Adjacent Mine """
@@ -25,9 +29,8 @@ class Clue:
                     self.reverse = True
             if square.row == gridRow and square.column == gridColumn:
                 continue # Ignore the current grid Location, because we only want to examine adjacent cells
-            if square.mined():
-                self.numberOfAdjacentMines += 1
-            elif square.hasWeaponry():
+            self.adjacencyClue.updateFromAdjacentSquare(square)
+            if square.hasWeaponry():
                 self.nearWeapons = True
                     
     def findFragileMines(self, minefield, gridRow, gridColumn):
@@ -47,17 +50,10 @@ class Clue:
             return columnDistance
         else:
             return rowDistance
-                        
-    def getAdjacentMinesClue(self):
-        """ Returns the Adjacent Mines Clue """
-        if self.reverse:
-            return 8 - self.numberOfAdjacentMines
-        else:
-            return self.numberOfAdjacentMines
         
     def __repr__(self):
         """ Return the string representation of the Clue """
-        reportedAdjacentMines = self.getAdjacentMinesClue()
+        reportedAdjacentMines = self.adjacencyClue.getAdjacentMinesClue()
         if reportedAdjacentMines == 0:
             return ' '
         else:
