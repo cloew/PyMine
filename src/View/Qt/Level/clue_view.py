@@ -1,6 +1,6 @@
 from View.Qt.Level.adjacency_clue_view import AdjacencyClueView
 from View.Qt.Level.grid_square_frame import GridSquareFrame
-from View.Qt.Level.warning_clue_view import WarningClueView
+from View.Qt.Level.weapon_caution_clue_view import WeaponCautionClueView
 
 from PySide.QtGui import QFont, QLabel
 
@@ -16,7 +16,7 @@ class ClueView(GridSquareFrame):
         self.adjacencyClue = AdjacencyClueView(clue.adjacencyClue, clue.fragilityClue, parent=self)
         self.adjacencyClue.move(45, 5)
         
-        self.warningClue = WarningClueView(clue.weaponCautionClue, parent=self)
+        self.warningClue = WeaponCautionClueView(clue.weaponCautionClue, parent=self)
         self.warningClue.move(10, 10)
         
     def updateView(self):

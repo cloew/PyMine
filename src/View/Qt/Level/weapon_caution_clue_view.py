@@ -2,11 +2,11 @@ from View.Qt.image_loader import LoadImageLabel
 
 from PySide.QtGui import QFrame
 
-class WarningClueView(QFrame): # Prolly could use a better name
-    """ Represents a Warning Clue View """
+class WeaponCautionClueView(QFrame): # Prolly could use a better name
+    """ Represents a Weapon Caution Clue View """
     
     def __init__(self, weaponCautionClue, parent=None):
-        """ Initialize the Warning Clue View """
+        """ Initialize the Weapon Caution Clue View """
         QFrame.__init__(self, parent)
         self.weaponCautionClue = weaponCautionClue
         self.resize(16, 15)
