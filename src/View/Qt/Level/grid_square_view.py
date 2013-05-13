@@ -1,7 +1,6 @@
-from clue_view import ClueView
-
 from View.Qt.Defense.defense_view_factory import GetViewForDefense
 from View.Qt.Level.grid_square_frame import GridSquareFrame
+from View.Qt.Level.Clue.clue_view import ClueView
 
 class GridSquareView(GridSquareFrame):
     """ Represents the Graphical view of the Grid Square """
@@ -29,14 +28,9 @@ class GridSquareView(GridSquareFrame):
             
     def setupClueView(self, clue):
         """ Setup the Clue View """
-        # if self.clueView is not None:
-            # self.clueView.setParent(None)
-            # self.clueView = None
-        
         if self.clueView is None:
             self.clueView = ClueView(self.gridSquare.clue, self)
         else:
-            #self.clueView.clue = clue
             self.clueView.representNewClue(clue)
         self.clueView.raise_()
 

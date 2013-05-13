@@ -1,6 +1,6 @@
-from View.Qt.Level.adjacency_clue_view import AdjacencyClueView
 from View.Qt.Level.grid_square_frame import GridSquareFrame
-from View.Qt.Level.weapon_caution_clue_view import WeaponCautionClueView
+from View.Qt.Level.Clue.adjacency_clue_view import AdjacencyClueView
+from View.Qt.Level.Clue.weapon_caution_clue_view import WeaponCautionClueView
 
 from PySide.QtGui import QFont, QLabel
 
