@@ -1,4 +1,4 @@
-from clue import Clue
+from Level.Clue.clue import Clue
 
 class GridSquare:
     """ Represents a square in the Minefield Grid """
