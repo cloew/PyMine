@@ -23,3 +23,9 @@ class ClueView(GridSquareFrame):
         """ Update the View """
         self.adjacencyClue.updateView()
         self.warningClue.updateView()
+        
+    def representNewClue(self, clue):
+        """ Represent a New Clue """
+        self.clue = clue
+        self.adjacencyClue.clue = clue
+        self.warningClue.clue = clue

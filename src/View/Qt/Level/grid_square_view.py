@@ -29,10 +29,15 @@ class GridSquareView(GridSquareFrame):
             
     def setupClueView(self, clue):
         """ Setup the Clue View """
+        # if self.clueView is not None:
+            # self.clueView.setParent(None)
+            # self.clueView = None
+        
         if self.clueView is None:
             self.clueView = ClueView(self.gridSquare.clue, self)
         else:
-            self.clueView.clue = clue
+            #self.clueView.clue = clue
+            self.clueView.representNewClue(clue)
         self.clueView.raise_()
 
     def loadGridSquareImages(self):
