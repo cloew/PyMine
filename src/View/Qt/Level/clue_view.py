@@ -5,7 +5,7 @@ from PySide.QtGui import QFont, QLabel
 
 class ClueView(GridSquareFrame):
     """ Represents the Graphical view of the Drone """
-    TRANSPARENCY = 50
+    TRANSPARENCY = 100
 
     def __init__(self, clue, parent=None):
         """ Initialize the drone view """
