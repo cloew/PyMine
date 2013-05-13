@@ -3,6 +3,7 @@ from power_ratings import EMP_POWER
 
 class AntiDroneTurret(Defense):
     """ Represents an Anti-Drone Turret in the Game """
+    friendlyName = "Anti-Drone Turrets"
     powerRating = EMP_POWER
     
     def __init__(self):

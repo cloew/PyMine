@@ -6,6 +6,7 @@ from random import choice
 
 class Worm(Defense):
     """ Represents the Worm Enemy """
+    friendlyName = "Worms"
     powerRating = EMP_POWER
     cyclesToMove = 40
     cyclesToAttack = 80

@@ -25,3 +25,4 @@ def GetViewForDefense(defense, parentView):
         return DefenseToViewDictionary[defense.__class__](defense, parentView)
     else:
         return MineView(defense, parentView)
+    

@@ -4,6 +4,7 @@ from power_ratings import CAREFUL_DEFUSE_POWER
 class FragileMine(Mine):
     """ Represents a Fragile Mine """
     fragile = True
+    friendlyName = "Fragile Mines"
     powerRating = CAREFUL_DEFUSE_POWER
     
     def defuse(self, drone):

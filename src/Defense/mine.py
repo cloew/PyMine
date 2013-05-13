@@ -3,6 +3,7 @@ from power_ratings import DEFUSE_POWER
 
 class Mine(Defense):
     """ Represents a Mine in the Game """
+    friendlyName = "Mines"
     powerRating = DEFUSE_POWER
     
     def __init__(self):

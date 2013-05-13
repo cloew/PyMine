@@ -4,6 +4,7 @@ class Defense:
     """ Represents a Defense """
     adderClass = StandardDefenseAdder
     fragile = False
+    friendlyName = ""
     powerRating = 0
     reverseReadings = False
     

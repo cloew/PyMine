@@ -24,7 +24,7 @@ class GameStatusView(QFrame):
     def setupFont(self):
         """ Setup the Font """
         self.font = QFont()
-        self.font.setPointSize(18)
+        self.font.setPointSize(14)
         
     def setupPowerLabel(self):
         """ Setup the Power Label """
@@ -59,4 +59,4 @@ class GameStatusView(QFrame):
         
         for defenseClass in remainingDefenses:
             label = self.remainingDefensesLabels[defenseClass]
-            label.setText("{0} Left: {1}".format(defenseClass.__name__, remainingDefenses[defenseClass]))
+            label.setText("{0} Left: {1}".format(defenseClass.friendlyName, remainingDefenses[defenseClass]))
