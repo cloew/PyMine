@@ -52,9 +52,15 @@ class GridSquare:
         return self.groundDefense is not None
             
     def mined(self):
-        """ Return if the Square has an ative Mine """
+        """ Return if the Square has a Mine """
         if self.hasGroundDefense():
             return self.groundDefense.isMine()
+        return False
+        
+    def hasWeaponry(self):
+        """ Return if the Square has Weaponry """
+        if self.hasGroundDefense():
+            return self.groundDefense.isWeapon()
         return False
         
     def reversed(self):

@@ -15,6 +15,10 @@ class Defense:
         """ Return if the Defense is a mine """
         return False
         
+    def isWeapon(self):
+        """ Return if the Defense is a weapon """
+        return False
+        
     def performGameCycle(self, minefield, drone):
         """ Perform the Game Cycle """
         

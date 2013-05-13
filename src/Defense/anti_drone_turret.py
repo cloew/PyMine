@@ -26,3 +26,7 @@ class AntiDroneTurret(Defense):
     def isDeactivated(self):
         """ Return if the content is deactivated """
         return self.deactivated
+        
+    def isWeapon(self):
+        """ Return if the Defense is a weapon """
+        return True 

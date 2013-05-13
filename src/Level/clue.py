@@ -7,6 +7,7 @@ class Clue:
         self.numberOfAdjacentMines = 0
         self.reverse = False
         self.distance = None
+        self.nearWeapons = False
         
     def populate(self, minefield, gridRow, gridColumn):
         """ Populate the Clue """
@@ -26,6 +27,8 @@ class Clue:
                 continue # Ignore the current grid Location, because we only want to examine adjacent cells
             if square.mined():
                 self.numberOfAdjacentMines += 1
+            elif square.hasWeaponry():
+                self.nearWeapons = True
                     
     def findFragileMines(self, minefield, gridRow, gridColumn):
         """ Get the Fragile mine adjacency rating """
