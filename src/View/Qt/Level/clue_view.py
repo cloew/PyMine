@@ -13,6 +13,7 @@ class ClueView(GridSquareFrame):
         self.clue = clue
         self.warningClue = WarningClueView(parent=self)
         self.warningClue.setVisible(False)
+        self.warningClue.move(10, 10)
         self.setupClueLabel()
         
     def setupFont(self):
