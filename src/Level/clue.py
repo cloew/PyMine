@@ -1,4 +1,5 @@
 from Level.Clue.adjacency_clue import AdjacencyClue
+from Level.Clue.fragility_clue import FragilityClue
 from Level.Clue.weapon_caution_clue import WeaponCautionClue
 
 class Clue:
@@ -10,16 +11,17 @@ class Clue:
         self.distance = None
         self.nearWeapons = False
         self.adjacencyClue = AdjacencyClue()
+        self.fragilityClue = FragilityClue()
         self.weaponCautionClue = WeaponCautionClue()
-        self.subClues = [self.adjacencyClue, self.weaponCautionClue]
+        self.subClues = [self.adjacencyClue, self.fragilityClue, self.weaponCautionClue]
         
     def populate(self, minefield, gridRow, gridColumn):
         """ Populate the Clue """
         for subclue in self.subClues:
             subclue.update(minefield, gridRow, gridColumn)
         self.findAdjacentMines(minefield, gridRow, gridColumn)
-        self.findFragileMines(minefield, gridRow, gridColumn)
         self.nearWeapons = self.weaponCautionClue.nearWeapons
+        self.distance = self.fragilityClue.distance
         
     def findAdjacentMines(self, minefield, gridRow, gridColumn):
         """ Find an Adjacent Mine """
@@ -30,29 +32,11 @@ class Clue:
             if square.reversed():
                 self.reverse = True
                 for subclue in self.subClues:
-                    subclue.reverse()
+                    subclue.reverseReading()
             if square.row == gridRow and square.column == gridColumn:
                 continue # Ignore the current grid Location, because we only want to examine adjacent cells
             for subclue in self.subClues:
                 subclue.updateFromAdjacentSquare(square)
-                    
-    def findFragileMines(self, minefield, gridRow, gridColumn):
-        """ Get the Fragile mine adjacency rating """
-        for row in minefield.squares:
-            for square in row:
-                if square.fragile():
-                    rowDistance = abs(square.row-gridRow)
-                    columnDistance = abs(square.column-gridColumn)
-                    adjacencyDistance = self.getAdjacencyDistance(rowDistance, columnDistance)
-                    if self.distance is None or adjacencyDistance < self.distance:
-                        self.distance = adjacencyDistance
-                    
-    def getAdjacencyDistance(self, rowDistance, columnDistance):
-        """ Get the Adjacency Distance """
-        if rowDistance < columnDistance:
-            return columnDistance
-        else:
-            return rowDistance
         
     def __repr__(self):
         """ Return the string representation of the Clue """
