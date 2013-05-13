@@ -10,6 +10,7 @@ class Drone:
         self.row = 0
         self.column = 0
         self.power = power
+        self.moveCount = 0
         
         self.minefield = minefield
         self.destroyed = False
@@ -66,6 +67,7 @@ class Drone:
         """ Move the drone """
         self.row += rowMovement
         self.column += columnMovement
+        self.moveCount += 1
         
         square = self.minefield.getSquare(self.row, self.column)
         square.onMove(self)
