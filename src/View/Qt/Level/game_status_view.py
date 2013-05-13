@@ -19,6 +19,7 @@ class GameStatusView(QFrame):
         """ Setup the View """
         self.setupFont()
         self.setupPowerLabel()
+        self.setupMovesLabel()
         self.setupRemainingDefensesLabels()
         
     def setupFont(self):
@@ -32,6 +33,12 @@ class GameStatusView(QFrame):
         self.powerLabel.move(32, 16)
         self.powerLabel.setFont(self.font)
         
+    def setupMovesLabel(self):
+        """ Setup the Moves Label """
+        self.movesLabel = QLabel("", self)
+        self.movesLabel.move(32, 16+48)
+        self.movesLabel.setFont(self.font)
+        
     def setupRemainingDefensesLabels(self):
         """ Setup the Remaining Defenses Labels """
         self.remainingDefensesLabels = {}
@@ -39,7 +46,7 @@ class GameStatusView(QFrame):
         remainingDefenses = self.level.getRemainingDefenses()
         for defenseClass in remainingDefenses:
             label = QLabel("", self)
-            label.move(32, 16+48*labelNumber)
+            label.move(32, 16+48*(labelNumber+1))
             label.setFont(self.font)
             self.remainingDefensesLabels[defenseClass] = label
             labelNumber += 1
@@ -47,11 +54,17 @@ class GameStatusView(QFrame):
     def updateView(self):
         """ Update the View """
         self.updatePowerLabel()
+        self.updateMovesLabel()
         self.updateRemainingDefensesLabels()
         
     def updatePowerLabel(self):
         """ Update the Power Label """
         self.powerLabel.setText("Power: {0}".format(self.level.drone.power))
+        
+    def updateMovesLabel(self):
+        """ Update the Moves Label """
+        self.movesLabel.setText("Moves: {0}".format(self.level.drone.moveCount))
+        self.movesLabel.resize(self.movesLabel.contentsRect().width(), self.movesLabel.contentsRect().height())
         
     def updateRemainingDefensesLabels(self):
         """ Update the Remaining Mines Label """
