@@ -23,7 +23,7 @@ class ClueView(GridSquareFrame):
         self.setupFont()
         self.clueLabel = QLabel(str(self.clue), self)
         self.clueLabel.setFont(self.font)
-        self.clueLabel.move(64-18, 5)
+        self.clueLabel.move(46, 5)
         
     def updateView(self):
         """ Update the View """
