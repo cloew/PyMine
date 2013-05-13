@@ -13,7 +13,7 @@ class ClueView(GridSquareFrame):
         GridSquareFrame.__init__(self, parent)
         self.clue = clue
         
-        self.adjacencyClue = AdjacencyClueView(clue, parent=self)
+        self.adjacencyClue = AdjacencyClueView(clue.adjacencyClue, clue.fragilityClue, parent=self)
         self.adjacencyClue.move(45, 5)
         
         self.warningClue = WarningClueView(clue, parent=self)
@@ -27,5 +27,6 @@ class ClueView(GridSquareFrame):
     def representNewClue(self, clue):
         """ Represent a New Clue """
         self.clue = clue
-        self.adjacencyClue.clue = clue
+        self.adjacencyClue.adjacencyClue = clue.adjacencyClue
+        self.adjacencyClue.fragilityClue = clue.fragilityClue
         self.warningClue.clue = clue
