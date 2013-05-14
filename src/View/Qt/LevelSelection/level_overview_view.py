@@ -3,7 +3,7 @@ from PySide.QtGui import QColor, QFont, QFrame, QLabel
 
 class LevelOverviewView(QFrame):
     """ Represents the View of the Level Overview """
-    WIDTH = 160
+    WIDTH = 120
     HEIGHT = 64
 
     def __init__(self, parent, level, levelSelection):
