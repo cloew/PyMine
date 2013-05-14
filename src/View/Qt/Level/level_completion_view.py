@@ -68,3 +68,10 @@ class LevelCompletionView(QFrame):
         elif self.level.noPower() and not self.level.won():
             self.completionDetailsLabel.setText("Insufficient Power")
             self.completionDetailsLabel.setVisible(True)
+        elif self.level.won():
+            if self.level.completionRating.awarded:
+                text = "C"
+            else:
+                text = "L"
+            self.completionDetailsLabel.setText(text)
+            self.completionDetailsLabel.setVisible(True)

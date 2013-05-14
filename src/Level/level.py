@@ -1,6 +1,8 @@
 from drone import Drone
 from minefield import Minefield
 
+from Level.Ratings.completion_rating import CompletionRating
+
 class Level:
     """ Represents a Level """
     
@@ -10,12 +12,14 @@ class Level:
         self.rows = rows
         self.columns = columns
         self.defenses = defenses
+        
         self.reset()
         
     def reset(self):
         """ Reset the Level """
         self.minefield = Minefield(self.rows, self.columns)
         self.drone = Drone(self.getPowerRating(), self.minefield)
+        self.completionRating = CompletionRating(self)
         
         self.defenseItems = []
         for defenseClass in self.defenses:
@@ -42,6 +46,8 @@ class Level:
         if not self.finished():
             for defense in self.defenseItems:
                 defense.performGameCycle(self.minefield, self.drone)
+        else:
+            self.tryToAwardRatings()
         
     def lost(self):
         """ Return if the player has lost the level """
@@ -68,6 +74,10 @@ class Level:
     def finished(self):
         """ Return if the level is finished """
         return self.lost() or self.won()
+        
+    def tryToAwardRatings(self):
+        """ Try To award the Ratings """
+        self.completionRating.checkAwarded()
         
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """
