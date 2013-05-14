@@ -5,7 +5,7 @@ from PySide.QtGui import QColor, QFrame, QPainter
 
 class LevelSelectionView(QFrame):
     """ Represents the View of the Level Selection """
-    ENTRIES_PER_ROW = 4
+    ENTRIES_PER_ROW = 3
 
     def __init__(self, parent, level_selection):
         """ Initialize the Level Selection View """
@@ -26,7 +26,7 @@ class LevelSelectionView(QFrame):
             
         for i in range(len(self.levelOverviews)):
             overview = self.levelOverviews[i]
-            overview.move(32+(i%self.ENTRIES_PER_ROW)*160, 32+i/self.ENTRIES_PER_ROW*64)
+            overview.move(16+(i%self.ENTRIES_PER_ROW)*160, 32+i/self.ENTRIES_PER_ROW*64)
             
     def paintEvent(self, event):
         """  """
