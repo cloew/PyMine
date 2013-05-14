@@ -3,12 +3,14 @@ from PySide.QtGui import QColor, QFont, QFrame, QLabel
 
 class LevelOverviewView(QFrame):
     """ Represents the View of the Level Overview """
+    WIDTH = 160
+    HEIGHT = 64
 
     def __init__(self, parent, level, levelSelection):
         """ Initialize the Level Overview View """
         QFrame.__init__(self, parent)
 
-        self.resize(160, 64)
+        self.resize(self.WIDTH, self.HEIGHT)
         self.level = level
         self.levelSelection = levelSelection
         
@@ -25,7 +27,7 @@ class LevelOverviewView(QFrame):
         label = QLabel(self.level.name, self)
         label.setFont(self.smallFont)
         label.setAlignment(Qt.AlignCenter)
-        label.resize(160, 64)
+        label.resize(self.WIDTH, self.HEIGHT)
         return label
         
     def updateView(self):

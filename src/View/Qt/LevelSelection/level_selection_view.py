@@ -26,7 +26,7 @@ class LevelSelectionView(QFrame):
             
         for i in range(len(self.levelOverviews)):
             overview = self.levelOverviews[i]
-            overview.move(16+(i%self.ENTRIES_PER_ROW)*160, 32+i/self.ENTRIES_PER_ROW*64)
+            overview.move(16+(i%self.ENTRIES_PER_ROW)*LevelOverviewView.WIDTH, 32+i/self.ENTRIES_PER_ROW*LevelOverviewView.HEIGHT)
             
     def paintEvent(self, event):
         """  """
