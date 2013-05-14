@@ -26,6 +26,7 @@ class LevelDetailsView(QFrame):
         
         self.detailsLabel = self.getLabel("Level Details", self.bigFont, alignment=Qt.AlignCenter)
         self.detailsLabel.move(32, 16)
+        self.setupGridLabel()
         self.setupDefensesLabels()
         
     def getLabel(self, text, font, alignment=None):
@@ -35,6 +36,12 @@ class LevelDetailsView(QFrame):
         if alignment:
             label.setAlignment(alignment)
         return label
+        
+    def setupGridLabel(self):
+        """ Setup the Grid Label """
+        self.gridLabel = self.getLabel("", self.smallFont)
+        self.gridLabel.move(32, 48+16)
+        self.gridLabel.resize(200, 32)
         
     def setupDefensesLabels(self):
         """ Setup the Remaining Defenses Labels """
@@ -48,8 +55,14 @@ class LevelDetailsView(QFrame):
         
     def updateView(self):
         """ Update the View """
+        self.updateGridLabel()
         self.updateDefenseLabels()
         self.update()
+        
+    def updateGridLabel(self):
+        """ Update the Grid Label """
+        level = self.levelSelection.getLevel()
+        self.gridLabel.setText("{0} x {1}".format(level.rows, level.columns))
         
     def updateDefenseLabels(self):
         """ Update the Defense Label """
@@ -60,7 +73,7 @@ class LevelDetailsView(QFrame):
             if defenseClass in defenses:
                 label.setVisible(True)
                 label.setText("{0}: {1}".format(defenseClass.friendlyName, defenses[defenseClass]))
-                label.move(32, 16+32*(labelNumber+1))
+                label.move(32, 48+32*(labelNumber+1))
                 labelNumber += 1
             else:
                 label.setVisible(False)
