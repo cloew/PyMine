@@ -1,7 +1,7 @@
 from drone import Drone
 from minefield import Minefield
 
-from Level.Ratings.completion_rating import CompletionRating
+from Level.Rating.completion_rating import CompletionRating
 
 class Level:
     """ Represents a Level """
