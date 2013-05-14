@@ -1,0 +1,84 @@
+<levels>
+    <level name='1'>
+        <grid>
+            <rows>4</rows>
+            <columns>5</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='4' />
+        </defenses>
+    </level>
+    <level name='2'>
+        <grid>
+            <rows>4</rows>
+            <columns>5</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='4' />
+            <defense type="ReverseMine" count='1' />
+        </defenses>
+    </level>
+    <level name='3'>
+        <grid>
+            <rows>4</rows>
+            <columns>5</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='10' />
+            <defense type="ReverseMine" count='2' />
+        </defenses>
+    </level>
+    <level name='4'>
+        <grid>
+            <rows>4</rows>
+            <columns>5</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='8' />
+            <defense type="ReverseMine" count='2' />
+            <defense type="FragileMine" count='1' />
+        </defenses>
+    </level>
+    <level name='5'>
+        <grid>
+            <rows>5</rows>
+            <columns>6</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='8' />
+            <defense type="ReverseMine" count='2' />
+            <defense type="FragileMine" count='1' />
+        </defenses>
+    </level>
+    <level name='6'>
+        <grid>
+            <rows>5</rows>
+            <columns>6</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='8' />
+            <defense type="ReverseMine" count='2' />
+            <defense type="Worm" count='1' />
+        </defenses>
+    </level>
+    <level name='7'>
+        <grid>
+            <rows>5</rows>
+            <columns>6</columns>
+        </grid>
+        <defenses>
+            <defense type="Mine" count='4' />
+            <defense type="ReverseMine" count='2' />
+            <defense type="Worm" count='8' />
+        </defenses>
+    </level>
+    <level name='8'>
+        <grid>
+            <rows>4</rows>
+            <columns>5</columns>
+        </grid>
+        <defenses>
+            <defense type="AntiDroneMine" count='1' />
+        </defenses>
+    </level>
+</levels>

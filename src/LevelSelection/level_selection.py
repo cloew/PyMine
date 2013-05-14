@@ -1,5 +1,6 @@
 from Level.level import Level
 from Level.level_init import LevelInit
+from Level.XML.level_loader import LoadLevels
 
 from Defense.anti_drone_mine import AntiDroneMine
 from Defense.mine import Mine
@@ -12,14 +13,15 @@ class LevelSelection:
     
     def __init__(self):
         """ Initialize the Level Selection """
-        self.levels = [Level(LevelInit("1", 4, 5, {Mine:4})), 
-                       Level(LevelInit("2", 4, 5, {Mine:4, ReverseMine:1})),
-                       Level(LevelInit("3", 4, 5, {Mine:10, ReverseMine:2})),
-                       Level(LevelInit("4", 4, 5, {Mine:8, ReverseMine:2, FragileMine:1})),
-                       Level(LevelInit("5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1})),
-                       Level(LevelInit("6", 5, 6, {Mine:8, ReverseMine:2, Worm:1})),
-                       Level(LevelInit("7", 5, 6, {Mine:4, ReverseMine:2, Worm:8})),
-                       Level(LevelInit("8", 4, 5, {AntiDroneMine:1}))]
+        self.levels = LoadLevels()
+        # self.levels = [Level(LevelInit("1", 4, 5, {Mine:4})), 
+                       # Level(LevelInit("2", 4, 5, {Mine:4, ReverseMine:1})),
+                       # Level(LevelInit("3", 4, 5, {Mine:10, ReverseMine:2})),
+                       # Level(LevelInit("4", 4, 5, {Mine:8, ReverseMine:2, FragileMine:1})),
+                       # Level(LevelInit("5", 5, 6, {Mine:8, ReverseMine:2, FragileMine:1})),
+                       # Level(LevelInit("6", 5, 6, {Mine:8, ReverseMine:2, Worm:1})),
+                       # Level(LevelInit("7", 5, 6, {Mine:4, ReverseMine:2, Worm:8})),
+                       # Level(LevelInit("8", 4, 5, {AntiDroneMine:1}))]
         self.selectedIndex = 0
         
     def performGameCycle(self):

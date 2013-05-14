@@ -1,5 +1,3 @@
-#from View.Console.level_controller import LevelController
-
 from pymine import PyMine
 from PySide.QtGui import QApplication
 
