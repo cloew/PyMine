@@ -100,3 +100,7 @@ class Level:
                 remainingDefenses[defense.__class__] += 1
             
         return remainingDefenses
+        
+    def getID(self):
+        """ Return the Level's ID """
+        return self.init.id
