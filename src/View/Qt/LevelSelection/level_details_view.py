@@ -4,6 +4,8 @@ from Defense.fragile_mine import FragileMine
 from Defense.reverse_mine import ReverseMine
 from Defense.worm import Worm
 
+from Profile.profile import CURRENT_PROFILE
+
 from PySide.QtCore import Qt
 from PySide.QtGui import QColor, QFont, QFrame, QLabel
 
@@ -28,6 +30,7 @@ class LevelDetailsView(QFrame):
         self.detailsLabel.move(32, 16)
         self.setupGridLabel()
         self.setupDefensesLabels()
+        self.setupRatingsLabel()
         
     def getLabel(self, text, font, alignment=None):
         """ Get a Level Label with the text """
@@ -43,6 +46,12 @@ class LevelDetailsView(QFrame):
         self.gridLabel.move(32, 48+16)
         self.gridLabel.resize(200, 32)
         
+    def setupRatingsLabel(self):
+        """ Setup the Ratings Label """
+        self.ratingsLabel = self.getLabel("", self.smallFont)
+        self.ratingsLabel.move(32, 48+16)
+        self.ratingsLabel.resize(200, 32)
+        
     def setupDefensesLabels(self):
         """ Setup the Remaining Defenses Labels """
         self.defensesLabels = {}
@@ -57,6 +66,7 @@ class LevelDetailsView(QFrame):
         """ Update the View """
         self.updateGridLabel()
         self.updateDefenseLabels()
+        self.updateRatingsLabel()
         self.update()
         
     def updateGridLabel(self):
@@ -77,3 +87,16 @@ class LevelDetailsView(QFrame):
                 labelNumber += 1
             else:
                 label.setVisible(False)
+                
+    def updateRatingsLabel(self):
+        """ Update the Ratings Label """
+        self.ratingsLabel.move(32, 48+32*(len(self.levelSelection.getLevel().defenses)+3))
+        
+        text = ""
+        if CURRENT_PROFILE.completedLevel(self.levelSelection.getLevel()):
+            text += "C"
+        if CURRENT_PROFILE.acheivedMoveAwardOnLevel(self.levelSelection.getLevel()):
+            text += "M"
+        if CURRENT_PROFILE.acheivedPowerAwardOnLevel(self.levelSelection.getLevel()):
+            text += "P"
+        self.ratingsLabel.setText(text)

@@ -18,4 +18,4 @@ class PowerRating(Rating):
         """ Check if the Rating should be awarded """
         self.awarded = self.power >= 15
         if self.awarded:
-            CURRENT_PROFILE.addCompletionRating(self.level)
+            CURRENT_PROFILE.addPowerRating(self.level)
