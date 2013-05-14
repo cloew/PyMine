@@ -1,3 +1,4 @@
+from Profile.profile import CURRENT_PROFILE
 from rating import Rating
 
 class CompletionRating(Rating):
@@ -6,3 +7,5 @@ class CompletionRating(Rating):
     def checkAwarded(self):
         """ Check if the Rating should be awarded """
         self.awarded = self.level.won()
+        if self.awarded:
+            CURRENT_PROFILE.addCompletionRating(self.level)

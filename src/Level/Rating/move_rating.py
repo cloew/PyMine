@@ -1,3 +1,4 @@
+from Profile.profile import CURRENT_PROFILE
 from rating import Rating
 
 class MoveRating(Rating):
@@ -16,3 +17,5 @@ class MoveRating(Rating):
     def checkAwarded(self):
         """ Check if the Rating should be awarded """
         self.awarded = self.moveCount <= 20
+        if self.awarded:
+            CURRENT_PROFILE.addMoveRating(self.level)

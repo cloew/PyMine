@@ -1,3 +1,4 @@
+from Profile.profile import CURRENT_PROFILE
 from rating import Rating
 
 class PowerRating(Rating):
@@ -16,3 +17,5 @@ class PowerRating(Rating):
     def checkAwarded(self):
         """ Check if the Rating should be awarded """
         self.awarded = self.power >= 15
+        if self.awarded:
+            CURRENT_PROFILE.addCompletionRating(self.level)
