@@ -1,4 +1,4 @@
-from level import Level
+from Level.level import Level
 
 from Defense.anti_drone_mine import AntiDroneMine
 from Defense.mine import Mine

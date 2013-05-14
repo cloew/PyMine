@@ -1,9 +1,10 @@
+from level_selection_view import LevelSelectionView
+
+from LevelSelection.level_selection import LevelSelection
+from View.Qt.Level.level_controller import LevelController
+
 from nytram.core.game_engine import TheGameEngine
 from PySide.QtCore import QCoreApplication, Qt
-
-from level_controller import LevelController
-from Level.level_selection import LevelSelection
-from level_selection_view import LevelSelectionView
 
 class LevelSelectionController:
     """ Controller for a Level """
