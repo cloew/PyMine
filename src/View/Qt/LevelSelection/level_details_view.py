@@ -57,11 +57,11 @@ class LevelDetailsView(QFrame):
         
     def updateDefenseLabels(self):
         """ Update the Defense Label """
-        remainingDefenses = self.levelSelection.getLevel().getRemainingDefenses()
+        defenses = self.levelSelection.getLevel().defenses
         labelNumber = 1
-        for defenseClass in remainingDefenses:
+        for defenseClass in defenses:
             label = self.defensesLabels[defenseClass]
             label.setVisible(True)
-            label.setText("{0}: {1}".format(defenseClass.friendlyName, remainingDefenses[defenseClass]))
+            label.setText("{0}: {1}".format(defenseClass.friendlyName, defenses[defenseClass]))
             label.move(32, 16+48*(labelNumber+1))
             labelNumber += 1
