@@ -63,7 +63,7 @@ class GameStatusView(QFrame):
         
     def updateMovesLabel(self):
         """ Update the Moves Label """
-        self.movesLabel.setText("Moves: {0}".format(self.level.drone.moveCount))
+        self.movesLabel.setText("Moves: {0}".format(self.level.moveRating.moveCount))
         self.movesLabel.resize(self.movesLabel.contentsRect().width(), self.movesLabel.contentsRect().height())
         
     def updateRemainingDefensesLabels(self):

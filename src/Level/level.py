@@ -2,6 +2,7 @@ from drone import Drone
 from minefield import Minefield
 
 from Level.Rating.completion_rating import CompletionRating
+from Level.Rating.move_rating import MoveRating
 
 class Level:
     """ Represents a Level """
@@ -17,9 +18,11 @@ class Level:
         
     def reset(self):
         """ Reset the Level """
-        self.minefield = Minefield(self.rows, self.columns)
-        self.drone = Drone(self.getPowerRating(), self.minefield)
         self.completionRating = CompletionRating(self)
+        self.moveRating = MoveRating(self)
+        
+        self.minefield = Minefield(self.rows, self.columns)
+        self.drone = Drone(self.getPowerRating(), self.minefield, self.moveRating)
         
         self.defenseItems = []
         for defenseClass in self.defenses:
@@ -78,6 +81,7 @@ class Level:
     def tryToAwardRatings(self):
         """ Try To award the Ratings """
         self.completionRating.checkAwarded()
+        self.moveRating.checkAwarded()
         
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """

@@ -5,12 +5,12 @@ from nytram.core.game_engine import TheGameEngine
 class Drone:
     """ Represents the Player's Drone """
     
-    def __init__(self, power, minefield):
+    def __init__(self, power, minefield, moveRating):
         """ Intialize the Player's Drone """
         self.row = 0
         self.column = 0
         self.power = power
-        self.moveCount = 0
+        self.moveRating = moveRating
         
         self.minefield = minefield
         self.destroyed = False
@@ -67,7 +67,7 @@ class Drone:
         """ Move the drone """
         self.row += rowMovement
         self.column += columnMovement
-        self.moveCount += 1
+        self.moveRating.move()
         
         square = self.minefield.getSquare(self.row, self.column)
         square.onMove(self)
