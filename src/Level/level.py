@@ -3,6 +3,9 @@ from minefield import Minefield
 
 from Level.Rating.completion_rating import CompletionRating
 from Level.Rating.move_rating import MoveRating
+from Level.Rating.power_rating import PowerRating
+
+from power_ratings import SCAN_POWER
 
 class Level:
     """ Represents a Level """
@@ -20,9 +23,10 @@ class Level:
         """ Reset the Level """
         self.completionRating = CompletionRating(self)
         self.moveRating = MoveRating(self)
+        self.powerRating = PowerRating(self.getPowerRating(), self)
         
         self.minefield = Minefield(self.rows, self.columns)
-        self.drone = Drone(self.getPowerRating(), self.minefield, self.moveRating)
+        self.drone = Drone(self.minefield, self.moveRating, self.powerRating)
         
         self.defenseItems = []
         for defenseClass in self.defenses:
@@ -39,7 +43,7 @@ class Level:
             
     def getPowerRating(self):
         """ Returns the amount of power the drone should have on the level """
-        powerRating = self.minefield.rowCount()*self.minefield.columnCount()*2
+        powerRating = self.rows*self.columns*SCAN_POWER
         for defenseClass in self.defenses:
             powerRating += self.defenses[defenseClass]*defenseClass.powerRating
         return powerRating
@@ -62,7 +66,7 @@ class Level:
         
     def noPower(self):
         """ Return if the player has no power """
-        return self.drone.power <= 0
+        return not self.drone.hasPower()
         
     def won(self):
         """ Return if the player has won the level """
@@ -71,7 +75,7 @@ class Level:
             if not defense.isDeactivated():
                 return False
         else:
-            return self.drone.power >= 0
+            return self.drone.powerRating.power >= 0
         return won
         
     def finished(self):
@@ -82,6 +86,7 @@ class Level:
         """ Try To award the Ratings """
         self.completionRating.checkAwarded()
         self.moveRating.checkAwarded()
+        self.powerRating.checkAwarded()
         
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """

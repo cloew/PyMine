@@ -74,5 +74,7 @@ class LevelCompletionView(QFrame):
                 text += "C"
             if self.level.moveRating.awarded:
                 text += "M"
+            if self.level.powerRating.awarded:
+                text += "P"
             self.completionDetailsLabel.setText(text)
             self.completionDetailsLabel.setVisible(True)

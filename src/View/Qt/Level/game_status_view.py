@@ -59,7 +59,7 @@ class GameStatusView(QFrame):
         
     def updatePowerLabel(self):
         """ Update the Power Label """
-        self.powerLabel.setText("Power: {0}".format(self.level.drone.power))
+        self.powerLabel.setText("Power: {0}".format(self.level.drone.powerRating.power))
         
     def updateMovesLabel(self):
         """ Update the Moves Label """

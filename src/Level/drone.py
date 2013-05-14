@@ -5,37 +5,38 @@ from nytram.core.game_engine import TheGameEngine
 class Drone:
     """ Represents the Player's Drone """
     
-    def __init__(self, power, minefield, moveRating):
+    def __init__(self, minefield, moveRating, powerRating):
         """ Intialize the Player's Drone """
         self.row = 0
         self.column = 0
-        self.power = power
+        
         self.moveRating = moveRating
+        self.powerRating = powerRating
         
         self.minefield = minefield
         self.destroyed = False
         
     def scan(self):
         """ Scan the current cell """
-        self.power -= SCAN_POWER
+        self.powerRating.usePower(SCAN_POWER)
         self.minefield.scan(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def defuse(self):
         """ Defuse the current cell """
-        self.power -= DEFUSE_POWER
+        self.powerRating.usePower(DEFUSE_POWER)
         self.minefield.defuse(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def defuseCarefully(self):
         """ Carfeully defuse a Fragile mine """
-        self.power -= CAREFUL_DEFUSE_POWER
+        self.powerRating.usePower(CAREFUL_DEFUSE_POWER)
         self.minefield.defuseCarefully(self.row, self.column, self)
         TheGameEngine.updateUI()
         
     def performEMP(self):
         """ Performan EMP Blast """
-        self.power -= EMP_POWER
+        self.powerRating.usePower(EMP_POWER)
         self.minefield.performEMP(self.row, self.column, self)
         TheGameEngine.updateUI()
         
@@ -72,3 +73,7 @@ class Drone:
         square = self.minefield.getSquare(self.row, self.column)
         square.onMove(self)
         TheGameEngine.updateUI()
+        
+    def hasPower(self):
+        """ Returns if the drone has Power """
+        return self.powerRating.power > 0
