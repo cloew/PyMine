@@ -53,7 +53,7 @@ class Level:
         if not self.finished():
             for defense in self.defenseItems:
                 defense.performGameCycle(self.minefield, self.drone)
-        else:
+        elif self.won():
             self.tryToAwardRatings()
         
     def lost(self):
