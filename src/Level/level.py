@@ -10,12 +10,13 @@ from power_ratings import SCAN_POWER
 class Level:
     """ Represents a Level """
     
-    def __init__(self, name, rows, columns, defenses):
+    def __init__(self, init):
         """ Initialize the Level """
-        self.name = name
-        self.rows = rows
-        self.columns = columns
-        self.defenses = defenses
+        self.init = init
+        self.name = init.name
+        self.rows = init.rows
+        self.columns = init.columns
+        self.defenses = init.defenses
         
         self.reset()
         
