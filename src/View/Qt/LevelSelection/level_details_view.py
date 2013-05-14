@@ -63,5 +63,5 @@ class LevelDetailsView(QFrame):
             label = self.defensesLabels[defenseClass]
             label.setVisible(True)
             label.setText("{0}: {1}".format(defenseClass.friendlyName, defenses[defenseClass]))
-            label.move(32, 16+48*(labelNumber+1))
+            label.move(32, 16+32*(labelNumber+1))
             labelNumber += 1
