@@ -30,9 +30,10 @@ def LoadLevels():
 def LoadLevel(levelElement):
     """ Load a Level from an XML Level Element """
     name = levelElement.attrib['name']
+    id = int(levelElement.attrib['id'])
     rows, columns = LoadGridSettings(levelElement.find('grid'))
     defenses = LoadDefenses(levelElement.find('defenses'))
-    init = LevelInit(name, rows, columns, defenses)
+    init = LevelInit(name, id, rows, columns, defenses)
     return Level(init)
     
 def LoadGridSettings(gridElement):

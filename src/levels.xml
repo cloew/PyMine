@@ -1,5 +1,5 @@
 <levels>
-    <level name='1'>
+    <level name='1' id='0'>
         <grid>
             <rows>4</rows>
             <columns>5</columns>
@@ -8,7 +8,7 @@
             <defense type="Mine" count='4' />
         </defenses>
     </level>
-    <level name='2'>
+    <level name='2' id='1'>
         <grid>
             <rows>4</rows>
             <columns>5</columns>
@@ -18,7 +18,7 @@
             <defense type="ReverseMine" count='1' />
         </defenses>
     </level>
-    <level name='3'>
+    <level name='3' id='2'>
         <grid>
             <rows>4</rows>
             <columns>5</columns>
@@ -28,7 +28,7 @@
             <defense type="ReverseMine" count='2' />
         </defenses>
     </level>
-    <level name='4'>
+    <level name='4' id='3'>
         <grid>
             <rows>4</rows>
             <columns>5</columns>
@@ -39,7 +39,7 @@
             <defense type="FragileMine" count='1' />
         </defenses>
     </level>
-    <level name='5'>
+    <level name='5' id='4'>
         <grid>
             <rows>5</rows>
             <columns>6</columns>
@@ -50,7 +50,7 @@
             <defense type="FragileMine" count='1' />
         </defenses>
     </level>
-    <level name='6'>
+    <level name='6' id='5'>
         <grid>
             <rows>5</rows>
             <columns>6</columns>
@@ -61,7 +61,7 @@
             <defense type="Worm" count='1' />
         </defenses>
     </level>
-    <level name='7'>
+    <level name='7' id='6'>
         <grid>
             <rows>5</rows>
             <columns>6</columns>
@@ -72,7 +72,7 @@
             <defense type="Worm" count='8' />
         </defenses>
     </level>
-    <level name='8'>
+    <level name='8' id='7'>
         <grid>
             <rows>4</rows>
             <columns>5</columns>
