@@ -1,3 +1,4 @@
+import Profile.profile_loader
 from pymine import PyMine
 from PySide.QtGui import QApplication
 
