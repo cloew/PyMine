@@ -1,12 +1,16 @@
 from xml.dom.minidom import parseString
-from xml.etree.ElementTree import parse, SubElement, tostring
+from xml.etree.ElementTree import Element, ElementTree, parse, SubElement, tostring
 
 PROFILES_FILENAME = "profiles.xml"
         
 def SaveProfile(profile):
     """ Save the given Profile """
-    tree = parse(PROFILES_FILENAME)
-    root = tree.getroot()
+    try:
+        tree = parse(PROFILES_FILENAME)
+        root = tree.getroot()
+    except IOError:
+        root = Element('profiles')
+        tree = ElementTree(root)
     
     profileElement = FindProfileElementWithName(profile.name, root)
     if profileElement is not None:
