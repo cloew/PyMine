@@ -1,4 +1,4 @@
-from Profile.profile import CURRENT_PROFILE
+from Profile.profile_manager import CURRENT_PROFILE
 from rating import Rating
 
 class MoveRating(Rating):

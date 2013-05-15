@@ -34,6 +34,3 @@ def LoadIDs(element):
     for levelIDElement in element.findall('level'):
         ids.append(int(levelIDElement.text))
     return ids
-    
-profiles = LoadProfiles()
-P.profile.CURRENT_PROFILE = profiles[0]

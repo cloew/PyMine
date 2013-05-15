@@ -4,7 +4,7 @@ from Defense.fragile_mine import FragileMine
 from Defense.reverse_mine import ReverseMine
 from Defense.worm import Worm
 
-from Profile.profile import CURRENT_PROFILE
+from Profile.profile_manager import CURRENT_PROFILE
 
 from PySide.QtCore import Qt
 from PySide.QtGui import QColor, QFont, QFrame, QLabel
