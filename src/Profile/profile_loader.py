@@ -1,5 +1,4 @@
 from Profile.profile import Profile
-import Profile as P
 
 from xml.etree import ElementTree
 
