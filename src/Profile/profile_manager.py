@@ -1,5 +1,6 @@
+from profile import Profile
 from profile_loader import LoadProfiles
-import sys
+from profile_saver import SaveProfile
 
 __profiles__ = []
 CURRENT_PROFILE = None
@@ -9,7 +10,9 @@ def GetCurrentProfile():
     try:
         __profiles__ = LoadProfiles()
     except IOError:
-        pass
+        profile = Profile("Some Profile")
+        SaveProfile(profile)
+        __profiles__ = [profile]
     return __profiles__[0]
 
 CURRENT_PROFILE = GetCurrentProfile()
