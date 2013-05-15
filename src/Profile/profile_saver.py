@@ -1,4 +1,5 @@
-from xml.etree.ElementTree import parse, SubElement
+from xml.dom.minidom import parseString
+from xml.etree.ElementTree import parse, SubElement, tostring
 
 PROFILES_FILENAME = "profiles.xml"
         
@@ -8,9 +9,9 @@ def SaveProfile(profile):
     root = tree.getroot()
     
     profileElement = FindProfileElementWithName(profile.name, root)
-    if profileElement:
+    if profileElement is not None:
         UpdateProfile(profile, profileElement)
-        tree.write(PROFILES_FILENAME)
+        Write(tree)
     
 def FindProfileElementWithName(name, root):
     """ Return the profile with the given name """
@@ -40,3 +41,19 @@ def GetLevelIDs(element):
     for levelIDElement in element.findall('level'):
         ids.append(int(levelIDElement.text))
     return ids
+    
+def Write(tree):
+    """ Write the XML Tree """
+    xmlString = tostring(tree.getroot())
+    xmlString = xmlString.replace('\n', '')
+    xmlString = xmlString.replace('\r', '')
+    xml = parseString(xmlString)
+    prettyString = xml.toprettyxml()
+    lines = prettyString.split('\n')
+    for line in lines:
+        if line.isspace() or line == '':
+            lines.remove(line)
+    xmlText = "\n".join(lines)
+    file = open(PROFILES_FILENAME, 'w')
+    file.write(xmlText)
+    file.close()

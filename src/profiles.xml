@@ -1,16 +1,17 @@
+<?xml version="1.0" ?>
 <profiles>
-    <profile name="CBOBJOE">
-        <completionAwards>
-            <level>0</level>
-            <level>2</level>
-            <level>7</level>
-        </completionAwards>
-        <moveAwards>
-            <level>2</level>
-            <level>7</level>
-        </moveAwards>
-        <powerAwards>
-            <level>2</level>
-        </powerAwards>
-    </profile>
+	<profile name="CBOBJOE">
+		<completionAwards>
+			<level>0</level>
+			<level>2</level>
+			<level>7</level>
+		</completionAwards>
+		<moveAwards>
+			<level>2</level>
+			<level>7</level>
+		</moveAwards>
+		<powerAwards>
+			<level>2</level>
+		</powerAwards>
+	</profile>
 </profiles>
