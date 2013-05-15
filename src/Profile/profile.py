@@ -39,5 +39,3 @@ class Profile:
     def acheivedPowerAwardOnLevel(self, level):
         """ Returns if the profile has gotten the Power Award on the level """
         return level.getID() in self.powerRatings
-    
-CURRENT_PROFILE = Profile("CBOBJOE")

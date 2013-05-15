@@ -11,7 +11,12 @@ def SaveProfile(profile):
     profileElement = FindProfileElementWithName(profile.name, root)
     if profileElement is not None:
         UpdateProfile(profile, profileElement)
-        Write(tree)
+    else:
+        profileElement = SubElement(root, 'profile')
+        profileElement.set('name', profile.name)
+        AddRatings(profileElement)
+        UpdateProfile(profile, profileElement)
+    Write(tree)
     
 def FindProfileElementWithName(name, root):
     """ Return the profile with the given name """
@@ -41,6 +46,12 @@ def GetLevelIDs(element):
     for levelIDElement in element.findall('level'):
         ids.append(int(levelIDElement.text))
     return ids
+    
+def AddRatings(profileElement):
+    """ Add Rating XML Element """
+    SubElement(profileElement, 'completionAwards')
+    SubElement(profileElement, 'moveAwards')
+    SubElement(profileElement, 'powerAwards')
     
 def Write(tree):
     """ Write the XML Tree """
