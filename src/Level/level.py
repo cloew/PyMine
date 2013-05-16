@@ -6,6 +6,7 @@ from Level.Rating.move_rating import MoveRating
 from Level.Rating.power_rating import PowerRating
 
 from power_ratings import SCAN_POWER
+from Profile.profile_manager import CURRENT_PROFILE
 
 class Level:
     """ Represents a Level """
@@ -88,6 +89,7 @@ class Level:
         self.completionRating.checkAwarded()
         self.moveRating.checkAwarded()
         self.powerRating.checkAwarded()
+        CURRENT_PROFILE.achievement.award()
         
     def getRemainingDefenses(self):
         """ Return the number of Remaining defenses """

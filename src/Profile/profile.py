@@ -1,3 +1,4 @@
+from Achievement.achievement import Achievement
 from profile_saver import SaveProfile
 
 class Profile:
@@ -9,6 +10,7 @@ class Profile:
         self.completionRatings = []
         self.moveRatings = []
         self.powerRatings = []
+        self.achievement = Achievement()
     
     def addCompletionRating(self, level):
         """ Add a completion Rating """
