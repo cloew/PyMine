@@ -13,11 +13,11 @@ public class MinefieldScene extends Scene {
 		super();
 		
 		this.minefield = minefield;
-		droneSprite = new DroneSprite(32, 32, vertexBufferObjectManager);
+		droneSprite = new DroneSprite(vertexBufferObjectManager);
 
 		for (int row = 0; row < this.minefield.getRowCount(); row++) {
 			for (int column = 0; column < this.minefield.getColumnCount(); column++) {
-				GridSquareSprite gridSquareSprite = new GridSquareSprite(32+(column*64), 32+(row*64), vertexBufferObjectManager, droneSprite);
+				GridSquareSprite gridSquareSprite = new GridSquareSprite(vertexBufferObjectManager, droneSprite, minefield.getGridSquareAt(row, column));
 				attachChild(gridSquareSprite);
 				registerTouchArea(gridSquareSprite);
 			}

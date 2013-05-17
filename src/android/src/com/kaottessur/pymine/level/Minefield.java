@@ -36,4 +36,8 @@ public class Minefield {
 	public int getColumnCount() {
 		return columns;
 	}
+	
+	public GridSquare getGridSquareAt(int row, int column) {
+		return gridSquares.get(row).get(column);
+	}
 }

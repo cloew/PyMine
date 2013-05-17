@@ -4,23 +4,26 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-public class GridSquareSprite extends Sprite {
-	private boolean scanned = false;
-	private DroneSprite droneSprite;
+import com.kaottessur.pymine.level.GridSquare;
 
-	public GridSquareSprite(float x, float y, VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite) {
-		super(x, y, TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
+public class GridSquareSprite extends Sprite {
+	private DroneSprite droneSprite;
+	private GridSquare gridSquare;
+
+	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
+		super(32+(gridSquare.getColumn()*64), 32+(gridSquare.getRow()*64), TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.droneSprite = droneSprite;
+		this.gridSquare = gridSquare;
 	}
 	
 	@Override
     public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-        if (!scanned)
+        if (gridSquare.isScanned())
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("ScannedGridSquare.png"));
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
-        scanned = !scanned;
+        gridSquare.scan();
         droneSprite.setPosition(getX(), getY());
         return true;
     }

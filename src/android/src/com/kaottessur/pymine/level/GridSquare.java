@@ -9,4 +9,20 @@ public class GridSquare {
 		this.row = row;
 		this.column = column;
 	}
+	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getColumn() {
+		return column;
+	}
+	
+	public boolean isScanned() {
+		return scanned;
+	}
+	
+	public void scan() {
+		scanned = !scanned;
+	}
 }

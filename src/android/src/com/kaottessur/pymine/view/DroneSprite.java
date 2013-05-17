@@ -6,8 +6,8 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 public class DroneSprite extends Sprite {
 	
 	
-	public DroneSprite(float x, float y, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(x, y, TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
+	public DroneSprite(VertexBufferObjectManager vertexBufferObjectManager) {
+		super(32, 32, TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
 		setScale(4);
 	}
 }
