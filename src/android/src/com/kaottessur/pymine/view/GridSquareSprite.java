@@ -11,7 +11,8 @@ public class GridSquareSprite extends Sprite {
 	private GridSquare gridSquare;
 
 	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
-		super(32+(gridSquare.getColumn()*64), 32+(gridSquare.getRow()*64), TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
+		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
+				TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;

@@ -1,6 +1,8 @@
 package com.kaottessur.pymine.level;
 
-public class Drone {
+import com.kaottessur.pymine.GridLocationInterface;
+
+public class Drone implements GridLocationInterface {
 	private int row;
 	private int column;
 	

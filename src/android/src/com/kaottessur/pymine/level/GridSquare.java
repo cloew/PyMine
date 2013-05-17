@@ -1,6 +1,8 @@
 package com.kaottessur.pymine.level;
 
-public class GridSquare {
+import com.kaottessur.pymine.GridLocationInterface;
+
+public class GridSquare implements GridLocationInterface {
 	private int row;
 	private int column;
 	private boolean scanned = false;

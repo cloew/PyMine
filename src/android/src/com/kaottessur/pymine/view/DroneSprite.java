@@ -10,13 +10,13 @@ public class DroneSprite extends Sprite {
 	private Drone drone;
 	
 	public DroneSprite(Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(32, 32, TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
+		super(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone), TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.drone = drone;
 	}
 	
 	public void moveTo(GridSquare gridSquare) {
 		drone.move(gridSquare.getRow(), gridSquare.getColumn());
-		setPosition(32+(gridSquare.getColumn()*64), 32+(gridSquare.getRow()*64));
+		setPosition(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone));
 	}
 }
