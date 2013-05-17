@@ -6,10 +6,12 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 public class GridSquareSprite extends Sprite {
 	private boolean scanned = false;
+	private DroneSprite droneSprite;
 
-	public GridSquareSprite(float x, float y, VertexBufferObjectManager vertexBufferObjectManager) {
+	public GridSquareSprite(float x, float y, VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite) {
 		super(x, y, TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
 		setScale(4);
+		this.droneSprite = droneSprite;
 	}
 	
 	@Override
@@ -19,6 +21,7 @@ public class GridSquareSprite extends Sprite {
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
         scanned = !scanned;
+        droneSprite.setPosition(getX(), getY());
         return true;
     }
 }

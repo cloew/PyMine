@@ -15,7 +15,7 @@ public class MinefieldScene extends Scene {
 
 		for (int row = 0; row < ROWS; row++) {
 			for (int column = 0; column < COLUMNS; column++) {
-				GridSquareSprite gridSquareSprite = new GridSquareSprite(32+(column*64), 32+(row*64), vertexBufferObjectManager);
+				GridSquareSprite gridSquareSprite = new GridSquareSprite(32+(column*64), 32+(row*64), vertexBufferObjectManager, droneSprite);
 				attachChild(gridSquareSprite);
 				registerTouchArea(gridSquareSprite);
 			}
