@@ -7,11 +7,14 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
+import com.kaottessur.pymine.level.Minefield;
+
 public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_WIDTH = 800;
 	private static int CAMERA_HEIGHT = 480;
 	
 	private MinefieldScene minefieldScene;
+	private Minefield minefield;
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
@@ -30,7 +33,8 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 
 	@Override
 	protected Scene onCreateScene() {
-		minefieldScene = new MinefieldScene(getVertexBufferObjectManager());
+		minefield = new Minefield(4, 5);
+		minefieldScene = new MinefieldScene(minefield, getVertexBufferObjectManager());
 		return minefieldScene;
 	}
 

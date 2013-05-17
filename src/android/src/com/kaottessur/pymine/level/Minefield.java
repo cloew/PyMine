@@ -28,4 +28,12 @@ public class Minefield {
 			}
 		}
 	}
+	
+	public int getRowCount() {
+		return rows;
+	}
+	
+	public int getColumnCount() {
+		return columns;
+	}
 }
