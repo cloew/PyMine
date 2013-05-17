@@ -21,8 +21,7 @@ public class TextureWrapper {
 	private AssetManager assetManager;
 	
 	public static TextureWrapper Initialize(TextureManager textureManager, AssetManager assetManager) {
-		if (instance == null)
-			instance = new TextureWrapper(textureManager, assetManager);
+		instance = new TextureWrapper(textureManager, assetManager);
 		return instance;
 	}
 	
