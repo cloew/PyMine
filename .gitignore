@@ -1,8 +1,8 @@
 *.classpath*
 .project
 .settings
-*/bin/*
-*/gen/*
-*/libs/*
+src/android/bin/*
+src/android/gen/*
+src/android/libs/*
 *.pyc
 profiles.xml*
