@@ -13,7 +13,7 @@ public class MinefieldScene extends Scene {
 		super();
 		
 		this.minefield = minefield;
-		droneSprite = new DroneSprite(vertexBufferObjectManager);
+		droneSprite = new DroneSprite(minefield.getDrone(), vertexBufferObjectManager);
 
 		for (int row = 0; row < this.minefield.getRowCount(); row++) {
 			for (int column = 0; column < this.minefield.getColumnCount(); column++) {

@@ -19,12 +19,16 @@ public class GridSquareSprite extends Sprite {
 	
 	@Override
     public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-        if (gridSquare.isScanned())
+		setProperTexture();
+        droneSprite.moveTo(gridSquare);
+        return true;
+    }
+	
+	private void setProperTexture() {
+		if (gridSquare.isScanned())
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("ScannedGridSquare.png"));
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
         gridSquare.scan();
-        droneSprite.setPosition(getX(), getY());
-        return true;
-    }
+	}
 }
