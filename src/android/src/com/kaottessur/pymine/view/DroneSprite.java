@@ -10,7 +10,8 @@ public class DroneSprite extends Sprite {
 	private Drone drone;
 	
 	public DroneSprite(Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone), TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
+		super(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone), 
+				TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.drone = drone;
 	}
