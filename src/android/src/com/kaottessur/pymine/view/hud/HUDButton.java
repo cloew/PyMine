@@ -7,11 +7,13 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.kaottessur.pymine.level.Drone;
 
 public abstract class HUDButton extends Rectangle {
+	public static final int BUTTON_SIZE = 120;
 	protected Drone drone;
 	
 	public HUDButton(float y, Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(680, y, 120, 120, vertexBufferObjectManager);
+		super(680, y, BUTTON_SIZE, BUTTON_SIZE, vertexBufferObjectManager);
 		this.drone = drone;
+		setColor(.5f, .5f, .5f);
 	}
 	
 	@Override
