@@ -25,5 +25,11 @@ public class Clue {
 	public void populateFromAdjacentGridSquares(Minefield minefield, int gridRow, int gridColumn) {
 		GridSquare currentSquare = minefield.getGridSquareAt(gridRow, gridColumn);
 		
+		for (GridSquare gridSquare : minefield.getAdjacentGridSquares(currentSquare, true)) {
+			if (gridSquare == currentSquare)
+				continue;
+			for (SubClue subClue : subClues)
+				subClue.updateFromAdjacentSquare(gridSquare);
+		}
 	}
 }
