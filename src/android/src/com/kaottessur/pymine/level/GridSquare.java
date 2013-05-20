@@ -2,16 +2,20 @@ package com.kaottessur.pymine.level;
 
 import com.kaottessur.pymine.GridLocationInterface;
 import com.kaottessur.pymine.defense.DefenseInterface;
+import com.kaottessur.pymine.level.clue.Clue;
 
 public class GridSquare implements GridLocationInterface {
 	private int row;
 	private int column;
 	private boolean scanned = false;
+	
 	private DefenseInterface defense;
+	private Clue clue;
 	
 	public GridSquare(int row, int column) {
 		this.row = row;
 		this.column = column;
+		clue = new Clue();
 	}
 	
 	public int getRow() {
