@@ -24,7 +24,7 @@ public class Minefield {
 	}
 	
 	private void populateGridSquares() {
-		drone = new Drone();
+		drone = new Drone(this);
 		gridSquares = new ArrayList<List<GridSquare>>();
 		
 		for (int row = 0; row < rows; row++) {
@@ -40,6 +40,11 @@ public class Minefield {
 		DefenseInterface mine = new Mine();
 		DefenseAdderInterface defenseAdder = mine.getDefenseAdder();
 		defenseAdder.addDefense(mine, this);
+	}
+	
+	public void scan(int row, int column, Drone drone) {
+		GridSquare gridSquare = getGridSquareAt(row, column);
+		gridSquare.scan(drone);
 	}
 	
 	public int getRowCount() {

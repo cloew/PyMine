@@ -7,14 +7,21 @@ public class Drone implements GridLocationInterface {
 	private int column;
 	private boolean destroyed = false;
 	
-	public Drone() {
+	private Minefield minefield;
+	
+	public Drone(Minefield minefield) {
 		row = 0;
 		column = 0;
+		this.minefield = minefield;
 	}
 	
 	public void move(int newRow, int newColumn) {
 		row = newRow;
 		column = newColumn;
+	}
+	
+	public void scan() {
+		minefield.scan(row, column, this);
 	}
 	
 	public int getRow() {
