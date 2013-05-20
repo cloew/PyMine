@@ -20,4 +20,8 @@ public class DroneSprite extends Sprite {
 		drone.move(gridSquare.getRow(), gridSquare.getColumn());
 		setPosition(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone));
 	}
+	
+	public Drone getDrone() {
+		return drone;
+	}
 }

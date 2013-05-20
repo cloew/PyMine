@@ -30,6 +30,6 @@ public class GridSquareSprite extends Sprite {
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("ScannedGridSquare.png"));
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
-        gridSquare.scan();
+        gridSquare.scan(droneSprite.getDrone());
 	}
 }
