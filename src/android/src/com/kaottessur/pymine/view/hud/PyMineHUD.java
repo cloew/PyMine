@@ -11,18 +11,7 @@ public class PyMineHUD extends HUD {
 
 	public PyMineHUD(final Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
-		
-		final Rectangle left = new Rectangle(680, 0, 120, 120, vertexBufferObjectManager)
-	    {
-	        public boolean onAreaTouched(TouchEvent touchEvent, float X, float Y)
-	        {
-	            if (touchEvent.isActionUp())
-	            {
-	            	drone.scan();
-	            }
-	            return true;
-	        };
-	    };
+		ScanButton scanButton = new ScanButton(drone, vertexBufferObjectManager);
 	    
 	    final Rectangle right = new Rectangle(680, 120, 120, 120, vertexBufferObjectManager)
 	    {
@@ -36,12 +25,12 @@ public class PyMineHUD extends HUD {
 	        };
 	    };
 	    
-	    left.setColor(.5f, .5f, .5f);
+	    scanButton.setColor(.5f, .5f, .5f);
 	    right.setColor(.5f, .5f, .5f);
 	    
-	    registerTouchArea(left);
+	    registerTouchArea(scanButton);
 	    registerTouchArea(right);
-	    attachChild(left);
+	    attachChild(scanButton);
 	    attachChild(right);
 	}
 }
