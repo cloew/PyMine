@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.view;
 
+import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
@@ -29,13 +30,31 @@ public class GridSquareSprite extends Sprite {
 		
 		clueView = new ClueView(gridSquare.getClue(), TextureWrapper.GetInstance().GetGameFont(), getVertexBufferObjectManager());
 		attachChild(clueView);
+		registerUpdate();
+		
+	}
+	
+	private void registerUpdate() {
+		registerUpdateHandler(new IUpdateHandler() {
+			@Override
+			public void reset() {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				setProperTexture();
+			}
+		});
 	}
 	
 	@Override
     public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
-		if (touchEvent.isActionUp() ) {
+		if (touchEvent.isActionDown() ) {
 			droneSprite.moveTo(gridSquare);
-			setProperTexture();
+			gridSquare.scan(droneSprite.getDrone());
+			if (mineSprite != null)
+	        	mineSprite.setVisible(true);
 		}
         return true;
     }
@@ -45,8 +64,5 @@ public class GridSquareSprite extends Sprite {
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("ScannedGridSquare.png"));
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
-        gridSquare.scan(droneSprite.getDrone());
-        if (mineSprite != null)
-        	mineSprite.setVisible(true);
 	}
 }
