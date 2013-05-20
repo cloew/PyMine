@@ -43,4 +43,10 @@ public class GridSquare implements GridLocationInterface {
 	public void setDefense(DefenseInterface defense) {
 		this.defense = defense;
 	}
+
+	public boolean mined() {
+		if (hasDefense())
+			return defense.isMine();
+		return false;
+	}
 }

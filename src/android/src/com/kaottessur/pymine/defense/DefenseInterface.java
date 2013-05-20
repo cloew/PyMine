@@ -5,8 +5,12 @@ import com.kaottessur.pymine.level.Drone;
 
 public interface DefenseInterface {
 
-	public boolean isDeactivated();
 	public DefenseAdderInterface getDefenseAdder();
+	
+	public boolean isDeactivated();
+	public boolean isMine();
+	
+	
 	
 	public void scan(Drone drone);
 }

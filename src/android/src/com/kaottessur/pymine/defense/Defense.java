@@ -14,6 +14,10 @@ public abstract class Defense implements DefenseInterface {
 		return deactivated;
 	}
 	
+	public boolean isMine() {
+		return false;
+	}
+	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
 	}
