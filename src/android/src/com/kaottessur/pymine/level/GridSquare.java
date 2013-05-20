@@ -36,6 +36,10 @@ public class GridSquare implements GridLocationInterface {
 		return defense != null;
 	}
 	
+	public DefenseInterface getDefense() {
+		return defense;
+	}
+	
 	public void setDefense(DefenseInterface defense) {
 		this.defense = defense;
 	}

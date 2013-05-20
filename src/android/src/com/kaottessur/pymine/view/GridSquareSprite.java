@@ -4,11 +4,14 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.view.defense.MineSprite;
 
 public class GridSquareSprite extends Sprite {
 	private DroneSprite droneSprite;
 	private GridSquare gridSquare;
+	private MineSprite mineSprite;
 
 	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
 		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
@@ -16,6 +19,10 @@ public class GridSquareSprite extends Sprite {
 		setScale(4);
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
+		if (gridSquare.hasDefense()) {
+			mineSprite = new MineSprite(getX(), getY(), (Mine) gridSquare.getDefense(), vertexBufferObjectManager);
+			attachChild(mineSprite);
+		}
 	}
 	
 	@Override
