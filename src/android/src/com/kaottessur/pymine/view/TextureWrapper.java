@@ -61,7 +61,7 @@ public class TextureWrapper {
 	
 	public IFont GetGameFont() {
 		IFont font =  FontFactory.create(fontManager, textureManager, 16, 16,
-				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 15);
+				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 8);
 		font.load();
 		return font;
 	}

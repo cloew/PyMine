@@ -6,13 +6,13 @@ import org.andengine.opengl.font.IFont;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.clue.Clue;
+import com.kaottessur.pymine.view.GridPositionHelper;
 
 public class ClueView extends Text {
 	private Clue clue;
 		
 	public ClueView(Clue clue, IFont font, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, 0, font, "", 1, vertexBufferObjectManager);
-		
+		super(10, 0, font, "", 1, vertexBufferObjectManager);
 		
 		this.clue = clue;
 		registerUpdateHandler(new IUpdateHandler() {
