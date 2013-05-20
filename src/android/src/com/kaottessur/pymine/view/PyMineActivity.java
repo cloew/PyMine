@@ -43,7 +43,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	
 	private void createControllers()
 	{
-	    HUD yourHud = new PyMineHUD(getVertexBufferObjectManager());
+	    HUD yourHud = new PyMineHUD(minefield.getDrone(), getVertexBufferObjectManager());
 	    this.mEngine.getCamera().setHUD(yourHud);
 	}
 

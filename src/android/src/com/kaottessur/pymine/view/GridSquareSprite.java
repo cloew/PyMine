@@ -44,6 +44,8 @@ public class GridSquareSprite extends Sprite {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
 				setProperTexture();
+				if (mineSprite != null && gridSquare.isScanned())
+		        	mineSprite.setVisible(true);
 			}
 		});
 	}
@@ -52,9 +54,6 @@ public class GridSquareSprite extends Sprite {
     public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
 		if (touchEvent.isActionDown() ) {
 			droneSprite.moveTo(gridSquare);
-			gridSquare.scan(droneSprite.getDrone());
-			if (mineSprite != null)
-	        	mineSprite.setVisible(true);
 		}
         return true;
     }

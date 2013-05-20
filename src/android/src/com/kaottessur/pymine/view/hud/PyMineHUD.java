@@ -5,9 +5,11 @@ import org.andengine.entity.primitive.Rectangle;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.level.Drone;
+
 public class PyMineHUD extends HUD {
 
-	public PyMineHUD(VertexBufferObjectManager vertexBUfferObjectManager) {
+	public PyMineHUD(final Drone drone, VertexBufferObjectManager vertexBUfferObjectManager) {
 		super();
 		
 		final Rectangle left = new Rectangle(680, 0, 120, 120, vertexBUfferObjectManager)
@@ -16,7 +18,7 @@ public class PyMineHUD extends HUD {
 	        {
 	            if (touchEvent.isActionUp())
 	            {
-	                // move player left
+	            	drone.scan();
 	            	System.out.println("Left action called");
 	            }
 	            return true;
