@@ -1,5 +1,12 @@
 package com.kaottessur.pymine.view;
 
+import org.andengine.opengl.font.FontFactory;
+import org.andengine.opengl.font.FontManager;
+import org.andengine.opengl.font.IFont;
+import org.andengine.opengl.texture.TextureManager;
+
+import android.graphics.Typeface;
+
 import com.kaottessur.pymine.GridLocationInterface;
 
 public class GridPositionHelper {

@@ -26,6 +26,10 @@ public class GridSquare implements GridLocationInterface {
 		return column;
 	}
 	
+	public Clue getClue() {
+		return clue;
+	}
+	
 	public boolean isScanned() {
 		return scanned;
 	}

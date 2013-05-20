@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.andengine.opengl.font.FontFactory;
+import org.andengine.opengl.font.FontManager;
+import org.andengine.opengl.font.IFont;
 import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureManager;
 import org.andengine.opengl.texture.bitmap.BitmapTexture;
@@ -13,15 +16,17 @@ import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.util.adt.io.in.IInputStreamOpener;
 
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 
 public class TextureWrapper {
 	private static TextureWrapper instance = null;
 	private Map<String, ITexture> textures;
 	private TextureManager textureManager;
 	private AssetManager assetManager;
+	private FontManager fontManager;
 	
-	public static TextureWrapper Initialize(TextureManager textureManager, AssetManager assetManager) {
-		instance = new TextureWrapper(textureManager, assetManager);
+	public static TextureWrapper Initialize(FontManager fontManager, TextureManager textureManager, AssetManager assetManager) {
+		instance = new TextureWrapper(fontManager, textureManager, assetManager);
 		return instance;
 	}
 	
@@ -29,8 +34,9 @@ public class TextureWrapper {
 		return instance;
 	}
 	
-	private TextureWrapper(TextureManager textureManager, AssetManager assetManager) {
+	private TextureWrapper(FontManager fontManager, TextureManager textureManager, AssetManager assetManager) {
 		textures = new HashMap<String, ITexture>();
+		this.fontManager = fontManager;
 		this.textureManager = textureManager;
 		this.assetManager = assetManager;
 	}
@@ -52,6 +58,13 @@ public class TextureWrapper {
 		    return null;
 		}
 	}
+	
+	public IFont GetGameFont() {
+		IFont font =  FontFactory.create(fontManager, textureManager, 64, 64,
+				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 15);
+		font.load();
+		return font;
+	}
 
 	private void LoadTexture(final String filename) throws IOException {
 		ITexture texture = new BitmapTexture(textureManager, new IInputStreamOpener() {
@@ -62,6 +75,5 @@ public class TextureWrapper {
 	    });
 		texture.load();
 		textures.put(filename, texture);
-		
 	}
 }

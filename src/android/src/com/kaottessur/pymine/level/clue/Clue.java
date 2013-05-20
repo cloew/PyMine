@@ -32,4 +32,8 @@ public class Clue {
 				subClue.updateFromAdjacentSquare(gridSquare);
 		}
 	}
+	
+	public AdjacencyClue getAdjacencyClue() {
+		return adjacencyClue;
+	}
 }

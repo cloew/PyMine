@@ -7,11 +7,14 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.view.defense.MineSprite;
+import com.kaottessur.pymine.view.level.clue.ClueView;
 
 public class GridSquareSprite extends Sprite {
 	private DroneSprite droneSprite;
 	private GridSquare gridSquare;
+	
 	private MineSprite mineSprite;
+	private ClueView clueView;
 
 	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
 		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
@@ -23,6 +26,9 @@ public class GridSquareSprite extends Sprite {
 			mineSprite = new MineSprite((Mine) gridSquare.getDefense(), vertexBufferObjectManager);
 			attachChild(mineSprite);
 		}
+		
+		clueView = new ClueView(gridSquare.getClue(), TextureWrapper.GetInstance().GetGameFont(), getVertexBufferObjectManager());
+		attachChild(clueView);
 	}
 	
 	@Override
