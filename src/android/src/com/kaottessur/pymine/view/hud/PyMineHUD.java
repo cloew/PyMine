@@ -9,10 +9,10 @@ import com.kaottessur.pymine.level.Drone;
 
 public class PyMineHUD extends HUD {
 
-	public PyMineHUD(final Drone drone, VertexBufferObjectManager vertexBUfferObjectManager) {
+	public PyMineHUD(final Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
 		
-		final Rectangle left = new Rectangle(680, 0, 120, 120, vertexBUfferObjectManager)
+		final Rectangle left = new Rectangle(680, 0, 120, 120, vertexBufferObjectManager)
 	    {
 	        public boolean onAreaTouched(TouchEvent touchEvent, float X, float Y)
 	        {
@@ -24,7 +24,7 @@ public class PyMineHUD extends HUD {
 	        };
 	    };
 	    
-	    final Rectangle right = new Rectangle(680, 120, 120, 120, vertexBUfferObjectManager)
+	    final Rectangle right = new Rectangle(680, 120, 120, 120, vertexBufferObjectManager)
 	    {
 	        public boolean onAreaTouched(TouchEvent touchEvent, float X, float Y)
 	        {
