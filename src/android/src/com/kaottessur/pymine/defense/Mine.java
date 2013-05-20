@@ -13,7 +13,7 @@ public class Mine extends Defense {
 	}
 	
 	public void defuse(Drone drone) {
-		deactivated = false;
+		deactivated = true;
 	}
 	
 	private void tryToDetonate(Drone drone) {

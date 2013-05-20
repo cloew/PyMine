@@ -27,7 +27,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 
 	@Override
 	protected void onCreateResources() {
-		String[] resourceFilenames = {"Drone2.png", "GridSquare.png", "ScannedGridSquare.png"};
+		String[] resourceFilenames = {"DefusedMine1.png", "Drone2.png", "GridSquare.png", "Mine1.png", "ScannedGridSquare.png"};
 		TextureWrapper textureWrapper = TextureWrapper.Initialize(getFontManager(), getTextureManager(), getAssets());
 		for (String resourceFilename : resourceFilenames)
 			textureWrapper.GetTexture(resourceFilename);
