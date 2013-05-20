@@ -57,4 +57,21 @@ public class Minefield {
 	public GridSquare getGridSquareAt(int row, int column) {
 		return gridSquares.get(row).get(column);
 	}
+	
+	public List<GridSquare> getAdjacentGridSquares(GridSquare centerSquare, boolean includeCenter) {
+		List<GridSquare> adjacentGridSquares = new ArrayList<GridSquare>();
+		
+		for (int row = centerSquare.getRow()-1; row < centerSquare.getRow()+1; row++) {
+			for (int column = centerSquare.getColumn()-1; column < centerSquare.getColumn()+1; column++) {
+				GridSquare gridSquare = getGridSquareAt(row, column);
+				
+				if (!includeCenter || gridSquare == centerSquare)
+					continue;
+				
+				adjacentGridSquares.add(gridSquare);
+			}
+		}
+		
+		return adjacentGridSquares;
+	}
 }
