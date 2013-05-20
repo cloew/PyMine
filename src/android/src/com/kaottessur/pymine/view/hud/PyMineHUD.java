@@ -1,8 +1,6 @@
 package com.kaottessur.pymine.view.hud;
 
 import org.andengine.engine.camera.hud.HUD;
-import org.andengine.entity.primitive.Rectangle;
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Drone;
