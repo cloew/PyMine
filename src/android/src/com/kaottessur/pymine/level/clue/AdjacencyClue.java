@@ -14,7 +14,12 @@ public class AdjacencyClue extends SubClue {
 	}
 	
 	public void updateFromAdjacentSquare(GridSquare gridSquare) {
-		if (gridSquare.mined())
+		if (gridSquare.mined()) {
 			numberOfAdjacentMines++;
+		}
+	}
+	
+	public int getClueReading() {
+		return numberOfAdjacentMines;
 	}
 }

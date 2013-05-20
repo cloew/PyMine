@@ -32,6 +32,10 @@ public class Drone implements GridLocationInterface {
 		return column;
 	}
 	
+	public Minefield getMinefield() {
+		return minefield;
+	}
+	
 	public void destroy() {
 		destroyed = true;
 		System.out.println("Destroyed the drone");

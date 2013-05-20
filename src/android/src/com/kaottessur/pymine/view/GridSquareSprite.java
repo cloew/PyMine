@@ -26,9 +26,11 @@ public class GridSquareSprite extends Sprite {
 	}
 	
 	@Override
-    public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-		setProperTexture();
-        droneSprite.moveTo(gridSquare);
+    public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
+		if (touchEvent.isActionUp() ) {
+			droneSprite.moveTo(gridSquare);
+			setProperTexture();
+		}
         return true;
     }
 	

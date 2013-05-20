@@ -60,20 +60,27 @@ public class Minefield {
 	}
 	
 	public GridSquare getGridSquareAt(int row, int column) {
-		return gridSquares.get(row).get(column);
+		try {
+			return gridSquares.get(row).get(column);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			return null;
+		} catch(IndexOutOfBoundsException e) {
+			return null;
+		}
 	}
 	
 	public List<GridSquare> getAdjacentGridSquares(GridSquare centerSquare, boolean includeCenter) {
 		List<GridSquare> adjacentGridSquares = new ArrayList<GridSquare>();
 		
-		for (int row = centerSquare.getRow()-1; row < centerSquare.getRow()+1; row++) {
-			for (int column = centerSquare.getColumn()-1; column < centerSquare.getColumn()+1; column++) {
+		for (int row = centerSquare.getRow()-1; row <= centerSquare.getRow()+1; row++) {
+			for (int column = centerSquare.getColumn()-1; column <= centerSquare.getColumn()+1; column++) {
 				GridSquare gridSquare = getGridSquareAt(row, column);
 				
-				if (!includeCenter || gridSquare == centerSquare)
+				if (!includeCenter && gridSquare == centerSquare)
 					continue;
 				
-				adjacentGridSquares.add(gridSquare);
+				if (gridSquare != null)
+					adjacentGridSquares.add(gridSquare);
 			}
 		}
 		

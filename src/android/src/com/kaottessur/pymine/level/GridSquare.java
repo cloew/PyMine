@@ -32,6 +32,7 @@ public class GridSquare implements GridLocationInterface {
 	
 	public void scan(Drone drone) {
 		scanned = !scanned;
+		clue.populate(drone.getMinefield(), drone.getRow(), drone.getColumn());
 		if (hasDefense())
 			defense.scan(drone);
 	}
