@@ -9,7 +9,7 @@ class StandardDefenseAdder:
     def addDefense(self, defense, minefield):
         """ Add Defense to the minefield """
         while True:
-            square = self.getSquare(minefield)
+            square = self.getRandomSquare(minefield)
             if square.hasGroundDefense():
                 continue
             else:
@@ -17,7 +17,7 @@ class StandardDefenseAdder:
                 defense.gridSquare = square
                 break
             
-    def getSquare(self, minefield):
+    def getRandomSquare(self, minefield):
         """ Return a Grid Square """
         row = randint(0, minefield.rowCount()-1)
         column = randint(1, minefield.columnCount()-1)
