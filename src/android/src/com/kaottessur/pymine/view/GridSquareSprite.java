@@ -53,7 +53,7 @@ public class GridSquareSprite extends Sprite {
 	@Override
     public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
 		if (touchEvent.isActionDown() ) {
-			droneSprite.moveTo(gridSquare);
+			droneSprite.getDrone().tryToMove(gridSquare);
 		}
         return true;
     }

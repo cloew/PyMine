@@ -86,4 +86,22 @@ public class Minefield {
 		
 		return adjacentGridSquares;
 	}
+	
+	public List<GridSquare> getCardinallyAdjacentGridSquares(GridSquare centerSquare) {
+		List<GridSquare> adjacentGridSquares = new ArrayList<GridSquare>();
+		
+		for (int row = centerSquare.getRow()-1; row <= centerSquare.getRow()+1; row+=2) {
+			GridSquare gridSquare = getGridSquareAt(row, centerSquare.getColumn());
+			if (gridSquare != null)
+				adjacentGridSquares.add(gridSquare);
+		}
+		
+		for (int column = centerSquare.getColumn()-1; column <= centerSquare.getColumn()+1; column+=2) {
+			GridSquare gridSquare = getGridSquareAt(centerSquare.getRow(), column);
+			if (gridSquare != null)
+				adjacentGridSquares.add(gridSquare);
+		}
+		
+		return adjacentGridSquares;
+	}
 }
