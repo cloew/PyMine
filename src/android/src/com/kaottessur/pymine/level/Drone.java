@@ -5,6 +5,7 @@ import com.kaottessur.pymine.GridLocationInterface;
 public class Drone implements GridLocationInterface {
 	private int row;
 	private int column;
+	private boolean destroyed = false;
 	
 	public Drone() {
 		row = 0;
@@ -22,5 +23,10 @@ public class Drone implements GridLocationInterface {
 	
 	public int getColumn() {
 		return column;
+	}
+	
+	public void destroy() {
+		destroyed = true;
+		System.out.println("Destroyed the drone");
 	}
 }
