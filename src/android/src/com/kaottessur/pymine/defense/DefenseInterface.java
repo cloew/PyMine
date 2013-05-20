@@ -11,6 +11,6 @@ public interface DefenseInterface {
 	public boolean isMine();
 	
 	
-	
 	public void scan(Drone drone);
+	public void defuse(Drone drone);
 }

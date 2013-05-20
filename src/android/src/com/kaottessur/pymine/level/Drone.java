@@ -30,6 +30,10 @@ public class Drone implements GridLocationInterface {
 		minefield.scan(row, column, this);
 	}
 	
+	public void defuse() {
+		minefield.defuse(row, column, this);
+	}
+	
 	public int getRow() {
 		return row;
 	}
