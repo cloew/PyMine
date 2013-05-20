@@ -1,11 +1,13 @@
 package com.kaottessur.pymine.level;
 
 import com.kaottessur.pymine.GridLocationInterface;
+import com.kaottessur.pymine.defense.DefenseInterface;
 
 public class GridSquare implements GridLocationInterface {
 	private int row;
 	private int column;
 	private boolean scanned = false;
+	private DefenseInterface defense;
 	
 	public GridSquare(int row, int column) {
 		this.row = row;
@@ -26,5 +28,13 @@ public class GridSquare implements GridLocationInterface {
 	
 	public void scan() {
 		scanned = !scanned;
+	}
+	
+	public boolean hasDefense() {
+		return defense != null;
+	}
+	
+	public void setDefense(DefenseInterface defense) {
+		this.defense = defense;
 	}
 }

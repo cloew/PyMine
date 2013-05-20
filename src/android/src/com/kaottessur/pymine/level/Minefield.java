@@ -3,6 +3,10 @@ package com.kaottessur.pymine.level;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kaottessur.pymine.defense.DefenseInterface;
+import com.kaottessur.pymine.defense.Mine;
+import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
+
 public class Minefield {
 	private int rows;
 	private int columns;
@@ -16,6 +20,7 @@ public class Minefield {
 		this.columns = columns;
 		
 		populateGridSquares();
+		addDefenses();
 	}
 	
 	private void populateGridSquares() {
@@ -29,6 +34,12 @@ public class Minefield {
 				gridSquares.get(row).add(gridSquare);
 			}
 		}
+	}
+	
+	private void addDefenses() {
+		DefenseInterface mine = new Mine();
+		DefenseAdderInterface defenseAdder = mine.getDefenseAdder();
+		defenseAdder.addDefense(mine, this);
 	}
 	
 	public int getRowCount() {
