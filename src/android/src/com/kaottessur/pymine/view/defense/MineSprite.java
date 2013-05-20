@@ -12,5 +12,6 @@ public class MineSprite extends Sprite {
 	public MineSprite(float x, float y, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(0, 0, TextureWrapper.GetInstance().GetTextureRegion("Mine1.png"), vertexBufferObjectManager);
 		this.mine = mine;
+		setVisible(false);
 	}
 }

@@ -38,5 +38,7 @@ public class GridSquareSprite extends Sprite {
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
         gridSquare.scan(droneSprite.getDrone());
+        if (mineSprite != null)
+        	mineSprite.setVisible(true);
 	}
 }
