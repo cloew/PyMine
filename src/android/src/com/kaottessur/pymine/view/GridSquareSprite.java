@@ -20,7 +20,7 @@ public class GridSquareSprite extends Sprite {
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
 		if (gridSquare.hasDefense()) {
-			mineSprite = new MineSprite(getX(), getY(), (Mine) gridSquare.getDefense(), vertexBufferObjectManager);
+			mineSprite = new MineSprite((Mine) gridSquare.getDefense(), vertexBufferObjectManager);
 			attachChild(mineSprite);
 		}
 	}
