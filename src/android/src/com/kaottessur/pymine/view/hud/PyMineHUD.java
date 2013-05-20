@@ -19,7 +19,6 @@ public class PyMineHUD extends HUD {
 	            if (touchEvent.isActionUp())
 	            {
 	            	drone.scan();
-	            	System.out.println("Left action called");
 	            }
 	            return true;
 	        };
@@ -31,8 +30,7 @@ public class PyMineHUD extends HUD {
 	        {
 	            if (touchEvent.isActionUp())
 	            {
-	                // move player right
-	            	System.out.println("Right action called");
+            		drone.defuse();
 	            }
 	            return true;
 	        };
