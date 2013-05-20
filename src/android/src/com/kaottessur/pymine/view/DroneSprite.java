@@ -16,6 +16,7 @@ public class DroneSprite extends Sprite {
 		setScale(4);
 		this.drone = drone;
 		registerUpdate();
+		setAlpha(.5f);
 	}
 	
 	public void moveTo(GridSquare gridSquare) {

@@ -36,6 +36,9 @@ public class PyMineHUD extends HUD {
 	        };
 	    };
 	    
+	    left.setColor(.5f, .5f, .5f);
+	    right.setColor(.5f, .5f, .5f);
+	    
 	    registerTouchArea(left);
 	    registerTouchArea(right);
 	    attachChild(left);
