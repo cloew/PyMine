@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.Mine;
+import com.kaottessur.pymine.defense.ReverseMine;
 
 public class LevelInit {
 	public int rows;
@@ -18,6 +19,7 @@ public class LevelInit {
 		columns = 5;
 		defenseCounts = new HashMap<Class<? extends DefenseInterface>, Integer>();
 		defenseCounts.put(Mine.class, 4);
+		defenseCounts.put(ReverseMine.class, 2);
 	}
 
 }
