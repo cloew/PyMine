@@ -10,6 +10,7 @@ import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import com.kaottessur.pymine.level.Minefield;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
+import com.kaottessur.pymine.view.level.MinefieldScene;
 
 public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_WIDTH = 800;

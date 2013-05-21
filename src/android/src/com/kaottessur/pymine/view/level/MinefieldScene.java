@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view;
+package com.kaottessur.pymine.view.level;
 
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
@@ -9,7 +9,7 @@ public class MinefieldScene extends Scene {
 	private DroneSprite droneSprite;
 	private Minefield minefield;
 	
-	MinefieldScene(Minefield minefield, VertexBufferObjectManager vertexBufferObjectManager) {
+	public MinefieldScene(Minefield minefield, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
 		
 		this.minefield = minefield;

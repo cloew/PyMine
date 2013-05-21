@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view;
+package com.kaottessur.pymine.view.level;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.sprite.Sprite;
@@ -7,6 +7,8 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.view.GridPositionHelper;
+import com.kaottessur.pymine.view.TextureWrapper;
 import com.kaottessur.pymine.view.defense.MineSprite;
 import com.kaottessur.pymine.view.level.clue.ClueView;
 
