@@ -5,12 +5,15 @@ import java.util.List;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
+import com.kaottessur.pymine.level.rating.PowerRating;
 
 public class Level {
 	private LevelInit levelInit;
 	private Drone drone;
 	private Minefield minefield;
 	private List<DefenseInterface> defenses;
+	
+	private PowerRating powerRating;
 
 	public Level(LevelInit levelInit) {
 		this.levelInit = levelInit;
@@ -19,10 +22,12 @@ public class Level {
 	
 	public void reset() {
 		minefield = new Minefield(levelInit.rows, levelInit.columns);
-		drone = new Drone(minefield);
 		defenses = new ArrayList<DefenseInterface>();
 		
 		addDefenses();
+		
+		powerRating = new PowerRating(this, getPowerRating());
+		drone = new Drone(minefield, powerRating);
 	}
 	
 	private void addDefenses() {
@@ -46,6 +51,14 @@ public class Level {
 		defenses.add(defense);
 		DefenseAdderInterface defenseAdder = defense.getDefenseAdder();
 		defenseAdder.addDefense(defense, minefield);
+	}
+	
+	private int getPowerRating() {
+		int power = 0;
+		for (DefenseInterface defense : defenses) {
+			power += defense.getPowerRating();
+		}
+		return power;
 	}
 	
 	public boolean finished() {
