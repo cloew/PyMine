@@ -57,6 +57,14 @@ public class Drone implements GridLocationInterface {
 		return destroyed;
 	}
 	
+	public boolean hasPower() {
+		return powerRating.getPower() > 0;
+	}
+	
+	public int getPower() {
+		return powerRating.getPower();
+	}
+	
 	public void destroy() {
 		destroyed = true;
 		System.out.println("Destroyed the drone");

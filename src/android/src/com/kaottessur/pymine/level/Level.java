@@ -66,7 +66,7 @@ public class Level {
 	}
 	
 	public boolean lost() {
-		return drone.isDestroyed();
+		return drone.isDestroyed() || !drone.hasPower();
 	}
 	
 	public boolean won() {
@@ -74,7 +74,7 @@ public class Level {
 			if (!defense.isDeactivated())
 				return false;
 		}
-		return true;
+		return drone.getPower() >= 0;
 	}
 	
 	public Drone getDrone() {
