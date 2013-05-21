@@ -19,7 +19,6 @@ public class Minefield {
 		this.columns = columns;
 		
 		populateGridSquares();
-		addDefenses();
 	}
 	
 	private void populateGridSquares() {
@@ -32,12 +31,6 @@ public class Minefield {
 				gridSquares.get(row).add(gridSquare);
 			}
 		}
-	}
-	
-	private void addDefenses() {
-		DefenseInterface mine = new Mine();
-		DefenseAdderInterface defenseAdder = mine.getDefenseAdder();
-		defenseAdder.addDefense(mine, this);
 	}
 	
 	public void scan(int row, int column, Drone drone) {
