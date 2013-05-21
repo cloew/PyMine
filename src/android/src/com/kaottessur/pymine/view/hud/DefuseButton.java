@@ -2,12 +2,12 @@ package com.kaottessur.pymine.view.hud;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.Level;
 
 public class DefuseButton extends HUDButton {
 
-	public DefuseButton(Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(BUTTON_SIZE, drone, vertexBufferObjectManager);
+	public DefuseButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
+		super(BUTTON_SIZE, level, vertexBufferObjectManager);
 	}
 
 	@Override

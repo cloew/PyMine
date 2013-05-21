@@ -44,7 +44,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	
 	private void createControllers()
 	{
-	    HUD yourHud = new PyMineHUD(level.getDrone(), getVertexBufferObjectManager());
+	    HUD yourHud = new PyMineHUD(level, getVertexBufferObjectManager());
 	    this.mEngine.getCamera().setHUD(yourHud);
 	}
 

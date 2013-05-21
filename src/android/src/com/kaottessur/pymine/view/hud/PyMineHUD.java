@@ -3,14 +3,14 @@ package com.kaottessur.pymine.view.hud;
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.Level;
 
 public class PyMineHUD extends HUD {
 
-	public PyMineHUD(final Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
+	public PyMineHUD(final Level level, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
-		ScanButton scanButton = new ScanButton(drone, vertexBufferObjectManager);
-		DefuseButton defuseButton = new DefuseButton(drone, vertexBufferObjectManager);
+		ScanButton scanButton = new ScanButton(level, vertexBufferObjectManager);
+		DefuseButton defuseButton = new DefuseButton(level, vertexBufferObjectManager);
 	    
 	    registerTouchArea(scanButton);
 	    registerTouchArea(defuseButton);

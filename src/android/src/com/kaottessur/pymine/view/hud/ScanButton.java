@@ -2,12 +2,12 @@ package com.kaottessur.pymine.view.hud;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.Level;
 
 public class ScanButton extends HUDButton {
 
-	public ScanButton(Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, drone, vertexBufferObjectManager);
+	public ScanButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
+		super(0, level, vertexBufferObjectManager);
 	}
 
 	@Override
