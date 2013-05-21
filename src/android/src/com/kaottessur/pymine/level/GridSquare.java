@@ -63,4 +63,10 @@ public class GridSquare implements GridLocationInterface {
 			return defense.isMine();
 		return false;
 	}
+	
+	public boolean reversed() {
+		if (hasDefense())
+			return defense.reverseReadings();
+		return false;
+	}
 }
