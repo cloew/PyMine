@@ -33,6 +33,10 @@ public class Level {
 		defenseAdder.addDefense(defense, minefield);
 	}
 	
+	public boolean finished() {
+		return lost() || won();
+	}
+	
 	public boolean lost() {
 		return drone.isDestroyed();
 	}
