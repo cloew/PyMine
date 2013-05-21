@@ -10,13 +10,13 @@ import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
-import com.kaottessur.pymine.view.level.MinefieldScene;
+import com.kaottessur.pymine.view.level.LevelScene;
 
 public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_WIDTH = 800;
 	private static int CAMERA_HEIGHT = 480;
 	
-	private MinefieldScene minefieldScene;
+	private LevelScene levelScene;
 	private Level level;
 	
 	@Override
@@ -37,9 +37,9 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	@Override
 	protected Scene onCreateScene() {
 		level = new Level();
-		minefieldScene = new MinefieldScene(level.getMinefield(), level.getDrone(), getVertexBufferObjectManager());
+		levelScene = new LevelScene(level, getVertexBufferObjectManager());
 		createControllers();
-		return minefieldScene;
+		return levelScene;
 	}
 	
 	private void createControllers()

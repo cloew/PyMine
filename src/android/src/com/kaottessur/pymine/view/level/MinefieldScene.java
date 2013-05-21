@@ -12,7 +12,7 @@ public class MinefieldScene extends Scene {
 	private DroneSprite droneSprite;
 	private Minefield minefield;
 	
-	public MinefieldScene(Minefield minefield, Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
+	public MinefieldScene(Scene parent, Minefield minefield, Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
 		
 		this.minefield = minefield;
@@ -22,12 +22,9 @@ public class MinefieldScene extends Scene {
 			for (int column = 0; column < this.minefield.getColumnCount(); column++) {
 				GridSquareSprite gridSquareSprite = new GridSquareSprite(vertexBufferObjectManager, droneSprite, minefield.getGridSquareAt(row, column));
 				attachChild(gridSquareSprite);
-				registerTouchArea(gridSquareSprite);
+				parent.registerTouchArea(gridSquareSprite);
 			}
 		}
 		attachChild(droneSprite);
-		Text wonText = new Text(0, 0,TextureWrapper.GetInstance().GetCompletionFont(), 
-				"You Won!", vertexBufferObjectManager);
-		attachChild(wonText);
 	}
 }
