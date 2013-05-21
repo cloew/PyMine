@@ -9,6 +9,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.level.LevelInit;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
 import com.kaottessur.pymine.view.level.LevelScene;
 
@@ -36,7 +37,8 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 
 	@Override
 	protected Scene onCreateScene() {
-		level = new Level();
+		LevelInit levelInit = new LevelInit();
+		level = new Level(levelInit);
 		levelScene = new LevelScene(level, getVertexBufferObjectManager());
 		createControllers();
 		return levelScene;

@@ -4,26 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
-import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 
 public class Level {
+	private LevelInit levelInit;
 	private Drone drone;
 	private Minefield minefield;
 	private List<DefenseInterface> defenses;
 
-	public Level() {
+	public Level(LevelInit levelInit) {
+		this.levelInit = levelInit;
 		reset();
 	}
 	
 	public void reset() {
-		minefield = new Minefield(4, 5);
+		minefield = new Minefield(levelInit.rows, levelInit.columns);
 		drone = new Drone(minefield);
 		defenses = new ArrayList<DefenseInterface>();
 		
-		for (int i = 0; i < 1; i++) {
-			DefenseInterface defense = new Mine();
-			addDefense(defense);
+		addDefenses();
+	}
+	
+	private void addDefenses() {
+		for (Class<? extends DefenseInterface> defenseClass : levelInit.defenseCounts.keySet()) {
+			for (int i = 0; i < levelInit.defenseCounts.get(defenseClass); i++) {
+				try {
+					DefenseInterface defense = defenseClass.newInstance();
+					addDefense(defense);
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
