@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
@@ -18,6 +19,7 @@ public class Level {
 	public void reset() {
 		minefield = new Minefield(4, 5);
 		drone = new Drone(minefield);
+		defenses = new ArrayList<DefenseInterface>();
 		
 		for (int i = 0; i < 1; i++) {
 			DefenseInterface defense = new Mine();
@@ -29,5 +31,13 @@ public class Level {
 		defenses.add(defense);
 		DefenseAdderInterface defenseAdder = defense.getDefenseAdder();
 		defenseAdder.addDefense(defense, minefield);
+	}
+	
+	public Drone getDrone() {
+		return drone;
+	}
+	
+	public Minefield getMinefield() {
+		return minefield;
 	}
 }

@@ -8,6 +8,7 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
+import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.level.Minefield;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
 import com.kaottessur.pymine.view.level.MinefieldScene;
@@ -17,7 +18,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_HEIGHT = 480;
 	
 	private MinefieldScene minefieldScene;
-	private Minefield minefield;
+	private Level level;
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
@@ -36,15 +37,15 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 
 	@Override
 	protected Scene onCreateScene() {
-		minefield = new Minefield(4, 5);
-		minefieldScene = new MinefieldScene(minefield, getVertexBufferObjectManager());
+		level = new Level();
+		minefieldScene = new MinefieldScene(level.getMinefield(), level.getDrone(), getVertexBufferObjectManager());
 		createControllers();
 		return minefieldScene;
 	}
 	
 	private void createControllers()
 	{
-	    HUD yourHud = new PyMineHUD(minefield.getDrone(), getVertexBufferObjectManager());
+	    HUD yourHud = new PyMineHUD(level.getDrone(), getVertexBufferObjectManager());
 	    this.mEngine.getCamera().setHUD(yourHud);
 	}
 

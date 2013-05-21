@@ -11,7 +11,6 @@ public class Minefield {
 	private int rows;
 	private int columns;
 	
-	private Drone drone;
 	private List<List<GridSquare>> gridSquares;
 	
 	
@@ -24,7 +23,6 @@ public class Minefield {
 	}
 	
 	private void populateGridSquares() {
-		drone = new Drone(this);
 		gridSquares = new ArrayList<List<GridSquare>>();
 		
 		for (int row = 0; row < rows; row++) {
@@ -58,10 +56,6 @@ public class Minefield {
 	
 	public int getColumnCount() {
 		return columns;
-	}
-	
-	public Drone getDrone() {
-		return drone;
 	}
 	
 	public GridSquare getGridSquareAt(int row, int column) {
