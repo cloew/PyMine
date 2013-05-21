@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.view.level;
 
+import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
@@ -21,5 +22,21 @@ public class LevelScene extends Scene {
 		
 		wonText = new CompletionText("You Won!", vertexBufferObjectManager);
 		attachChild(wonText);
+		registerUpdate();
+	}
+		
+	private void registerUpdate() {	
+		registerUpdateHandler(new IUpdateHandler() {
+			@Override
+			public void reset() {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				if (level.won())
+					wonText.setVisible(true);
+			}
+		});
 	}
 }

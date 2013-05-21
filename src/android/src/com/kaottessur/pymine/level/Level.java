@@ -43,7 +43,7 @@ public class Level {
 	
 	public boolean won() {
 		for (DefenseInterface defense : defenses) {
-			if (defense.isDeactivated())
+			if (!defense.isDeactivated())
 				return false;
 		}
 		return true;
