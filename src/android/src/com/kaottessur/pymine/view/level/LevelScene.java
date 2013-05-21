@@ -11,6 +11,7 @@ public class LevelScene extends Scene {
 	private MinefieldScene minefieldScene;
 	
 	private CompletionText wonText;
+	private CompletionText lostText;
 	
 	
 	public LevelScene(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
@@ -22,6 +23,8 @@ public class LevelScene extends Scene {
 		
 		wonText = new CompletionText("You Won!", vertexBufferObjectManager);
 		attachChild(wonText);
+		lostText = new CompletionText("Game Over", vertexBufferObjectManager);
+		attachChild(lostText);
 		registerUpdate();
 	}
 		
@@ -36,6 +39,8 @@ public class LevelScene extends Scene {
 			public void onUpdate(float pSecondsElapsed) {
 				if (level.won())
 					wonText.setVisible(true);
+				else if (level.lost())
+					lostText.setVisible(true);
 			}
 		});
 	}
