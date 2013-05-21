@@ -3,6 +3,7 @@ package com.kaottessur.pymine.level;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kaottessur.pymine.Power;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 import com.kaottessur.pymine.level.rating.PowerRating;
@@ -54,7 +55,7 @@ public class Level {
 	}
 	
 	private int getPowerRating() {
-		int power = 0;
+		int power = levelInit.rows*levelInit.columns*Power.SCAN_POWER;
 		for (DefenseInterface defense : defenses) {
 			power += defense.getPowerRating();
 		}
