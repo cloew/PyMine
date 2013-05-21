@@ -9,7 +9,6 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.level.Minefield;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
 import com.kaottessur.pymine.view.level.MinefieldScene;
 
