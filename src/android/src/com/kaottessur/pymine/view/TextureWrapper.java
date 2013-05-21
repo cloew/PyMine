@@ -65,6 +65,13 @@ public class TextureWrapper {
 		font.load();
 		return font;
 	}
+	
+	public IFont GetCompletionFont() {
+		IFont font =  FontFactory.create(fontManager, textureManager, 64, 800,
+				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 32);
+		font.load();
+		return font;
+	}
 
 	private void LoadTexture(final String filename) throws IOException {
 		ITexture texture = new BitmapTexture(textureManager, new IInputStreamOpener() {
