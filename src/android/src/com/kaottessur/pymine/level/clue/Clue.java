@@ -26,6 +26,10 @@ public class Clue {
 		GridSquare currentSquare = minefield.getGridSquareAt(gridRow, gridColumn);
 		
 		for (GridSquare gridSquare : minefield.getAdjacentGridSquares(currentSquare, true)) {
+			if (gridSquare.reversed()) {
+				for (SubClue subClue : subClues)
+					subClue.reverseReading();
+			}
 			if (gridSquare == currentSquare)
 				continue;
 			for (SubClue subClue : subClues)

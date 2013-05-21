@@ -20,6 +20,9 @@ public class AdjacencyClue extends SubClue {
 	}
 	
 	public int getClueReading() {
-		return numberOfAdjacentMines;
+		if (reverse)
+			return 8-numberOfAdjacentMines;
+		else
+			return numberOfAdjacentMines;
 	}
 }
