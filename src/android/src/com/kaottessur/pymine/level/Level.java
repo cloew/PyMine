@@ -33,6 +33,10 @@ public class Level {
 		defenseAdder.addDefense(defense, minefield);
 	}
 	
+	public boolean lost() {
+		return drone.isDestroyed();
+	}
+	
 	public boolean won() {
 		for (DefenseInterface defense : defenses) {
 			if (defense.isDeactivated())

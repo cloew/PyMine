@@ -3,10 +3,6 @@ package com.kaottessur.pymine.level;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kaottessur.pymine.defense.DefenseInterface;
-import com.kaottessur.pymine.defense.Mine;
-import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
-
 public class Minefield {
 	private int rows;
 	private int columns;
