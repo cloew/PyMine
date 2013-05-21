@@ -9,6 +9,7 @@ public interface DefenseInterface {
 	
 	public boolean isDeactivated();
 	public boolean isMine();
+	public boolean reverseReadings();
 	
 	
 	public void scan(Drone drone);

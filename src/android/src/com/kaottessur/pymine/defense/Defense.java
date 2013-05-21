@@ -18,6 +18,10 @@ public abstract class Defense implements DefenseInterface {
 		return false;
 	}
 	
+	public boolean reverseReadings() {
+		return false;
+	}
+	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
 	}
