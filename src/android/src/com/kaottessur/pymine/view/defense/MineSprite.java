@@ -8,10 +8,14 @@ import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.view.TextureWrapper;
 
 public class MineSprite extends Sprite {
-	private Mine mine;
+	protected Mine mine;
 	
 	public MineSprite(Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, 0, TextureWrapper.GetInstance().GetTextureRegion("Mine1.png"), vertexBufferObjectManager);
+		this("Mine1.png", mine, vertexBufferObjectManager);
+	}
+	
+	public MineSprite(String textureFilename, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
+		super(0, 0, TextureWrapper.GetInstance().GetTextureRegion(textureFilename), vertexBufferObjectManager);
 		this.mine = mine;
 		setVisible(false);
 		registerUpdate();
@@ -33,10 +37,18 @@ public class MineSprite extends Sprite {
 	
 	private void setProperTexture() {
 		if (mine.isDeactivated()) {
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("DefusedMine1.png"));
+        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(getDeactivatedFilename()));
         	setVisible(true);
 		}
         else
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("Mine1.png"));
+        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(getActiveFilename()));
+	}
+	
+	protected String getDeactivatedFilename() {
+		return "DefusedMine1.png";
+	}
+	
+	protected String getActiveFilename() {
+		return "Mine1.png";
 	}
 }
