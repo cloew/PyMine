@@ -7,16 +7,16 @@ import com.kaottessur.pymine.defense.Mine;
 public class ReverseMineSprite extends MineSprite {
 	
 	public ReverseMineSprite(Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		super("ReversedMine.png", mine, vertexBufferObjectManager);
+		super("ReverseMine.png", mine, vertexBufferObjectManager);
 	}
 	
 	@Override
 	protected String getDeactivatedFilename() {
-		return "DefusedReversedMine.png";
+		return "DefusedReverseMine.png";
 	}
 	
 	@Override
 	protected String getActiveFilename() {
-		return "ReversedMine.png";
+		return "ReverseMine.png";
 	}
 }

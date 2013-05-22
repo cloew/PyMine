@@ -5,18 +5,17 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.TextureWrapper;
-import com.kaottessur.pymine.view.defense.MineSprite;
+import com.kaottessur.pymine.view.defense.DefenseViewFactory;
 import com.kaottessur.pymine.view.level.clue.ClueView;
 
 public class GridSquareSprite extends Sprite {
 	private DroneSprite droneSprite;
 	private GridSquare gridSquare;
 	
-	private MineSprite mineSprite;
+	private Sprite defenseSprite;
 	private ClueView clueView;
 
 	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
@@ -26,8 +25,8 @@ public class GridSquareSprite extends Sprite {
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
 		if (gridSquare.hasDefense()) {
-			mineSprite = new MineSprite((Mine) gridSquare.getDefense(), vertexBufferObjectManager);
-			attachChild(mineSprite);
+			defenseSprite = DefenseViewFactory.getDefenseView(gridSquare.getDefense(), vertexBufferObjectManager);
+			attachChild(defenseSprite);
 		}
 		
 		clueView = new ClueView(gridSquare.getClue(), TextureWrapper.GetInstance().GetGameFont(), getVertexBufferObjectManager());
@@ -46,8 +45,8 @@ public class GridSquareSprite extends Sprite {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
 				setProperTexture();
-				if (mineSprite != null && gridSquare.isScanned())
-		        	mineSprite.setVisible(true);
+				if (defenseSprite != null && gridSquare.isScanned())
+					defenseSprite.setVisible(true);
 			}
 		});
 	}
