@@ -6,6 +6,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.view.SceneManager;
 
 public abstract class HUDButton extends Rectangle {
 	public static final int BUTTON_SIZE = 120;
@@ -22,9 +23,13 @@ public abstract class HUDButton extends Rectangle {
 	@Override
 	public boolean onAreaTouched(TouchEvent touchEvent, float X, float Y)
     {
-        if (touchEvent.isActionUp() && !level.finished())
+        if (touchEvent.isActionUp())
         {
-        	performButtonAction();
+        	if (level.finished()) {
+        		SceneManager.GetInstance().runLevelSelectionScene();
+        	} else {
+        		performButtonAction();
+        	}
         }
         return true;
     };
