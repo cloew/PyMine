@@ -11,7 +11,7 @@ public class ScanButton extends HUDButton {
 	}
 
 	@Override
-	protected void performButtonAction() {
+	protected void performGameAction() {
 		drone.scan();
 	}
 

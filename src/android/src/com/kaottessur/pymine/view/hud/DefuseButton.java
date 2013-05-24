@@ -11,7 +11,7 @@ public class DefuseButton extends HUDButton {
 	}
 
 	@Override
-	protected void performButtonAction() {
+	protected void performGameAction() {
 		drone.defuse();
 	}
 
