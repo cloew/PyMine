@@ -8,8 +8,7 @@ import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
-import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.level.LevelInit;
+import com.kaottessur.pymine.level.selection.LevelSelection;
 import com.kaottessur.pymine.view.hud.PyMineHUD;
 import com.kaottessur.pymine.view.level.LevelScene;
 
@@ -18,7 +17,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_HEIGHT = 480;
 	
 	private LevelScene levelScene;
-	private Level level;
+	private LevelSelection levelSelection;
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
@@ -37,16 +36,15 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 
 	@Override
 	protected Scene onCreateScene() {
-		LevelInit levelInit = new LevelInit();
-		level = new Level(levelInit);
-		levelScene = new LevelScene(level, getVertexBufferObjectManager());
+		levelSelection = new LevelSelection();
+		levelScene = new LevelScene(levelSelection.getSelectedLevel(), getVertexBufferObjectManager());
 		createControllers();
 		return levelScene;
 	}
 	
 	private void createControllers()
 	{
-	    HUD yourHud = new PyMineHUD(level, getVertexBufferObjectManager());
+	    HUD yourHud = new PyMineHUD(levelSelection.getSelectedLevel(), getVertexBufferObjectManager());
 	    this.mEngine.getCamera().setHUD(yourHud);
 	}
 
