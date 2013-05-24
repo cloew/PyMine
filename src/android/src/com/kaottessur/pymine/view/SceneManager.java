@@ -38,6 +38,11 @@ public class SceneManager {
 		return levelSelectionScene;
 	}
 	
+	public void runLevelSelectionScene() {
+		engine.setScene(levelSelectionScene);
+		engine.getCamera().setHUD(new HUD());
+	}
+	
 	public void runLevelScene(Level level) {
 		LevelScene levelScene = new LevelScene(level, vertexBufferObjectManager);
 		engine.setScene(levelScene);
