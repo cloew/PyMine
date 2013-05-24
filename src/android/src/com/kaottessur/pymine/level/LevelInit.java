@@ -8,6 +8,7 @@ import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
 
 public class LevelInit {
+	public String name;
 	public int rows;
 	public int columns;
 	
@@ -15,6 +16,7 @@ public class LevelInit {
 	
 	
 	public LevelInit() {
+		name = "1";
 		rows = 4;
 		columns = 5;
 		defenseCounts = new HashMap<Class<? extends DefenseInterface>, Integer>();

@@ -85,4 +85,8 @@ public class Level {
 	public Minefield getMinefield() {
 		return minefield;
 	}
+	
+	public String getName() {
+		return levelInit.name;
+	}
 }
