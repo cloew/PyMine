@@ -46,6 +46,11 @@ public class GridSquare implements GridLocationInterface {
 			defense.defuse(drone);
 	}
 	
+	public void defuseCarefully(Drone drone) {
+		if (hasDefense())
+			defense.defuseCarefully(drone);
+	}
+	
 	public boolean hasDefense() {
 		return defense != null;
 	}

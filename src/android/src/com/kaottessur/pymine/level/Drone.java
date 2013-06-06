@@ -41,6 +41,11 @@ public class Drone implements GridLocationInterface {
 		minefield.defuse(row, column, this);
 	}
 	
+	public void defuseCarefully() {
+		powerRating.usePower(Power.CAREFUL_DEFUSE_POWER);
+		minefield.defuseCarefully(row, column, this);
+	}
+	
 	public int getRow() {
 		return row;
 	}

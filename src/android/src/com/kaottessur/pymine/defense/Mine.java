@@ -23,7 +23,11 @@ public class Mine extends Defense {
 		deactivated = true;
 	}
 	
-	private void tryToDetonate(Drone drone) {
+	public void defuseCarefully(Drone drone) {
+		deactivated = true;
+	}
+	
+	protected void tryToDetonate(Drone drone) {
 		if (!deactivated)
 			drone.destroy();
 	}

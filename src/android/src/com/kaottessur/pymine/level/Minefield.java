@@ -39,6 +39,11 @@ public class Minefield {
 		gridSquare.defuse(drone);
 	}
 	
+	public void defuseCarefully(int row, int column, Drone drone) {
+		GridSquare gridSquare = getGridSquareAt(row, column);
+		gridSquare.defuseCarefully(drone);
+	}
+	
 	public int getRowCount() {
 		return rows;
 	}
