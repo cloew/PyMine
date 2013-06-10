@@ -31,6 +31,7 @@ public class MineSprite extends Sprite {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
 				setProperTexture();
+				setVisible(mine.isVisible());
 			}
 		});
 	}
