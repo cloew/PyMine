@@ -4,9 +4,9 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
 
-public class CarefulDefuseButton extends HUDButton {
+public class DefuseCarefullyButton extends HUDButton {
 
-	public CarefulDefuseButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
+	public DefuseCarefullyButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(BUTTON_SIZE*2, level, vertexBufferObjectManager);
 	}
 	

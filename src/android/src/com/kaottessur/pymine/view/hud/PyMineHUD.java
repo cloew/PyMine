@@ -11,7 +11,7 @@ public class PyMineHUD extends HUD {
 		super();
 		ScanButton scanButton = new ScanButton(level, vertexBufferObjectManager);
 		DefuseButton defuseButton = new DefuseButton(level, vertexBufferObjectManager);
-		CarefulDefuseButton defuseCarefullyButton = new CarefulDefuseButton(level, vertexBufferObjectManager);
+		DefuseCarefullyButton defuseCarefullyButton = new DefuseCarefullyButton(level, vertexBufferObjectManager);
 	    
 	    registerTouchArea(scanButton);
 	    registerTouchArea(defuseButton);
