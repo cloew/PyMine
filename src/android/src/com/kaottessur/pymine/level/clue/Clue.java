@@ -8,17 +8,20 @@ import com.kaottessur.pymine.level.Minefield;
 
 public class Clue {
 	private AdjacencyClue adjacencyClue;
+	private FragilityClue fragilityClue;
 	private List<SubClue> subClues;
 	
 	public Clue() {
 		subClues = new ArrayList<SubClue>();
 		adjacencyClue = new AdjacencyClue();
+		fragilityClue = new FragilityClue();
 		subClues.add(adjacencyClue);
+		subClues.add(fragilityClue);
 	}
 	
 	public void populate(Minefield minefield, int gridRow, int gridColumn) {
 		for (SubClue subClue : subClues)
-			subClue.update();
+			subClue.update(minefield, gridRow, gridColumn);
 		populateFromAdjacentGridSquares(minefield, gridRow, gridColumn);
 	}
 	

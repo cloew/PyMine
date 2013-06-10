@@ -1,6 +1,7 @@
 package com.kaottessur.pymine.level.clue;
 
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.level.Minefield;
 
 public class SubClue {
 	protected boolean reverse = false;
@@ -9,7 +10,7 @@ public class SubClue {
 		
 	}
 	
-	public void update() {
+	public void update(Minefield minefield, int gridRow, int gridColumn) {
 		
 	}
 	

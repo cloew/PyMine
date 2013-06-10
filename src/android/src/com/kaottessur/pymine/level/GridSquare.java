@@ -74,4 +74,10 @@ public class GridSquare implements GridLocationInterface {
 			return defense.reverseReadings();
 		return false;
 	}
+	
+	public boolean isFragile() {
+		if (hasDefense())
+			return defense.isFragile();
+		return false;
+	}
 }

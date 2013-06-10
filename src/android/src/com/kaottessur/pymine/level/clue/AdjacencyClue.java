@@ -1,6 +1,7 @@
 package com.kaottessur.pymine.level.clue;
 
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.level.Minefield;
 
 public class AdjacencyClue extends SubClue {
 	private int numberOfAdjacentMines = 0;
@@ -9,10 +10,12 @@ public class AdjacencyClue extends SubClue {
 		
 	}
 	
-	public void update() {
+	@Override
+	public void update(Minefield minefield, int gridRow, int gridColumn) {
 		numberOfAdjacentMines = 0;
 	}
 	
+	@Override
 	public void updateFromAdjacentSquare(GridSquare gridSquare) {
 		if (gridSquare.mined()) {
 			numberOfAdjacentMines++;
