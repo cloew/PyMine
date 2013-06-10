@@ -43,4 +43,8 @@ public class Clue {
 	public AdjacencyClue getAdjacencyClue() {
 		return adjacencyClue;
 	}
+	
+	public FragilityClue getFragilityClue() {
+		return fragilityClue;
+	}
 }

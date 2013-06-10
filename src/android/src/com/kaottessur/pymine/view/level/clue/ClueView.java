@@ -24,6 +24,7 @@ public class ClueView extends Text {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
 				updateClueViewText();
+				updateTextColor();
 			}
 		});
 	}
@@ -34,5 +35,23 @@ public class ClueView extends Text {
 			setText(Integer.toString(numberOfAdjacentMines));
 		else
 			setText("");
+	}
+	
+	private void updateTextColor() {
+		int distance = clue.getFragilityClue().getDistance();
+		//System.out.println("Updating Text Color");
+		if (distance == -1) {
+			//System.out.println("Setting to No Color");
+			setColor(0, 0, 0);
+		} else if (distance <= 1) {
+			//System.out.println("Setting to close Color");
+			setColor((float) 244.0/255, 0, 0);
+		} else if (distance < 4) {
+			//System.out.println("Setting to medium Color");
+			setColor((float) 244.0/255, (float) 244.0/255, 0);
+		} else {
+			//System.out.println("Setting to far Color");
+			setColor(0, (float) 154.0/255, 0);
+		}
 	}
 }

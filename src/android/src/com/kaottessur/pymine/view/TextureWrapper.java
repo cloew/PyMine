@@ -16,6 +16,7 @@ import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.util.adt.io.in.IInputStreamOpener;
 
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 
 public class TextureWrapper {
@@ -61,7 +62,7 @@ public class TextureWrapper {
 	
 	public IFont GetGameFont() {
 		IFont font =  FontFactory.create(fontManager, textureManager, 16, 16,
-				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 8);
+				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 8, Color.WHITE);
 		font.load();
 		return font;
 	}
