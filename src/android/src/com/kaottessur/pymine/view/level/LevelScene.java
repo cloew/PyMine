@@ -41,7 +41,10 @@ public class LevelScene extends Scene {
 				if (level.won())
 					wonText.setVisible(true);
 				else if (level.lost())
+				{
 					lostText.setVisible(true);
+					level.revealDefenses();
+				}
 			}
 		});
 	}

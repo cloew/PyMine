@@ -89,4 +89,9 @@ public class Level {
 	public String getName() {
 		return levelInit.name;
 	}
+	
+	public void revealDefenses() {
+		for (DefenseInterface defense : defenses)
+			defense.reveal();
+	}
 }
