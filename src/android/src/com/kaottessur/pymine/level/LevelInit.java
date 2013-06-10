@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
+import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
 
@@ -22,6 +23,7 @@ public class LevelInit {
 		defenseCounts = new HashMap<Class<? extends DefenseInterface>, Integer>();
 		defenseCounts.put(Mine.class, 4);
 		defenseCounts.put(ReverseMine.class, 2);
+		defenseCounts.put(FragileMine.class, 1);
 	}
 
 }
