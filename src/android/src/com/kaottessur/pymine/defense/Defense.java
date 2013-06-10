@@ -4,10 +4,15 @@ import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 import com.kaottessur.pymine.defense.adder.StandardDefenseAdder;
 
 public abstract class Defense implements DefenseInterface {
+	protected boolean visible = false;
 	protected boolean deactivated = false;
 	
 	public Defense() {
 		
+	}
+	
+	public boolean isVisible() {
+		return visible;
 	}
 	
 	public boolean isDeactivated() {
@@ -32,5 +37,9 @@ public abstract class Defense implements DefenseInterface {
 	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
+	}
+	
+	public void reveal() {
+		visible = true;
 	}
 }

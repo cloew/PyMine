@@ -7,10 +7,13 @@ public interface DefenseInterface {
 
 	public DefenseAdderInterface getDefenseAdder();
 	
+	public boolean isVisible();
 	public boolean isDeactivated();
 	public boolean isMine();
 	public boolean reverseReadings();
 	public int getPowerRating();
+	
+	public void reveal();
 	
 	
 	public void scan(Drone drone);
