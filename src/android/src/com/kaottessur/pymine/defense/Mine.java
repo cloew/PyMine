@@ -6,6 +6,11 @@ import com.kaottessur.pymine.level.Drone;
 public class Mine extends Defense {
 	
 	@Override
+	public boolean isVisible() {
+		return visible || deactivated;
+	}
+	
+	@Override
 	public boolean isMine() {
 		return true;
 	}
