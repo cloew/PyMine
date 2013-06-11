@@ -2,10 +2,12 @@ package com.kaottessur.pymine.defense;
 
 import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.GridSquare;
 
 public interface DefenseInterface {
 
 	public DefenseAdderInterface getDefenseAdder();
+	public void setGridSquare(GridSquare gridSquare);
 	
 	public boolean isVisible();
 	public boolean isDeactivated();

@@ -4,7 +4,7 @@ import com.kaottessur.pymine.Power;
 import com.kaottessur.pymine.level.Drone;
 
 public class Mine extends Defense {
-	
+
 	@Override
 	public boolean isMine() {
 		return true;

@@ -19,9 +19,7 @@ public class StandardDefenseAdder implements DefenseAdderInterface {
 			 	continue;
 			 else {
 				 gridSquare.setDefense(defense);
-				 System.out.println(gridSquare.getRow());
-				 System.out.println(gridSquare.getColumn());
-				 // Add Grid Square location to the Defense
+				 defense.setGridSquare(gridSquare);
 				 break;
 			 }
 		 }

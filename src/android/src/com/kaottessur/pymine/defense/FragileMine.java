@@ -4,6 +4,8 @@ import com.kaottessur.pymine.Power;
 import com.kaottessur.pymine.level.Drone;
 
 public class FragileMine extends Mine {
+	
+
 	@Override
 	public boolean isFragile() {
 		return true;

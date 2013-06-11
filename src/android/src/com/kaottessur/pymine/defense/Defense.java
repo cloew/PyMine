@@ -2,13 +2,14 @@ package com.kaottessur.pymine.defense;
 
 import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 import com.kaottessur.pymine.defense.adder.StandardDefenseAdder;
+import com.kaottessur.pymine.level.GridSquare;
 
 public abstract class Defense implements DefenseInterface {
 	protected boolean visible = false;
 	protected boolean deactivated = false;
+	protected GridSquare gridSquare;
 	
 	public Defense() {
-		
 	}
 	
 	public boolean isVisible() {
@@ -33,6 +34,10 @@ public abstract class Defense implements DefenseInterface {
 	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
+	}
+	
+	public void setGridSquare(GridSquare gridSquare) {
+		this.gridSquare = gridSquare;
 	}
 	
 	public void deactivate() {
