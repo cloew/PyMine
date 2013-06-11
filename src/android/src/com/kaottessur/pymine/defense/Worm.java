@@ -2,6 +2,7 @@ package com.kaottessur.pymine.defense;
 
 import com.kaottessur.pymine.Power;
 import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.Minefield;
 
 public class Worm extends Defense {
 
@@ -32,5 +33,9 @@ public class Worm extends Defense {
 	@Override
 	public void hitByEMP(Drone drone) {
 		deactivate();
+	}
+	
+	public void update(Drone drone, Minefield minefield) {
+		
 	}
 }

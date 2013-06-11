@@ -3,17 +3,31 @@ package com.kaottessur.pymine.view.defense;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.Worm;
+import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.Minefield;
 
 public class WormSprite extends DefenseSprite {
 	private Worm worm;
+	private Drone drone;
+	private Minefield minefield;
 	
-	public WormSprite(Worm worm, VertexBufferObjectManager vertexBufferObjectManager) {
+	private float secondsSinceLastUpdate = 0;
+	private final static float SECONDS_PER_GAME_TICK = 1;
+	
+	public WormSprite(Worm worm, Drone drone, Minefield minefield, VertexBufferObjectManager vertexBufferObjectManager) {
 		super("Worm.png", worm, vertexBufferObjectManager);
+		this.worm = worm;
+		this.drone = drone;
+		this.minefield = minefield;
 	}
 
 	@Override
 	protected void update(float secondsElapsed) {
-		// TODO Auto-generated method stub
+		secondsSinceLastUpdate += secondsElapsed;
+		if (secondsSinceLastUpdate > SECONDS_PER_GAME_TICK ) {
+			worm.update(drone, minefield);
+			secondsSinceLastUpdate -= SECONDS_PER_GAME_TICK;
+		}
 	}
 
 	@Override

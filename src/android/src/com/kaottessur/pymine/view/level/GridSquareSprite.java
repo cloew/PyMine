@@ -6,6 +6,7 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.level.Minefield;
 import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.TextureWrapper;
 import com.kaottessur.pymine.view.defense.DefenseViewFactory;
@@ -18,14 +19,14 @@ public class GridSquareSprite extends Sprite {
 	private Sprite defenseSprite;
 	private ClueView clueView;
 
-	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
+	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, Minefield minefield, GridSquare gridSquare) {
 		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
 				TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
 		if (gridSquare.hasDefense()) {
-			defenseSprite = DefenseViewFactory.getDefenseView(gridSquare.getDefense(), vertexBufferObjectManager);
+			defenseSprite = DefenseViewFactory.getDefenseView(gridSquare.getDefense(), droneSprite.getDrone(), minefield, vertexBufferObjectManager);
 			attachChild(defenseSprite);
 		}
 		
