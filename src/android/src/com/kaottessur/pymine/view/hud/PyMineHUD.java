@@ -15,6 +15,7 @@ public class PyMineHUD extends HUD {
 	    
 	    registerTouchArea(scanButton);
 	    registerTouchArea(defuseButton);
+	    registerTouchArea(defuseCarefullyButton);
 	    attachChild(scanButton);
 	    attachChild(defuseButton);
 	    attachChild(defuseCarefullyButton);

@@ -29,7 +29,6 @@ public class Mine extends Defense {
 	}
 	
 	public void defuseCarefully(Drone drone) {
-		System.out.println("Defusing Carefully");
 		deactivated = true;
 	}
 	
