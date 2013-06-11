@@ -37,7 +37,8 @@ public abstract class Defense implements DefenseInterface {
 	}
 	
 	public void setGridSquare(GridSquare gridSquare) {
-		this.gridSquare.removeDefense();
+		if (this.gridSquare != null)
+			this.gridSquare.removeDefense();
 		this.gridSquare = gridSquare;
 	}
 	
