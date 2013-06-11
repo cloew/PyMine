@@ -23,7 +23,12 @@ public class Drone implements GridLocationInterface {
 	public void tryToMove(GridSquare gridSquare) {
 		GridSquare currentSquare = minefield.getGridSquareAt(row, column);
 		if (minefield.getCardinallyAdjacentGridSquares(currentSquare).contains(gridSquare))
-			move(gridSquare.getRow(), gridSquare.getColumn());
+			move(gridSquare);
+	}
+	
+	public void move(GridSquare gridSquare) {
+		move(gridSquare.getRow(), gridSquare.getColumn());
+		gridSquare.droneEntered(this);
 	}
 	
 	public void move(int newRow, int newColumn) {

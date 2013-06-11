@@ -56,6 +56,11 @@ public class GridSquare implements GridLocationInterface {
 			defense.hitByEMP(drone);
 	}
 	
+	public void droneEntered(Drone drone) {
+		if (hasDefense())
+			defense.droneEnteredGridSquare(drone);
+	}
+	
 	public boolean hasDefense() {
 		return defense != null;
 	}

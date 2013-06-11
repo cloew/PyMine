@@ -36,7 +36,7 @@ public class Mine extends Defense {
 	}
 	
 	@Override
-	public void droneMovedIntoGridSquare(Drone drone) {
+	public void droneEnteredGridSquare(Drone drone) {
 		// Do Nothing
 	}
 	

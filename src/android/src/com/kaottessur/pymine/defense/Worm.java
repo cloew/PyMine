@@ -47,7 +47,7 @@ public class Worm extends Defense {
 	}
 	
 	@Override
-	public void droneMovedIntoGridSquare(Drone drone) {
+	public void droneEnteredGridSquare(Drone drone) {
 		attacking = true;
 	}
 	
@@ -75,7 +75,6 @@ public class Worm extends Defense {
 			} else {
 				squareToMoveTo.setDefense(this);
 				setGridSquare(squareToMoveTo);
-				System.out.println(String.format("Worm is at: %d:%d", squareToMoveTo.getRow(), squareToMoveTo.getColumn()));
 				break;
 			}
 		}
