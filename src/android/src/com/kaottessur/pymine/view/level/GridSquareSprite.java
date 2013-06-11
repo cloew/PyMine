@@ -25,7 +25,7 @@ public class GridSquareSprite extends Sprite {
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
 		
-		clueView = new ClueView(gridSquare.getClue(), TextureWrapper.GetInstance().GetGameFont(), getVertexBufferObjectManager());
+		clueView = new ClueView(gridSquare.getClue(), getVertexBufferObjectManager());
 		attachChild(clueView);
 		registerUpdate();
 		
