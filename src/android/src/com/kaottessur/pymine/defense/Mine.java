@@ -32,6 +32,10 @@ public class Mine extends Defense {
 		deactivated = true;
 	}
 	
+	public void hitByEMP(Drone drone) {
+		tryToDetonate(drone);
+	}
+	
 	protected void tryToDetonate(Drone drone) {
 		if (!deactivated)
 			drone.destroy();

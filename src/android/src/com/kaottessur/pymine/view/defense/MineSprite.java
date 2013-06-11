@@ -30,6 +30,4 @@ public class MineSprite extends DefenseSprite {
 	protected String getActiveFilename() {
 		return "Mine1.png";
 	}
-
-	
 }

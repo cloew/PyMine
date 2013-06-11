@@ -20,4 +20,5 @@ public interface DefenseInterface {
 	public void scan(Drone drone);
 	public void defuse(Drone drone);
 	public void defuseCarefully(Drone drone);
+	public void hitByEMP(Drone drone);
 }
