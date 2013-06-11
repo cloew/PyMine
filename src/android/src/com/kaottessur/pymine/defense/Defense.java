@@ -31,10 +31,6 @@ public abstract class Defense implements DefenseInterface {
 		return false;
 	}
 	
-	public int getPowerRating() {
-		return 0;
-	}
-	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
 	}
