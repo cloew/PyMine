@@ -12,6 +12,7 @@ public class DefuseCarefullyButton extends HUDButton {
 	
 	@Override
 	protected void performGameAction() {
+		System.out.println("Calling Defuse Carefully");
 		drone.defuseCarefully();
 	}
 
