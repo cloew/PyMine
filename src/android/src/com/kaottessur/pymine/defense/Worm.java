@@ -46,11 +46,16 @@ public class Worm extends Defense {
 		deactivate();
 	}
 	
+	@Override
+	public void droneMovedIntoGridSquare(Drone drone) {
+		attacking = true;
+	}
+	
 	public void update(Drone drone, Minefield minefield) {
 		System.out.println("Updating Worm");
 		if (!deactivated && !visible) {
-			tryToAttack(drone);
 			tryToMove(minefield);
+			tryToAttack(drone);
 		}
 	}
 	

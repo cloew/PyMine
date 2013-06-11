@@ -14,21 +14,30 @@ public class Mine extends Defense {
 	public int getPowerRating() {
 		return Power.DEFUSE_POWER;
 	}
-	
+
+	@Override
 	public void scan(Drone drone) {
 		tryToDetonate(drone);
 	}
-	
+
+	@Override
 	public void defuse(Drone drone) {
 		deactivate();
 	}
-	
+
+	@Override
 	public void defuseCarefully(Drone drone) {
 		deactivate();
 	}
-	
+
+	@Override
 	public void hitByEMP(Drone drone) {
 		tryToDetonate(drone);
+	}
+	
+	@Override
+	public void droneMovedIntoGridSquare(Drone drone) {
+		// Do Nothing
 	}
 	
 	protected void tryToDetonate(Drone drone) {

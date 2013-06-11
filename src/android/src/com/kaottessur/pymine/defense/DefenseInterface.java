@@ -24,4 +24,5 @@ public interface DefenseInterface {
 	public void defuse(Drone drone);
 	public void defuseCarefully(Drone drone);
 	public void hitByEMP(Drone drone);
+	public void droneMovedIntoGridSquare(Drone drone);
 }
