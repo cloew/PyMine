@@ -44,6 +44,14 @@ public class Minefield {
 		gridSquare.defuseCarefully(drone);
 	}
 	
+	public void performEMP(int row, int column, Drone drone) {
+		GridSquare centerSquare = getGridSquareAt(row, column);
+		List<GridSquare> gridSquares = getAdjacentGridSquares(centerSquare, true);
+		
+		for (GridSquare gridSquare : gridSquares)
+			gridSquare.performEMP(drone);
+	}
+	
 	public int getRowCount() {
 		return rows;
 	}
