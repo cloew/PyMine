@@ -48,7 +48,7 @@ public class Worm extends Defense {
 	
 	public void update(Drone drone, Minefield minefield) {
 		System.out.println("Updating Worm");
-		if (!deactivated) {
+		if (!deactivated && !visible) {
 			tryToAttack(drone);
 			tryToMove(minefield);
 		}
