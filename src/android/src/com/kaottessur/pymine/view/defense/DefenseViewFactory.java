@@ -7,6 +7,7 @@ import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
+import com.kaottessur.pymine.defense.Worm;
 
 public class DefenseViewFactory {
 	
@@ -17,6 +18,8 @@ public class DefenseViewFactory {
 			return new ReverseMineSprite((Mine) defense, vertexBufferObjectManager);
 		} else if (defense.getClass() == FragileMine.class) {
 			return new FragileMineSprite((Mine) defense, vertexBufferObjectManager);
+		} else if (defense.getClass() == Worm.class) {
+			return new WormSprite((Worm) defense, vertexBufferObjectManager);
 		}
 		return null;
 	}
