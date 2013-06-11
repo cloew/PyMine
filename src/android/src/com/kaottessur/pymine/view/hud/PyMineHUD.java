@@ -1,5 +1,8 @@
 package com.kaottessur.pymine.view.hud;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
@@ -9,15 +12,17 @@ public class PyMineHUD extends HUD {
 
 	public PyMineHUD(final Level level, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
-		ScanButton scanButton = new ScanButton(level, vertexBufferObjectManager);
-		DefuseButton defuseButton = new DefuseButton(level, vertexBufferObjectManager);
-		DefuseCarefullyButton defuseCarefullyButton = new DefuseCarefullyButton(level, vertexBufferObjectManager);
-	    
-	    registerTouchArea(scanButton);
-	    registerTouchArea(defuseButton);
-	    registerTouchArea(defuseCarefullyButton);
-	    attachChild(scanButton);
-	    attachChild(defuseButton);
-	    attachChild(defuseCarefullyButton);
+		
+		List<HUDButton> hudButtons = new ArrayList<HUDButton>();
+		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
+		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
+		hudButtons.add(new DefuseCarefullyButton(level, vertexBufferObjectManager));
+		
+		
+		
+		for (HUDButton hudButton : hudButtons) {
+			registerTouchArea(hudButton);
+			attachChild(hudButton);
+		}
 	}
 }
