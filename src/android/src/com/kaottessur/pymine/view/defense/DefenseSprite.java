@@ -18,7 +18,6 @@ public abstract class DefenseSprite extends Sprite {
 	public DefenseSprite(String textureFilename, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(0, 0, TextureWrapper.GetInstance().GetTextureRegion(textureFilename), vertexBufferObjectManager);
 		this.defense = defense;
-		//setScale(4);
 		setVisible(false);
 		moveToCurrentGridSquareLocation();
 		registerUpdate();
