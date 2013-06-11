@@ -12,7 +12,8 @@ public class WormSprite extends DefenseSprite {
 	private Minefield minefield;
 	
 	private float secondsSinceLastUpdate = 0;
-	private final static float SECONDS_PER_GAME_TICK = 1;
+	private final static int TICKS_PER_SECOND = 20;
+	private final static float SECONDS_PER_GAME_TICK = (float) 1.0/TICKS_PER_SECOND;
 	
 	public WormSprite(Worm worm, Drone drone, Minefield minefield, VertexBufferObjectManager vertexBufferObjectManager) {
 		super("Worm.png", worm, vertexBufferObjectManager);

@@ -12,6 +12,12 @@ public class Worm extends Defense {
 	private Random randomGenerator;
 	private boolean attacking = false;
 	
+	private int ticksToAttack = 0;
+	private int ticksToMove = 0;
+	
+	public static final int TICKS_TO_ATTACK = 20;
+	public static final int TICKS_TO_MOVE = 20;
+	
 	public Worm() {
 		super();
 		randomGenerator = new Random();
@@ -48,7 +54,7 @@ public class Worm extends Defense {
 	
 	@Override
 	public void droneEnteredGridSquare(Drone drone) {
-		attacking = true;
+		startAttacking();
 	}
 	
 	public void update(Drone drone, Minefield minefield) {
@@ -60,8 +66,12 @@ public class Worm extends Defense {
 	}
 	
 	private void tryToMove(Minefield minefield) {
-		if (!attacking)
+		if (!attacking && ticksToMove == TICKS_TO_MOVE) {
 			move(minefield);
+			ticksToMove = 0;
+		} else {
+			ticksToMove += 1;
+		}
 	}
 	
 	private void move(Minefield minefield) {
@@ -81,16 +91,28 @@ public class Worm extends Defense {
 	}
 	
 	private void tryToAttack(Drone drone) {
-		if (!attacking) {
-			attacking = droneInGridSquare(drone);
+		if (!attacking && droneInGridSquare(drone)) {
+			startAttacking();
 		}
 		
 		else if (attacking) {
-			if (droneInGridSquare(drone)) {
-				drone.destroy();
+			if (ticksToAttack == TICKS_TO_ATTACK) {
+				attack(drone);
 			}
-			attacking = false;
+			ticksToAttack += 1;
 		}
+	}
+	
+	private void startAttacking() {
+		ticksToAttack = 0;
+		attacking = true;
+	}
+	
+	private void attack(Drone drone) {
+		if (droneInGridSquare(drone)) {
+			drone.destroy();
+		}
+		attacking = false;
 	}
 	
 	private boolean droneInGridSquare(Drone drone) {
