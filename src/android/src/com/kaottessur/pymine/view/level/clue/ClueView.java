@@ -11,7 +11,7 @@ public class ClueView extends Text {
 	private Clue clue;
 		
 	public ClueView(Clue clue, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(10, 0, TextureWrapper.GetInstance().GetGameFont(), "", 1, vertexBufferObjectManager);
+		super(32, 0, TextureWrapper.GetInstance().GetGameFont(), "", 1, vertexBufferObjectManager);
 		
 		this.clue = clue;
 		registerUpdateHandler(new IUpdateHandler() {

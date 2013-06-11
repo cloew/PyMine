@@ -17,11 +17,14 @@ public class GridSquareSprite extends Sprite {
 	
 	private DefenseSprite defenseSprite = null;
 	private ClueView clueView;
+	
+	private final static String GRID_SQUARE_IMAGE_FILENAME = "GridSquare.png";
+	private final static String SCANNED_GRID_SQUARE_IMAGE_FILENAME = "ScannedGridSquare.png";
 
 	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
 		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
-				TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
-		setScale(4);
+				TextureWrapper.GetInstance().GetTextureRegion(GRID_SQUARE_IMAGE_FILENAME), vertexBufferObjectManager);
+		//setScale(4);
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
 		
@@ -57,9 +60,9 @@ public class GridSquareSprite extends Sprite {
 	
 	private void setProperTexture() {
 		if (gridSquare.isScanned())
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("ScannedGridSquare.png"));
+        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(SCANNED_GRID_SQUARE_IMAGE_FILENAME));
         else
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
+        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(GRID_SQUARE_IMAGE_FILENAME));
 	}
 
 	public GridSquare getGridSquare() {
