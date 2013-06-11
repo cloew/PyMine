@@ -46,6 +46,7 @@ public class Worm extends Defense {
 	}
 	
 	public void update(Drone drone, Minefield minefield) {
+		System.out.println("Updating Worm");
 		if (!deactivated) {
 			tryToMove(minefield);
 		}
@@ -64,9 +65,9 @@ public class Worm extends Defense {
 			if (squareToMoveTo.hasDefense() || squareToMoveTo.getColumn() == 0) {
 				adjacentSquares.remove(squareToMoveTo);
 			} else {
-				// Remove Defense from original square
 				squareToMoveTo.setDefense(this);
 				setGridSquare(squareToMoveTo);
+				System.out.println(String.format("Worm is at: %d:%d", squareToMoveTo.getRow(), squareToMoveTo.getColumn()));
 				break;
 			}
 		}

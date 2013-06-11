@@ -26,6 +26,7 @@ public class WormSprite extends DefenseSprite {
 		secondsSinceLastUpdate += secondsElapsed;
 		if (secondsSinceLastUpdate > SECONDS_PER_GAME_TICK ) {
 			worm.update(drone, minefield);
+			moveToCurrentGridSquareLocation();
 			secondsSinceLastUpdate -= SECONDS_PER_GAME_TICK;
 		}
 	}

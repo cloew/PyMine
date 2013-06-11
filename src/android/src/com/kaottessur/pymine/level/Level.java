@@ -94,4 +94,8 @@ public class Level {
 		for (DefenseInterface defense : defenses)
 			defense.reveal();
 	}
+
+	public List<DefenseInterface> getDefenses() {
+		return defenses;
+	}
 }

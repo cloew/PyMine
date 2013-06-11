@@ -6,45 +6,29 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.GridSquare;
-import com.kaottessur.pymine.level.Minefield;
 import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.TextureWrapper;
 import com.kaottessur.pymine.view.defense.DefenseSprite;
-import com.kaottessur.pymine.view.defense.DefenseViewFactory;
 import com.kaottessur.pymine.view.level.clue.ClueView;
 
 public class GridSquareSprite extends Sprite {
 	private DroneSprite droneSprite;
 	private GridSquare gridSquare;
-	private Minefield minefield;
 	
 	private DefenseSprite defenseSprite = null;
 	private ClueView clueView;
 
-	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, Minefield minefield, GridSquare gridSquare) {
+	public GridSquareSprite(VertexBufferObjectManager vertexBufferObjectManager, DroneSprite droneSprite, GridSquare gridSquare) {
 		super(GridPositionHelper.GetXLocation(gridSquare), GridPositionHelper.GetYLocation(gridSquare), 
 				TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"), vertexBufferObjectManager);
 		setScale(4);
 		this.droneSprite = droneSprite;
 		this.gridSquare = gridSquare;
-		this.minefield = minefield;
-		tryToAddDefense();
 		
 		clueView = new ClueView(gridSquare.getClue(), TextureWrapper.GetInstance().GetGameFont(), getVertexBufferObjectManager());
 		attachChild(clueView);
 		registerUpdate();
 		
-	}
-	
-	private void tryToAddDefense() {
-		if (defenseSprite != null) {
-			detachChild(defenseSprite);
-		}
-		
-		if (gridSquare.hasDefense()) {
-			defenseSprite = DefenseViewFactory.getDefenseView(gridSquare.getDefense(), droneSprite.getDrone(), minefield, getVertexBufferObjectManager());
-			attachChild(defenseSprite);
-		}
 	}
 	
 	private void registerUpdate() {
@@ -57,7 +41,6 @@ public class GridSquareSprite extends Sprite {
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
 				setProperTexture();
-				checkDefense();
 				if (defenseSprite != null && gridSquare.isScanned())
 					defenseSprite.setVisible(true);
 			}
@@ -78,12 +61,8 @@ public class GridSquareSprite extends Sprite {
         else
         	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion("GridSquare.png"));
 	}
-	
-	private void checkDefense() {
-		if (defenseSprite == null && gridSquare.hasDefense()) {
-			tryToAddDefense();
-		} else if (defenseSprite != null && gridSquare.getDefense() != defenseSprite.getDefense()) {
-			tryToAddDefense();
-		};
+
+	public GridSquare getGridSquare() {
+		return gridSquare;
 	}
 }

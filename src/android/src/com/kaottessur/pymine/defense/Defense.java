@@ -42,6 +42,10 @@ public abstract class Defense implements DefenseInterface {
 		this.gridSquare = gridSquare;
 	}
 	
+	public GridSquare getGridSquare() {
+		return gridSquare;
+	}
+	
 	public void deactivate() {
 		deactivated = true;
 		reveal();

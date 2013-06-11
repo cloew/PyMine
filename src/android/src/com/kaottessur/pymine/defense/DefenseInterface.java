@@ -8,6 +8,7 @@ public interface DefenseInterface {
 
 	public DefenseAdderInterface getDefenseAdder();
 	public void setGridSquare(GridSquare gridSquare);
+	public GridSquare getGridSquare();
 	
 	public boolean isVisible();
 	public boolean isDeactivated();
