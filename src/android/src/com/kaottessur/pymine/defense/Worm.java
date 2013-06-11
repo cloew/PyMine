@@ -10,6 +10,7 @@ import com.kaottessur.pymine.level.Minefield;
 
 public class Worm extends Defense {
 	private Random randomGenerator;
+	private boolean attacking = false;
 	
 	public Worm() {
 		super();
@@ -18,7 +19,7 @@ public class Worm extends Defense {
 	
 	@Override
 	public boolean isVisible() {
-		return true;
+		return super.isVisible() || attacking;
 	}
 
 	public int getPowerRating() {
@@ -48,12 +49,14 @@ public class Worm extends Defense {
 	public void update(Drone drone, Minefield minefield) {
 		System.out.println("Updating Worm");
 		if (!deactivated) {
+			tryToAttack(drone);
 			tryToMove(minefield);
 		}
 	}
 	
 	private void tryToMove(Minefield minefield) {
-		move(minefield);
+		if (!attacking)
+			move(minefield);
 	}
 	
 	private void move(Minefield minefield) {
@@ -71,5 +74,22 @@ public class Worm extends Defense {
 				break;
 			}
 		}
+	}
+	
+	private void tryToAttack(Drone drone) {
+		if (!attacking) {
+			attacking = droneInGridSquare(drone);
+		}
+		
+		else if (attacking) {
+			if (droneInGridSquare(drone)) {
+				drone.destroy();
+			}
+			attacking = false;
+		}
+	}
+	
+	private boolean droneInGridSquare(Drone drone) {
+		return drone.getRow() == gridSquare.getRow() && drone.getColumn() == gridSquare.getColumn();
 	}
 }
