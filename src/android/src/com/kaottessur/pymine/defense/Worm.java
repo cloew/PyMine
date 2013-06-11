@@ -118,4 +118,8 @@ public class Worm extends Defense {
 	private boolean droneInGridSquare(Drone drone) {
 		return drone.getRow() == gridSquare.getRow() && drone.getColumn() == gridSquare.getColumn();
 	}
+	
+	public int getTicksTowardsAttack() {
+		return ticksToAttack;
+	}
 }

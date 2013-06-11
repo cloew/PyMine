@@ -28,8 +28,13 @@ public class WormSprite extends DefenseSprite {
 		if (secondsSinceLastUpdate > SECONDS_PER_GAME_TICK ) {
 			worm.update(drone, minefield);
 			moveToCurrentGridSquareLocation();
+			setAlphaValue();
 			secondsSinceLastUpdate -= SECONDS_PER_GAME_TICK;
 		}
+	}
+	
+	private void setAlphaValue() {
+		setAlpha(worm.getTicksTowardsAttack()/(float) Worm.TICKS_TO_ATTACK);
 	}
 
 	@Override
