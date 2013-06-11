@@ -12,7 +12,7 @@ public abstract class Defense implements DefenseInterface {
 	}
 	
 	public boolean isVisible() {
-		return visible;
+		return visible || deactivated;
 	}
 	
 	public boolean isDeactivated() {
@@ -37,6 +37,11 @@ public abstract class Defense implements DefenseInterface {
 	
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
+	}
+	
+	public void deactivate() {
+		deactivated = true;
+		reveal();
 	}
 	
 	public void reveal() {
