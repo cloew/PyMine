@@ -7,7 +7,7 @@ import com.kaottessur.pymine.level.Level;
 public class DefuseCarefullyButton extends HUDButton {
 
 	public DefuseCarefullyButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(BUTTON_SIZE*2, level, vertexBufferObjectManager);
+		super(2, level, vertexBufferObjectManager);
 	}
 	
 	@Override

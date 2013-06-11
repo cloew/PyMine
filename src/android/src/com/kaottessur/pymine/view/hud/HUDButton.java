@@ -12,8 +12,8 @@ public abstract class HUDButton extends Button {
 	protected Drone drone;
 	protected Level level;
 	
-	public HUDButton(float y, Level level, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(680, y, BUTTON_SIZE, BUTTON_SIZE, vertexBufferObjectManager);
+	public HUDButton(int row, Level level, VertexBufferObjectManager vertexBufferObjectManager) {
+		super(680, BUTTON_SIZE*row, BUTTON_SIZE, BUTTON_SIZE, vertexBufferObjectManager);
 		this.level = level;
 		drone = level.getDrone();
 	}
