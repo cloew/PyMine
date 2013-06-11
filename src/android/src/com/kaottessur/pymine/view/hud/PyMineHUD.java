@@ -17,6 +17,7 @@ public class PyMineHUD extends HUD {
 		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseCarefullyButton(level, vertexBufferObjectManager));
+		hudButtons.add(new EMPButton(level, vertexBufferObjectManager));
 		
 		
 		
