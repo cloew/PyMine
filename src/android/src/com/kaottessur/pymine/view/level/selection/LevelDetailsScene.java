@@ -4,9 +4,12 @@ import org.andengine.entity.Entity;
 import org.andengine.entity.scene.Scene;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.defense.Mine;
+import com.kaottessur.pymine.level.LevelInit;
 import com.kaottessur.pymine.level.selection.LevelSelection;
 import com.kaottessur.pymine.view.Button;
 import com.kaottessur.pymine.view.SceneManager;
+import com.kaottessur.pymine.view.defense.DefenseCountEntity;
 
 public class LevelDetailsScene extends Entity {
 	
@@ -23,5 +26,8 @@ public class LevelDetailsScene extends Entity {
 	    };
 		attachChild(playButton);
 		parent.registerTouchArea(playButton);
+		
+		DefenseCountEntity defenseCount = new DefenseCountEntity(100, 100, new LevelInit(), Mine.class, vertexBufferObjectManager);
+		attachChild(defenseCount);
 	}
 }
