@@ -6,17 +6,13 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.view.GridPositionHelper;
-import com.kaottessur.pymine.view.TextureWrapper;
 
 public abstract class DefenseSprite extends Sprite {
 	protected DefenseInterface defense;
 	
-	public DefenseSprite(DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
-		this("Mine1.png", defense, vertexBufferObjectManager);
-	}
-	
-	public DefenseSprite(String textureFilename, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, 0, TextureWrapper.GetInstance().GetTextureRegion(textureFilename), vertexBufferObjectManager);
+	public DefenseSprite(Class<?> defenseClass, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
+		//super(0, 0, TextureWrapper.GetInstance().GetTextureRegion(textureFilename), vertexBufferObjectManager);
+		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), vertexBufferObjectManager);
 		this.defense = defense;
 		setVisible(false);
 		moveToCurrentGridSquareLocation();
@@ -41,14 +37,15 @@ public abstract class DefenseSprite extends Sprite {
 	
 	private void setProperTexture() {
 		if (defense.isDeactivated()) {
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(getDeactivatedFilename()));
+        	setTextureRegion(DefenseTextureWrapper.getDeactivatedTexture(getDefenseClass()));
         	setVisible(true);
 		}
         else
-        	setTextureRegion(TextureWrapper.GetInstance().GetTextureRegion(getActiveFilename()));
+        	setTextureRegion(DefenseTextureWrapper.getNormalTexture(getDefenseClass()));
 	}
 	
 	protected abstract void update(float secondsElapsed);
+	protected abstract Class<?> getDefenseClass();
 	protected abstract String getDeactivatedFilename();
 	protected abstract String getActiveFilename();
 	

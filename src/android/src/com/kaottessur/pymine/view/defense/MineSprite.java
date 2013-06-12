@@ -8,17 +8,21 @@ public class MineSprite extends DefenseSprite {
 	protected Mine mine;
 	
 	public MineSprite(Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		this("Mine1.png", mine, vertexBufferObjectManager);
+		this(Mine.class, mine, vertexBufferObjectManager);
 	}
 	
-	public MineSprite(String textureFilename, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(textureFilename, mine, vertexBufferObjectManager);
+	public MineSprite(Class<?> defenseClass, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
+		super(defenseClass, mine, vertexBufferObjectManager);
 		this.mine = mine;
 	}
 	
 	@Override
 	protected void update(float secondsElapsed) {
 		// Don't do anything
+	}
+	
+	@Override protected Class<?> getDefenseClass() {
+		return Mine.class;
 	}
 	
 	@Override
