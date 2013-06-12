@@ -12,9 +12,9 @@ public class LevelDetailsScene extends Entity {
 	
 	public LevelDetailsScene(Scene parent, final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
-		setPosition(400, 0);
+		setPosition(500, 0);
 		
-		Button playButton = new Button(20, 240, 100, 100, vertexBufferObjectManager)
+		Button playButton = new Button(100, 400, 100, 50, vertexBufferObjectManager)
 		{
 	        public void performButtonAction()
 	        {
