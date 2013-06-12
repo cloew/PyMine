@@ -11,7 +11,6 @@ public abstract class DefenseSprite extends Sprite {
 	protected DefenseInterface defense;
 	
 	public DefenseSprite(Class<?> defenseClass, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
-		//super(0, 0, TextureWrapper.GetInstance().GetTextureRegion(textureFilename), vertexBufferObjectManager);
 		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), vertexBufferObjectManager);
 		this.defense = defense;
 		setVisible(false);

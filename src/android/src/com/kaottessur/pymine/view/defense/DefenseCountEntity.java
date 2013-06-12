@@ -26,7 +26,7 @@ public class DefenseCountEntity extends Entity {
 	}
 	
 	private void addSprite(VertexBufferObjectManager vertexBufferObjectManager) {
-		Sprite sprite = new Sprite(0, 0, TextureWrapper.GetInstance().GetTextureRegion("Mine1.png"), vertexBufferObjectManager);
+		Sprite sprite = new Sprite(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), vertexBufferObjectManager);
 		attachChild(sprite);
 	}
 	
