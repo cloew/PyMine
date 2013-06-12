@@ -10,6 +10,12 @@ import org.andengine.opengl.font.FontManager;
 import org.andengine.opengl.font.IFont;
 import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureManager;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
+import org.andengine.opengl.texture.atlas.buildable.builder.BlackPawnTextureAtlasBuilder;
+import org.andengine.opengl.texture.atlas.buildable.builder.ITextureAtlasBuilder.TextureAtlasBuilderException;
 import org.andengine.opengl.texture.bitmap.BitmapTexture;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.texture.region.TextureRegionFactory;
@@ -26,8 +32,13 @@ public class TextureWrapper {
 	private AssetManager assetManager;
 	private FontManager fontManager;
 	
+	private BuildableBitmapTextureAtlas mBitmapTextureAtlas;
+	private ITextureRegion mFace1TextureRegion;
+	private ITextureRegion mFace2TextureRegion;
+	
 	public static TextureWrapper Initialize(FontManager fontManager, TextureManager textureManager, AssetManager assetManager) {
 		instance = new TextureWrapper(fontManager, textureManager, assetManager);
+		
 		return instance;
 	}
 	
@@ -40,6 +51,25 @@ public class TextureWrapper {
 		this.fontManager = fontManager;
 		this.textureManager = textureManager;
 		this.assetManager = assetManager;
+
+		mBitmapTextureAtlas = new BuildableBitmapTextureAtlas(textureManager, 512, 512);
+		this.mFace1TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, assetManager, "ScanButton.png");
+		this.mFace2TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, assetManager, "ScanButton_Pressed.png");
+		
+		try {
+			this.mBitmapTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 0, 0));
+			this.mBitmapTextureAtlas.load();
+		} catch (TextureAtlasBuilderException e) {
+			System.out.println("OMG It exploded!");
+		}
+	}
+	
+	public ITextureRegion getScanButton() {
+		return mFace1TextureRegion;
+	}
+	
+	public ITextureRegion getPressedScanButton() {
+		return mFace2TextureRegion;
 	}
 	
 	public ITextureRegion GetTextureRegion(final String filename) {

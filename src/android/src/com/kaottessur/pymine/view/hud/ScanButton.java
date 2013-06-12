@@ -14,9 +14,8 @@ public class ScanButton extends ButtonSprite {
 	protected Drone drone;
 	
 	public ScanButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(680, 0, TextureWrapper.GetInstance().GetTextureRegion("ScanButton.png"), 
-				//TextureWrapper.GetInstance().GetTextureRegion("ScanButton_Pressed.png"),
-				vertexBufferObjectManager);//
+		super(680, 0, TextureWrapper.GetInstance().getScanButton(), 
+				TextureWrapper.GetInstance().getPressedScanButton(), vertexBufferObjectManager);
 		
 		this.setOnClickListener(new OnClickListener() {
 					
@@ -27,7 +26,7 @@ public class ScanButton extends ButtonSprite {
 						
 					}
 				}); 
-		//super(0, level, vertexBufferObjectManager);
+
 		this.level = level;
 		drone = level.getDrone();
 	}
