@@ -5,7 +5,7 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.selection.LevelSelection;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class LevelOverviewText extends Text {
 	private LevelSelection levelSelection;

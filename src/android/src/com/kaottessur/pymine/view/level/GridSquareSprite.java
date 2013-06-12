@@ -7,7 +7,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.view.GridPositionHelper;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 import com.kaottessur.pymine.view.defense.DefenseSprite;
 import com.kaottessur.pymine.view.level.clue.ClueView;
 

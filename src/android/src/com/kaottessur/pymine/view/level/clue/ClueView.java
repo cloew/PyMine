@@ -5,7 +5,7 @@ import org.andengine.entity.text.Text;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.clue.Clue;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class ClueView extends Text {
 	private Clue clue;

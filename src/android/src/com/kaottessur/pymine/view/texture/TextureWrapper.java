@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view;
+package com.kaottessur.pymine.view.texture;
 
 import java.io.IOException;
 import java.io.InputStream;

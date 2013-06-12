@@ -8,6 +8,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 
 import com.kaottessur.pymine.level.selection.LevelSelection;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class PyMineActivity extends SimpleBaseGameActivity {
 	private static int CAMERA_WIDTH = 800;

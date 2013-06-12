@@ -10,7 +10,7 @@ import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
 import com.kaottessur.pymine.defense.Worm;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DefenseTextureWrapper {
 	

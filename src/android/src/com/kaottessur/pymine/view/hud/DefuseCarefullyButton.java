@@ -3,7 +3,7 @@ package com.kaottessur.pymine.view.hud;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DefuseCarefullyButton extends HUDButton {
 

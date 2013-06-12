@@ -7,7 +7,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.view.TextureWrapper;
+import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DefenseCountEntity extends Entity {
 	private Level level;
