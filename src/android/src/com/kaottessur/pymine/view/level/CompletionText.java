@@ -10,6 +10,5 @@ public class CompletionText extends Text {
 	public CompletionText(String text, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(400, 240, TextureWrapper.GetInstance().GetCompletionFont(), text, vertexBufferObjectManager);
 		setVisible(false);
-	}
-	
+	}	
 }
