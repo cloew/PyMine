@@ -14,14 +14,10 @@ public class PyMineHUD extends HUD {
 		super();
 		
 		List<HUDButton> hudButtons = new ArrayList<HUDButton>();
-		//hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
+		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseCarefullyButton(level, vertexBufferObjectManager));
 		hudButtons.add(new EMPButton(level, vertexBufferObjectManager));
-		
-		ScanButton scanButton = new ScanButton(level, vertexBufferObjectManager);
-		registerTouchArea(scanButton);
-		attachChild(scanButton);
 		
 		
 		for (HUDButton hudButton : hudButtons) {

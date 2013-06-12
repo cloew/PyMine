@@ -29,6 +29,9 @@ public class TextureWrapper {
 	private FontManager fontManager;
 	
 	private ButtonTexture scanButtonTexture;
+	private ButtonTexture defuseButtonTexture;
+	private ButtonTexture defuseCarefullyButtonTexture;
+	private ButtonTexture empButtonTexture;
 	
 	public static TextureWrapper Initialize(FontManager fontManager, TextureManager textureManager, AssetManager assetManager) {
 		instance = new TextureWrapper(fontManager, textureManager, assetManager);
@@ -46,15 +49,27 @@ public class TextureWrapper {
 		this.assetManager = assetManager;
 
 		scanButtonTexture = new ButtonTexture("ScanButton.png", "ScanButton_Pressed.png", assetManager, textureManager);
+		defuseButtonTexture = new ButtonTexture("DefuseButton.png", "DefuseButton_Pressed.png", assetManager, textureManager);
+		defuseCarefullyButtonTexture = new ButtonTexture("DefuseCarefullyButton.png", "DefuseCarefullyButton_Pressed.png", assetManager, textureManager);
+		empButtonTexture = new ButtonTexture("EMPButton.png", "EMPButton_Pressed.png", assetManager, textureManager);
 	}
 	
-	public ITextureRegion getScanButton() {
-		return scanButtonTexture.getRegularTextureRegion();
+	public ButtonTexture getScanButtonTexture() {
+		return scanButtonTexture;
 	}
 	
-	public ITextureRegion getPressedScanButton() {
-		return scanButtonTexture.getPressedTextureRegion();
+	public ButtonTexture getDefuseButtonTexture() {
+		return defuseButtonTexture;
 	}
+	
+	public ButtonTexture getDefuseCarefullyButtonTexture() {
+		return defuseCarefullyButtonTexture;
+	}
+	
+	public ButtonTexture getEMPButtonTexture() {
+		return empButtonTexture;
+	}
+	
 	
 	public ITextureRegion GetTextureRegion(final String filename) {
 		ITexture texture = GetTexture(filename);

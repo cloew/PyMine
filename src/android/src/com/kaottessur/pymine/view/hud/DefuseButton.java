@@ -3,11 +3,12 @@ package com.kaottessur.pymine.view.hud;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.view.TextureWrapper;
 
 public class DefuseButton extends HUDButton {
 
 	public DefuseButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(1, level, vertexBufferObjectManager);
+		super(1, level, TextureWrapper.GetInstance().getDefuseButtonTexture(), vertexBufferObjectManager);
 	}
 
 	@Override
