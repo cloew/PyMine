@@ -88,7 +88,6 @@ public class Worm extends Defense {
 			if (squareToMoveTo.hasDefense() || squareToMoveTo.getColumn() == 0) {
 				adjacentSquares.remove(squareToMoveTo);
 			} else {
-				System.out.println("Moving Worm");
 				squareToMoveTo.setDefense(this);
 				setGridSquare(squareToMoveTo);
 				break;
