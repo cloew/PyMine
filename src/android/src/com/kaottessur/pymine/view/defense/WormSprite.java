@@ -35,7 +35,10 @@ public class WormSprite extends DefenseSprite {
 	}
 	
 	private void setAlphaValue() {
-		setAlpha(worm.getTicksTowardsAttack()/(float) Worm.TICKS_TO_ATTACK);
+		if (worm.shouldBeSolid())
+			setAlpha(1);
+		else
+			setAlpha(worm.getTicksTowardsAttack()/(float) Worm.TICKS_TO_ATTACK);
 	}
 	
 	@Override protected Class<? extends DefenseInterface> getDefenseClass() {

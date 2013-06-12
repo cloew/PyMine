@@ -27,6 +27,10 @@ public class Worm extends Defense {
 	public boolean isVisible() {
 		return super.isVisible() || attacking;
 	}
+	
+	public boolean shouldBeSolid() {
+		return super.isVisible();
+	}
 
 	public int getPowerRating() {
 		return Power.EMP_POWER;
