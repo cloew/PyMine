@@ -1,7 +1,6 @@
 package com.kaottessur.pymine.view.hud;
 
 import org.andengine.entity.sprite.ButtonSprite;
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Drone;

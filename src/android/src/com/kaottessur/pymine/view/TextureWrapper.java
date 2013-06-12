@@ -21,6 +21,8 @@ import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.util.adt.io.in.IInputStreamOpener;
 
+import com.kaottessur.pymine.view.texture.ButtonTexture;
+
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -32,13 +34,10 @@ public class TextureWrapper {
 	private AssetManager assetManager;
 	private FontManager fontManager;
 	
-	private BuildableBitmapTextureAtlas mBitmapTextureAtlas;
-	private ITextureRegion mFace1TextureRegion;
-	private ITextureRegion mFace2TextureRegion;
+	private ButtonTexture scanButtonTexture;
 	
 	public static TextureWrapper Initialize(FontManager fontManager, TextureManager textureManager, AssetManager assetManager) {
 		instance = new TextureWrapper(fontManager, textureManager, assetManager);
-		
 		return instance;
 	}
 	
@@ -52,24 +51,15 @@ public class TextureWrapper {
 		this.textureManager = textureManager;
 		this.assetManager = assetManager;
 
-		mBitmapTextureAtlas = new BuildableBitmapTextureAtlas(textureManager, 512, 512);
-		this.mFace1TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, assetManager, "ScanButton.png");
-		this.mFace2TextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, assetManager, "ScanButton_Pressed.png");
-		
-		try {
-			this.mBitmapTextureAtlas.build(new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 0, 0));
-			this.mBitmapTextureAtlas.load();
-		} catch (TextureAtlasBuilderException e) {
-			System.out.println("OMG It exploded!");
-		}
+		scanButtonTexture = new ButtonTexture("ScanButton.png", "ScanButton_Pressed.png", assetManager, textureManager);
 	}
 	
 	public ITextureRegion getScanButton() {
-		return mFace1TextureRegion;
+		return scanButtonTexture.getRegularTextureRegion();
 	}
 	
 	public ITextureRegion getPressedScanButton() {
-		return mFace2TextureRegion;
+		return scanButtonTexture.getPressedTextureRegion();
 	}
 	
 	public ITextureRegion GetTextureRegion(final String filename) {
