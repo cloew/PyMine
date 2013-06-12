@@ -69,7 +69,7 @@ public class TextureWrapper {
 	
 	public IFont GetCompletionFont() {
 		IFont font =  FontFactory.create(fontManager, textureManager, 64, 800,
-				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 32);
+				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 32, Color.WHITE);
 		font.load();
 		return font;
 	}

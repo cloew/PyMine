@@ -62,7 +62,6 @@ public class Worm extends Defense {
 	}
 	
 	public void update(Drone drone, Minefield minefield) {
-		System.out.println("Updating Worm");
 		if (!deactivated && !visible) {
 			tryToMove(minefield);
 			tryToAttack(drone);
@@ -70,11 +69,13 @@ public class Worm extends Defense {
 	}
 	
 	private void tryToMove(Minefield minefield) {
-		if (!attacking && ticksToMove == TICKS_TO_MOVE) {
-			move(minefield);
-			ticksToMove = 0;
-		} else {
-			ticksToMove += 1;
+		if (!attacking) {
+			if (ticksToMove == TICKS_TO_MOVE) {
+				move(minefield);
+				ticksToMove = 0;
+			} else {
+				ticksToMove += 1;
+			}
 		}
 	}
 	
@@ -87,6 +88,7 @@ public class Worm extends Defense {
 			if (squareToMoveTo.hasDefense() || squareToMoveTo.getColumn() == 0) {
 				adjacentSquares.remove(squareToMoveTo);
 			} else {
+				System.out.println("Moving Worm");
 				squareToMoveTo.setDefense(this);
 				setGridSquare(squareToMoveTo);
 				break;
