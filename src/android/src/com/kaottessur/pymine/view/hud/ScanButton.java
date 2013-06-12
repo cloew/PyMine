@@ -32,16 +32,6 @@ public class ScanButton extends ButtonSprite {
 		drone = level.getDrone();
 	}
 	
-	@Override
-	public boolean onAreaTouched(TouchEvent touchEvent, float X, float Y)
-    {
-        if (touchEvent.isActionUp())
-        {
-        	performButtonAction();
-        }
-        return true;
-    };
-	
 	//@Override
     protected void performButtonAction() {
     	if (level.finished()) {
