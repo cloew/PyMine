@@ -5,14 +5,15 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.TextureWrapper;
 
 public class DefenseCountEntity extends Entity {
 	private Level level;
-	private Class<?> defenseClass;
+	private Class<? extends DefenseInterface> defenseClass;
 	
-	public DefenseCountEntity(float x, float y, Level level, Class<?> defenseClass, VertexBufferObjectManager vertexBufferObjectManager) {
+	public DefenseCountEntity(float x, float y, Level level, Class<? extends DefenseInterface> defenseClass, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(x, y);
 		setLevel(level);
 		this.defenseClass = defenseClass;

@@ -10,7 +10,7 @@ import com.kaottessur.pymine.view.GridPositionHelper;
 public abstract class DefenseSprite extends Sprite {
 	protected DefenseInterface defense;
 	
-	public DefenseSprite(Class<?> defenseClass, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
+	public DefenseSprite(Class<?  extends DefenseInterface> defenseClass, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), vertexBufferObjectManager);
 		this.defense = defense;
 		setVisible(false);
@@ -44,7 +44,7 @@ public abstract class DefenseSprite extends Sprite {
 	}
 	
 	protected abstract void update(float secondsElapsed);
-	protected abstract Class<?> getDefenseClass();
+	protected abstract Class<?  extends DefenseInterface> getDefenseClass();
 	protected abstract String getDeactivatedFilename();
 	protected abstract String getActiveFilename();
 	

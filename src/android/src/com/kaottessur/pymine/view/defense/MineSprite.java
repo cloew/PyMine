@@ -2,6 +2,7 @@ package com.kaottessur.pymine.view.defense;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.Mine;
 
 public class MineSprite extends DefenseSprite {
@@ -11,7 +12,7 @@ public class MineSprite extends DefenseSprite {
 		this(Mine.class, mine, vertexBufferObjectManager);
 	}
 	
-	public MineSprite(Class<?> defenseClass, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
+	public MineSprite(Class<? extends DefenseInterface> defenseClass, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(defenseClass, mine, vertexBufferObjectManager);
 		this.mine = mine;
 	}
@@ -21,7 +22,7 @@ public class MineSprite extends DefenseSprite {
 		// Don't do anything
 	}
 	
-	@Override protected Class<?> getDefenseClass() {
+	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return Mine.class;
 	}
 	

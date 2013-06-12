@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.andengine.opengl.texture.region.ITextureRegion;
 
+import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
@@ -13,8 +14,8 @@ import com.kaottessur.pymine.view.TextureWrapper;
 
 public class DefenseTextureWrapper {
 	
-	private static Map<Class<?>, String> defenseClassToNormalFilename = new HashMap<Class<?>, String>();
-	private static Map<Class<?>, String> defenseClassToDeactivatedFilename = new HashMap<Class<?>, String>();
+	private static Map<Class<? extends DefenseInterface>, String> defenseClassToNormalFilename = new HashMap<Class<? extends DefenseInterface>, String>();
+	private static Map<Class<? extends DefenseInterface>, String> defenseClassToDeactivatedFilename = new HashMap<Class<? extends DefenseInterface>, String>();
 	
 	static {
 		defenseClassToNormalFilename.put(FragileMine.class, "FragileMine.png");
@@ -28,11 +29,11 @@ public class DefenseTextureWrapper {
 		defenseClassToDeactivatedFilename.put(Worm.class, "Worm.png");
 	}
 	
-	public static ITextureRegion getNormalTexture(Class<?> defenseClass) {
+	public static ITextureRegion getNormalTexture(Class<? extends DefenseInterface> defenseClass) {
 		return TextureWrapper.GetInstance().GetTextureRegion(defenseClassToNormalFilename.get(defenseClass));
 	}
 	
-	public static ITextureRegion getDeactivatedTexture(Class<?> defenseClass) {
+	public static ITextureRegion getDeactivatedTexture(Class<? extends DefenseInterface> defenseClass) {
 		return TextureWrapper.GetInstance().GetTextureRegion(defenseClassToDeactivatedFilename.get(defenseClass));
 	}
 }

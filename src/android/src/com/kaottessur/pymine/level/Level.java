@@ -2,6 +2,7 @@ package com.kaottessur.pymine.level;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.kaottessur.pymine.Power;
 import com.kaottessur.pymine.defense.DefenseInterface;
@@ -99,7 +100,11 @@ public class Level {
 		return defenses;
 	}
 	
-	public int getDefenseCount(Class<?> defenseClass) {
+	public Set<Class<? extends DefenseInterface>> getDefenseClasses() {
+		return levelInit.defenseCounts.keySet();
+	}
+	
+	public int getDefenseCount(Class<?  extends DefenseInterface> defenseClass) {
 		int count = 0;
 		for (DefenseInterface defense : defenses) {
 			if (!defense.isDeactivated() && defense.getClass() == defenseClass)

@@ -2,6 +2,7 @@ package com.kaottessur.pymine.view.defense;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
+import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.Worm;
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.Minefield;
@@ -37,7 +38,7 @@ public class WormSprite extends DefenseSprite {
 		setAlpha(worm.getTicksTowardsAttack()/(float) Worm.TICKS_TO_ATTACK);
 	}
 	
-	@Override protected Class<?> getDefenseClass() {
+	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return Worm.class;
 	}
 
