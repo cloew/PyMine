@@ -5,10 +5,8 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.selection.LevelSelection;
-import com.kaottessur.pymine.view.Button;
-import com.kaottessur.pymine.view.SceneManager;
-
 public class LevelSelectionScene extends Scene {
+	private LevelDetailsScene detailsScene;
 	
 	public LevelSelectionScene(final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
@@ -17,15 +15,8 @@ public class LevelSelectionScene extends Scene {
 		attachChild(overview);
 		registerTouchArea(overview);
 		
-		Button playButton = new Button(400, 240, 100, 100, vertexBufferObjectManager)
-		{
-	        public void performButtonAction()
-	        {
-	            SceneManager.GetInstance().runLevelScene(levelSelection.getSelectedLevel());
-	        };
-	    };
-		attachChild(playButton);
-		registerTouchArea(playButton);
+		detailsScene = new LevelDetailsScene(this, levelSelection, vertexBufferObjectManager);
+		attachChild(detailsScene);
 		
 		setBackground(new Background(.75f, .75f, .75f, .75f));
 	}
