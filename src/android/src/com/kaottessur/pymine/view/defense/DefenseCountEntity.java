@@ -5,24 +5,24 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.level.LevelInit;
+import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.TextureWrapper;
 
 public class DefenseCountEntity extends Entity {
-	private LevelInit levelInit;
+	private Level level;
 	private Class<?> defenseClass;
 	
-	public DefenseCountEntity(float x, float y, LevelInit levelInit, Class<?> defenseClass, VertexBufferObjectManager vertexBufferObjectManager) {
+	public DefenseCountEntity(float x, float y, Level level, Class<?> defenseClass, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(x, y);
-		setLevelInit(levelInit);
+		setLevel(level);
 		this.defenseClass = defenseClass;
 		
 		addSprite(vertexBufferObjectManager);
 		setupText(vertexBufferObjectManager);
 	}
 	
-	public void setLevelInit(LevelInit levelInit) {
-		this.levelInit = levelInit;
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 	
 	private void addSprite(VertexBufferObjectManager vertexBufferObjectManager) {
@@ -31,7 +31,8 @@ public class DefenseCountEntity extends Entity {
 	}
 	
 	private void setupText(VertexBufferObjectManager vertexBufferObjectManager) {
-		Text countText = new Text(80, 16, TextureWrapper.GetInstance().GetGameFont(), "1", vertexBufferObjectManager);
+		int count = level.getDefenseCount(defenseClass);
+		Text countText = new Text(80, 12, TextureWrapper.GetInstance().GetGameFont(), Integer.toString(count), vertexBufferObjectManager);
 		attachChild(countText);
 	}
 }

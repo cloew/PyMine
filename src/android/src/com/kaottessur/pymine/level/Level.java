@@ -98,4 +98,13 @@ public class Level {
 	public List<DefenseInterface> getDefenses() {
 		return defenses;
 	}
+	
+	public int getDefenseCount(Class<?> defenseClass) {
+		int count = 0;
+		for (DefenseInterface defense : defenses) {
+			if (!defense.isDeactivated() && defense.getClass() == defenseClass)
+				count++;
+		}
+		return count;
+	}
 }
