@@ -14,12 +14,13 @@ import com.kaottessur.pymine.view.level.selection.LevelSelectionScene;
 public class SceneManager {
 	private static SceneManager instance = null;
 	
+	private PyMineActivity activity;
 	private Engine engine;
 	private LevelSelectionScene levelSelectionScene;
 	private VertexBufferObjectManager vertexBufferObjectManager;
 	
-	public static SceneManager Initialize(Engine engine, LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
-		instance = new SceneManager(engine, levelSelection, vertexBufferObjectManager);
+	public static SceneManager Initialize(PyMineActivity activity, Engine engine, LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
+		instance = new SceneManager(activity, engine, levelSelection, vertexBufferObjectManager);
 		return instance;
 	}
 	
@@ -27,11 +28,20 @@ public class SceneManager {
 		return instance;
 	}
 	
-	private SceneManager(Engine engine, LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
+	public static void RunOnUIThread(Runnable action) {
+		instance.runOnUIThread(action);
+	}
+	
+	private SceneManager(PyMineActivity activity, Engine engine, LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
+		this.activity = activity;
 		this.engine = engine;
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		
 		levelSelectionScene = new LevelSelectionScene(levelSelection, vertexBufferObjectManager);
+	}
+	
+	public void runOnUIThread(Runnable action) {
+		activity.runOnUiThread(action);
 	}
 	
 	public Scene getFirstScene() {

@@ -34,7 +34,7 @@ public class PyMineActivity extends SimpleBaseGameActivity {
 	@Override
 	protected Scene onCreateScene() {
 		levelSelection = new LevelSelection();
-		SceneManager.Initialize(mEngine, levelSelection, getVertexBufferObjectManager());
+		SceneManager.Initialize(this, mEngine, levelSelection, getVertexBufferObjectManager());
 		return SceneManager.GetInstance().getFirstScene();
 	}
 

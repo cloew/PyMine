@@ -10,7 +10,6 @@ import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.level.selection.LevelSelection;
 import com.kaottessur.pymine.view.Button;
-import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 import com.kaottessur.pymine.view.defense.DefenseCountEntity;
@@ -21,6 +20,14 @@ public class LevelDetailsScene extends Entity {
 	
 	private Text nameText;
 	private Text gridDimensionsText;
+	
+	private Runnable runnable = new Runnable() {
+		
+		@Override
+		public void run() {
+			detachChild(nameText);
+		}
+	};
 	
 	public LevelDetailsScene(Scene parent, final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
@@ -94,6 +101,7 @@ public class LevelDetailsScene extends Entity {
 					nameText.setText(level.getName());
 					gridDimensionsText.setText(Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount()));
 				}
+				//activity.runOnUiThread(runnable);
 			}
 		});
 	}
