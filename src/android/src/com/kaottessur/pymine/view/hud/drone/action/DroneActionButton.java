@@ -1,9 +1,10 @@
-package com.kaottessur.pymine.view.hud;
+package com.kaottessur.pymine.view.hud.drone.action;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.SceneManager;
+import com.kaottessur.pymine.view.hud.HUDButton;
 import com.kaottessur.pymine.view.texture.ButtonTexture;
 
 public abstract class DroneActionButton extends HUDButton {

@@ -7,6 +7,10 @@ import org.andengine.engine.camera.hud.HUD;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.view.hud.drone.action.DefuseButton;
+import com.kaottessur.pymine.view.hud.drone.action.DefuseCarefullyButton;
+import com.kaottessur.pymine.view.hud.drone.action.EMPButton;
+import com.kaottessur.pymine.view.hud.drone.action.ScanButton;
 
 public class PyMineHUD extends HUD {
 
@@ -18,7 +22,6 @@ public class PyMineHUD extends HUD {
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseCarefullyButton(level, vertexBufferObjectManager));
 		hudButtons.add(new EMPButton(level, vertexBufferObjectManager));
-		
 		
 		for (HUDButton hudButton : hudButtons) {
 			registerTouchArea(hudButton);

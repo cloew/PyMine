@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view.hud;
+package com.kaottessur.pymine.view.hud.drone.action;
 
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
