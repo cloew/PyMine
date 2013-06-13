@@ -11,6 +11,7 @@ import com.kaottessur.pymine.view.hud.drone.action.DefuseButton;
 import com.kaottessur.pymine.view.hud.drone.action.DefuseCarefullyButton;
 import com.kaottessur.pymine.view.hud.drone.action.EMPButton;
 import com.kaottessur.pymine.view.hud.drone.action.ScanButton;
+import com.kaottessur.pymine.view.hud.drone.movement.LeftArrowButton;
 
 public class PyMineHUD extends HUD {
 
@@ -18,6 +19,8 @@ public class PyMineHUD extends HUD {
 		super();
 		
 		List<HUDButton> hudButtons = new ArrayList<HUDButton>();
+		hudButtons.add(new LeftArrowButton(32, 5*64 + 32, level, vertexBufferObjectManager));
+		
 		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseCarefullyButton(level, vertexBufferObjectManager));
