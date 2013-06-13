@@ -28,6 +28,8 @@ public class TextureWrapper {
 	private AssetManager assetManager;
 	private FontManager fontManager;
 	
+	private ButtonTexture leftMovementButtonTexture;
+	
 	private ButtonTexture scanButtonTexture;
 	private ButtonTexture defuseButtonTexture;
 	private ButtonTexture defuseCarefullyButtonTexture;
@@ -47,11 +49,17 @@ public class TextureWrapper {
 		this.fontManager = fontManager;
 		this.textureManager = textureManager;
 		this.assetManager = assetManager;
+		
+		leftMovementButtonTexture = new ButtonTexture("LeftMovementArrow.png", "LeftMovementArrow_Pressed.png", assetManager, textureManager);
 
 		scanButtonTexture = new ButtonTexture("ScanButton.png", "ScanButton_Pressed.png", assetManager, textureManager);
 		defuseButtonTexture = new ButtonTexture("DefuseButton.png", "DefuseButton_Pressed.png", assetManager, textureManager);
 		defuseCarefullyButtonTexture = new ButtonTexture("DefuseCarefullyButton.png", "DefuseCarefullyButton_Pressed.png", assetManager, textureManager);
 		empButtonTexture = new ButtonTexture("EMPButton.png", "EMPButton_Pressed.png", assetManager, textureManager);
+	}
+	
+	public ButtonTexture getLeftMovementButtonTexture() {
+		return leftMovementButtonTexture;
 	}
 	
 	public ButtonTexture getScanButtonTexture() {
