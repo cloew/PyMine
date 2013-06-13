@@ -29,6 +29,10 @@ public class LevelSelection {
 		return levels.get(selectedIndex);
 	}
 	
+	public int getSelectedIndex() {
+		return selectedIndex;
+	}
+	
 	public Level getLevelAt(int index) {
 		return levels.get(index);
 	}
