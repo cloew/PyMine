@@ -19,7 +19,10 @@ public class PyMineHUD extends HUD {
 		super();
 		
 		List<HUDButton> hudButtons = new ArrayList<HUDButton>();
-		hudButtons.add(new LeftArrowButton(32, 5*64 + 32, level, vertexBufferObjectManager));
+		hudButtons.add(new LeftArrowButton(32+64, 5*64, level, vertexBufferObjectManager));
+		hudButtons.add(new LeftArrowButton(32, 5*64+48, level, vertexBufferObjectManager));
+		hudButtons.add(new LeftArrowButton(32+64*2, 5*64+48, level, vertexBufferObjectManager));
+		hudButtons.add(new LeftArrowButton(32+64, 5*64+96, level, vertexBufferObjectManager));
 		
 		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
