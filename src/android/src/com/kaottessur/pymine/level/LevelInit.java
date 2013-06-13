@@ -26,4 +26,15 @@ public class LevelInit {
 		defenseCounts.put(Worm.class, 1);
 	}
 
+	public LevelInit(String name, int rows, int columns) {
+		this.name = name;
+		this.rows = rows;
+		this.columns = columns;
+		this.defenseCounts = new HashMap<Class<? extends DefenseInterface>, Integer>();
+	}
+	
+	public void setDefenseCount(Class<? extends DefenseInterface> defenseClass, Integer count) {
+		defenseCounts.put(defenseClass, count);
+	}
+	
 }

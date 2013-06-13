@@ -13,7 +13,7 @@ public class LevelOverviewText extends Text {
 	
 	
 	public LevelOverviewText(LevelSelection levelSelection, int index, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, 0, TextureWrapper.GetInstance().GetCompletionFont(), levelSelection.getLevelAt(index).getName(), vertexBufferObjectManager);
+		super(50+100*(index%3), 50+100*(index/3), TextureWrapper.GetInstance().GetCompletionFont(), levelSelection.getLevelAt(index).getName(), vertexBufferObjectManager);
 		
 		this.levelSelection = levelSelection;
 		this.index = index;
@@ -21,6 +21,7 @@ public class LevelOverviewText extends Text {
 	
 	@Override
     public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
+		System.out.println("Touched Overview");
 		if (touchEvent.isActionDown() ) {
 			levelSelection.selectLevel(index);
 		}

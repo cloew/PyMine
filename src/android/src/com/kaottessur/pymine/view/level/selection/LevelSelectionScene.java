@@ -11,13 +11,21 @@ public class LevelSelectionScene extends Scene {
 	public LevelSelectionScene(final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
 		super();
 		
-		LevelOverviewText overview = new LevelOverviewText(levelSelection, 0, vertexBufferObjectManager);
-		attachChild(overview);
-		registerTouchArea(overview);
+		addLevelOverviewTexts(levelSelection, vertexBufferObjectManager);
 		
 		detailsScene = new LevelDetailsScene(this, levelSelection, vertexBufferObjectManager);
 		attachChild(detailsScene);
 		
 		setBackground(new Background(.75f, .75f, .75f, .75f));
+		
+		setTouchAreaBindingOnActionDownEnabled(true);
+	}
+	
+	private void addLevelOverviewTexts(final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
+		for (int i = 0; i < levelSelection.getLevelCount(); i++) {
+			LevelOverviewText overview = new LevelOverviewText(levelSelection, i, vertexBufferObjectManager);
+			attachChild(overview);
+			registerTouchArea(overview);
+		}
 	}
 }
