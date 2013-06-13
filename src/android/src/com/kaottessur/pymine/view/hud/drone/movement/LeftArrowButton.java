@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.view.hud.drone.movement;
 
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
@@ -14,7 +15,14 @@ public class LeftArrowButton extends HUDButton {
 
 	@Override
 	protected void performButtonAction() {
-		drone.moveLeft();
+		//drone.moveLeft();
 	}
-
+	
+	@Override
+    public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
+		if (touchEvent.isActionDown() ) {
+			drone.moveLeft();
+		}
+		return super.onAreaTouched(touchEvent, x, y);
+    }
 }
