@@ -14,7 +14,7 @@ public class LeftArrowButton extends HUDButton {
 
 	@Override
 	protected void performButtonAction() {
-		drone.scan();
+		drone.moveLeft();
 	}
 
 }
