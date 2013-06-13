@@ -20,10 +20,33 @@ public class Drone implements GridLocationInterface {
 		this.powerRating = powerRating;
 	}
 	
+	public void moveDown() {
+		tryToMove(row+1, column);
+	}
+	
+	public void moveLeft() {
+		tryToMove(row, column-1);
+	}
+	
+	public void moveRight() {
+		tryToMove(row, column+1);
+	}
+	
+	public void moveUp() {
+		tryToMove(row-1, column);
+	}
+	
 	public void tryToMove(GridSquare gridSquare) {
 		GridSquare currentSquare = minefield.getGridSquareAt(row, column);
 		if (minefield.getCardinallyAdjacentGridSquares(currentSquare).contains(gridSquare))
 			move(gridSquare);
+	}
+	
+	public void tryToMove(int newRow, int newColumn) {
+		if (validRow(newRow) && validColumn(newColumn)) {
+			GridSquare newSquare = minefield.getGridSquareAt(newRow, newColumn);
+			move(newSquare);
+		}
 	}
 	
 	public void move(GridSquare gridSquare) {
@@ -83,5 +106,13 @@ public class Drone implements GridLocationInterface {
 	public void destroy() {
 		destroyed = true;
 		System.out.println("Destroyed the drone");
+	}
+	
+	private boolean validRow(int newRow) {
+		return newRow >= 0 && newRow < minefield.getRowCount();
+	}
+	
+	private boolean validColumn(int newColumn) {
+		return newColumn >= 0 && newColumn < minefield.getColumnCount();
 	}
 }
