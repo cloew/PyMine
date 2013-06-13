@@ -11,7 +11,10 @@ import com.kaottessur.pymine.view.hud.drone.action.DefuseButton;
 import com.kaottessur.pymine.view.hud.drone.action.DefuseCarefullyButton;
 import com.kaottessur.pymine.view.hud.drone.action.EMPButton;
 import com.kaottessur.pymine.view.hud.drone.action.ScanButton;
+import com.kaottessur.pymine.view.hud.drone.movement.DownArrowButton;
 import com.kaottessur.pymine.view.hud.drone.movement.LeftArrowButton;
+import com.kaottessur.pymine.view.hud.drone.movement.RightArrowButton;
+import com.kaottessur.pymine.view.hud.drone.movement.UpArrowButton;
 
 public class PyMineHUD extends HUD {
 
@@ -19,10 +22,10 @@ public class PyMineHUD extends HUD {
 		super();
 		
 		List<HUDButton> hudButtons = new ArrayList<HUDButton>();
-		hudButtons.add(new LeftArrowButton(32+64, 5*64, level, vertexBufferObjectManager));
+		hudButtons.add(new UpArrowButton(32+64, 5*64, level, vertexBufferObjectManager));
 		hudButtons.add(new LeftArrowButton(32, 5*64+48, level, vertexBufferObjectManager));
-		hudButtons.add(new LeftArrowButton(32+64*2, 5*64+48, level, vertexBufferObjectManager));
-		hudButtons.add(new LeftArrowButton(32+64, 5*64+96, level, vertexBufferObjectManager));
+		hudButtons.add(new RightArrowButton(32+64*2, 5*64+48, level, vertexBufferObjectManager));
+		hudButtons.add(new DownArrowButton(32+64, 5*64+96, level, vertexBufferObjectManager));
 		
 		hudButtons.add(new ScanButton(level, vertexBufferObjectManager));
 		hudButtons.add(new DefuseButton(level, vertexBufferObjectManager));
