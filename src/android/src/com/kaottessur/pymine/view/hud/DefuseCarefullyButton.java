@@ -5,7 +5,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
-public class DefuseCarefullyButton extends HUDButton {
+public class DefuseCarefullyButton extends DroneActionButton {
 
 	public DefuseCarefullyButton(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
 		super(2, level, TextureWrapper.GetInstance().getDefuseCarefullyButtonTexture(), vertexBufferObjectManager);
