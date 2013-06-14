@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.view.defense.helper;
 
+import com.kaottessur.pymine.defense.AntiDroneTurret;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
@@ -7,6 +8,7 @@ import com.kaottessur.pymine.defense.ReverseMine;
 import com.kaottessur.pymine.defense.Worm;
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.Minefield;
+import com.kaottessur.pymine.view.defense.AntiDroneTurretSprite;
 import com.kaottessur.pymine.view.defense.DefenseSprite;
 import com.kaottessur.pymine.view.defense.FragileMineSprite;
 import com.kaottessur.pymine.view.defense.MineSprite;
@@ -24,6 +26,8 @@ public class DefenseViewFactory {
 			return new FragileMineSprite((Mine) defense);
 		} else if (defense.getClass() == Worm.class) {
 			return new WormSprite((Worm) defense, drone, minefield);
+		} else if (defense.getClass() == AntiDroneTurret.class) {
+			return new AntiDroneTurretSprite((AntiDroneTurret) defense);
 		}
 		return null;
 	}
