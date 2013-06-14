@@ -50,7 +50,7 @@ public abstract class DefenseSprite extends Sprite {
 	protected abstract String getActiveFilename();
 	
 	protected void moveToCurrentGridSquareLocation() {
-		setPosition(GridPositionHelper.GetXLocation(defense.getGridSquare()), GridPositionHelper.GetYLocation(defense.getGridSquare()));
+		//setPosition(GridPositionHelper.GetXLocation(defense.getGridSquare()), GridPositionHelper.GetYLocation(defense.getGridSquare()));
 	}
 	
 	public DefenseInterface getDefense() {

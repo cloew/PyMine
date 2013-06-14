@@ -12,7 +12,7 @@ public class DefenseSpriteManager {
 	private List<DefenseSprite> defenseSprites;
 	private List<GridSquareSprite> gridSquareSprites;
 	
-	static DefenseSpriteManager GetInstance() {
+	public static DefenseSpriteManager GetInstance() {
 		if (instance == null)
 			instance = new DefenseSpriteManager();
 		return instance;
