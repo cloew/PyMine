@@ -13,19 +13,7 @@ public class AdjacencyClueText extends Text {
 	public AdjacencyClueText(Clue clue) {
 		super(40, 0, TextureWrapper.GetInstance().GetGameFont(), "", 1, SceneManager.GetVertexBufferObjectManager());
 		this.clue = clue;
-		registerUpdateHandler(new IUpdateHandler() {
-			
-			@Override
-			public void reset() {
-				// Do Nothing
-			}
-			
-			@Override
-			public void onUpdate(float pSecondsElapsed) {
-				updateClueViewText();
-				updateTextColor();
-			}
-		});
+		registerUpdate();
 	}
 	
 	public void updateClueViewText() {
@@ -47,5 +35,20 @@ public class AdjacencyClueText extends Text {
 		} else {
 			setColor(0, (float) 154.0/255, 0);
 		}
+	}
+	
+	private void registerUpdate() {
+		registerUpdateHandler(new IUpdateHandler() {
+			@Override
+			public void reset() {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				updateClueViewText();
+				updateTextColor();
+			}
+		});
 	}
 }
