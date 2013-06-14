@@ -51,8 +51,7 @@ public class LevelDetailsScene extends Entity {
 		nameText = new Text(50, 0, TextureWrapper.GetInstance().GetCompletionFont(), level.getName(), vertexBufferObjectManager);
 		attachChild(nameText);
 		centerText(nameText, 100);
-		String text = Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount());
-		gridDimensionsText = new Text(50, 50, TextureWrapper.GetInstance().GetCompletionFont(), text, vertexBufferObjectManager);
+		gridDimensionsText = new Text(50, 50, TextureWrapper.GetInstance().GetCompletionFont(), getGridDimensionsString(), vertexBufferObjectManager);
 		attachChild(gridDimensionsText);
 		centerText(gridDimensionsText, 100);
 	}
@@ -60,12 +59,6 @@ public class LevelDetailsScene extends Entity {
 	private void addDefenseCounts(VertexBufferObjectManager vertexBufferObjectManager) {
 		defenseStatusEntity = new DefenseStatusEntity(50, 100, level, vertexBufferObjectManager);
 		attachChild(defenseStatusEntity);
-		/*int row = 0;
-		for (Class<? extends DefenseInterface> defenseClass : level.getDefenseClasses()) {
-			DefenseCountEntity defenseCount = new DefenseCountEntity(50, 100+64*row, level, defenseClass, vertexBufferObjectManager);
-			attachChild(defenseCount);
-			row++;
-		}*/
 	}
 	
 	private void addPlayButton(Scene parent, VertexBufferObjectManager vertexBufferObjectManager) {
@@ -78,12 +71,6 @@ public class LevelDetailsScene extends Entity {
 	    };
 		attachChild(playButton);
 		parent.registerTouchArea(playButton);
-	}
-	
-	private void addText(Text textEntity, float y, String text, VertexBufferObjectManager vertexBufferObjectManager) {
-		textEntity = new Text(50, y, TextureWrapper.GetInstance().GetCompletionFont(), text, vertexBufferObjectManager);
-		attachChild(textEntity);
-		centerText(textEntity, 100);
 	}
 	
 	private void centerText(Text text, float centerX) {
@@ -104,10 +91,14 @@ public class LevelDetailsScene extends Entity {
 				if (levelSelection.getSelectedLevel() != level) {
 					level = levelSelection.getSelectedLevel();
 					nameText.setText(level.getName());
-					gridDimensionsText.setText(Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount()));
+					gridDimensionsText.setText(getGridDimensionsString());
 					SceneManager.RunOnUIThread(runnable);
 				}
 			}
 		});
+	}
+	
+	private String getGridDimensionsString() {
+		return Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount());
 	}
 }
