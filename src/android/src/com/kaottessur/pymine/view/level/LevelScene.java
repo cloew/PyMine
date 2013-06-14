@@ -4,6 +4,7 @@ import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.Scene;
 
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.view.defense.status.DefenseStatusEntity;
 
 public class LevelScene extends Scene {
 	private Level level;
@@ -11,6 +12,8 @@ public class LevelScene extends Scene {
 	
 	private CompletionText wonText;
 	private CompletionText lostText;
+	
+	private DefenseStatusEntity defenseStatusEntity;
 	
 	
 	public LevelScene(Level level) {
@@ -25,6 +28,10 @@ public class LevelScene extends Scene {
 		attachChild(wonText);
 		lostText = new CompletionText("Game Over");
 		attachChild(lostText);
+		
+		defenseStatusEntity = new DefenseStatusEntity(6*64, 0, level);
+		attachChild(defenseStatusEntity);
+		
 		registerUpdate();
 	}
 		
