@@ -14,7 +14,6 @@ import com.kaottessur.pymine.view.defense.helper.DefenseViewFactory;
 public class LevelScene extends Scene {
 	private Level level;
 	private MinefieldScene minefieldScene;
-	private List<DefenseSprite> defenseSprites;
 	
 	private CompletionText wonText;
 	private CompletionText lostText;
@@ -27,23 +26,12 @@ public class LevelScene extends Scene {
 		level.reset();
 		minefieldScene = new MinefieldScene(this, level.getMinefield(), level.getDrone());
 		attachChild(minefieldScene);
-		addDefenseSprites();
 		
 		wonText = new CompletionText("You Won!");
 		attachChild(wonText);
 		lostText = new CompletionText("Game Over");
 		attachChild(lostText);
 		registerUpdate();
-	}
-	
-	private void addDefenseSprites() {
-		defenseSprites = new ArrayList<DefenseSprite>();
-		
-		for (DefenseInterface defense : level.getDefenses()) {
-			DefenseSprite defenseSprite = DefenseViewFactory.getDefenseView(defense, level.getDrone(), level.getMinefield());
-			defenseSprites.add(defenseSprite);
-			attachChild(defenseSprite);
-		}
 	}
 		
 	private void registerUpdate() {	
