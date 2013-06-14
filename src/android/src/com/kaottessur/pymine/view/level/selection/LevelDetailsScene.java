@@ -6,27 +6,29 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
-import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.level.selection.LevelSelection;
 import com.kaottessur.pymine.view.Button;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
-import com.kaottessur.pymine.view.defense.DefenseCountEntity;
 import com.kaottessur.pymine.view.defense.DefenseStatusEntity;
 
 public class LevelDetailsScene extends Entity {
 	private Level level;
 	private LevelSelection levelSelection;
 	
+	private DefenseStatusEntity defenseStatusEntity;
 	private Text nameText;
 	private Text gridDimensionsText;
+	
+	private VertexBufferObjectManager vertexBufferObjectManager;
 	
 	private Runnable runnable = new Runnable() {
 		
 		@Override
 		public void run() {
-			detachChild(nameText);
+			detachChild(defenseStatusEntity);
+			addDefenseCounts(vertexBufferObjectManager);
 		}
 	};
 	
@@ -41,6 +43,7 @@ public class LevelDetailsScene extends Entity {
 		addDefenseCounts(vertexBufferObjectManager);
 		addPlayButton(parent, vertexBufferObjectManager);
 		
+		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		registerUpdate();
 	}
 	
@@ -49,14 +52,13 @@ public class LevelDetailsScene extends Entity {
 		attachChild(nameText);
 		centerText(nameText, 100);
 		String text = Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount());
-		//addText(gridDimensionsText, 50, text, vertexBufferObjectManager);
 		gridDimensionsText = new Text(50, 50, TextureWrapper.GetInstance().GetCompletionFont(), text, vertexBufferObjectManager);
 		attachChild(gridDimensionsText);
 		centerText(gridDimensionsText, 100);
 	}
 	
 	private void addDefenseCounts(VertexBufferObjectManager vertexBufferObjectManager) {
-		DefenseStatusEntity defenseStatusEntity = new DefenseStatusEntity(50, 100, level, vertexBufferObjectManager);
+		defenseStatusEntity = new DefenseStatusEntity(50, 100, level, vertexBufferObjectManager);
 		attachChild(defenseStatusEntity);
 		/*int row = 0;
 		for (Class<? extends DefenseInterface> defenseClass : level.getDefenseClasses()) {
@@ -103,8 +105,8 @@ public class LevelDetailsScene extends Entity {
 					level = levelSelection.getSelectedLevel();
 					nameText.setText(level.getName());
 					gridDimensionsText.setText(Integer.toString(level.getMinefield().getRowCount()) + "x" + Integer.toString(level.getMinefield().getColumnCount()));
+					SceneManager.RunOnUIThread(runnable);
 				}
-				//activity.runOnUiThread(runnable);
 			}
 		});
 	}
