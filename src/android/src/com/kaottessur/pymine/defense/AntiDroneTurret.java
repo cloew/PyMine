@@ -9,6 +9,12 @@ public class AntiDroneTurret extends Defense {
 	public int getPowerRating() {
 		return Power.EMP_POWER;
 	}
+	
+	@Override
+	public boolean isWeapon() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 	@Override
 	public void scan(Drone drone) {
@@ -35,5 +41,4 @@ public class AntiDroneTurret extends Defense {
 		if (!deactivated)
 			drone.destroy();
 	}
-
 }

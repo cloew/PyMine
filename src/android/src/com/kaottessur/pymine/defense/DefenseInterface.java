@@ -13,6 +13,7 @@ public interface DefenseInterface {
 	public boolean isVisible();
 	public boolean isDeactivated();
 	public boolean isMine();
+	public boolean isWeapon();
 	public boolean isFragile();
 	public boolean reverseReadings();
 	public int getPowerRating();

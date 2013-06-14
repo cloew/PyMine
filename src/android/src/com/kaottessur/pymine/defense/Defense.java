@@ -12,36 +12,49 @@ public abstract class Defense implements DefenseInterface {
 	public Defense() {
 	}
 	
+	@Override
 	public boolean isVisible() {
 		return visible || deactivated;
 	}
 	
+	@Override
 	public boolean isDeactivated() {
 		return deactivated;
 	}
 	
+	@Override
 	public boolean isMine() {
 		return false;
 	}
 	
+	@Override
+	public boolean isWeapon() {
+		return false;
+	}
+	
+	@Override
 	public boolean isFragile() {
 		return false;
 	}
 	
+	@Override
 	public boolean reverseReadings() {
 		return false;
 	}
 	
+	@Override
 	public DefenseAdderInterface getDefenseAdder() {
 		return new StandardDefenseAdder();
 	}
 	
+	@Override
 	public void setGridSquare(GridSquare gridSquare) {
 		if (this.gridSquare != null)
 			this.gridSquare.removeDefense();
 		this.gridSquare = gridSquare;
 	}
 	
+	@Override
 	public GridSquare getGridSquare() {
 		return gridSquare;
 	}
@@ -51,6 +64,7 @@ public abstract class Defense implements DefenseInterface {
 		reveal();
 	}
 	
+	@Override
 	public void reveal() {
 		visible = true;
 	}
