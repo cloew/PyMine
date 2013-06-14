@@ -1,5 +1,6 @@
 package com.kaottessur.pymine.view.defense.status;
 
+import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
@@ -13,6 +14,7 @@ import com.kaottessur.pymine.view.texture.TextureWrapper;
 public class DefenseCountEntity extends Entity {
 	private Level level;
 	private Class<? extends DefenseInterface> defenseClass;
+	private Text countText;
 	
 	public DefenseCountEntity(float x, float y, Level level, Class<? extends DefenseInterface> defenseClass) {
 		super(x, y);
@@ -21,6 +23,7 @@ public class DefenseCountEntity extends Entity {
 		
 		addSprite();
 		setupText();
+		registerUpdate();
 	}
 	
 	public void setLevel(Level level) {
@@ -33,8 +36,26 @@ public class DefenseCountEntity extends Entity {
 	}
 	
 	private void setupText() {
-		int count = level.getDefenseCount(defenseClass);
-		Text countText = new Text(80, 12, TextureWrapper.GetInstance().GetGameFont(), Integer.toString(count), SceneManager.GetVertexBufferObjectManager());
+		countText = new Text(80, 12, TextureWrapper.GetInstance().GetCompletionFont(), getCountString(), 3, SceneManager.GetVertexBufferObjectManager());
 		attachChild(countText);
+	}
+	
+	private String getCountString() {
+		int count = level.getDefenseCount(defenseClass);
+		return Integer.toString(count);
+	}
+	
+	private void registerUpdate() {
+		registerUpdateHandler(new IUpdateHandler() {
+			@Override
+			public void reset() {
+				// Do Nothing
+			}
+			
+			@Override
+			public void onUpdate(float pSecondsElapsed) {
+				countText.setText(getCountString());
+			}
+		});
 	}
 }
