@@ -17,6 +17,7 @@ public abstract class DroneActionButton extends HUDButton {
 	@Override
 	protected void performButtonAction() {
     	if (level.finished()) {
+    		level.reset();
     		SceneManager.GetInstance().runLevelSelectionScene();
     	} else {
     		performGameAction();

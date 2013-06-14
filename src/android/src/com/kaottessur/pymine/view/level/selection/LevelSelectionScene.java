@@ -7,12 +7,10 @@ import com.kaottessur.pymine.level.selection.LevelSelection;
 
 public class LevelSelectionScene extends Scene {
 	private LevelDetailsScene detailsScene;
-	private LevelSelection levelSelection;
 	
 	public LevelSelectionScene(final LevelSelection levelSelection) {
 		super();
 		
-		this.levelSelection = levelSelection;
 		addLevelOverviewTexts(levelSelection);
 		
 		detailsScene = new LevelDetailsScene(this, levelSelection);
@@ -29,9 +27,5 @@ public class LevelSelectionScene extends Scene {
 			attachChild(overview);
 			registerTouchArea(overview);
 		}
-	}
-	
-	public void resetLevels() {
-		levelSelection.resetLevels();
 	}
 }
