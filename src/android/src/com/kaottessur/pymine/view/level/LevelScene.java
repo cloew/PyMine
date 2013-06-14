@@ -14,7 +14,7 @@ public class LevelScene extends Scene {
 	private CompletionText lostText;
 	
 	private DefenseStatusEntity defenseStatusEntity;
-	
+	private PowerLevelEntity powerLevelEntity;
 	
 	public LevelScene(Level level) {
 		super();
@@ -31,6 +31,9 @@ public class LevelScene extends Scene {
 		
 		defenseStatusEntity = new DefenseStatusEntity(6*64, 0, level);
 		attachChild(defenseStatusEntity);
+		
+		powerLevelEntity = new PowerLevelEntity(6*64+132, 32, level.getDrone());
+		attachChild(powerLevelEntity);
 		
 		registerUpdate();
 	}
