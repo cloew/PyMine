@@ -17,7 +17,7 @@ public class WeaponCautionClue extends SubClue {
 	
 	@Override
 	public void updateFromAdjacentSquare(GridSquare gridSquare) {
-		if (gridSquare.mined()) {
+		if (gridSquare.isWeaponized()) {
 			nearWeapons = true;
 		}
 	}

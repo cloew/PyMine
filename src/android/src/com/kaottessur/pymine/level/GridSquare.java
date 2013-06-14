@@ -83,6 +83,12 @@ public class GridSquare implements GridLocationInterface {
 		return false;
 	}
 	
+	public boolean isWeaponized() {
+		if (hasDefense())
+			return defense.isWeapon();
+		return false;
+	}
+	
 	public boolean reversed() {
 		if (hasDefense())
 			return defense.reverseReadings();
