@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view.defense;
+package com.kaottessur.pymine.view.defense.helper;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.FragileMine;
@@ -7,6 +7,11 @@ import com.kaottessur.pymine.defense.ReverseMine;
 import com.kaottessur.pymine.defense.Worm;
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.Minefield;
+import com.kaottessur.pymine.view.defense.DefenseSprite;
+import com.kaottessur.pymine.view.defense.FragileMineSprite;
+import com.kaottessur.pymine.view.defense.MineSprite;
+import com.kaottessur.pymine.view.defense.ReverseMineSprite;
+import com.kaottessur.pymine.view.defense.WormSprite;
 
 public class DefenseViewFactory {
 	

@@ -6,6 +6,7 @@ import org.andengine.entity.sprite.Sprite;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.SceneManager;
+import com.kaottessur.pymine.view.defense.helper.DefenseTextureWrapper;
 
 public abstract class DefenseSprite extends Sprite {
 	protected DefenseInterface defense;

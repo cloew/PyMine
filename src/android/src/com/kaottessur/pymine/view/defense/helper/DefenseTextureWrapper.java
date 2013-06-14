@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view.defense;
+package com.kaottessur.pymine.view.defense.helper;
 
 import java.util.HashMap;
 import java.util.Map;
