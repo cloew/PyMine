@@ -27,16 +27,16 @@ public class WormSprite extends DefenseSprite {
 	protected void update(float secondsElapsed) {
 		secondsSinceLastUpdate += secondsElapsed;
 		if (secondsSinceLastUpdate > SECONDS_PER_GAME_TICK ) {
-			GridSquare previousSquare = worm.getGridSquare();
-			worm.update(drone, minefield);
-			DefenseSpriteManager.GetInstance().moveDefenseToNewGridSquare(this, previousSquare, worm.getGridSquare());
+			updateAndMoveWorm();
 			setAlphaValue();
 			secondsSinceLastUpdate -= SECONDS_PER_GAME_TICK;
 		}
 	}
 	
 	private void updateAndMoveWorm() {
-		
+		GridSquare previousSquare = worm.getGridSquare();
+		worm.update(drone, minefield);
+		DefenseSpriteManager.GetInstance().moveDefenseToNewGridSquare(this, previousSquare, worm.getGridSquare());
 	}
 	
 	private void setAlphaValue() {

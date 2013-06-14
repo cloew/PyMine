@@ -36,7 +36,7 @@ public class DefenseSpriteManager {
 	}
 	
 	public void moveDefenseToNewGridSquare(final DefenseSprite defenseSprite, final GridSquare original, final GridSquare destination) {
-		if (original != destination && gridSquareSprites.containsKey(original) && gridSquareSprites.containsKey(destination)) {
+		if (canMoveDefenseSprite(original, destination)) {
 			SceneManager.RunOnUIThread(new Runnable() {
 				
 				@Override
@@ -49,5 +49,9 @@ public class DefenseSpriteManager {
 				}
 			});
 		}
+	}
+	
+	private boolean canMoveDefenseSprite(final GridSquare original, final GridSquare destination) {
+		return original != destination && gridSquareSprites.containsKey(original) && gridSquareSprites.containsKey(destination);
 	}
 }
