@@ -20,7 +20,6 @@ public class LevelScene extends Scene {
 		super();
 		
 		this.level = level;
-		level.reset();
 		minefieldScene = new MinefieldScene(this, level.getMinefield(), level.getDrone());
 		attachChild(minefieldScene);
 		

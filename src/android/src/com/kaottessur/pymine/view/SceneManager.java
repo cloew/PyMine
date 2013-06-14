@@ -59,6 +59,7 @@ public class SceneManager {
 	}
 	
 	public void runLevelSelectionScene() {
+		levelSelectionScene.resetLevels();
 		engine.setScene(levelSelectionScene);
 		engine.getCamera().setHUD(new HUD());
 	}

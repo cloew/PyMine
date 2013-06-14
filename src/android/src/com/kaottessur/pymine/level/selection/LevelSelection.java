@@ -44,4 +44,10 @@ public class LevelSelection {
 	public int getLevelCount() {
 		return levels.size();
 	}
+	
+	public void resetLevels() {
+		for (Level level : levels) {
+			level.reset();
+		}
+	}
 }
