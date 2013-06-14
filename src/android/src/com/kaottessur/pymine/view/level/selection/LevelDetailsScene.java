@@ -13,6 +13,7 @@ import com.kaottessur.pymine.view.Button;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 import com.kaottessur.pymine.view.defense.DefenseCountEntity;
+import com.kaottessur.pymine.view.defense.DefenseStatusEntity;
 
 public class LevelDetailsScene extends Entity {
 	private Level level;
@@ -55,12 +56,14 @@ public class LevelDetailsScene extends Entity {
 	}
 	
 	private void addDefenseCounts(VertexBufferObjectManager vertexBufferObjectManager) {
-		int row = 0;
+		DefenseStatusEntity defenseStatusEntity = new DefenseStatusEntity(50, 100, level, vertexBufferObjectManager);
+		attachChild(defenseStatusEntity);
+		/*int row = 0;
 		for (Class<? extends DefenseInterface> defenseClass : level.getDefenseClasses()) {
 			DefenseCountEntity defenseCount = new DefenseCountEntity(50, 100+64*row, level, defenseClass, vertexBufferObjectManager);
 			attachChild(defenseCount);
 			row++;
-		}
+		}*/
 	}
 	
 	private void addPlayButton(Scene parent, VertexBufferObjectManager vertexBufferObjectManager) {
