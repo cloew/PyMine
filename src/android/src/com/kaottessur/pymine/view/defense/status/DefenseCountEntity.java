@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view.defense;
+package com.kaottessur.pymine.view.defense.status;
 
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
@@ -7,6 +7,7 @@ import org.andengine.entity.text.Text;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.view.SceneManager;
+import com.kaottessur.pymine.view.defense.DefenseTextureWrapper;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DefenseCountEntity extends Entity {

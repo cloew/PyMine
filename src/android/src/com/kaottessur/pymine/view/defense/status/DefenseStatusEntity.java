@@ -1,4 +1,4 @@
-package com.kaottessur.pymine.view.defense;
+package com.kaottessur.pymine.view.defense.status;
 
 import org.andengine.entity.Entity;
 

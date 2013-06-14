@@ -10,7 +10,7 @@ import com.kaottessur.pymine.level.selection.LevelSelection;
 import com.kaottessur.pymine.view.Button;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
-import com.kaottessur.pymine.view.defense.DefenseStatusEntity;
+import com.kaottessur.pymine.view.defense.status.DefenseStatusEntity;
 
 public class LevelDetailsScene extends Entity {
 	private Level level;
