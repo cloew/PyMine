@@ -24,10 +24,7 @@ public class LevelOverviewText extends Rectangle {
 	
 	@Override
     public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
-		System.out.println("Touched Overview");
-		//if (touchEvent.isActionDown() ) {
-			levelSelection.selectLevel(index);
-		//}
+		levelSelection.selectLevel(index);
         return true;
     }
 }
