@@ -3,7 +3,9 @@ package com.kaottessur.pymine.view.defense;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.Worm;
 import com.kaottessur.pymine.level.Drone;
+import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.level.Minefield;
+import com.kaottessur.pymine.view.defense.helper.DefenseSpriteManager;
 
 public class WormSprite extends DefenseSprite {
 	private Worm worm;
@@ -25,11 +27,16 @@ public class WormSprite extends DefenseSprite {
 	protected void update(float secondsElapsed) {
 		secondsSinceLastUpdate += secondsElapsed;
 		if (secondsSinceLastUpdate > SECONDS_PER_GAME_TICK ) {
+			GridSquare previousSquare = worm.getGridSquare();
 			worm.update(drone, minefield);
-			moveToCurrentGridSquareLocation();
+			DefenseSpriteManager.GetInstance().moveDefenseToNewGridSquare(this, previousSquare, worm.getGridSquare());
 			setAlphaValue();
 			secondsSinceLastUpdate -= SECONDS_PER_GAME_TICK;
 		}
+	}
+	
+	private void updateAndMoveWorm() {
+		
 	}
 	
 	private void setAlphaValue() {

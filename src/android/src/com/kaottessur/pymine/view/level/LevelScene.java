@@ -1,15 +1,9 @@
 package com.kaottessur.pymine.view.level;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.Scene;
 
-import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.view.defense.DefenseSprite;
-import com.kaottessur.pymine.view.defense.helper.DefenseViewFactory;
 
 public class LevelScene extends Scene {
 	private Level level;

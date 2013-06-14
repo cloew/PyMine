@@ -4,7 +4,6 @@ import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.sprite.Sprite;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
-import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.defense.helper.DefenseTextureWrapper;
 
@@ -15,7 +14,6 @@ public abstract class DefenseSprite extends Sprite {
 		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), SceneManager.GetVertexBufferObjectManager());
 		this.defense = defense;
 		setVisible(false);
-		moveToCurrentGridSquareLocation();
 		registerUpdate();
 	}
 	
@@ -48,10 +46,6 @@ public abstract class DefenseSprite extends Sprite {
 	protected abstract Class<?  extends DefenseInterface> getDefenseClass();
 	protected abstract String getDeactivatedFilename();
 	protected abstract String getActiveFilename();
-	
-	protected void moveToCurrentGridSquareLocation() {
-		//setPosition(GridPositionHelper.GetXLocation(defense.getGridSquare()), GridPositionHelper.GetYLocation(defense.getGridSquare()));
-	}
 	
 	public DefenseInterface getDefense() {
 		return defense;
