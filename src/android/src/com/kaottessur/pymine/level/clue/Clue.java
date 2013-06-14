@@ -9,14 +9,18 @@ import com.kaottessur.pymine.level.Minefield;
 public class Clue {
 	private AdjacencyClue adjacencyClue;
 	private FragilityClue fragilityClue;
+	private WeaponCautionClue weaponCautionClue;
 	private List<SubClue> subClues;
 	
 	public Clue() {
 		subClues = new ArrayList<SubClue>();
 		adjacencyClue = new AdjacencyClue();
 		fragilityClue = new FragilityClue();
+		weaponCautionClue = new WeaponCautionClue();
+		
 		subClues.add(adjacencyClue);
 		subClues.add(fragilityClue);
+		subClues.add(weaponCautionClue);
 	}
 	
 	public void populate(Minefield minefield, int gridRow, int gridColumn) {
@@ -46,5 +50,9 @@ public class Clue {
 	
 	public FragilityClue getFragilityClue() {
 		return fragilityClue;
+	}
+	
+	public WeaponCautionClue getWeaponCautionClue() {
+		return weaponCautionClue;
 	}
 }
