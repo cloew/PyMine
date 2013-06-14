@@ -49,15 +49,4 @@ public class WormSprite extends DefenseSprite {
 	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return Worm.class;
 	}
-
-	@Override
-	protected String getDeactivatedFilename() {
-		return "Worm.png";
-	}
-
-	@Override
-	protected String getActiveFilename() {
-		return "Worm.png";
-	}
-
 }

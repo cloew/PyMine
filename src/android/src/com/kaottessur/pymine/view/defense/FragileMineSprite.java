@@ -13,14 +13,4 @@ public class FragileMineSprite extends MineSprite {
 	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return FragileMine.class;
 	}
-	
-	@Override
-	protected String getDeactivatedFilename() {
-		return "DefusedFragileMine.png";
-	}
-	
-	@Override
-	protected String getActiveFilename() {
-		return "FragileMine.png";
-	}
 }

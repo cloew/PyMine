@@ -23,14 +23,4 @@ public class MineSprite extends DefenseSprite {
 	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return Mine.class;
 	}
-	
-	@Override
-	protected String getDeactivatedFilename() {
-		return "DefusedMine1.png";
-	}
-	
-	@Override
-	protected String getActiveFilename() {
-		return "Mine1.png";
-	}
 }

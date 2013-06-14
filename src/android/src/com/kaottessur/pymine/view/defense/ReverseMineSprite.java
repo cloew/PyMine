@@ -13,14 +13,4 @@ public class ReverseMineSprite extends MineSprite {
 	@Override protected Class<? extends DefenseInterface> getDefenseClass() {
 		return ReverseMine.class;
 	}
-	
-	@Override
-	protected String getDeactivatedFilename() {
-		return "DefusedReverseMine.png";
-	}
-	
-	@Override
-	protected String getActiveFilename() {
-		return "ReverseMine.png";
-	}
 }

@@ -44,8 +44,6 @@ public abstract class DefenseSprite extends Sprite {
 	
 	protected abstract void update(float secondsElapsed);
 	protected abstract Class<?  extends DefenseInterface> getDefenseClass();
-	protected abstract String getDeactivatedFilename();
-	protected abstract String getActiveFilename();
 	
 	public DefenseInterface getDefense() {
 		return defense;

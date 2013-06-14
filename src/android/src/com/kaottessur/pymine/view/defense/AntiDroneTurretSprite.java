@@ -18,15 +18,4 @@ public class AntiDroneTurretSprite extends DefenseSprite {
 	protected Class<? extends DefenseInterface> getDefenseClass() {
 		return AntiDroneTurret.class;
 	}
-
-	@Override
-	protected String getDeactivatedFilename() {
-		return null;
-	}
-
-	@Override
-	protected String getActiveFilename() {
-		return null;
-	}
-
 }
