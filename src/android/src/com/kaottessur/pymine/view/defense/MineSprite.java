@@ -1,19 +1,17 @@
 package com.kaottessur.pymine.view.defense;
 
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
-
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.Mine;
 
 public class MineSprite extends DefenseSprite {
 	protected Mine mine;
 	
-	public MineSprite(Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		this(Mine.class, mine, vertexBufferObjectManager);
+	public MineSprite(Mine mine) {
+		this(Mine.class, mine);
 	}
 	
-	public MineSprite(Class<? extends DefenseInterface> defenseClass, Mine mine, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(defenseClass, mine, vertexBufferObjectManager);
+	public MineSprite(Class<? extends DefenseInterface> defenseClass, Mine mine) {
+		super(defenseClass, mine);
 		this.mine = mine;
 	}
 	

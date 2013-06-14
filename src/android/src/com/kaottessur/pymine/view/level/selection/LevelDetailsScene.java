@@ -4,7 +4,6 @@ import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.Entity;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
 import com.kaottessur.pymine.level.selection.LevelSelection;
@@ -21,48 +20,44 @@ public class LevelDetailsScene extends Entity {
 	private Text nameText;
 	private Text gridDimensionsText;
 	
-	private VertexBufferObjectManager vertexBufferObjectManager;
-	
 	private Runnable runnable = new Runnable() {
 		
 		@Override
 		public void run() {
 			detachChild(defenseStatusEntity);
-			addDefenseCounts(vertexBufferObjectManager);
+			addDefenseCounts();
 		}
 	};
 	
-	public LevelDetailsScene(Scene parent, final LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
+	public LevelDetailsScene(Scene parent, final LevelSelection levelSelection) {
 		super();
 		setPosition(600, 0);
 		
 		this.levelSelection = levelSelection;
 		level = levelSelection.getSelectedLevel();
 		
-		addHeader(vertexBufferObjectManager);
-		addDefenseCounts(vertexBufferObjectManager);
-		addPlayButton(parent, vertexBufferObjectManager);
-		
-		this.vertexBufferObjectManager = vertexBufferObjectManager;
+		addHeader();
+		addDefenseCounts();
+		addPlayButton(parent);
 		registerUpdate();
 	}
 	
-	private void addHeader(VertexBufferObjectManager vertexBufferObjectManager) {
-		nameText = new Text(50, 0, TextureWrapper.GetInstance().GetCompletionFont(), level.getName(), vertexBufferObjectManager);
+	private void addHeader() {
+		nameText = new Text(50, 0, TextureWrapper.GetInstance().GetCompletionFont(), level.getName(), SceneManager.GetVertexBufferObjectManager());
 		attachChild(nameText);
 		centerText(nameText, 100);
-		gridDimensionsText = new Text(50, 50, TextureWrapper.GetInstance().GetCompletionFont(), getGridDimensionsString(), vertexBufferObjectManager);
+		gridDimensionsText = new Text(50, 50, TextureWrapper.GetInstance().GetCompletionFont(), getGridDimensionsString(), SceneManager.GetVertexBufferObjectManager());
 		attachChild(gridDimensionsText);
 		centerText(gridDimensionsText, 100);
 	}
 	
-	private void addDefenseCounts(VertexBufferObjectManager vertexBufferObjectManager) {
-		defenseStatusEntity = new DefenseStatusEntity(50, 100, level, vertexBufferObjectManager);
+	private void addDefenseCounts() {
+		defenseStatusEntity = new DefenseStatusEntity(50, 100, level);
 		attachChild(defenseStatusEntity);
 	}
 	
-	private void addPlayButton(Scene parent, VertexBufferObjectManager vertexBufferObjectManager) {
-		Button playButton = new Button(50, 400, 100, 50, vertexBufferObjectManager)
+	private void addPlayButton(Scene parent) {
+		Button playButton = new Button(50, 400, 100, 50, SceneManager.GetVertexBufferObjectManager())
 		{
 	        public void performButtonAction()
 	        {
@@ -87,7 +82,6 @@ public class LevelDetailsScene extends Entity {
 			
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
-				System.out.println(String.format("Selceted Level is: %d", levelSelection.getSelectedIndex()));
 				if (levelSelection.getSelectedLevel() != level) {
 					level = levelSelection.getSelectedLevel();
 					nameText.setText(level.getName());

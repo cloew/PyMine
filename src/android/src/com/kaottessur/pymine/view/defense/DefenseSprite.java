@@ -2,16 +2,16 @@ package com.kaottessur.pymine.view.defense;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.view.GridPositionHelper;
+import com.kaottessur.pymine.view.SceneManager;
 
 public abstract class DefenseSprite extends Sprite {
 	protected DefenseInterface defense;
 	
-	public DefenseSprite(Class<?  extends DefenseInterface> defenseClass, DefenseInterface defense, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), vertexBufferObjectManager);
+	public DefenseSprite(Class<?  extends DefenseInterface> defenseClass, DefenseInterface defense) {
+		super(0, 0, DefenseTextureWrapper.getNormalTexture(defenseClass), SceneManager.GetVertexBufferObjectManager());
 		this.defense = defense;
 		setVisible(false);
 		moveToCurrentGridSquareLocation();

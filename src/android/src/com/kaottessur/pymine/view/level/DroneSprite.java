@@ -2,19 +2,19 @@ package com.kaottessur.pymine.view.level;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.view.GridPositionHelper;
+import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DroneSprite extends Sprite {
 	private Drone drone;
 	
-	public DroneSprite(Drone drone, VertexBufferObjectManager vertexBufferObjectManager) {
+	public DroneSprite(Drone drone) {
 		super(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone), 
-				TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), vertexBufferObjectManager);
+				TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), SceneManager.GetVertexBufferObjectManager());
 		this.drone = drone;
 		registerUpdate();
 		setAlpha(.5f);

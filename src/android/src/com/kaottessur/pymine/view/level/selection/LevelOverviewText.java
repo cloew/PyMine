@@ -6,6 +6,7 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.selection.LevelSelection;
+import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class LevelOverviewText extends Rectangle {
@@ -13,8 +14,8 @@ public class LevelOverviewText extends Rectangle {
 	private int index;
 	
 	
-	public LevelOverviewText(LevelSelection levelSelection, int index, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(50+100*(index%3), 50+100*(index/3), 50, 50, vertexBufferObjectManager);
+	public LevelOverviewText(LevelSelection levelSelection, int index) {
+		super(50+100*(index%3), 50+100*(index/3), 50, 50, SceneManager.GetVertexBufferObjectManager());
 		//super(50+100*(index%3), 50+100*(index/3), TextureWrapper.GetInstance().GetCompletionFont(), levelSelection.getLevelAt(index).getName(), vertexBufferObjectManager);
 		
 		this.levelSelection = levelSelection;

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.Scene;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.Level;
@@ -21,27 +20,27 @@ public class LevelScene extends Scene {
 	private CompletionText lostText;
 	
 	
-	public LevelScene(Level level, VertexBufferObjectManager vertexBufferObjectManager) {
+	public LevelScene(Level level) {
 		super();
 		
 		this.level = level;
 		level.reset();
-		minefieldScene = new MinefieldScene(this, level.getMinefield(), level.getDrone(), vertexBufferObjectManager);
+		minefieldScene = new MinefieldScene(this, level.getMinefield(), level.getDrone());
 		attachChild(minefieldScene);
-		addDefenseSprites(vertexBufferObjectManager);
+		addDefenseSprites();
 		
-		wonText = new CompletionText("You Won!", vertexBufferObjectManager);
+		wonText = new CompletionText("You Won!");
 		attachChild(wonText);
-		lostText = new CompletionText("Game Over", vertexBufferObjectManager);
+		lostText = new CompletionText("Game Over");
 		attachChild(lostText);
 		registerUpdate();
 	}
 	
-	private void addDefenseSprites(VertexBufferObjectManager vertexBufferObjectManager) {
+	private void addDefenseSprites() {
 		defenseSprites = new ArrayList<DefenseSprite>();
 		
 		for (DefenseInterface defense : level.getDefenses()) {
-			DefenseSprite defenseSprite = DefenseViewFactory.getDefenseView(defense, level.getDrone(), level.getMinefield(), vertexBufferObjectManager);
+			DefenseSprite defenseSprite = DefenseViewFactory.getDefenseView(defense, level.getDrone(), level.getMinefield());
 			defenseSprites.add(defenseSprite);
 			attachChild(defenseSprite);
 		}

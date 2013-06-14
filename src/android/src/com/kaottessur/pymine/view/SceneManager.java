@@ -16,6 +16,7 @@ public class SceneManager {
 	
 	private PyMineActivity activity;
 	private Engine engine;
+	private LevelSelection levelSelection;
 	private LevelSelectionScene levelSelectionScene;
 	private VertexBufferObjectManager vertexBufferObjectManager;
 	
@@ -32,19 +33,28 @@ public class SceneManager {
 		instance.runOnUIThread(action);
 	}
 	
+	public static VertexBufferObjectManager GetVertexBufferObjectManager() {
+		return instance.getVertexBufferObjectManager();
+	}
+	
 	private SceneManager(PyMineActivity activity, Engine engine, LevelSelection levelSelection, VertexBufferObjectManager vertexBufferObjectManager) {
 		this.activity = activity;
 		this.engine = engine;
+		this.levelSelection = levelSelection;
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
-		
-		levelSelectionScene = new LevelSelectionScene(levelSelection, vertexBufferObjectManager);
 	}
 	
 	public void runOnUIThread(Runnable action) {
 		activity.runOnUiThread(action);
 	}
 	
+	public VertexBufferObjectManager getVertexBufferObjectManager() {
+		return vertexBufferObjectManager;
+	}
+	
 	public Scene getFirstScene() {
+		if (levelSelectionScene == null)
+			levelSelectionScene = new LevelSelectionScene(levelSelection);
 		return levelSelectionScene;
 	}
 	
@@ -54,7 +64,7 @@ public class SceneManager {
 	}
 	
 	public void runLevelScene(Level level) {
-		LevelScene levelScene = new LevelScene(level, vertexBufferObjectManager);
+		LevelScene levelScene = new LevelScene(level);
 		engine.setScene(levelScene);
 		createGameHUD(level);
 	}

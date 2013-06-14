@@ -2,16 +2,16 @@ package com.kaottessur.pymine.view.level.clue;
 
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.clue.Clue;
+import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class ClueView extends Text {
 	private Clue clue;
 		
-	public ClueView(Clue clue, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(40, 0, TextureWrapper.GetInstance().GetGameFont(), "", 1, vertexBufferObjectManager);
+	public ClueView(Clue clue) {
+		super(40, 0, TextureWrapper.GetInstance().GetGameFont(), "", 1, SceneManager.GetVertexBufferObjectManager());
 		this.clue = clue;
 		registerUpdateHandler(new IUpdateHandler() {
 			
