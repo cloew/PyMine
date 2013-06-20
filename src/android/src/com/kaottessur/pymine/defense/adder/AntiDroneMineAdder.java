@@ -24,6 +24,7 @@ public class AntiDroneMineAdder implements DefenseAdderInterface {
 			if (!gridSquare.hasDefense()) {
 				addDefenseToGridSquare(defense, gridSquare);
 				addTurrets((AntiDroneMine) defense, minefield);
+				break;
 			}
 		}
 	}
@@ -45,8 +46,10 @@ public class AntiDroneMineAdder implements DefenseAdderInterface {
 					break;
 			}
 			
-			if (isGoodCenter)
+			if (isGoodCenter) {
+				this.adjacentSquares = adjacentSquares;  
 				break;
+			}
 		}
 		return centerSquare;
 	}
