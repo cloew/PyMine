@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kaottessur.pymine.Power;
+import com.kaottessur.pymine.defense.adder.AntiDroneMineAdder;
+import com.kaottessur.pymine.defense.adder.DefenseAdderInterface;
 import com.kaottessur.pymine.level.Drone;
 
 public class AntiDroneMine extends Mine {
@@ -11,6 +13,11 @@ public class AntiDroneMine extends Mine {
 	
 	public AntiDroneMine() {
 		turrets = new ArrayList<AntiDroneTurret>();
+	}
+	
+	@Override
+	public DefenseAdderInterface getDefenseAdder() {
+		return new AntiDroneMineAdder();
 	}
 	
 	@Override
