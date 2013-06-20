@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.andengine.opengl.texture.region.ITextureRegion;
 
+import com.kaottessur.pymine.defense.AntiDroneMine;
 import com.kaottessur.pymine.defense.AntiDroneTurret;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.defense.FragileMine;
@@ -19,12 +20,14 @@ public class DefenseTextureWrapper {
 	private static Map<Class<? extends DefenseInterface>, String> defenseClassToDeactivatedFilename = new HashMap<Class<? extends DefenseInterface>, String>();
 	
 	static {
+		defenseClassToNormalFilename.put(AntiDroneMine.class, "AntiDroneMine.png");
 		defenseClassToNormalFilename.put(AntiDroneTurret.class, "AntiDroneTurret.png");
 		defenseClassToNormalFilename.put(FragileMine.class, "FragileMine.png");
 		defenseClassToNormalFilename.put(Mine.class, "Mine1.png");
 		defenseClassToNormalFilename.put(ReverseMine.class, "ReverseMine.png");
 		defenseClassToNormalFilename.put(Worm.class, "Worm.png");
 		
+		defenseClassToDeactivatedFilename.put(AntiDroneMine.class, "AntiDroneMine.png");
 		defenseClassToDeactivatedFilename.put(AntiDroneTurret.class, "AntiDroneTurret.png");
 		defenseClassToDeactivatedFilename.put(FragileMine.class, "DefusedFragileMine.png");
 		defenseClassToDeactivatedFilename.put(Mine.class, "DefusedMine1.png");
