@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.kaottessur.pymine.defense.AntiDroneMine;
 import com.kaottessur.pymine.defense.AntiDroneTurret;
 import com.kaottessur.pymine.defense.DefenseInterface;
 import com.kaottessur.pymine.level.GridSquare;
@@ -22,7 +23,7 @@ public class AntiDroneMineAdder implements DefenseAdderInterface {
 			GridSquare gridSquare = getGridSquare(minefield);
 			if (!gridSquare.hasDefense()) {
 				addDefenseToGridSquare(defense, gridSquare);
-				addTurrets(minefield);
+				addTurrets((AntiDroneMine) defense, minefield);
 			}
 		}
 	}
@@ -50,10 +51,11 @@ public class AntiDroneMineAdder implements DefenseAdderInterface {
 		return centerSquare;
 	}
 	
-	private void addTurrets(Minefield minefield) {
+	private void addTurrets(AntiDroneMine antiDroneMine, Minefield minefield) {
 		for (GridSquare gridSquare : adjacentSquares) {
 			AntiDroneTurret turret = new AntiDroneTurret();
 			addDefenseToGridSquare(turret, gridSquare);
+			antiDroneMine.addTurret(turret);
 		}
 	}
 	
