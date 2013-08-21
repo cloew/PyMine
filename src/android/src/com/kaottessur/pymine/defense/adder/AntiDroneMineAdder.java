@@ -32,7 +32,7 @@ public class AntiDroneMineAdder implements DefenseAdderInterface {
 	private GridSquare getGridSquare(Minefield minefield) {
 		GridSquare centerSquare = null;
 		while (true) {
-			Random random = new Random();
+			Random random = StandardDefenseAdder.random;
 			int row =  random.nextInt(minefield.getRowCount());
 			int column =  random.nextInt(minefield.getColumnCount()-2)+2;
 			
