@@ -7,6 +7,7 @@ import com.kaottessur.pymine.level.GridSquare;
 import com.kaottessur.pymine.level.Minefield;
 
 public class StandardDefenseAdder implements DefenseAdderInterface {
+	static Random random = new Random();
 	
 	 public StandardDefenseAdder() {
 		 
@@ -26,7 +27,6 @@ public class StandardDefenseAdder implements DefenseAdderInterface {
 	 }
 	 
 	 public GridSquare getRandomGridSquare(Minefield minefield) {
-		 Random random = new Random();
 		 int row = random.nextInt(minefield.getRowCount());
 		 int column = random.nextInt(minefield.getColumnCount() -1) + 1;
 		 return minefield.getGridSquareAt(row, column);
