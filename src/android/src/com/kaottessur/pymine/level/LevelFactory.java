@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kaottessur.pymine.defense.AntiDroneMine;
+import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
 
@@ -30,12 +31,23 @@ public class LevelFactory {
 		
 		LevelInit otherLevelInit = new LevelInit("2", 4, 5);
 		otherLevelInit.setDefenseCount(Mine.class, 4);
-		otherLevelInit.setDefenseCount(ReverseMine.class, 2);
+		otherLevelInit.setDefenseCount(ReverseMine.class, 1);
 		addLevel(otherLevelInit);
 		
-		LevelInit levelInit2 = new LevelInit("3", 4, 5);
-		levelInit2.setDefenseCount(AntiDroneMine.class, 1);
-		addLevel(levelInit2);
+		LevelInit levelInit3 = new LevelInit("3", 4, 5);
+		levelInit3.setDefenseCount(Mine.class, 10);
+		levelInit3.setDefenseCount(ReverseMine.class, 2);
+		addLevel(levelInit3);
+		
+		LevelInit levelInit4 = new LevelInit("4", 4, 5);
+		levelInit4.setDefenseCount(Mine.class, 8);
+		levelInit4.setDefenseCount(ReverseMine.class, 2);
+		levelInit4.setDefenseCount(FragileMine.class, 1);
+		addLevel(levelInit4);
+		
+		LevelInit levelInit5 = new LevelInit("5", 4, 5);
+		levelInit5.setDefenseCount(AntiDroneMine.class, 1);
+		addLevel(levelInit5);
 	}
 	
 	public List<Level> getLevels() {
