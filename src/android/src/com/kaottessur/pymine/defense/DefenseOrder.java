@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class DefenseOrder {
 	public Map<Class<? extends DefenseInterface>, Integer> defenseCounts;
-	static List<Class<? extends DefenseInterface> > defenseOrder = new ArrayList<Class<? extends DefenseInterface> >();
+	public static List<Class<? extends DefenseInterface> > defenseOrder = new ArrayList<Class<? extends DefenseInterface> >();
 	
 	static {
 		defenseOrder.add(Mine.class);
