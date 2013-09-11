@@ -21,7 +21,6 @@ public class BoundaryDelegate {
 	}
 	
 	public void updateBoundary(GridLocationInterface gridLocation) {
-		System.out.println("Updating Boundary");
 		int row = gridLocation.getRow();
 		int column = gridLocation.getColumn();
 		
@@ -31,24 +30,20 @@ public class BoundaryDelegate {
 	
 	public void updateRow(int row) {
 		if (lower(row, firstRow)) {
-			System.out.println("Moving Row Up");
 			firstRow = row-1;
 		}
 		
 		if (upper(row, firstRow+SQUARES_PER_COLUMN, minefield.getRowCount())) {
-			System.out.println("Moving Row Down");
 			firstRow += 1;
 		}
 	}
 	
 	public void updateColumn(int column) {
 		if (lower(column, firstColumn)) {
-			System.out.println("Moving Column Left");
 			firstColumn -= 1;
 		}
 		
 		if (upper(column, firstColumn+SQUARES_PER_ROW, minefield.getColumnCount())) {
-			System.out.println("Moving Column Right");
 			firstColumn += 1;
 		}
 	}
@@ -58,7 +53,7 @@ public class BoundaryDelegate {
 	}
 	
 	public boolean upper(int position, int back, int size) {
-		return (position == back-1 && size-back+1 > 0);
+		return (position == back-1 && size-back > 0);
 	}
 	
 	public int getVisibleRow(GridLocationInterface gridLocation) {
