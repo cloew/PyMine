@@ -27,4 +27,8 @@ public class MinefieldScene extends Scene {
 		}
 		attachChild(droneSprite);
 	}
+	
+	public BoundaryDelegate getBoundaryDelegate() {
+		return boundaryDelegate;
+	}
 }

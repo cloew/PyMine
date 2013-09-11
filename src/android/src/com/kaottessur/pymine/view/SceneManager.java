@@ -66,12 +66,12 @@ public class SceneManager {
 	public void runLevelScene(Level level) {
 		LevelScene levelScene = new LevelScene(level);
 		engine.setScene(levelScene);
-		createGameHUD(level);
+		createGameHUD(level, levelScene);
 	}
 	
-	private void createGameHUD(Level level)
+	private void createGameHUD(Level level, LevelScene levelScene)
 	{
-	    HUD gameHUD = new PyMineHUD(level, vertexBufferObjectManager);
+	    HUD gameHUD = new PyMineHUD(level, vertexBufferObjectManager, levelScene.getBoundaryDelegate());
 	    engine.getCamera().setHUD(gameHUD);
 	}
 }

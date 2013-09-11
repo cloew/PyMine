@@ -4,6 +4,7 @@ import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.Scene;
 
 import com.kaottessur.pymine.level.Level;
+import com.kaottessur.pymine.view.BoundaryDelegate;
 import com.kaottessur.pymine.view.defense.status.DefenseStatusEntity;
 
 public class LevelScene extends Scene {
@@ -35,6 +36,10 @@ public class LevelScene extends Scene {
 		attachChild(powerLevelEntity);
 		
 		registerUpdate();
+	}
+	
+	public BoundaryDelegate getBoundaryDelegate() {
+		return minefieldScene.getBoundaryDelegate();
 	}
 		
 	private void registerUpdate() {	

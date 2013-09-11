@@ -1,28 +1,19 @@
 package com.kaottessur.pymine.view.hud.drone.movement;
 
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 
 import com.kaottessur.pymine.level.Level;
-import com.kaottessur.pymine.view.hud.HUDButton;
+import com.kaottessur.pymine.view.BoundaryDelegate;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
-public class DownArrowButton extends HUDButton {
+public class DownArrowButton extends MovementButton {
 
-	public DownArrowButton(float x, float y, Level level, VertexBufferObjectManager vertexBufferObjectManager) {
-		super(x, y, level, TextureWrapper.GetInstance().getLeftMovementButtonTexture(), vertexBufferObjectManager);
+	public DownArrowButton(float x, float y, Level level, VertexBufferObjectManager vertexBufferObjectManager, BoundaryDelegate boundaryDelegate) {
+		super(x, y, level, TextureWrapper.GetInstance().getLeftMovementButtonTexture(), vertexBufferObjectManager, boundaryDelegate);
 	}
 
 	@Override
-	protected void performButtonAction() {
-		//drone.moveDown();
+	protected void move() {
+		drone.moveDown();
 	}
-	
-	@Override
-    public boolean onAreaTouched(TouchEvent touchEvent, float x, float y) {
-		if (touchEvent.isActionDown() ) {
-			drone.moveDown();
-		}
-		return super.onAreaTouched(touchEvent, x, y);
-    }
 }
