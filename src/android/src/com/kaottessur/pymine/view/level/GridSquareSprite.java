@@ -35,7 +35,6 @@ public class GridSquareSprite extends Sprite {
 		
 		DefenseSpriteManager.GetInstance().addGridSquare(this);
 		registerUpdate();
-		
 	}
 	
 	private void registerUpdate() {
