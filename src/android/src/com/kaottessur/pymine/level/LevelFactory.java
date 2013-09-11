@@ -42,7 +42,7 @@ public class LevelFactory {
 		LevelInit levelInit4 = new LevelInit("4", 4, 5);
 		levelInit4.setDefenseCount(Mine.class, 8);
 		levelInit4.setDefenseCount(ReverseMine.class, 2);
-		levelInit4.setDefenseCount(FragileMine.class, 1);
+		levelInit4.setDefenseCount(FragileMine.class, 2);
 		addLevel(levelInit4);
 		
 		LevelInit levelInit5 = new LevelInit("5", 4, 5);

@@ -26,7 +26,7 @@ public class FragilityClue extends SubClue {
 					int rowDistance = Math.abs(square.getRow()-gridRow);
 					int columnDistance = Math.abs(square.getColumn()-gridColumn);
 					int adjacencyDistance = getAdjacencyDistance(rowDistance, columnDistance);
-					if (distance < adjacencyDistance)
+					if (distance == -1 || adjacencyDistance < distance)
 						distance = adjacencyDistance;
 				}
 			}
