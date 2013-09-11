@@ -5,24 +5,27 @@ import org.andengine.entity.sprite.Sprite;
 
 import com.kaottessur.pymine.level.Drone;
 import com.kaottessur.pymine.level.GridSquare;
+import com.kaottessur.pymine.view.BoundaryDelegate;
 import com.kaottessur.pymine.view.GridPositionHelper;
 import com.kaottessur.pymine.view.SceneManager;
 import com.kaottessur.pymine.view.texture.TextureWrapper;
 
 public class DroneSprite extends Sprite {
+	private BoundaryDelegate boundaryDelegate;
 	private Drone drone;
 	
-	public DroneSprite(Drone drone) {
-		super(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone), 
+	public DroneSprite(Drone drone, BoundaryDelegate boundaryDelegate) {
+		super(GridPositionHelper.GetXLocation(drone, boundaryDelegate), GridPositionHelper.GetYLocation(drone, boundaryDelegate), 
 				TextureWrapper.GetInstance().GetTextureRegion("Drone2.png"), SceneManager.GetVertexBufferObjectManager());
 		this.drone = drone;
 		registerUpdate();
 		setAlpha(.5f);
+		this.boundaryDelegate = boundaryDelegate;
 	}
 	
 	public void moveTo(GridSquare gridSquare) {
 		drone.move(gridSquare.getRow(), gridSquare.getColumn());
-		setPosition(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone));
+		setPosition(GridPositionHelper.GetXLocation(drone, boundaryDelegate), GridPositionHelper.GetYLocation(drone, boundaryDelegate));
 	}
 	
 	private void registerUpdate() {
@@ -34,12 +37,18 @@ public class DroneSprite extends Sprite {
 			
 			@Override
 			public void onUpdate(float pSecondsElapsed) {
-				setPosition(GridPositionHelper.GetXLocation(drone), GridPositionHelper.GetYLocation(drone));
+				updatePositionAndVisibility();
 			}
 		});
 	}
 	
 	public Drone getDrone() {
 		return drone;
+	}
+	
+	private void updatePositionAndVisibility() {
+		boundaryDelegate.setSpriteVisibility(this);
+		setX(GridPositionHelper.GetXLocation(drone, boundaryDelegate));
+		setY(GridPositionHelper.GetYLocation(drone, boundaryDelegate));
 	}
 }

@@ -1,6 +1,9 @@
 package com.kaottessur.pymine.view;
 
-import com.kaottessur.pymine.level.GridSquare;
+import org.andengine.entity.sprite.Sprite;
+
+import com.kaottessur.pymine.GridLocationInterface;
+import com.kaottessur.pymine.view.level.DroneSprite;
 import com.kaottessur.pymine.view.level.GridSquareSprite;
 
 public class BoundaryDelegate {
@@ -10,20 +13,36 @@ public class BoundaryDelegate {
 	private int firstRow = 0;
 	private int firstColumn = 0;
 	
-	public void setGridSquareVisibility(GridSquareSprite gridSquareSprite) {
-		gridSquareSprite.setVisible(withinBoundaries(gridSquareSprite.getGridSquare()));
+	public int getVisibleRow(GridLocationInterface gridLocation) {
+		return gridLocation.getRow() - firstRow;
 	}
 	
-	public boolean withinBoundaries(GridSquare gridSquare) {
-		return isVisibleRow(gridSquare) && isVisibleColumn(gridSquare);
+	public int getVisibleColumn(GridLocationInterface gridLocation) {
+		return gridLocation.getColumn() - firstColumn;
 	}
 	
-	public boolean isVisibleRow(GridSquare gridSquare) {
-		return isVisiblePosition(gridSquare.getRow(), firstRow, SQUARES_PER_ROW);
+	public void setSpriteVisibility(GridSquareSprite sprite) {
+		setSpriteVisibility(sprite, sprite.getGridSquare());
 	}
 	
-	public boolean isVisibleColumn(GridSquare gridSquare) {
-		return isVisiblePosition(gridSquare.getColumn(), firstColumn, SQUARES_PER_COLUMN);
+	public void setSpriteVisibility(DroneSprite sprite) {
+		setSpriteVisibility(sprite, sprite.getDrone());
+	}
+	
+	public void setSpriteVisibility(Sprite sprite, GridLocationInterface gridLocation) {
+		sprite.setVisible(withinBoundaries(gridLocation));
+	}
+	
+	public boolean withinBoundaries(GridLocationInterface gridLocation) {
+		return isVisibleRow(gridLocation) && isVisibleColumn(gridLocation);
+	}
+	
+	public boolean isVisibleRow(GridLocationInterface gridLocation) {
+		return isVisiblePosition(gridLocation.getRow(), firstRow, SQUARES_PER_ROW);
+	}
+	
+	public boolean isVisibleColumn(GridLocationInterface gridLocation) {
+		return isVisiblePosition(gridLocation.getColumn(), firstColumn, SQUARES_PER_COLUMN);
 	}
 	
 	public boolean isVisiblePosition(int dronePosition, int lowestPosition, int size) {

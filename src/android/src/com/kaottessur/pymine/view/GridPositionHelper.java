@@ -9,11 +9,13 @@ public class GridPositionHelper {
 	public static final int X_SIZE = 64;
 	public static final int Y_SIZE = 64;
 	
-	public static float GetXLocation(GridLocationInterface gridLocation) {
-		return X_OFFSET + gridLocation.getColumn()*X_SIZE;
+	public static float GetXLocation(GridLocationInterface gridLocation, BoundaryDelegate boundaryDelegate) {
+		int column = boundaryDelegate.getVisibleColumn(gridLocation);
+		return X_OFFSET + column*X_SIZE;
 	}
 	
-	public static float GetYLocation(GridLocationInterface gridLocation) {
-		return Y_OFFSET + gridLocation.getRow()*Y_SIZE;
+	public static float GetYLocation(GridLocationInterface gridLocation, BoundaryDelegate boundaryDelegate) {
+		int row = boundaryDelegate.getVisibleRow(gridLocation);
+		return Y_OFFSET + row*Y_SIZE;
 	}
 }
