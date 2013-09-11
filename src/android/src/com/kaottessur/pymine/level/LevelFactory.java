@@ -48,6 +48,12 @@ public class LevelFactory {
 		LevelInit levelInit5 = new LevelInit("5", 4, 5);
 		levelInit5.setDefenseCount(AntiDroneMine.class, 1);
 		addLevel(levelInit5);
+		
+		LevelInit levelInit6 = new LevelInit("6", 5, 6);
+		levelInit6.setDefenseCount(Mine.class, 10);
+		levelInit6.setDefenseCount(ReverseMine.class, 4);
+		levelInit6.setDefenseCount(FragileMine.class, 2);
+		addLevel(levelInit6);
 	}
 	
 	public List<Level> getLevels() {

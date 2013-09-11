@@ -25,6 +25,7 @@ public class DroneSprite extends Sprite {
 	
 	public void moveTo(GridSquare gridSquare) {
 		drone.move(gridSquare.getRow(), gridSquare.getColumn());
+		boundaryDelegate.updateBoundary(drone);
 		setPosition(GridPositionHelper.GetXLocation(drone, boundaryDelegate), GridPositionHelper.GetYLocation(drone, boundaryDelegate));
 	}
 	

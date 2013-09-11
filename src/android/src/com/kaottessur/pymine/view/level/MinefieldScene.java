@@ -15,7 +15,7 @@ public class MinefieldScene extends Scene {
 		super();
 		
 		this.minefield = minefield;
-		boundaryDelegate = new BoundaryDelegate();
+		boundaryDelegate = new BoundaryDelegate(minefield);
 		droneSprite = new DroneSprite(drone, boundaryDelegate);
 
 		for (int row = 0; row < this.minefield.getRowCount(); row++) {
