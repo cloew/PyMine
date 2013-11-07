@@ -31,9 +31,9 @@ public class AdjacencyClueText extends Text {
 			setColor(0, 0, 0);
 		} else if (distance <= 1) {
 			if (count == 1)
-				setColor((float) 244.0/255, 0, 0);
+				setColor((float) 227.0/255, (float) 68.0/255, (float) 20.0/255);
 			else
-				setColor((float) 175.0/255, 0, 0);
+				setColor((float) 196.0/255, 0, 0);
 		} else if (distance < 4) {
 			setColor((float) 244.0/255, (float) 244.0/255, 0);
 		} else {

@@ -7,6 +7,7 @@ import com.kaottessur.pymine.defense.AntiDroneMine;
 import com.kaottessur.pymine.defense.FragileMine;
 import com.kaottessur.pymine.defense.Mine;
 import com.kaottessur.pymine.defense.ReverseMine;
+import com.kaottessur.pymine.defense.Worm;
 
 public class LevelFactory {
 	private static LevelFactory instance;
@@ -54,6 +55,16 @@ public class LevelFactory {
 		levelInit6.setDefenseCount(ReverseMine.class, 4);
 		levelInit6.setDefenseCount(FragileMine.class, 2);
 		addLevel(levelInit6);
+		
+		LevelInit levelInit7 = new LevelInit("7", 3, 3);
+		levelInit7.setDefenseCount(FragileMine.class, 2);
+		addLevel(levelInit7);
+		
+		LevelInit levelInit8 = new LevelInit("8", 4, 5);
+		levelInit8.setDefenseCount(Mine.class, 4);
+		levelInit8.setDefenseCount(ReverseMine.class, 2);
+		levelInit8.setDefenseCount(Worm.class, 10);
+		addLevel(levelInit8);
 	}
 	
 	public List<Level> getLevels() {
