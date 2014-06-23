@@ -50,7 +50,10 @@ class AdjacencyClueView(QFrame): # Prolly could use a better name
         if self.fragilityClue.distance is None:
             return "0, 0, 0"
         elif self.fragilityClue.distance <= 1:
-            return "244, 0, 0"
+            if self.fragilityClue.count == 1:
+                return "227, 68, 20"
+            else:
+                return "196, 0, 0"
         elif self.fragilityClue.distance > 1 and self.fragilityClue.distance < 4:
             return "244, 244, 0"
         elif self.fragilityClue.distance >= 4:

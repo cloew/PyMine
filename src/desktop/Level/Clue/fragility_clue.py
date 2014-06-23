@@ -6,7 +6,13 @@ class FragilityClue(SubClue):
     def __init__(self):
         """ Initialize the Clue """
         self.distance = None
+        self.distances = {}
         self.reverse = False
+        
+    @property
+    def count(self):
+        """ Return the count of Fragile Mines at the closest distance """
+        return self.distances[self.distance]
     
     def update(self, minefield, gridRow, gridColumn):
         """ Update the subclue """
@@ -16,6 +22,12 @@ class FragilityClue(SubClue):
                     rowDistance = abs(square.row-gridRow)
                     columnDistance = abs(square.column-gridColumn)
                     adjacencyDistance = self.getAdjacencyDistance(rowDistance, columnDistance)
+                    
+                    if adjacencyDistance in self.distances:
+                        self.distances[adjacencyDistance] += 1
+                    else:
+                        self.distances[adjacencyDistance] = 1
+                    
                     if self.distance is None or adjacencyDistance < self.distance:
                         self.distance = adjacencyDistance
                         
